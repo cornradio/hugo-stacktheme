@@ -5,16 +5,16 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2020
-customText = ""
+since = 1998
+customText = "吸引力法则，大圣灵、外星人和心灵能量"
 
 [dateFormat]
 published = "Jan 02, 2006"
 lastUpdated = "Jan 02, 2006 15:04 MST"
 
 [sidebar]
-emoji = "🍥"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+emoji = ""
+subtitle = "The more you know, the more you realize you don't know. - Aristotle"
 
 [sidebar.avatar]
 enabled = true
