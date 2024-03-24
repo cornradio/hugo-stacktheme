@@ -12,8 +12,7 @@ categories = [
 tags = [
   "python","json"
 ]
-series = []
-images = []
+image = "py-json.png"
 +++
 
 python 使用json存储自身配置的代码示例;

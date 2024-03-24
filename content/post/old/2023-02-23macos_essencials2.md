@@ -11,8 +11,7 @@ categories = [
 tags = [
   "mac"
 ]
-series = []
-images = []
+image="macbooka.jpg"
 +++
 经过了半年的使用，这是最新的软件推荐列表！
 

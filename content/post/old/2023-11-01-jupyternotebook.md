@@ -1,6 +1,6 @@
 +++
 title = "Jupyter notebook"
-description = ""
+description = "Jupyter  Notebook 是一个开源的 Web 应用程序，可以让你创建和共享包含代码、方程、可视化和文本的文档"
 date = 2023-11-01T13:40:05+08:00
 featured = false
 comment = true
@@ -12,8 +12,7 @@ categories = [
 tags = [
   ""
 ]
-series = []
-images = []
+image="jupiter.png"
 +++
 
 安装 Jupyter Notebook 可以通过以下步骤完成：

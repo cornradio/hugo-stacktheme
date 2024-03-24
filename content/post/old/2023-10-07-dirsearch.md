@@ -1,19 +1,13 @@
 +++
 title = "dirsearch"
-description = ""
+description = "dirsearch 渗透工具 ， 用于扫描web路径 "
 date = 2023-10-07T09:32:55+08:00
 featured = false
 comment = true
 toc = true
 reward = true
-categories = [
-  ""
-]
-tags = [
-  "dirsearch"
-]
-series = []
-images = []
+
+image = "diresearch.png"
 +++
 [maurosoria/dirsearch: Web path scanner (github.com)](https://github.com/maurosoria/dirsearch)
 

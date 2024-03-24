@@ -1,6 +1,6 @@
 +++
 title = "powershell 设置别名 alias"
-description = ""
+description = "powershell 也有类似 .bashrc 的 $profile 文件"
 date = 2023-09-19T09:32:55+08:00
 featured = false
 comment = true
@@ -12,8 +12,7 @@ categories = [
 tags = [
   "pwsh"
 ]
-series = []
-images = []
+image="pwsh.jpg"
 +++
 
 使用 zsh 之后，回到windows，我很怀念alias功能。 以及 zshrc 配置文件。
