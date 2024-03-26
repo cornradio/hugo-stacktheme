@@ -8,10 +8,10 @@ comment = true
 toc = true
 reward = true
 categories = [
-  "centos","ssh"
+  
 ]
 tags = [
-  ""
+  "centos","ssh"
 ]
 series = []
 images = []

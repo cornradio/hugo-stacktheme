@@ -7,10 +7,10 @@ comment = true
 toc = true
 reward = true
 categories = [
-  "bash"
+
 ]
 tags = [
-  "个性化"
+  "个性化" ,  "bash"
 ]
 series = []
 images = []
