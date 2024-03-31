@@ -14,6 +14,9 @@ tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - themes
 #     - syntax
 ---
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/shadowrocketrules/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
+
+
 [原文地址](https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/#%E9%BB%91%E5%90%8D%E5%8D%95%E8%BF%87%E6%BB%A4--%E5%B9%BF%E5%91%8A)
 
 

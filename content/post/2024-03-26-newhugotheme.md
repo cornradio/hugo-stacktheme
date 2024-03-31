@@ -13,6 +13,8 @@ image: SLACK.png # 头图，注释掉，否则会有一个难看的呃加载不�
 #     - themes
 #     - syntax
 ---
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/newhugotheme/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
+
 
 我换了一个新的HUGO主题, 你们觉得怎么样?
 

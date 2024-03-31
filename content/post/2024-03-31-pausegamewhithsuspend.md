@@ -13,6 +13,8 @@ tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - themes
 #     - syntax
 ---
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/pausegamewhithsuspend/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
+
 
 碰到了一个好玩的工具,可以用来暂停游戏（Windows）；这个工具原本的意义是用来暂停进程的，然后分析它的内存内容。
 [pstools 下载](https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend)

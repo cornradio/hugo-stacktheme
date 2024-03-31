@@ -14,5 +14,4 @@ date: 2024-02-26 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-
-**这是一个模板文件**
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/abctest/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
