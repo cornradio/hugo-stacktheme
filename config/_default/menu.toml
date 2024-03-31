@@ -1,4 +1,5 @@
 # Configure main menu and social menu
+# icons from https://tabler.io/icons
 #[[main]]
 #identifier = "home"
 #name = "Home"
@@ -8,17 +9,33 @@
 #newtab = true
 
 [[social]]
-identifier = "github"
-name = "GitHub"
-url = "https://github.com"
+identifier = "imageuploader"
+name = "image uploader"
+url = "https://imgtp.com/"
 
 [social.params]
-icon = "brand-github"
+icon = "photo-up"
 
 [[social]]
-identifier = "twitter"
-name = "Twitter"
-url = "https://twitter.com"
+identifier = "googleconsole"
+name = "google console"
+url = "https://search.google.com/search-console?resource_id=sc-domain%3Ab.kill9pid.top"
 
 [social.params]
-icon = "brand-twitter"
+icon = "timeline"
+
+[[social]]
+identifier = "brand-google"
+name = "google search site"
+url = "https://www.google.com.hk/search?q=site%3Ab.kill9pid.top+a"
+
+[social.params]
+icon = "brand-google"
+
+[[social]]
+identifier = "clock-hour-4"
+name = "online clock"
+url = "https://cornradio.github.io/unimportant_sites/clock.html"
+
+[social.params]
+icon = "clock-hour-4"
