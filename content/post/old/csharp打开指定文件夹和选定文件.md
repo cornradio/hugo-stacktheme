@@ -1,11 +1,11 @@
 +++
 
-title = "c#文件管理器、读取文件列表"
+title = "csharp文件管理器、读取文件列表"
 date = "2021-06-04"
 author = "kasusa"
 cover = ""
 tags = ["csharp", "winform"]
-description = "c#打开文件管理器、选取文件、获取文件列表"
+description = "csharp打开文件管理器、选取文件、获取文件列表"
 showFullContent = false
 
 +++

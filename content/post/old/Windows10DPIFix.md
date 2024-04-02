@@ -21,4 +21,4 @@ showFullContent = false
 
 这个应用真的很好地解决了我的缩放问题，在此推荐给所有人。
 
-![程序截图](https://tva1.sinaimg.cn/large/006rgJELgy1grqsxs460dj30d1060q4e.jpg)
+![程序截图](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELgy1grqsxs460dj30d1060q4e.jpg)

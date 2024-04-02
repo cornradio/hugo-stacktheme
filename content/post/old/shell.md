@@ -115,11 +115,11 @@ root@KASUSA-cloud:~# echo $?
 ## 流程控制语句
 ### if 条件测试语句
 
-![if](http://ww1.sinaimg.cn/large/0083vuQJly1gbmzfmixtrj30eh05t3z5.jpg)
-![if else if](http://ww1.sinaimg.cn/large/0083vuQJly1gbmzhnsu8uj30g9074jsb.jpg)
+![if](https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzfmixtrj30eh05t3z5.jpg)
+![if else if](https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzhnsu8uj30g9074jsb.jpg)
 
 ### for 条件循环语句
-![for1](http://ww1.sinaimg.cn/large/0083vuQJly1gbmzpen0wwj30ev05fmxp.jpg)
+![for1](https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzpen0wwj30ev05fmxp.jpg)
 
 批量创建用户脚本：
 创建 user.txt
@@ -168,7 +168,7 @@ done
 ### while 条件循环语句
 执行前并不确定最终执行的次数
 
-![sshot-2020-02-15-[1].png](http://ww1.sinaimg.cn/large/006rgJELly1gbwy6ok0x4j306q04874d.jpg)
+![sshot-2020-02-15-[1].png](https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/006rgJELly1gbwy6ok0x4j306q04874d.jpg)
 
 例子：
 ```sh

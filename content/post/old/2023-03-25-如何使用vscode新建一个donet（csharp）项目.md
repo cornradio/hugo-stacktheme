@@ -16,15 +16,15 @@ series = []
 images = []
 +++
 
-通常情况下，使用 Visual Studio 来编写 C# 代码创建项目和管理非常的简单。但是，Visual Studio 是一个非常大的 IDE（而且visual studio mac版与win版并非同根同源，mac版本比较难用），如果您只是想编写一些简单的 C# 代码，安装一个巨大的vs是不适合的。
+通常情况下，使用 Visual Studio 来编写 csharp 代码创建项目和管理非常的简单。但是，Visual Studio 是一个非常大的 IDE（而且visual studio mac版与win版并非同根同源，mac版本比较难用），如果您只是想编写一些简单的 csharp 代码，安装一个巨大的vs是不适合的。
 
-- visual studio 来写c#（常规选择）
+- visual studio 来写csharp（常规选择）
 - vs code + dotnet sdk （推荐选择）
 <!--more-->
 
 主要分成下列步骤：
 - 安装 .NET Core SDK
--  安装 C# 插件
+-  安装 csharp 插件
 -   配置插件
 -   dotnet new 新建项目
 -   dotnet run   跑代码
@@ -32,8 +32,8 @@ images = []
 ## 安装 .NET Core SDK
 首先，需要安装 .NET Core SDK。可以在官网下载安装包进行安装：https://dotnet.microsoft.com/download ，我目前使用.NET 6.0。
 
-## 安装 C# 插件
-然后，在 Visual Studio Code 中搜索安装 C# 插件。按下 ctrl + Shift + x 打开扩展商店，搜索 "C#" 并点击安装。
+## 安装 csharp 插件
+然后，在 Visual Studio Code 中搜索安装 csharp 插件。按下 ctrl + Shift + x 打开扩展商店，搜索 "csharp" 并点击安装。
 
 ![第一个插件](https://raw.githubusercontent.com/cornradio/imgs/main/20230325000905.png)
 

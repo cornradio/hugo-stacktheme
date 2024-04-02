@@ -28,7 +28,7 @@ https://bootstrap.pypa.io/pip
 使用浏览器访问这个地址，应该有一个 get-pip.py 脚本，由于我不熟悉crul之类的工具，我选择手动复制下来。
 
 cmd + A ， cmd + C ， 复制全文，存到一边一会儿要用。
-![image](https://tvax4.sinaimg.cn/large/0083vuQJly1h3kunji5jej313w0t8e0o.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/0083vuQJly1h3kunji5jej313w0t8e0o.jpg)
 
 <!-- 然后来到terminal中，首先输入`python3`，开启python交互式界面，通过下列命令查询到python的安装位置。
 
@@ -37,7 +37,7 @@ cmd + A ， cmd + C ， 复制全文，存到一边一会儿要用。
 >>> os.path
 ```
 
-![image](https://tva3.sinaimg.cn/large/0083vuQJly1h3kurdqpqxj31ki14akjl.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/0083vuQJly1h3kurdqpqxj31ki14akjl.jpg)
 
 然后进入安装python的目录（`/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8`） -->
 
@@ -48,7 +48,7 @@ cmd + A ， cmd + C ， 复制全文，存到一边一会儿要用。
 > 图片右上角是我新创建的文件 pip.py，他的内容是从网页复制的
 
 
-![image](https://tva3.sinaimg.cn/large/0083vuQJly1h3kuzs0ljoj312i0gfwzi.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/0083vuQJly1h3kuzs0ljoj312i0gfwzi.jpg)
 
 # 配置环境变量
 脚本用黄色高量字体提醒了我们：
@@ -64,7 +64,7 @@ pip安装的位置不在path中，所以我们要手动的加个环境变量。
 export PATH=~/bin:/Users/kasusa/Library/Python/3.8/bin:$PATH
 ```
 
-![image](https://tva1.sinaimg.cn/large/0083vuQJly1h3kv8fwyn9j31yw0luwkz.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/0083vuQJly1h3kv8fwyn9j31yw0luwkz.jpg)
 
 这个例子中包含了三个path(使用冒号分割）：
 - ~/bin
@@ -88,4 +88,4 @@ source ~/.zshrc
 ```
 
 # 成功结果展示
-![image](https://tva4.sinaimg.cn/large/0083vuQJly1h3kvhhp942j30zl0sg1kx.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/0083vuQJly1h3kvhhp942j30zl0sg1kx.jpg)

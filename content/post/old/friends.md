@@ -27,8 +27,8 @@ categories: #会显示在 post 上面的分类
   
 - [Terrarum::异世界丨居正博客](https://blog.skyju.cc/)
 	
-	
-
     
 - [颜树人（从不更新的死博客）](https://yantree.github.io/) 
+
+- [AsyncX](https://blog.asyncx.top/) - [his friends](https://blog.asyncx.top/zh/friends/)
 

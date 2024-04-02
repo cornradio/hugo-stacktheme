@@ -35,21 +35,21 @@ images = []
 
 > steam一直在用我的流量下载东西
 
-![steam一直在使用我的代理进行网络通信](https://tvax2.sinaimg.cn/large/006rgJELly1h05265xqy9j30rw08fwkt.jpg)
+![steam一直在使用我的代理进行网络通信](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1h05265xqy9j30rw08fwkt.jpg)
 
 # 代理的原理
 
-![62301E4785F21D726F53429C72B1263F](https://tva4.sinaimg.cn/large/006rgJELly1h04zpqakv7j31d30l4te7.jpg)
+![62301E4785F21D726F53429C72B1263F](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELly1h04zpqakv7j31d30l4te7.jpg)
 
 一般情况下，翻墙就是这样，借助一个没有被强。
 
-![3ABEDD24ECE7CD73DE4FDDFEC2E25A23](https://tvax3.sinaimg.cn/large/006rgJELly1h04zydp6srj31tm0qg10m.jpg)
+![3ABEDD24ECE7CD73DE4FDDFEC2E25A23](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1h04zydp6srj31tm0qg10m.jpg)
 
 实际情况更像是这样，两个庞大的网络，里面都有好多的应用，而且他们基本上“不互通”
 
 你就是左边小小的电脑，连接到了右边蓝色的服务器上，然后可以愉快地上网！
 
-![16E8BC6CD7F2D4E4822949B675FA6F11](https://tvax2.sinaimg.cn/large/006rgJELly1h050ak4f3ij319g0mxdnj.jpg)
+![16E8BC6CD7F2D4E4822949B675FA6F11](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1h050ak4f3ij319g0mxdnj.jpg)
 
 但是你的代理软件也不是很智能，他手里拿着一个列表（Geoip.dat），但是他实际上也不是很清楚那些流量该怎么走，有时候就会弄错，对我来说经常有steam下载用代理、网易云听歌被代理、一些外网的名气小的网站却不被代理的情况发生。
 
@@ -73,7 +73,7 @@ images = []
 
 配合上域名，很轻松就能看出来这个ip是不是转发的了。
 
-![image](https://tva1.sinaimg.cn/large/006rgJELly1h050p54ylkj30o709a7bo.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h050p54ylkj30o709a7bo.jpg)
 
 对我来说，调试起来就很方便了
 
@@ -104,7 +104,7 @@ images = []
 | 黑名单   | 仅代理list中的外国网站、被封的网站                         |
 |          | 适合上很多国内网站，国外小网站基本不去的人                 |
 
-![image](https://tvax4.sinaimg.cn/large/006rgJELly1h0524a18ldj30u30lm130.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/006rgJELly1h0524a18ldj30u30lm130.jpg)
 
 没有最理想的方式，只有不断切换模式才能符合各种使用场景。
 

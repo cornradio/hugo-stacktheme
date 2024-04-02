@@ -1,6 +1,6 @@
 +++
-title = "C#执行命令"
-description = "使用c#执行任何命令（模拟cmd的输入）"
+title = "csharp执行命令"
+description = "使用csharp执行任何命令（模拟cmd的输入）"
 date = "2021-11-14"
 featured = false
 comment = true
@@ -8,7 +8,7 @@ toc = true
 reward = true
 
 tags = [
-  "c#","编程"
+  "csharp","编程"
 ]
 
 +++
@@ -74,7 +74,7 @@ if (processStarted)
 
 
 
-这个函数除了这些功能还可以做打开浏览器指定网页、打开文件夹等，是一个windows环境很常用的c#函数了
+这个函数除了这些功能还可以做打开浏览器指定网页、打开文件夹等，是一个windows环境很常用的csharp函数了
 
 ```
 //打开浏览器指定网页

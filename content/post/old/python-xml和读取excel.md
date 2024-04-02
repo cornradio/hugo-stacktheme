@@ -64,7 +64,7 @@ data = pd.read_excel('1.xlsx', sheet_name='Sheet1') #选取文件、要读取的
 print(data)
 ```
 
-![image](https://tva4.sinaimg.cn/large/006rgJELly1gx9t65s9y4j308703uq3j.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELly1gx9t65s9y4j308703uq3j.jpg)
 
 为了能操作到指定元素，我们需要先了解一下pandas的数据存储格式是什么：
 
@@ -288,7 +288,7 @@ tree.write("xmlLearn.xml")
 
 ```
 
-![](https://tvax3.sinaimg.cn/large/006rgJELly1gwjmtdp4urj30e307awhc.jpg)
+![](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1gwjmtdp4urj30e307awhc.jpg)
 
 这里我放一个图片希望大家看了可以懂，xml是一个嵌套树的结构，investor是root下面的，然而investor可以自己再有一个子节点（只要append就行了），xml是层级分明的文件结构
 

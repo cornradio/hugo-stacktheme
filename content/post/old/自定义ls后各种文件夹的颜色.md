@@ -19,7 +19,7 @@ images = ["https://tva2.sinaimg.cn/large/006rgJELgy1h2h9h5nahuj30qt0ewgwe.jpg"]
 
 今天用WLS打开windows目录，一片亮瞎眼的绿色，再加上这个复古特效，真的字都看不清了：
 
-![image](https://tva3.sinaimg.cn/large/006rgJELgy1h2h94lpkckj30it047q5g.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h2h94lpkckj30it047q5g.jpg)
 
 在网上搜了一圈修改办法，终于找到一个有用的文章：[在WSL环境下修改文件夹的颜色](https://sspai.com/post/39499)
 
@@ -43,7 +43,7 @@ vim ~/.dircolors
 
 最后用 `source ~/.bashrc` 重加载一下bash配置文件即可完成修改了
 
-![image](https://tva2.sinaimg.cn/large/006rgJELgy1h2h9h5nahuj30qt0ewgwe.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2h9h5nahuj30qt0ewgwe.jpg)
 
 
 

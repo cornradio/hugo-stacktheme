@@ -48,7 +48,7 @@ frps.ini	frps的配置文件
 frps_full.ini	frps的配置文件（有完整的注释和例子）
 ```
 
-![0F7357E41313BFC9B317E8F17213C134](https://tva3.sinaimg.cn/large/006rgJELly1h06twcbshjj31g10u2wmo.jpg)
+![0F7357E41313BFC9B317E8F17213C134](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELly1h06twcbshjj31g10u2wmo.jpg)
 
 # 配置文件怎么写
 
@@ -144,5 +144,5 @@ root@VM-12-6-ubuntu:/home/frp# sudo ./frps -c ./frps.ini
 
 # 检查frp控制台
 
-![image](https://tvax1.sinaimg.cn/large/006rgJELly1h06ueiqri1j310k0izwis.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELly1h06ueiqri1j310k0izwis.jpg)
 

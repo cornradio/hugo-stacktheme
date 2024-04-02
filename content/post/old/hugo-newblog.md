@@ -11,7 +11,7 @@ showFullContent = false
 
 +++
 
-![](https://tvax1.sinaimg.cn/large/0083vuQJgy1gqzlm00z45j30hs06z0sq.jpg)
+![](https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/0083vuQJgy1gqzlm00z45j30hs06z0sq.jpg)
 
 ### 剧情介绍
 

@@ -91,8 +91,8 @@ if __name__ == '__main__':
 不过我正常使用这个工具的时候都是搞几十个ip来扫
 
 
-![image](https://tvax2.sinaimg.cn/large/006rgJELgy1h3cncasc0qj319g0raano.jpg)
-![image](https://tva2.sinaimg.cn/large/006rgJELgy1h3cnhgy70yj30fq0cjdi1.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELgy1h3cncasc0qj319g0raano.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h3cnhgy70yj30fq0cjdi1.jpg)
 
 # 尾巴
 其实我是周末弄得啦，之前就是直接用的网上搜到的版本，但是总是感觉不好用，今天正好有空，就修改了一下。

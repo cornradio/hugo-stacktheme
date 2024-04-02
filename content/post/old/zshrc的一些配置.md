@@ -57,7 +57,7 @@ export PS1="%10F%m%f:%11F%1~%f \$ "
 export PS1="%T %B%~%b \$ "
 ```
 
-![image](https://tvax3.sinaimg.cn/large/0083vuQJly1h67qc96kcoj30a403et8j.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/0083vuQJly1h67qc96kcoj30a403et8j.jpg)
 
 
 

@@ -23,7 +23,7 @@ tags = [
 
 ## ls -l：看权限
 
-![image](https://tva1.sinaimg.cn/large/006rgJELly1h1ijxlim8tj30r30c8gp2.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h1ijxlim8tj30r30c8gp2.jpg)
 
 这个权限一般是这样的 `rwx rwx rwx` 写了三遍是因为它对应着三个家伙的权限，分别是用户（文件拥有者）、组（文件拥有者的朋友们）、还有其他人。
 
@@ -105,11 +105,11 @@ k@VM-12-6-ubuntu:~$ ls -l
 
 符号：t （sticky）
 
-![SBIT](https://tva4.sinaimg.cn/large/006rgJELgy1h1ilajxmd0j30n403e3zt.jpg)
+![SBIT](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELgy1h1ilajxmd0j30n403e3zt.jpg)
 
-![image](https://tva3.sinaimg.cn/large/006rgJELgy1h1illlnlslj30rb03775m.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h1illlnlslj30rb03775m.jpg)
 
-![image](https://tvax1.sinaimg.cn/large/006rgJELgy1h1ilhuem4sj30t902ot9k.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELgy1h1ilhuem4sj30t902ot9k.jpg)
 
 ### SUID 
 

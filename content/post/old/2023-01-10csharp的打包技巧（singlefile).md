@@ -1,5 +1,5 @@
 +++
-title = "c# 的打包技巧（打包成singlefile)"
+title = "csharp的打包技巧（打包成singlefile)"
 description = ""
 date = 2023-01-10T16:10:14+08:00
 featured = false

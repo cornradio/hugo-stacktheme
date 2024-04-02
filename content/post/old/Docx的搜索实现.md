@@ -11,16 +11,16 @@ categories = [
   ""
 ]
 tags = [
-  "c#","docx"
+  "csharp","docx"
 ]
 series = []
 images = []
 
 +++
 
-我做了一个c#的docx函数库。
+我做了一个csharp的docx函数库。
 
-python操作word实在是太垃了，尤其是涉及到多表、页眉页脚，甚至有时候好好的段落硬是搜不到。所以我转向了对于word操作支持更好的c#。
+python操作word实在是太垃了，尤其是涉及到多表、页眉页脚，甚至有时候好好的段落硬是搜不到。所以我转向了对于word操作支持更好的csharp。
 
 说是讲实现，实际上只讲了使用。毕竟实现挺复杂的也不好讲，不如感兴趣的自己看源码吧。我这里直接讲讲怎么用我这个函数就好了。
 
@@ -44,7 +44,7 @@ github resourcehere: [kasusa/Docx_Search](https://github.com/kasusa/Docx_Search)
 
 ## 依赖
 
-本库是基于开源*非商用的docx库编写的。引用如下两个库，可以在这里下载：[xceedsoftware/DocX](https://github.com/xceedsoftware/DocX)，这个项目提供了一些非常实用的例子，建议新手先看他们的例子来学习c#操作word的逻辑。
+本库是基于开源*非商用的docx库编写的。引用如下两个库，可以在这里下载：[xceedsoftware/DocX](https://github.com/xceedsoftware/DocX)，这个项目提供了一些非常实用的例子，建议新手先看他们的例子来学习csharp操作word的逻辑。
 
 ```
 using Xceed.Document.NET;

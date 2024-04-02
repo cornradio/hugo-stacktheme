@@ -12,7 +12,7 @@ categories = [
   ""
 ]
 tags = [
-  "c#","word","开发"
+  "csharp","word","开发"
 ]
 series = []
 images = []
@@ -35,11 +35,11 @@ images = []
 
 如果是一个学过桌面程序开发的人，那么他应该可以秒上手！
 
-本文主要使用的编程语言是C#，相对于python他有如下优点：
+本文主要使用的编程语言是csharp，相对于python他有如下优点：
 
 1. 拖拽式的界面设计非常简便
 2. 少量信息的存储甚至不需要学习操作文件
-3. C#操作Docx的库相对于python来说更加好用，且有丰富的官方例子（python-docx库会存在有无法读取到某些表或者段落、无法正常修改页眉内容等问题）
+3. csharp操作Docx的库相对于python来说更加好用，且有丰富的官方例子（python-docx库会存在有无法读取到某些表或者段落、无法正常修改页眉内容等问题）
 
 一般来说在思路清晰清晰的，根据功能复制程度、实现难度区别，开发时间应该是 1天~2天，相对于后续他为你提供的便利来说，真的是“磨刀不误砍柴工”。
 
@@ -64,14 +64,14 @@ images = []
 3. 手动输入项目经理、成员
 4. 检查输出是否有误 —— 完成
 
-![image](https://tva2.sinaimg.cn/large/006rgJELly1h0rqww221gj30aw07q75f.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELly1h0rqww221gj30aw07q75f.jpg)
 
 如上图所示，本程序有两种信息输入方式
 
 - 从报告中读取
 - 手工录入
 
-![image](https://tva1.sinaimg.cn/large/006rgJELly1h0rqvro6gfj30dg0bwabq.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h0rqvro6gfj30dg0bwabq.jpg)
 
 上图则是从报告中提取到的数据展示，展示后还需要手动输入“我方人员”，因为这些内容无法从源文件中读取到。
 
@@ -79,7 +79,7 @@ images = []
 
 ## 界面设计
 
-![image](https://tvax4.sinaimg.cn/large/006rgJELly1h0rr4lb1msj30hq0hkjz6.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/006rgJELly1h0rr4lb1msj30hq0hkjz6.jpg)
 
 对于不同功能的应用，要活用`radiobutton`、`listbox`等控件简化开发流程和用户的操作门槛，虽然界面可能看起来有些许“过时”，但是诸如`treeview`、`checkbox`、`radiobutton`、`listbox`等都是微软默认提供且非常强大且易用的控件。
 
@@ -89,11 +89,11 @@ images = []
 
 - 对于有大量内容的中心控件（如上图中的文件选取栏），推荐设置就是上下左右都配置锚点，这样用户在使用的时候可以通过手工把窗口拉大的方式来让选取栏变大，从而方便操作；
 
-![image](https://tvax2.sinaimg.cn/large/006rgJELly1h0rr8bg656j30cb0420te.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1h0rr8bg656j30cb0420te.jpg)
 
 - 对于底部的按钮则应该选择向下锚点，否则用户将窗体放大的时候就会变成这个样子
 
-![image](https://tvax2.sinaimg.cn/large/006rgJELly1h0rrdstb3aj30ox0lfwhj.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1h0rrdstb3aj30ox0lfwhj.jpg)
 
 
 
@@ -133,11 +133,11 @@ images = []
 
 这里使用的是markdown语法，对于每一个操作，如果实现了就在左边打一个x，如果没有则是空白的。
 
-![image](https://tva1.sinaimg.cn/large/006rgJELly1h0s4rja7inj310a0nuaqq.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h0s4rja7inj310a0nuaqq.jpg)
 
 ### 语言和调用库文件
 
-读取文件方面，我采用了Docx开源库，可以在[xceedsoftware/DocX:(github.com)](https://github.com/xceedsoftware/DocX)上下载。他速度很快，仅支持C#语言，同时官方提供了详细的文档，可以在[/Xceed.Words.NET.Examples (github.com)](https://github.com/xceedsoftware/DocX/tree/master/Xceed.Words.NET.Examples/Samples)下载实验。
+读取文件方面，我采用了Docx开源库，可以在[xceedsoftware/DocX:(github.com)](https://github.com/xceedsoftware/DocX)上下载。他速度很快，仅支持csharp语言，同时官方提供了详细的文档，可以在[/Xceed.Words.NET.Examples (github.com)](https://github.com/xceedsoftware/DocX/tree/master/Xceed.Words.NET.Examples/Samples)下载实验。
 
 在[ kasusa/archiver (github.com)](https://github.com/kasusa/archiver/blob/master/archiver/myutil.cs)有我编写一个实用库，注释较全，本文中会大量使用库中实现的函数。
 
@@ -204,7 +204,7 @@ public myutil(string str_path)
   - 图片分为Pictures、Images
   - Images是真正的图片，如果你用zip打开word文件，可以发现存在一个文件夹放置所有图片的源文件
   - Pictures是图片在word文档中的一种“引用”，他引用了Images中的图片，并显示在word文档的指定位置上
-  - ![image](https://tvax4.sinaimg.cn/large/006rgJELly1h0sv8sgajgj30le0ca43b.jpg)
+  - ![image](https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/006rgJELly1h0sv8sgajgj30le0ca43b.jpg)
 
 ### 段落搜索
 
@@ -242,9 +242,9 @@ return null;
 
 ### 表格搜索
 
-![image](https://tvax3.sinaimg.cn/large/006rgJELly1h0sy8718i9j30ux07rq4w.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1h0sy8718i9j30ux07rq4w.jpg)
 
-![image](https://tva4.sinaimg.cn/large/006rgJELly1h0syiq0z24j30lc02oglw.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELly1h0syiq0z24j30lc02oglw.jpg)
 
 表格搜索功能是独创的，原理如下：
 
@@ -357,7 +357,7 @@ private string date_process(string a)
 
 本次介绍的属于第二种，对于制作其他文件，首先需要制作一个模板。
 
-![image](https://tvax3.sinaimg.cn/large/006rgJELly1h0t3f85uj1j30sj0fddjl.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1h0t3f85uj1j30sj0fddjl.jpg)
 
 然后我们只需要把【xxx公司】、【xxx系统】等内容替换为提取到的信息即可。
 

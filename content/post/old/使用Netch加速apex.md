@@ -45,7 +45,7 @@ images = ["https://tvax3.sinaimg.cn/large/006rgJELly1h2o5hxdsk2j305303ajrd.jpg"]
 
  因为他们的“全局”只是修改了windows这里的设置而已，很多游戏之类的程序并不会检查和使用系统的代理来建立网络链接。
 
-![image](https://tva1.sinaimg.cn/large/006rgJELgy1h2o4ag3dmwj30ts0gmwgg.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELgy1h2o4ag3dmwj30ts0gmwgg.jpg)
 
 那么从原理上来说的话这个Netch又有什么不同呢？
 
@@ -55,7 +55,7 @@ Netch是对**进程**进行代理
 
 就能达到给一些不支持代理的程序进行加速的效果。
 
-![image](https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg)
 
 # Netch的使用
 
@@ -65,7 +65,7 @@ Netch是对**进程**进行代理
 
 这里的界面样式非常像V2rayN，第一个按钮可以添加删除订阅（支持同时有好几个），第二个是更新订阅列表。加入成功之后你就可以在服务器下拉列表中选择自己的服务器节点了。
 
-![image](https://tva1.sinaimg.cn/large/006rgJELly1h2o4i6fb6mj30al03sdgo.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h2o4i6fb6mj30al03sdgo.jpg)
 
 ## 主界面功能简要介绍
 
@@ -84,7 +84,7 @@ Netch是对**进程**进行代理
 
   
 
-![image](https://tva2.sinaimg.cn/large/006rgJELly1h2o4gt3d7hj30qp08u78x.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELly1h2o4gt3d7hj30qp08u78x.jpg)
 
 ## 新建一个APEX模式
 
@@ -97,23 +97,23 @@ Netch是对**进程**进行代理
 5. 起名字保存（我起名为Apex-test）
 6. 保存之后，在模式的下拉框里面，你就可以找到自己新建的模式了！
 
-![image](https://tvax2.sinaimg.cn/large/006rgJELgy1h2o4ubg52kj30dj07t41a.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELgy1h2o4ubg52kj30dj07t41a.jpg)
 
-![image](https://tvax4.sinaimg.cn/large/006rgJELgy1h2o4skj941j30bo042ab1.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/006rgJELgy1h2o4skj941j30bo042ab1.jpg)
 
-![image](https://tva3.sinaimg.cn/large/006rgJELgy1h2o4tqih87j30cp0bogmf.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h2o4tqih87j30cp0bogmf.jpg)
 
-![image](https://tvax3.sinaimg.cn/large/006rgJELgy1h2o4wk8d3dj30nq0bjtdd.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELgy1h2o4wk8d3dj30nq0bjtdd.jpg)
 
-![image](https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg)
 
-![image](https://tvax1.sinaimg.cn/large/006rgJELgy1h2o50cnxyrj30kc08wdjb.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELgy1h2o50cnxyrj30kc08wdjb.jpg)
 
 ## 加速、保存快速配置
 
 这里我选择了建立了两个快速配置，你可以自己随便建立自己的快速配置（本质上就是模式和服务器的组合）
 
-![image](https://tva4.sinaimg.cn/large/006rgJELgy1h2o51nhl4lj30kc08wq5a.jpg)
+![image](https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELgy1h2o51nhl4lj30kc08wq5a.jpg)
 
 ## 同时加速steam和Apex（高级）
 
@@ -125,9 +125,9 @@ Netch是对**进程**进行代理
 2. 打开你的模式（Apex-test），然后把steam的模式规则都贴后面
 3. 保存你的修改后的模式（可以重命名再保存）
 
-![image](https://tvax3.sinaimg.cn/large/006rgJELly1h2o57l9qyhj30cp0boac5.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1h2o57l9qyhj30cp0boac5.jpg)
 
-![image](https://tvax1.sinaimg.cn/large/006rgJELly1h2o5a091g8j30cp0boq60.jpg)
+![image](https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELly1h2o5a091g8j30cp0boq60.jpg)
 
 # 结语
 
