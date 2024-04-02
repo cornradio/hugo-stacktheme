@@ -16,13 +16,13 @@ url = "https://imgtp.com/"
 [social.params]
 icon = "photo-up"
 
-[[social]]
-identifier = "googleconsole"
-name = "google console"
-url = "https://search.google.com/search-console?resource_id=sc-domain%3Ab.kill9pid.top"
-
-[social.params]
-icon = "timeline"
+# [[social]]
+# identifier = "googleconsole"
+# name = "google console"
+# url = "https://search.google.com/search-console?resource_id=sc-domain%3Ab.kill9pid.top"
+# 
+# [social.params]
+# icon = "timeline"
 
 [[social]]
 identifier = "brand-google"
@@ -39,3 +39,11 @@ url = "https://cornradio.github.io/unimportant_sites/clock.html"
 
 [social.params]
 icon = "clock-hour-4"
+
+[[social]]
+identifier = "users"
+name = "friends"
+url = "/p/friends/"
+
+[social.params]
+icon = "users"

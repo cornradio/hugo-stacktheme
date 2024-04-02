@@ -9,8 +9,8 @@ image: cover.png # 头图，注释掉，否则会有一个难看的呃加载不�
 # tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - TAG A
 #     - TAG B
-categories: #会显示在 post 上面的分类
-    - ❤ friends
+# categories: #会显示在 post 上面的分类
+#     - ❤ friends
 ---
 
 - [La Bibliothèque de Lumière（卢米埃尔图书馆）](https://ble-m.ltgc.cc/)
