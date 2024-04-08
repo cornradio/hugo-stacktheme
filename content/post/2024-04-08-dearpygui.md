@@ -14,7 +14,7 @@ tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - themes
 #     - syntax
 ---
-<!-- [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/pyimgui/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com) -->
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/pyimgui/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 前言
 这个文章我整理了好久，应该是目前(202404)最全的新版DPG教程了，希望大家喜欢。
