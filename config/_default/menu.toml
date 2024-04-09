@@ -35,7 +35,7 @@ icon = "brand-google"
 [[social]]
 identifier = "clock-hour-4"
 name = "online clock"
-url = "https://cornradio.github.io/unimportant_sites/clock.html"
+url = "/clock"
 
 [social.params]
 icon = "clock-hour-4"
