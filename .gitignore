@@ -2,3 +2,6 @@ public
 resources
 .hugo_build.lock
 assets/jsconfig.json
+.DS_Store
+assets/jsconfig.json
+content/.DS_Store
