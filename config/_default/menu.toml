@@ -47,3 +47,11 @@ url = "/p/friends/"
 
 [social.params]
 icon = "users"
+
+[[social]]
+identifier = "filebox"
+name = "file-box"
+url = "/file-box"
+
+[social.params]
+icon = "file-download"
