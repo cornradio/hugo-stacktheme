@@ -427,14 +427,16 @@
 <script src="axios.js"></script>
 <script src="port.js"></script>
 <script>//api
-    //获取当前url
-    var url = window.location.href;
-    //提取url的ip
-    var ip = url.split('/')[2].split('/')[0].split(':')[0];
-    console.log("从 url 获取服务器 ip: " + ip)
-    apiserver = ip
+    // //获取当前url
+    // var url = window.location.href;
+    // //提取url的ip
+    // var ip = url.split('/')[2].split('/')[0].split(':')[0];
+    // console.log("从 url 获取服务器 ip: " + ip)
+    // apiserver = ip
 
-    axios.defaults.baseURL = `http://${ip}:${port}/box1`;
+    // axios.defaults.baseURL = `http://${ip}:${port}/box1`;
+    axios.defaults.baseURL = baseurl;
+
     console.log('apiport.txt notfound -- use defult port: 3000 ;');
 
     // upload
