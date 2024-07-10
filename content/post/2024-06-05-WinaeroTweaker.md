@@ -1,7 +1,7 @@
 ﻿---
 title: WinaeroTweaker # 标题
 slug: WinaeroTweaker # url(注释掉 和标题相同)
-image: https://raw.githubusercontent.com/cornradio/imgs/main/20240605224437.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
+image: winareotweaker.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
 # description: xxxx # 描述小字(注释掉 不显示描述)
 
 date: 2024-06-05 00:00:00+0000 # 日期时间，如果时间未到，post 不会显示(注释掉 不显示日期)

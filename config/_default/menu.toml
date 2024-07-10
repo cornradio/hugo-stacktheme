@@ -11,7 +11,7 @@
 [[social]]
 identifier = "imageuploader"
 name = "image uploader"
-url = "https://imgtp.com/"
+url = "https://pasteboard.online/t2.html"
 
 [social.params]
 icon = "photo-up"
@@ -48,10 +48,3 @@ url = "/p/friends/"
 [social.params]
 icon = "users"
 
-[[social]]
-identifier = "filebox"
-name = "file-box"
-url = "/file-box"
-
-[social.params]
-icon = "file-download"
