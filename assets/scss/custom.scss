@@ -2,25 +2,42 @@
     You can add your own custom styles here.
 */
 
-code{
-    margin: 0 5px ;
+code {
+    margin: 0 5px;
 }
 
-h1,h2,h3,h4{
+h1[data-scheme=dark],
+h2[data-scheme=dark],
+h3[data-scheme=dark],
+h4[data-scheme=dark] {
     text-shadow: 1px 1px 0.21px rgba(0, 0, 0, 0.459);
 
 }
 
-h2 {
-    color: rgb(49, 170, 250) !important;
 
+h2 {
+    color: rgb(49, 170, 250);
 }
 
 h3 {
-    
-    color: rgb(134, 207, 17) !important;
+
+    color: rgb(118, 190, 2);
 }
+
 
 h4 {
     color: rgb(243, 172, 86) !important;
+}
+
+:root {
+    --card-background: #fafafaa6;
+    --body-background: linear-gradient(43deg, #ced5ff 0%, #ffbcfb 46%, #FFCC70 100%);
+    scrollbar-color: #ff9d00 #f5e6cf;
+
+}
+
+:root[data-scheme=dark] {
+    --card-background: #333232a6;
+    --body-background: linear-gradient(43deg, #1e2853 0%, #144d57 46%, #156838 100%);
+    scrollbar-color: #3a554b #172b23;
 }
