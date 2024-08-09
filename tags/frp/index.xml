@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frp on CornRadio-Blog</title><link>/tags/frp/</link><description>Recent content in Frp on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 12 Mar 2022 08:56:19 +0800</lastBuildDate><atom:link href="/tags/frp/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用FRP</title><link>/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8frp/</link><pubDate>Sat, 12 Mar 2022 08:56:19 +0800</pubDate><guid>/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8frp/</guid><description>&lt;p>FRP是一个开源的内网穿透软件，本文将会介绍如何使用frp。&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/fatedier/frp" target="_blank" rel="noopener"
+>frp - github&lt;/a>&lt;/p>
+&lt;h1 id="原理解释">原理解释
+&lt;/h1>&lt;p>&lt;strong>背景&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>我们有一台能访问公网，但是没有公网ip（不能为外部提供服务的server）&lt;/li>
+&lt;li>我们有一台阿里云之类的&lt;strong>云服务器&lt;/strong>，有公网ip&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>目的&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>让&lt;strong>不能为外部提供服务的server&lt;/strong> 借用&lt;strong>云服务器&lt;/strong>转发，从而为公网提供服务&lt;/li>
+&lt;/ul>
+&lt;h2 id="下载和安装">下载和安装
+&lt;/h2>&lt;p>从github下载之后我们会得到这些文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">frpc 放在本地server上
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frpc.ini frpc的配置文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frpc_full.ini frpc的配置文件（有完整的注释和例子）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">frps 放在云服务器上
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frps.ini frps的配置文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frps_full.ini frps的配置文件（有完整的注释和例子）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELly1h06twcbshjj31g10u2wmo.jpg"
+loading="lazy"
+alt="0F7357E41313BFC9B317E8F17213C134"
+>&lt;/p>
+&lt;h1 id="配置文件怎么写">配置文件怎么写
+&lt;/h1>&lt;p>以防我写的不对，首先推荐看这里：&lt;a class="link" href="https://github.com/fatedier/frp/tree/dev/conf" target="_blank" rel="noopener"
+>github官方例子&lt;/a>&lt;/p>
+&lt;h2 id="frpsini">frps.ini
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>common&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#开一个端口，用于转发信息的接收&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">bind_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">7000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#开一个监控台，可以在web上面直观的看到frp运行情况&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">dashboard_addr&lt;/span> &lt;span class="o">=&lt;/span> 0.0.0.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">dashboard_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">7500&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后把&lt;code>frps&lt;/code>、&lt;code>frps.ini&lt;/code> 放到服务器上，赋予执行权限（我就无脑chomd777)&lt;/p>
+&lt;p>记得把云服务器的安全组策略（在云服务商的控制台界面里面）打开，然后就可以去编辑frpc了&lt;/p>
+&lt;h2 id="frpcini">frpc.ini
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>common&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#输入你服务器的ip、服务器的接收端口，进行frp链接&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">server_addr&lt;/span> &lt;span class="o">=&lt;/span> x.x.x.x
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">server_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">7000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>ssh&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#开启一些其他的转发，比如ssh，按照下面配置相当于把 127.0.0.1:22 转发到 x.x.x.x:6000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">type&lt;/span> &lt;span class="o">=&lt;/span> tcp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_ip&lt;/span> &lt;span class="o">=&lt;/span> 127.0.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">remote_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">6000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># tcp和udp端口转发等&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>range:tcp_port&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">type&lt;/span> &lt;span class="o">=&lt;/span> tcp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_ip&lt;/span> &lt;span class="o">=&lt;/span> 127.0.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_port&lt;/span> &lt;span class="o">=&lt;/span> 6010-6020,6022,6024-6028
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">remote_port&lt;/span> &lt;span class="o">=&lt;/span> 6010-6020,6022,6024-6028
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">use_encryption&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">use_compression&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>range:udp_port&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">type&lt;/span> &lt;span class="o">=&lt;/span> udp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_ip&lt;/span> &lt;span class="o">=&lt;/span> 127.0.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">local_port&lt;/span> &lt;span class="o">=&lt;/span> 6010-6020
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">remote_port&lt;/span> &lt;span class="o">=&lt;/span> 6010-6020
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">use_encryption&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">use_compression&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="服务启动">服务启动
+&lt;/h1>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在云上启动服务端（接受和转发）（推荐用screen）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./frps -c ./frps.ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在本地启动客户端（发送）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./frpc -c ./frpc.ini
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>本地成功的输出：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>service.go:178&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> try to reconnect to server...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>service.go:325&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> login to server success, get run id &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span>, server udp port &lt;span class="o">[&lt;/span>0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>proxy_manager.go:144&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> proxy added: &lt;span class="o">[&lt;/span>ssh&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>control.go:181&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>ssh&lt;span class="o">]&lt;/span> start proxy success
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>云端成功的输出：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">root@VM-12-6-ubuntu:/home/frp# sudo ./frps -c ./frps.ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:53:51 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>root.go:200&lt;span class="o">]&lt;/span> frps uses config file: ./frps.ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:53:51 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>service.go:193&lt;span class="o">]&lt;/span> frps tcp listen on 0.0.0.0:7000
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:53:51 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>service.go:292&lt;span class="o">]&lt;/span> Dashboard listen on 0.0.0.0:7500
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:53:51 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>root.go:209&lt;span class="o">]&lt;/span> frps started successfully
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:06 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>dashboard_api.go:70&lt;span class="o">]&lt;/span> Http request: &lt;span class="o">[&lt;/span>/api/serverinfo&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:06 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>dashboard_api.go:63&lt;span class="o">]&lt;/span> Http response &lt;span class="o">[&lt;/span>/api/serverinfo&lt;span class="o">]&lt;/span>: code &lt;span class="o">[&lt;/span>200&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>service.go:449&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> client login info: ip &lt;span class="o">[&lt;/span>211.161.248.81:2910&lt;span class="o">]&lt;/span> version &lt;span class="o">[&lt;/span>0.40.0&lt;span class="o">]&lt;/span> hostname &lt;span class="o">[]&lt;/span> os &lt;span class="o">[&lt;/span>linux&lt;span class="o">]&lt;/span> arch &lt;span class="o">[&lt;/span>amd64&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>tcp.go:64&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>ssh&lt;span class="o">]&lt;/span> tcp proxy listen port &lt;span class="o">[&lt;/span>6000&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022/03/12 08:54:09 &lt;span class="o">[&lt;/span>I&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>control.go:465&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>356c08cc36fd0fc1&lt;span class="o">]&lt;/span> new proxy &lt;span class="o">[&lt;/span>ssh&lt;span class="o">]&lt;/span> success
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="检查frp控制台">检查frp控制台
+&lt;/h1>&lt;p>&lt;img src="https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELly1h06ueiqri1j310k0izwis.jpg"
+loading="lazy"
+alt="image"
+>&lt;/p></description></item></channel></rss>

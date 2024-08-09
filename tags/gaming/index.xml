@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gaming on CornRadio-Blog</title><link>/tags/gaming/</link><description>Recent content in Gaming on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 31 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/gaming/index.xml" rel="self" type="application/rss+xml"/><item><title>用 suspend 工具暂停游戏（Windows）</title><link>/p/pausegamewhithsuspend/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>/p/pausegamewhithsuspend/</guid><description>&lt;img src="/pausegame.png" alt="Featured image of post 用 suspend 工具暂停游戏（Windows）" />&lt;p>&lt;a class="link" href="https://hits.seeyoufarm.com" target="_blank" rel="noopener"
+>&lt;img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/pausegamewhithsuspend/&amp;amp;count_bg=%23F26E00&amp;amp;title_bg=%23000000"
+loading="lazy"
+alt="Hits"
+>&lt;/a>&lt;/p>
+&lt;p>我开发了一个gui工具来方便的暂停游戏
+来这里下载:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/cornradio/pausemygame" target="_blank" rel="noopener"
+>source code&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/cornradio/pausemygame/releases" target="_blank" rel="noopener"
+>release&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://img2.imgtp.com/2024/04/02/g2kpaJnW.png"
+loading="lazy"
+alt="1712043101178.png"
+>&lt;/p>
+&lt;hr>
+&lt;p>碰到了一个好玩的工具,可以用来暂停游戏（Windows）；这个工具原本的意义是用来暂停进程的，然后分析它的内存内容。
+&lt;a class="link" href="https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend" target="_blank" rel="noopener"
+>pstools 下载&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>(暂停后完全不占用你任何的 CPU 资源，但是会占用内存和显存)&lt;/p>
+&lt;/blockquote>
+&lt;p>你可以用下面这个命令来查找程序名(或者用任务管理器-右键-属性)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">tasklist | findstr Devil
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>suspend 会把程序放到内存里。需要准确的程序名。（或者pid）
+这里用 &lt;a class="link" href="https://getquicker.net/Download" target="_blank" rel="noopener"
+>quicker&lt;/a>的“运行选中文字”功能非常合适。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># 暂停程序DMC5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PsSuspend DevilMayCry5.exe
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 恢复程序DMC5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PsSuspend -r DevilMayCry5.exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>比如把【鬼泣5】暂停了，cpu占用 = 0。
+&lt;img src="https://img2.imgtp.com/2024/03/31/6sRJZ1UY.png"
+loading="lazy"
+alt="alt text"
+>&lt;/p>
+&lt;hr></description></item></channel></rss>
