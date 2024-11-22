@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Office on CornRadio-Blog</title><link>/tags/office/</link><description>Recent content in Office on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Jul 2023 22:01:50 +0800</lastBuildDate><atom:link href="/tags/office/index.xml" rel="self" type="application/rss+xml"/><item><title>Get Office / Windows and crack it</title><link>/p/get-office-/-windows-and-crack-it/</link><pubDate>Wed, 05 Jul 2023 22:01:50 +0800</pubDate><guid>/p/get-office-/-windows-and-crack-it/</guid><description>&lt;p>因为经常要给各种机器装office 已经麻了 所以写个小博客，方便后面用&lt;/p>
+&lt;h2 id="下载office">下载office
+&lt;/h2>&lt;ul>
+&lt;li>在 &lt;a class="link" href="https://www.office.com/?auth=1" target="_blank" rel="noopener"
+>这里&lt;/a>下载 office ，需要用自己的账号登录&lt;/li>
+&lt;/ul>
+&lt;h2 id="下载windows">下载windows
+&lt;/h2>&lt;ul>
+&lt;li>在 &lt;a class="link" href="https://msdn.itellyou.cn/" target="_blank" rel="noopener"
+>这里&lt;/a>下载 windows 镜像，可以用&lt;a class="link" href="https://www.xunlei.com/" target="_blank" rel="noopener"
+>迅雷&lt;/a>，速度很快&lt;/li>
+&lt;/ul>
+&lt;h2 id="激活office">激活office
+&lt;/h2>&lt;ul>
+&lt;li>一键激活 ， 用 prowershell（管理员）&lt;/li>
+&lt;li>脚本需要翻墙才能使用&lt;/li>
+&lt;li>这个脚本来源是：&lt;a class="link" href="https://github.com/massgravel/Microsoft-Activation-Scripts" target="_blank" rel="noopener"
+>github&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">irm https://massgrave.dev/get | iex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

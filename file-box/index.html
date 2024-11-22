@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <!-- emoji icon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>"
+        type="image/x-icon">
+    <title>box1</title>
+    <style>
+        /* media */
+        @media (max-width: 600px) {
+            .item1 {
+                width: 90% !important;
+                max-width: none !important;
+                min-width: none !important;
+
+                min-height: 90vh !important;
+                margin: 15px 0;
+
+            }
+
+            .file-actions button:last-child {
+                margin-right: 10px !important;
+            }
+
+        }
+    </style>
+    <style>
+        /* main style */
+        body {
+            background-image: url(wall1.jpg); 
+            /* background-image: url(https://w.wallhaven.cc/full/x6/wallhaven-x6ypkv.jpg); */
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            background-color: #262626;
+            color: rgb(31, 31, 31);
+        }
+
+        body.dark-mode {
+            background-color: #262626;
+            color: rgb(212, 212, 212);
+        }
+
+        .item1 {
+            transition: .3s;
+            padding: 4px;
+            min-height: 95vh;
+            min-width: 380px;
+            max-width: 25%;
+            /* box-shadow: 0 0 10px rgb(0, 0, 0); */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            background-color: #ffffff;
+            border-radius: 20px;
+            margin: 20px;
+            backdrop-filter: blur(5px);
+
+
+        }
+
+        .item1.dark-mode {
+            /* margin: 0 10px; */
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+            background-color: #000000c4;
+        }
+
+
+
+        .file {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.192);
+            height: 1.6em;
+            padding: 0 5px 0 5px;
+        }
+        .file-icon{
+            margin-right: 6px;
+        }
+
+        .file:hover {
+            background-color: #42c3f699 !important;
+            border-bottom: 1px solid #5da9f5;
+        }
+
+        .file.dark-mode {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            vertical-align: middle;
+            /* box-shadow:inset 0px -10px 2px rgba(109, 109, 109, 0.062),
+            inset 0px 16px 2px rgba(255, 255, 255, 0.59); */
+            /* overflow: hidden; */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.088);
+            height: 1.6em;
+            padding: 0 5px 0 5px;
+        }
+
+        .file.dark-mode:hover {
+            background-color: #490a8139 !important;
+            border-bottom: 1px solid #851090;
+        }
+
+
+        .file-name {
+            text-wrap: nowrap;
+            display: inline-block;
+        }
+
+
+        .file-actions {
+            margin-left: auto;
+        }
+
+        .file:nth-child(even) {
+            background-color: #00000012;
+        }
+
+        button:hover {
+            transform: scale(1.2);
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        .file-actions button {
+            background-color: transparent;
+            border: none;
+            width: 22px;
+        }
+
+        .file-actions button:last-child {
+            margin-right: 1px;
+        }
+
+
+        /* .file-actions button:nth-child(1){
+            background-color: greenyellow;
+        }
+        .file-actions button:nth-child(2){
+            background-color: red;
+            color: #fff;
+        } */
+
+
+        /* 控制台 操作按钮等 */
+        .panel.dark-mode {
+            background-color: #1b1b1b;
+            background-image: linear-gradient(135deg, rgb(67, 33, 101) 10%, rgb(150, 143, 231) 100%);
+
+            color: rgba(227, 227, 227, 0.23);
+            padding: 0;
+            margin: 0;
+            padding-bottom: .5em;
+            border: 0;
+            overflow: hidden;
+        }
+
+        .panel {
+            border-radius: 20px 20px 0 0;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+            color: rgba(255, 255, 255, 0.307);
+            padding: 0;
+            margin: 0;
+            padding-bottom: .5em;
+            border: 0;
+            overflow: hidden;
+        }
+
+        .panel button {
+            float: right;
+            background-color: transparent !important;
+            color: rgb(19, 4, 131);
+            min-width: 20%;
+            border: none;
+
+        }
+
+        .panel button.dark-mode {
+            float: right;
+            background-color: transparent !important;
+            color: rgb(87, 33, 121);
+            min-width: 20%;
+            border: none;
+
+        }
+
+        .panel input {
+            padding-left: .7em;
+            width: 70%;
+            background: transparent;
+            border: none;
+            color: white;
+        }
+
+        .panel label {
+            width: 70%;
+            padding-left: .7em;
+            font-size: small;
+        }
+
+        .panel h1 {
+            margin: 0;
+            line-height: 2em;
+            margin-left: .2em;
+            color: #ffffff;
+            text-shadow: 0 0 1px black;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+    <style>
+        /* toast */
+        #toastContainer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 9999;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .toast {
+            backdrop-filter: blur(10px);
+            font-size: smaller;
+            padding: 4px 8px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: float-in 0.3s ease-in-out;
+            /* transition: 0.3s ease-in-out; */
+        }
+
+        .toast.dark-mode {
+            background-color: #444;
+            border: 1px solid #2d2d2d;
+            color: #d8d8d8;
+        }
+
+        .toast.show {
+            opacity: 0.8;
+        }
+
+        .toast.hide {
+            animation: slide-out 0.5s ease-in-out;
+        }
+
+        @keyframes float-in {
+            0% {
+                transform: translateY(20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-out {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+
+        <div class="item item1">
+
+            <div class="panel">
+                <h1>📦 file-box</h1>
+                <div class="fileinput">
+                    <input id="file_lable" onclick="choosefile()" placeholder="choose_file" for="the_file"></input>
+                    <input id="the_file" type="file" />
+                    <button type="submit" onclick="uploadFile();refreshFilelist(false);">📤 Upload</button>
+                </div>
+                <!-- <input id="boxname" placeholder="box_name" />
+                <button>🔀 Switch</button> -->
+                <!-- <input id="filesearch" placeholder="keyword" />
+                <button>🔎 Search</button> -->
+                <input id="" placeholder="Darkmode" />
+                <button id="toggleMode">💡 Toggle</button>
+                <input id="filelist_info" placeholder="3_files" />
+                <button onclick="checkcmd()">🔄 Reload</button>
+            </div>
+
+            <div class="filelist">
+                <div class="file">
+                    <span class="file-icon">🖼️</span>
+                    <small class="file-name">image.png</small>
+                    <span class="file-actions">
+                        <button>💾</button>
+                        <button>🗑️</button>
+                    </span>
+                </div>
+            </div>
+            <div id="toastContainer"></div>
+
+
+        </div>
+    </div>
+
+</body>
+<script>// Misc
+    function showToast(textContent, darkMode) {
+        var toast = document.createElement('div');// 创建Toast元素
+        toast.classList.add('toast');
+        toast.textContent = textContent;
+
+        var container = document.getElementById('toastContainer');// 将Toast添加到容器中
+        container.appendChild(toast);
+
+        if (darkMode) {
+            toast.classList.toggle('dark-mode');// 设置深色模式
+        }
+
+        setTimeout(function () {// 显示Toast
+            toast.classList.add('show');
+        }, 30);
+
+        setTimeout(function () {// 隐藏Toast
+            toast.classList.add('hide');
+            setTimeout(function () {
+                container.removeChild(toast);
+            }, 300);
+        }, 1000);
+    }
+    //filesize 转换带单位
+    function getReadableFileSizeString(fileSizeInBytes) {
+        var i = -1;
+        var byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
+        do {
+            fileSizeInBytes /= 1024;
+            i++;
+        } while (fileSizeInBytes > 1024);
+
+        return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
+    }
+    //getIconbyExtension
+    function getIconbyExtension(file) {
+        let extension = file.split('.')[1];
+        switch (extension) {
+            case 'png':
+                return '🖼️';
+            case 'jpg':
+                return '🖼️';
+            case 'gif':
+                return '🖼️';
+            case 'zip':
+                return '📦';
+            case 'txt':
+                return '📜';
+            case 'exe':
+                return '💽';
+            case 'doc':
+                return '📄';
+            case 'docx':
+                return '📄';
+            default:
+                return '🧩';
+        }
+    }
+    //turn long name into short name
+    function shortName(filename) {
+        if (filename.length <= 30)
+            return filename;
+        else {
+            let extension = '';
+            if (filename.split('.')[1] != null)
+                extension = filename.split('.')[1];
+            let a = filename.slice(0, 25) + '...';
+            let b = a + ' .' + extension
+            return b;
+        }
+
+    }
+    //checkcmd -- commands for special purpose
+    function checkcmd() {
+        let cmd = document.getElementById('filelist_info').value;
+        switch (cmd) {
+            case 'da'://deleteall
+                console.log('da');
+                let x = confirm('sure delete all files?');
+                if (x == true)
+                    deleteAllFile();
+                refreshFilelist(false);
+                break;
+            default:
+                refreshFilelist(true);
+        }
+    }
+    const toggleButton = document.getElementById('toggleMode');
+    toggleButton.addEventListener('click', function () {
+        toggleDarkMode();
+        saveDarkMode();
+    });
+    function toggleDarkMode() {
+        var elements = document.querySelectorAll('*');
+
+        // 遍历所有元素
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.toggle('dark-mode');
+        }
+        // document.file.classList.toggle('dark-mode');
+        // document.querySelector('.file').classList.toggle('dark-mode');
+    }
+    function saveDarkMode() {
+        var darkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', darkMode);
+        console.log('Dark mode saved to localStorage: ' + darkMode);
+    }
+</script>
+
+<script src="axios.js"></script>
+<script src="port.js"></script>
+<script>//api
+    // //获取当前url
+    // var url = window.location.href;
+    // //提取url的ip
+    // var ip = url.split('/')[2].split('/')[0].split(':')[0];
+    // console.log("从 url 获取服务器 ip: " + ip)
+    // apiserver = ip
+
+    // axios.defaults.baseURL = `http://${ip}:${port}/box1`;
+    axios.defaults.baseURL = baseurl;
+
+    console.log('apiport.txt notfound -- use defult port: 3000 ;');
+
+    // upload
+    function uploadFile() {
+        if (document.querySelector('#the_file').files[0] == null) {
+            showToast('❌ Empty file', false);
+            return;
+        }
+
+        let config = {
+            url: '/upload',
+            method: 'Post',
+            data: {
+                the_file: document.querySelector('#the_file').files[0]
+            },
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+        axios(config)
+            .then((response) => {
+                console.log(response);
+                showToast('📤 Upload success', false);
+            })
+            .catch((error) => {
+                console.log(error);
+                if (toast)
+                    showToast('❌ Upload failed', false);
+            })
+    }
+    // upload - choosing by clicking input text
+    function choosefile() {
+        console.log('choosing');
+        document.getElementById("the_file").click();
+    }
+    // upload - get file size and name
+    let fileinput = document.querySelector('#the_file');
+    fileinput.addEventListener('change', (e) => {
+        let file_lable_input = document.querySelector('#file_lable');
+        file_lable_input.value = '[' + getReadableFileSizeString(fileinput.files[0].size) + '] ' + fileinput.files[0].name;
+    })
+
+
+    //function deleteFile
+    function deleteFile(filename) {
+        axios.get('/delete/' + filename)
+            .then((response) => {
+                showToast('🗑️ Delete success', false);
+            })
+            .catch((error) => {
+                console.log(error);
+                if (toast)
+                    showToast('❌ Delete failed', false);
+            })
+    }
+
+    //function deleteFile
+    function deleteAllFile() {
+        axios.get('/deleteall/')
+            .then((response) => {
+                showToast('🗑️ Delete All Done', false);
+            })
+            .catch((error) => {
+                console.log(error);
+                if (toast)
+                    showToast('❌ Delete failed', false);
+            })
+    }
+    //function downloadFile
+    function downloadFile(filename) {
+        axios.get('/download/' + filename, { responseType: 'blob' })
+            .then((response) => { // 处理成功的响应
+                const url = window.URL.createObjectURL(new Blob([response.data])); // 创建一个临时URL
+                const link = document.createElement('a'); // 创建一个下载链接
+                link.href = url; // 设置链接的URL
+                link.setAttribute('download', filename); // 设置下载的文件名
+                document.body.appendChild(link); // 将链接添加到页面中
+                link.click(); // 模拟点击下载
+                link.remove(); // 移除链接
+                window.URL.revokeObjectURL(url); // 释放临时URL资源
+                showToast('📥 Download success', false); // 显示下载成功的提示
+            })
+            .catch((error) => { // 处理失败的响应
+                console.log(error);
+                showToast('❌ Download failed', false); // 显示下载失败的提示
+            });
+    }
+</script>
+<script>//refreash funcion 
+    function refreshFilelist(toast = true) {
+        axios.get('/filelist')
+            .then((response) => {
+                console.log(response);
+                let filelist = document.querySelector('.filelist');
+                filelist.innerHTML = '';
+                for (let i = 0; i < response.data.length; i++) {
+                    let file = document.createElement('div');
+                    file.classList.add('file');
+                    var storedDarkMode = localStorage.getItem('darkMode');
+                    if (storedDarkMode == 'true') {
+                        file.classList.add('dark-mode');
+                    }
+                    let filename = response.data[i]
+                    file.innerHTML =
+                        '<span class="file-icon">' +
+                        getIconbyExtension(filename) +
+                        '</span> <small class="file-name"> ' + shortName(filename) + '</small>' +
+                        '<span class="file-actions">\
+                            <button onclick="downloadFile(`'+ filename + '`);refreshFilelist(false);">💾</button>\
+                            <button onclick="deleteFile(`'+ filename + '`);refreshFilelist(false);">🗑️</button>\
+                            </span>';
+                    file.setAttribute('id', shortName(filename));
+                    filelist.appendChild(file);
+                }
+                if (toast)
+                    showToast('🔰 Reload success', false);
+                //计数器
+                let filelistinfo = document.querySelector('#filelist_info');
+                filelistinfo.value = response.data.length + '_files';
+            })
+            .catch((error) => {
+                console.log(error);
+                if (toast)
+                    showToast('❌ Reload failed', false);
+            })
+
+    }
+</script>
+<script>//onload
+    refreshFilelist();
+    var storedDarkMode = localStorage.getItem('darkMode');
+    console.log('从 localStorage 加载暗黑模式: ' + storedDarkMode);
+    if (storedDarkMode == 'true') {
+        toggleDarkMode();
+    }
+</script>
+
+</html>

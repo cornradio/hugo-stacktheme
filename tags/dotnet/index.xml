@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dotnet on CornRadio-Blog</title><link>/tags/dotnet/</link><description>Recent content in Dotnet on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 25 Mar 2023 00:06:47 +0800</lastBuildDate><atom:link href="/tags/dotnet/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用vscode新建一个donet（csharp）项目</title><link>/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vscode%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAdonetcsharp%E9%A1%B9%E7%9B%AE/</link><pubDate>Sat, 25 Mar 2023 00:06:47 +0800</pubDate><guid>/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vscode%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAdonetcsharp%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>通常情况下，使用 Visual Studio 来编写 csharp 代码创建项目和管理非常的简单。但是，Visual Studio 是一个非常大的 IDE（而且visual studio mac版与win版并非同根同源，mac版本比较难用），如果您只是想编写一些简单的 csharp 代码，安装一个巨大的vs是不适合的。&lt;/p>
+&lt;ul>
+&lt;li>visual studio 来写csharp（常规选择）&lt;/li>
+&lt;li>vs code + dotnet sdk （推荐选择）&lt;/li>
+&lt;/ul>
+&lt;p>主要分成下列步骤：&lt;/p>
+&lt;ul>
+&lt;li>安装 .NET Core SDK&lt;/li>
+&lt;li>安装 csharp 插件&lt;/li>
+&lt;li>配置插件&lt;/li>
+&lt;li>dotnet new 新建项目&lt;/li>
+&lt;li>dotnet run 跑代码&lt;/li>
+&lt;/ul>
+&lt;h2 id="安装-net-core-sdk">安装 .NET Core SDK
+&lt;/h2>&lt;p>首先，需要安装 .NET Core SDK。可以在官网下载安装包进行安装：https://dotnet.microsoft.com/download ，我目前使用.NET 6.0。&lt;/p>
+&lt;h2 id="安装-csharp-插件">安装 csharp 插件
+&lt;/h2>&lt;p>然后，在 Visual Studio Code 中搜索安装 csharp 插件。按下 ctrl + Shift + x 打开扩展商店，搜索 &amp;ldquo;csharp&amp;rdquo; 并点击安装。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325000905.png"
+loading="lazy"
+alt="第一个插件"
+>&lt;/p>
+&lt;h2 id="配置插件">配置插件
+&lt;/h2>&lt;p>配置插件的作用是可以使用lint功能、对你的代码中的错误进行提示、自动补全等等。&lt;/p>
+&lt;p>右键插件，选择 &amp;ldquo;Configure Extension Settings&amp;rdquo;，在弹出的窗口中增加搜索关键词 sdk ，修改sdk位置（是上面你刚刚装好的路径）&lt;/p>
+&lt;p>如果在mac下你可以这么查找到他的安装路径。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">$ which dotnet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/usr/local/share/dotnet/dotnet
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 进入上面的文件夹找到sdk文件夹&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/usr/local/share/dotnet/sdk/6.0.407
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325001140.png"
+loading="lazy"
+alt="搜索并修改设置"
+>&lt;/p>
+&lt;h2 id="新建项目">新建项目
+&lt;/h2>&lt;p>在终端中输入以下命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">dotnet new console --name HelloWorld
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在当前目录下创建一个名为 &amp;ldquo;HelloWorld&amp;rdquo; 的文件夹，并创建一个新的 .NET Core 控制台应用程序,&lt;/p>
+&lt;p>跑代码：现在其实已经可以运行代码了，直接在终端输入&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">dotnet run
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="创建vscode配置文件">创建vscode配置文件
+&lt;/h2>&lt;p>创建vscode配置文件，这样就可以在vscode中调试运行你的代码了，比如说打断点、查看变量值等等。
+以及程序运行错误的时候，会标记指定的代码行数、错误信息等等。&lt;/p>
+&lt;p>要调试运行他还需要一个vscode配置文件。&lt;/p>
+&lt;p>打开Debug侧边栏，有一个按钮：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325001854.png"
+loading="lazy"
+alt="按钮"
+>&lt;/p>
+&lt;p>点击这个按钮造成的效果是，会在你的项目根目录下生成一个.vscode文件夹
+内容如下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">.vscode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── launch.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── tasks.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置launchjson">配置launch.json
+&lt;/h3>&lt;p>这个设置你可以修改下，内置的terminal有时候 会存在没有办法输入的问题。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325004622.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="vscode-调试运行代码">vscode 调试运行代码
+&lt;/h3>&lt;p>在Debug侧边栏，点击绿色的箭头运行按钮。
+或者 F5&lt;/p></description></item></channel></rss>
