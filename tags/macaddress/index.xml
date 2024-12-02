@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Macaddress on CornRadio-Blog</title><link>/tags/macaddress/</link><description>Recent content in Macaddress on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 22 Nov 2022 22:03:01 +0800</lastBuildDate><atom:link href="/tags/macaddress/index.xml" rel="self" type="application/rss+xml"/><item><title>ubuntu设置ssh、修改mac地址(home pc)</title><link>/p/ubuntu%E8%AE%BE%E7%BD%AEssh%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80home-pc/</link><pubDate>Tue, 22 Nov 2022 22:03:01 +0800</pubDate><guid>/p/ubuntu%E8%AE%BE%E7%BD%AEssh%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80home-pc/</guid><description>&lt;blockquote>
+&lt;p>本教程包含：开启ubuntu ssh server 功能（可以被远程）\修改ubuntu 的 网卡mac地址&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>安装ssh服务器&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install openssh-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>查看ssh服务器启动状态&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo systemctl status ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>使用内置的防火墙软件允许ssh通过&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo ufw allow ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>查看你的ubuntu ip地址（这条命令会显示所有网卡的ip，选择你觉得最像的那个）&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ip -f inet address
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="笔记本关闭盒盖休眠功能">笔记本关闭盒盖休眠功能
+&lt;/h2>&lt;blockquote>
+&lt;p>ubuntu2204默认开启了笔记本盒盖，系统自动休眠功能，这显然不是我们想要的，因为需要让他在盒盖状态下当一个家庭服务器，所以需要关闭他的[盒盖休眠]功能
+下面是关闭[盒盖休眠]功能的指南,可以使用&lt;code>/关键词&lt;/code> 在vi中搜索&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo vi /etc/systemd/logind.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>将其中的
+&lt;code>#HandleLidSwitch=suspend&lt;/code>
+改成
+&lt;code>HandleLidSwitch=ignore&lt;/code>&lt;/p>
+&lt;h2 id="修改ubuntu-mac地址">修改ubuntu MAC地址
+&lt;/h2>&lt;blockquote>
+&lt;p>单位的内网wifi开启了MAC地址认证功能，只有在清单中的MAC地址可以连接到内网WiFi，我有一个可用的内网mac地址，正好给他上上，然后自己搭建一个私人vpn&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>安装macchanger&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">apt install macchanger -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>查看需要更改的王开名称&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ip addr sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>设定网卡指定ip地址&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo macchanger -m e0:d4:e8:f8:e0:c6 wlp0s20f3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>查看网卡地址(是否修改成功)&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">macchanger --show wlp0s20f3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>optional：恢复网卡mac地址（恢复成固件地址）&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">macchanger -p wlp0s20f3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

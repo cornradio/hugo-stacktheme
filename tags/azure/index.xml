@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Azure on CornRadio-Blog</title><link>/tags/azure/</link><description>Recent content in Azure on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Apr 2023 12:31:55 +0800</lastBuildDate><atom:link href="/tags/azure/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Azure自建节点</title><link>/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</link><pubDate>Sat, 15 Apr 2023 12:31:55 +0800</pubDate><guid>/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</guid><description>&lt;p>Azure注册新账户，会赠送一个月的 200USD 免费额度，如果升级成“即用即付”，则这 200USD 可以延长使用期限到一年。（需要填写自己的信用卡信息）&lt;/p>
+&lt;p>除此之外，还有至少有免费 1个月 的免费 vm 用。 可以在这里查看：&lt;a class="link" href="https://portal.azure.com/#view/Microsoft_Azure_Billing/FreeServicesBlade" target="_blank" rel="noopener"
+>Azure免费服务&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://portal.azure.com/" target="_blank" rel="noopener"
+>注册&lt;/a>，可以用假名字，地址的话选择中国就可以（这个是账单地址，你还是可以用全世界的服务器可用区），但是信用卡是必须的，他会从信用卡里取两次 1$ 来验证你是不是真人。&lt;/p>
+&lt;p>注意别搞错了 &lt;code>Azure&lt;/code> 和 &lt;code>Azure 世纪互联运营 &lt;/code> 第二个是国内专版的……&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133957.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133859.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="创建虚拟机">创建虚拟机
+&lt;/h2>&lt;p>随便创建一个先：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124249.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里决定你的 vm ip 位置
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124356.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里要选B1s，它有一个月免费额度。并且是最便宜的，而且足够了。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124505.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>起一个用户名，还有密钥文件名，这个密钥是用来登录 vm 的（用户名 + pem文件登陆，不用密码），一会儿创建的时候Azure会让你下载。&lt;/p>
+&lt;p>保存好，这个文件只能下载一次。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124622.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>磁盘选64G，因为30G收费，64有两块的免费额度。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124813.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>网络方面保持默认设置，但是这里要打勾，方便到时候删除vm的时候把相关的资源一同删除。Azure的ip、磁盘、网络等都是分开收费的，删除时候记得检查。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124906.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>最后就是创建了，看看价格大概是 1 CNY / h，但是不用担心，我们还有 200 USD 免费额度呢。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415125123.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="开启安全组">开启安全组
+&lt;/h2>&lt;p>服务器安全组是一种在服务器外部的防火墙，可以控制服务器的入站和出站流量。&lt;/p>
+&lt;p>默认情况下，azure仅开启22端口，只有在安全组中打开端口后，才能访问其他端口。&lt;/p>
+&lt;blockquote>
+&lt;p>在这里添加一个入站规则，允许所有端口的流量进入（源端口和目标端口都设置&lt;code>*&lt;/code>）。&lt;/p>
+&lt;p>（这不安全，但是这很简单）&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415132408.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="远程登录vm">远程登录vm
+&lt;/h2>&lt;p>在Azure虚拟机管理找到vm的ip&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415130912.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>如过是mac系统下载的key，权限会不对，需要修改一下，让group 和 other 没有读取的权限，否则无法远程到服务器。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">13:01 ~/remote-ssh $ ll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r--@ &lt;span class="m">1&lt;/span> kasusa staff 2.4K Apr &lt;span class="m">15&lt;/span> 12:52 myub2_key.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">13:01 ~/remote-ssh $ chmod &lt;span class="m">600&lt;/span> myub2_key.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">13:01 ~/remote-ssh $ ll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-------@ &lt;span class="m">1&lt;/span> kasusa staff 2.4K Apr &lt;span class="m">15&lt;/span> 12:52 myub2_key.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="ssh">ssh
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ssh -i myub2_key.pem azureuser@&amp;lt;your_ip&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>用root权限 跑一键脚本（会自动安装v2ray、关闭防火墙、配置好然后给你一个 vmess link）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo -i
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">bash &amp;lt;(curl -s -L https://git.io/v2ray-setup.sh)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>跑好了一件脚本，会自动开始运行，可以：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>v2ray status&lt;/code> 确认状态&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>v2ray start&lt;/code> 启动一下&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>按照下面的例子找一个自己能导入的链接：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>v2ray link&lt;/code> 生成一个json格式的东东&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>v2ray qr&lt;/code> 生成 vmess 二维码、链接&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>v2ray ssqr&lt;/code> 生成 ss 二维码、链接&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>对于ios用户：小火箭能导入单个vmess节点，Qx不支持vmess，需要生成一个ss节点再导入。&lt;/p>
+&lt;hr>
+&lt;p>v2ray ssqr 命令执行结果如下。&lt;/p>
+&lt;blockquote>
+&lt;p>二维码可以直接扫一扫（我这个缺失定位点你扫不了的），然后下面的 link 前半部份是他们的网址，后半部份 &lt;code>ss://&lt;/code> 开头的就是你的节点了(他们是指 &lt;a class="link" href="https://git.io/v2ray-setup.sh" target="_blank" rel="noopener"
+>一键脚本&lt;/a> 的作者)&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133228.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>可以通过下面的网址，把ss节点连接转换成 clash 的 yaml 文件。&lt;/p>
+&lt;p>转换订阅链接 &lt;a class="link" href="https://v2rayse.com/node-convert/" target="_blank" rel="noopener"
+>https://v2rayse.com/node-convert/&lt;/a> （他声称自己采用纯前段转换）&lt;/p></description></item></channel></rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cmd on CornRadio-Blog</title><link>/tags/cmd/</link><description>Recent content in Cmd on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 29 Oct 2022 23:00:17 +0800</lastBuildDate><atom:link href="/tags/cmd/index.xml" rel="self" type="application/rss+xml"/><item><title>windows酷命令</title><link>/p/windows%E9%85%B7%E5%91%BD%E4%BB%A4/</link><pubDate>Sat, 29 Oct 2022 23:00:17 +0800</pubDate><guid>/p/windows%E9%85%B7%E5%91%BD%E4%BB%A4/</guid><description>&lt;blockquote>
+&lt;p>如果你更喜欢看视频：https://www.youtube.com/watch?v=Jfvg3CS1X3A&amp;amp;t=1s&lt;/p>
+&lt;/blockquote>
+&lt;p>有些命令需要使用到管理员权限。推荐直接打开一个拥有管理员权限的cmd窗口！&lt;/p>
+&lt;p>&amp;ndash;网络方面的命令比较多&lt;/p>
+&lt;hr>
+&lt;p>检查一下网卡情况&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bat" data-lang="bat">&lt;span class="line">&lt;span class="cl">ipconfig /all
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>清除网络&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ipconfig /release
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>刷新获取ip&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ipconfig /renew
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>展示所有已知dns(并复制到剪切板)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bat" data-lang="bat">&lt;span class="line">&lt;span class="cl">ipconfig /displaydns &lt;span class="p">|&lt;/span> clip
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>刷新dns（从dns服务器重新拉）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ipconfig /flushdns
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查dns字典（域名获取ip）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">nslookup networkchuck.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>你还可以指定dns服务器&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">nslookup baidu.com 8.8.8.8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>不知道干啥的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">nslookup -type=ptr baidu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❤ 获取mac地址&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">getmac /v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>一些系统报告&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">powercfg /energy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">powercfg /batteryreport
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>检查一下文件默认启动关联&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">assoc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❤ 检查一下电脑的系统文件问题&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sfc /SCANNOW
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看正在运行的程序 类似ps&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">tasklist |findstr QQ
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>kill （强制、指定pid）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">taskkill /f /pid 40232l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❤ 更高级的网络报告&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">netsh wlan show wlanreport
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>关闭、打开防火墙&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">netsh advfirewall set allprofiles state off
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">netsh advfirewall set allprofiles state on
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ping 和 不停的ping&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ping baidu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ping -t baidu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>路由追踪&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">tracert -d baidu.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❤ 查看当前端口开放情况&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"> netstat -af
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>135的作用就是进行远程，可以在被远程的电脑中写入恶意代码，危险极大
+139、445文件和打印机共享，可以用于开启空会话
+3389端口是Windows远程桌面的服务端口
+1024端口一般不固定分配给某个服务，在英文中的解释是“Reserved”（保留）。之前，我们曾经提到过动态端口的范围是从1024～65535，而1024正是动态端口的开始&lt;/p>
+&lt;p>展示电脑内路由表,可以修改&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">route print
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">route add x.x.x.x mask 255.255.255.0 x.x.x.x
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">route delete x.x.x.x
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❤ 关机(完全重启 重启到bios 强制 时间0)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">shutdown /r /fw /f /t 0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
