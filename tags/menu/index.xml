@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Menu on CornRadio-Blog</title><link>/tags/menu/</link><description>Recent content in Menu on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 09 Feb 2023 16:25:24 +0800</lastBuildDate><atom:link href="/tags/menu/index.xml" rel="self" type="application/rss+xml"/><item><title>用 simple_term_menu 创建更好的python菜单</title><link>/p/%E7%94%A8-simple_term_menu-%E5%88%9B%E5%BB%BA%E6%9B%B4%E5%A5%BD%E7%9A%84python%E8%8F%9C%E5%8D%95/</link><pubDate>Thu, 09 Feb 2023 16:25:24 +0800</pubDate><guid>/p/%E7%94%A8-simple_term_menu-%E5%88%9B%E5%BB%BA%E6%9B%B4%E5%A5%BD%E7%9A%84python%E8%8F%9C%E5%8D%95/</guid><description>&lt;p>安装&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">pip install simple_term_menu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>⚠️ 不支持windows
+这个菜单库使用非常简单，只需要传入一个列表，就可以生成一个菜单，返回值就是选择的菜单项的索引。&lt;/p>
+&lt;ul>
+&lt;li>支持&lt;code>J&lt;/code> &lt;code>K&lt;/code>/⬆️ ⬇️ 键移动&lt;/li>
+&lt;li>支持&lt;code>/&lt;/code>斜杠搜索&lt;/li>
+&lt;li>支持快捷键（传入的 string 如 &lt;code>[q] 退出&lt;/code> ,q 就变成快捷键了）&lt;/li>
+&lt;li>好看！&lt;/li>
+&lt;li>还有更多功能，我没有仔细研究，参考&lt;a class="link" href="https://github.com/IngoMeyer441/simple-term-menu" target="_blank" rel="noopener"
+>&amp;gt;这里&amp;lt;&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>封装成函数，方便调用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">simple_term_menu&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">TerminalMenu&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">menu&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choices&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">terminal_menu&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">TerminalMenu&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choices&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">title&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;扫描结果转换XML工具 v1.0 (230208)&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">---&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">show_search_hint&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">terminal_menu&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">show&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;执行&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">choices&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">choices&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;[h] 文档&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kn">import&lt;/span> &lt;span class="nn">webbrowser&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">webbrowser&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http://example.com&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">choices&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;[q] 退出&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">exit&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">index&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="c1"># 返回结果，从1开始&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>main 函数调用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;__main__&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="kc">True&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取功能列表，显示菜单&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">choices_str&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;menu.md&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">choices&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="n">choices_str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">splitlines&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">choice_index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">menu&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choices&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>其实一开始选择用md是因为写序号的话可以自动排序，但是加了序号和快捷键之后，就不美观了，所以把序号删除了。&lt;/p>
+&lt;/blockquote>
+&lt;p>加载菜单 menu.md&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-md" data-lang="md">&lt;span class="line">&lt;span class="cl">长亭xray（主机+应用） html 1-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">长亭xray（主机+应用） html 多-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">绿盟（主机） &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">ip&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>.html 1-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">绿盟（主机） &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">ip&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>.html 多-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">安恒新版 (应用) html 1-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Nessus csv(utf-8) 1-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Nessus csv(gb18030) 1-&amp;gt;1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[h] 文档
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[q] 退出
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>效果图：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230209163535.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>对了这个东西还有个坑的地方，在pycharm运行的时候需要设置一下才能正常使用（要开启模拟终端）：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230209163631.png"
+loading="lazy"
+>&lt;/p></description></item></channel></rss>
