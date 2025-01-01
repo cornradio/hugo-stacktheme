@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程 on CornRadio-Blog</title><link>/tags/%E7%BC%96%E7%A8%8B/</link><description>Recent content in 编程 on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>csharp执行命令</title><link>/p/csharp%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate><guid>/p/csharp%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-csharp" data-lang="csharp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">using&lt;/span> &lt;span class="nn">System.Diagnostics&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">runincmd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">string&lt;/span> &lt;span class="n">yourcommand&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">string&lt;/span> &lt;span class="n">strCmdText&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">strCmdText&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s">$&amp;#34;/C {yourcommand}&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Start&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;CMD.exe&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">strCmdText&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Process.Start(string 程序, string 参数);&lt;/p>
+&lt;p>程序最好是有完整的地址，如果不需要传入参数的话可以只传入一个参数。&lt;/p>
+&lt;p>上面这个语句启动一个程序并且可以附带一些参数，本质上是把要执行的命令作为windows cmd 的参数传入了，所以只能传入一行，多行可能还需要写个bat脚本。&lt;/p>
+&lt;p>如果需要“&lt;strong>静音启动&lt;/strong>”的话写起来比较麻烦，可以这么做到：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-csharp" data-lang="csharp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ProcessStartInfo&lt;/span> &lt;span class="n">processStartInfo&lt;/span> &lt;span class="p">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">new&lt;/span> &lt;span class="n">ProcessStartInfo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">txtExecutable&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Text&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Trim&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="n">txtParameter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Text&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Trim&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//保持静音&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ErrorDialog&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">UseShellExecute&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//用于重定向输出&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">RedirectStandardError&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">RedirectStandardInput&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">RedirectStandardOutput&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//用上面的设定新建一个进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Process&lt;/span> &lt;span class="n">process&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Process&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">StartInfo&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">processStartInfo&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//以下是输出 output 或者 error msg&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">processStarted&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//Get the output stream&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">outputReader&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">StandardOutput&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">errorReader&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">StandardError&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">WaitForExit&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="c1">//这局可能把人卡住&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//展示&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">string&lt;/span> &lt;span class="n">displayText&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s">&amp;#34;Output:&amp;#34;&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">NewLine&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">displayText&lt;/span> &lt;span class="p">+=&lt;/span> &lt;span class="n">outputReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ReadToEnd&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">displayText&lt;/span> &lt;span class="p">+=&lt;/span>&lt;span class="s">&amp;#34;Error:&amp;#34;&lt;/span> &lt;span class="p">+&lt;/span> &lt;span class="n">Environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">NewLine&lt;/span> &lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">displayText&lt;/span> &lt;span class="p">+=&lt;/span> &lt;span class="n">errorReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ReadToEnd&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">txtResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Text&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">displayText&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//关闭stream&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">outputReader&lt;/span> &lt;span class="p">!=&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">outputReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">errorReader&lt;/span> &lt;span class="p">!=&lt;/span> &lt;span class="kc">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">errorReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>我一开始打算把cmd搬到我的winform里面（可以实时更新输出的那种），但是我搜了好久也没有可以拷贝的代码，而且获取输出并且贴到textbox中会有时产生莫名其妙的死循环，于是我便放弃了于是就选择了功能相同但是弹出窗口的了。&lt;/p>
+&lt;/blockquote>
+&lt;p>这个函数除了这些功能还可以做打开浏览器指定网页、打开文件夹等，是一个windows环境很常用的csharp函数了&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">//打开浏览器指定网页
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">private void openinbrowser(string link)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> string strCmdText;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> strCmdText = $&amp;#34;{link}&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Process process = Process.Start(@&amp;#34;C:\Users\kasusa\AppData\Local\Google\Chrome\Application\Chrome.exe&amp;#34;, strCmdText);
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">//打开文件夹
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Process.Start(&amp;#34;explorer.exe&amp;#34;, @&amp;#34;c:\test&amp;#34;);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对了，这里我同时说两个好用的string用法，他们分别是@和$:（语法糖)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">@ 可以输出源字符串而不做转义，这对于string写文件目录很有用：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">如果没有@ 系统会对\U \k \D \G 挨个转义，碰到转义失败的就报错了。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">string a = @&amp;#34;C:\Users\kasusa\Documents\Gitee&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ 可以快速的在一个字符串中插入一个变量而不需要用一堆的引号和加号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">string b = &amp;#34;cake&amp;#34;;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">string c = $&amp;#34;i love eating {b}， and drink cola！&amp;#34;;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
