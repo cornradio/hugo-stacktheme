@@ -8,13 +8,13 @@
 #icon = "home"
 #newtab = true
 
-# [[social]]
-# identifier = "imageuploader"
-# name = "image uploader"
-# url = "https://pasteboard.online/t2.html"
+[[social]]
+identifier = "rss"
+name = "rss"
+url = "/index.xml"
 
-# [social.params]
-# icon = "photo-up"
+[social.params]
+icon = "rss"
 
 # [[social]]
 # identifier = "googleconsole"
