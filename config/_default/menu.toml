@@ -8,13 +8,13 @@
 #icon = "home"
 #newtab = true
 
-[[social]]
-identifier = "imageuploader"
-name = "image uploader"
-url = "https://pasteboard.online/t2.html"
+# [[social]]
+# identifier = "imageuploader"
+# name = "image uploader"
+# url = "https://pasteboard.online/t2.html"
 
-[social.params]
-icon = "photo-up"
+# [social.params]
+# icon = "photo-up"
 
 # [[social]]
 # identifier = "googleconsole"
@@ -24,13 +24,13 @@ icon = "photo-up"
 # [social.params]
 # icon = "timeline"
 
-[[social]]
-identifier = "brand-google"
-name = "google search site"
-url = "https://www.google.com.hk/search?q=site%3Ab.cornradio.org+a"
+# [[social]]
+# identifier = "brand-google"
+# name = "google search site"
+# url = "https://www.google.com.hk/search?q=site%3Ab.cornradio.org+a"
 
-[social.params]
-icon = "brand-google"
+# [social.params]
+# icon = "brand-google"
 
 [[social]]
 identifier = "clock-hour-4"
