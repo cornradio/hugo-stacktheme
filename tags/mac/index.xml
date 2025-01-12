@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mac on CornRadio-Blog</title><link>https://b.cornradio.org/tags/mac/</link><description>Recent content in Mac on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 18 Sep 2023 08:03:07 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/mac/index.xml" rel="self" type="application/rss+xml"/><item><title>mac essencials 3</title><link>https://b.cornradio.org/p/mac-essencials-3/</link><pubDate>Mon, 18 Sep 2023 08:03:07 +0800</pubDate><guid>https://b.cornradio.org/p/mac-essencials-3/</guid><description>&lt;img src="https://b.cornradio.org/macbooka.jpg" alt="Featured image of post mac essencials 3" />&lt;p>经过了半年的使用，这是最新的软件推荐列表！&lt;/p>
+&lt;p>PS：最近在装机（mac mini），正好整理一下。&lt;/p>
+&lt;h2 id="mac必装软件">mac必装软件
+&lt;/h2>&lt;ul>
+&lt;li>解压软件 &lt;a class="link" href="https://apps.apple.com/cn/app/fastzip/id1565629813?mt=12" target="_blank" rel="noopener"
+>fastzip&lt;/a>&lt;/li>
+&lt;li>滚轮和鼠标优化软件 &lt;a class="link" href="https://github.com/Caldis/Mos" target="_blank" rel="noopener"
+> Mos &lt;/a>&lt;/li>
+&lt;li>视频软件 &lt;a class="link" href="https://www.iina.io" target="_blank" rel="noopener"
+>iina&lt;/a>&lt;/li>
+&lt;li>截图软件 &lt;a class="link" href="https://www.snipaste.com/" target="_blank" rel="noopener"
+>Snipaste&lt;/a>&lt;/li>
+&lt;li>显示器亮度调节 &lt;a class="link" href="https://github.com/MonitorControl/MonitorControl" target="_blank" rel="noopener"
+>Monitor Control&lt;/a>&lt;/li>
+&lt;li>粘贴版历史记录软件 &lt;a class="link" href="https://pastenow.app" target="_blank" rel="noopener"
+>Paste Now&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="稍微个性化一点">稍微个性化一点
+&lt;/h2>&lt;ul>
+&lt;li>微软远程桌面（RDP） &lt;a class="link" href="https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac" target="_blank" rel="noopener"
+>microsoft-remote-desktop&lt;/a>&lt;/li>
+&lt;li>看书软件 &lt;a class="link" href="https://calibre-ebook.com" target="_blank" rel="noopener"
+>calibre&lt;/a>&lt;/li>
+&lt;li>密码管理软件 &lt;a class="link" href="https://keepassxc.org" target="_blank" rel="noopener"
+>keepassxc&lt;/a>&lt;/li>
+&lt;li>触控板 &lt;a class="link" href="https://highlyopinionated.co/swish/" target="_blank" rel="noopener"
+>swish &lt;/a>&lt;/li>
+&lt;li>触控板 &lt;a class="link" href="https://folivora.ai" target="_blank" rel="noopener"
+>BetterTouchTool&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="动手动脑">动手动脑
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.raycast.com" target="_blank" rel="noopener"
+>Raycast&lt;/a>
+| &lt;a class="link" href="https://github.com/yichengchen/clashX" target="_blank" rel="noopener"
+>clashX&lt;/a>
+| &lt;a class="link" href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank" rel="noopener"
+>ShadowRocket&lt;/a>
+| &lt;a class="link" href="https://brew.sh/" target="_blank" rel="noopener"
+>homebrew&lt;/a>
+| &lt;a class="link" href="https://www.warp.dev" target="_blank" rel="noopener"
+>warp&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.hammerspoon.org/" target="_blank" rel="noopener"
+>hammerspoon&lt;/a> &amp;gt; &lt;a class="link" href="https://gist.github.com/cornradio/e46fc1fefa769833e6cfdeb3fbb54f3b" target="_blank" rel="noopener"
+>我的例子&lt;/a>
+| &lt;a class="link" href="https://github.com/xzhih/one-key-hidpi" target="_blank" rel="noopener"
+>one-key-hidpi&lt;/a>&lt;/p>
+&lt;h2 id="开发人员专属">开发人员专属
+&lt;/h2>&lt;p>&lt;a class="link" href="https://code.visualstudio.com" target="_blank" rel="noopener"
+>vscode&lt;/a>
+｜ &lt;a class="link" href="https://www.jetbrains.com/toolbox-app/" target="_blank" rel="noopener"
+>jetbrains-toolbox&lt;/a>
+｜ &lt;a class="link" href="https://www.python.org" target="_blank" rel="noopener"
+>python&lt;/a>
+｜ &lt;a class="link" href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener"
+>java&lt;/a>
+｜ &lt;a class="link" href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener"
+>docker&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://gohugo.io/installation/" target="_blank" rel="noopener"
+>hugo&lt;/a>
+｜ &lt;a class="link" href="https://iterm2.com" target="_blank" rel="noopener"
+>iterm2&lt;/a>
+｜ &lt;a class="link" href="https://ohmyz.sh" target="_blank" rel="noopener"
+>ohmyzsh&lt;/a> &amp;gt; &lt;a class="link" href="https://cornradio.github.io/hugo/posts/zshrc%e7%9a%84%e4%b8%80%e4%ba%9b%e9%85%8d%e7%bd%ae/" target="_blank" rel="noopener"
+>zshrc配置&lt;/a>&lt;/p>
+&lt;h2 id="浏览器">浏览器
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.microsoft.com/zh-cn/edge/download?form=MA13DC" target="_blank" rel="noopener"
+>edge&lt;/a>
+｜ &lt;a class="link" href="https://www.google.cn/chrome/index.html" target="_blank" rel="noopener"
+>chrome&lt;/a>&lt;/p>
+&lt;h2 id="cracked-software">cracked software
+&lt;/h2>&lt;p>&lt;a class="link" href="https://appstorrent.ru/?story=downie&amp;amp;do=search&amp;amp;subaction=search" target="_blank" rel="noopener"
+>downie4&lt;/a>
+｜ &lt;a class="link" href="https://appstorrent.ru/122-pdfexpert.html" target="_blank" rel="noopener"
+>PDF expert&lt;/a>
+｜ &lt;a class="link" href="https://appstorrent.ru/91-adobe-photoshop.html" target="_blank" rel="noopener"
+>Photoshop&lt;/a>
+｜ &lt;a class="link" href="https://cornradio.github.io/hugo/posts/2023-06-13-parallels_crack/" target="_blank" rel="noopener"
+>parallels&lt;/a>
+｜ &lt;a class="link" href="https://cornradio.github.io/hugo/posts/2burponmac_cracked/" target="_blank" rel="noopener"
+>burpsuite&lt;/a>&lt;/p>
+&lt;h2 id="mac常备脚本">mac常备脚本
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/cornradio/myshellfiles" target="_blank" rel="noopener"
+>github 私人库&lt;/a>&lt;/p>
+&lt;h2 id="手工配置">手工配置
+&lt;/h2>&lt;p>code 命令加入命令行：vscode 中按下 &lt;code>cmd+shift+p&lt;/code>，选择 &lt;code>Shell Command: Install 'code' command in PATH&lt;/code>&lt;/p>
+&lt;p>git 配置 目前命令行的 git 不能通过密码登陆了，需要 &lt;a class="link" href="https://github.com/settings/tokens" target="_blank" rel="noopener"
+>token&lt;/a>&lt;/p></description></item><item><title>制作一个2G大的dummy文件</title><link>https://b.cornradio.org/p/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA2g%E5%A4%A7%E7%9A%84dummy%E6%96%87%E4%BB%B6/</link><pubDate>Wed, 05 Jul 2023 22:27:20 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA2g%E5%A4%A7%E7%9A%84dummy%E6%96%87%E4%BB%B6/</guid><description>&lt;h2 id="用途">用途
+&lt;/h2>&lt;ul>
+&lt;li>用于测试文件传输速度&lt;/li>
+&lt;/ul>
+&lt;p>在 Mac 上想要测试文件传输速度时，因为 finder 没有提供速度值的显示，所以需要借助“活动监视器”，在传输文件时，&amp;ldquo;磁盘&amp;quot;栏下，会显示当前的读取和写入速度。&lt;/p>
+&lt;p>很多时候恰好没有一个够大的文件，这个小代码可能会排上用场。&lt;/p>
+&lt;h2 id="code">code
+&lt;/h2>&lt;p>创建一个2G大小的文件空文件 “hi.zip”&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">dd &lt;span class="k">if&lt;/span>&lt;span class="o">=&lt;/span>/dev/zero &lt;span class="nv">of&lt;/span>&lt;span class="o">=&lt;/span>hi.zip &lt;span class="nv">bs&lt;/span>&lt;span class="o">=&lt;/span>1G &lt;span class="nv">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>ssh to parallels （kali）</title><link>https://b.cornradio.org/p/ssh-to-parallels-kali/</link><pubDate>Sat, 06 Aug 2022 10:00:00 +0800</pubDate><guid>https://b.cornradio.org/p/ssh-to-parallels-kali/</guid><description>&lt;p>参考：&lt;/p>
+&lt;p>&lt;a class="link" href="https://wpguru.co.uk/2014/02/how-to-ssh-into-a-virtual-machine-in-parallels-desktop/" target="_blank" rel="noopener"
+>https://wpguru.co.uk/2014/02/how-to-ssh-into-a-virtual-machine-in-parallels-desktop/&lt;/a>&lt;/p>
+&lt;h2 id="使用ssh链接-parallels-虚拟机的-kali-linux系统">使用ssh链接 parallels 虚拟机的 kali linux系统
+&lt;/h2>&lt;p>本教程基于PD17，m1 MacBook。&lt;/p>
+&lt;p>首先你也直接在pd虚拟机中直接下载和安装kali，而不用自己下载镜像来安装。&lt;/p>
+&lt;p>&lt;img src="https://i.imgur.com/122vaYp.png"
+loading="lazy"
+alt="安装助手"
+>&lt;/p>
+&lt;h2 id="修改sshd配置">修改sshd配置
+&lt;/h2>&lt;p>默认情况下kali的sshd配置是无法被ssh的，我们需要首先修改sshd配置然后重新加载。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">sudo vim /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 搜索以下关键词然后取消备注/改成yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PermitRootLogin yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PasswordAuthentication yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改后需要重启服务，加载刚更新配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">/etc/init.d/ssh restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>增加开机自启动ssh的一个服务：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo update-rc.d ssh enable
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="查看虚拟机的ip">查看虚拟机的ip
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ifconfig
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://i.imgur.com/aHsiG9S.png"
+loading="lazy"
+alt="查看虚拟机的ip"
+>&lt;/p>
+&lt;h2 id="使用ssh工具链接虚拟机">使用ssh工具链接虚拟机
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh parallels@10.221.55.4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>parallels 是通过pd安装虚拟机自己创建的用户名，有root权限&lt;/li>
+&lt;/ul>
+&lt;p>接下来你就可以正常远程进入虚拟机了，这样可以使用macOS的cmd+v粘贴之类的快捷键。&lt;/p>
+&lt;p>&lt;img src="https://i.imgur.com/bT52A7j.png"
+loading="lazy"
+alt="ssh工具链接虚拟机"
+>&lt;/p></description></item></channel></rss>

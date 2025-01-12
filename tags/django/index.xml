@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on CornRadio-Blog</title><link>https://b.cornradio.org/tags/django/</link><description>Recent content in Django on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 16 Jan 2023 16:51:26 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Django-tutorial 1</title><link>https://b.cornradio.org/p/django-tutorial-1/</link><pubDate>Mon, 16 Jan 2023 16:51:26 +0800</pubDate><guid>https://b.cornradio.org/p/django-tutorial-1/</guid><description>&lt;p>Django 是一个 使用python作为后端语言的框架。
+学习 Django 源于我想要让我的 jandan 脚本可以提供在线服务…… 没想到这个东东这么复杂， 亏了呀！&lt;/p>
+&lt;h2 id="安装django">安装Django
+&lt;/h2>&lt;p>&lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/intro/install/" target="_blank" rel="noopener"
+>https://docs.djangoproject.com/zh-hans/4.1/intro/install/&lt;/a>
+如果在系统范围安装，安装前需要先装好python3.x。
+官方教程还建议使用venv虚拟环境的方式，不过我一直弄不太懂venv，就不尝试了。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python -m pip install Django
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>检查是否安装成功：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python -m django --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="新建项目">新建项目
+&lt;/h2>&lt;h3 id="创建">创建
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">django-admin startproject mysite
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>项目会创建一个如下图的目录，关于这些文件都是干啥的可以参考这个链接：
+&lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/intro/tutorial01/" target="_blank" rel="noopener"
+>https://docs.djangoproject.com/zh-hans/4.1/intro/tutorial01/&lt;/a>&lt;/p>
+&lt;p>实际上一般只有 &lt;code>urls&lt;/code>、&lt;code>settings&lt;/code> 两个文件大概会用到&lt;/p>
+&lt;h3 id="启动">启动
+&lt;/h3>&lt;p>启动项目，我们只要运行刚才生成的&lt;code>manage.py&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py runserver
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a class="link" href="http://127.0.0.1:8000/" target="_blank" rel="noopener"
+>http://127.0.0.1:8000/&lt;/a> 打开看看吧！&lt;/p>
+&lt;p>可以通过下面的命令来自定义端口&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py runserver 8080
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>刚才我们创建了一堆 &lt;code>python&lt;/code> 文件，可以在运行时热重载，但如果添加了新文件，就要重新启动 &lt;code>manage.py&lt;/code> 了。&lt;/p>
+&lt;h2 id="新建app">新建APP
+&lt;/h2>&lt;h3 id="创建投票应用">创建投票应用
+&lt;/h3>&lt;p>进入 &lt;code>manage.py&lt;/code> 目录&lt;/p>
+&lt;p>刚才创建的是 &lt;code>django&lt;/code> 的基础架构，我们现在添加一个 &lt;code>polls app&lt;/code> （投票应用），自己添加 &lt;code>app&lt;/code> 的时候可以随便命名。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py startapp polls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="创建视图">创建视图
+&lt;/h3>&lt;p>要在 &lt;code>polls&lt;/code> 应用下面创建一个视图，&lt;code>http://127.0.0.1:8000/polls/index&lt;/code>&lt;/p>
+&lt;p>需要修改两个文件：&lt;code>views.py&lt;/code> &amp;amp; &lt;code>urls.py&lt;/code>&lt;/p>
+&lt;p>在&lt;code>views.py&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.http&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">HttpResponse&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">index&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello, world. You&amp;#39;re at the polls index.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>polls/urls.py&lt;/code>还不存在，新建一个&lt;code>urls.py&lt;/code>如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.urls&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">.&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">views&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">urlpatterns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">views&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;index&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还要去&lt;code>mysite/urls.py&lt;/code> ，指向一下这个新建的 &lt;code>polls/urls.py&lt;/code> 。&lt;/p>
+&lt;p>(可以理解为这个是管根目录的，我们刚才那个是管&lt;code>/polls&lt;/code>目录的)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.contrib&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">admin&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.urls&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">include&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">urlpatterns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;admin/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">admin&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">site&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">urls&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;polls/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">include&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;polls.urls&amp;#39;&lt;/span>&lt;span class="p">)),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后访问： http://127.0.0.1:8000/polls/ 就可以了。&lt;/p>
+&lt;blockquote>
+&lt;p>逻辑上，django 先请求 &lt;code>mysite/urls.py&lt;/code> ，指向了 &lt;code>polls/urls.py&lt;/code> 再指向 views.py 文件返回 respond 。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="path函数">path函数
+&lt;/h3>&lt;p>函数 &lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/ref/urls/#django.urls.path" title="django.urls.path"
+target="_blank" rel="noopener"
+>&lt;code>path()&lt;/code>&lt;/a> 具有四个参数，&lt;/p>
+&lt;ul>
+&lt;li>两个必须参数：&lt;code>route&lt;/code> 和 &lt;code>view&lt;/code> , 路径 / 对应的 py 函数&lt;/li>
+&lt;li>两个可选参数：&lt;code>kwargs&lt;/code> 和 &lt;code>name&lt;/code>。传参用 / 全局引用、模板使用。&lt;/li>
+&lt;/ul>
+&lt;p>这部分我觉得官网讲的非常清晰简洁（再页面最下方）： &lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/intro/tutorial01/" target="_blank" rel="noopener"
+>https://docs.djangoproject.com/zh-hans/4.1/intro/tutorial01/&lt;/a>&lt;/p>
+&lt;h2 id="设置-时区">设置-时区
+&lt;/h2>&lt;p>时区在后面数据库中非常有用(比如数据插入时间)， 推荐先设置成正确的时区。&lt;/p>
+&lt;p>在 &lt;code>settings.py&lt;/code> 中修改这个&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">TIME_ZONE = &amp;#39;UTC&amp;#39; #美国时间（默认）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">TIME_ZONE = &amp;#39;Asia/Shanghai&amp;#39; #中国时间
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>设置参考（这个网站包含所有的 &lt;code>settings.py&lt;/code> 的项）
+&lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-TIME_ZONE" target="_blank" rel="noopener"
+>https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-TIME_ZONE&lt;/a>&lt;/p>
+&lt;h2 id="设置-数据库">设置-数据库
+&lt;/h2>&lt;h3 id="生成数据表">生成数据表
+&lt;/h3>&lt;p>这个语句自动创建 &lt;code>INSTALLED_APPS&lt;/code> 中的表。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">python manage.py migrate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="基础知识">基础知识
+&lt;/h3>&lt;p>数据库的配置在 &lt;code>mysite/settings.py&lt;/code> 中，如下所示，可以使用各种数据库：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">&amp;#39;django.db.backends.sqlite3&amp;#39;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#39;django.db.backends.postgresql&amp;#39;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#39;django.db.backends.mysql&amp;#39;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#39;django.db.backends.oracle&amp;#39;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>默认使用sqlite，其他的可以看文档： &lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-DATABASES" target="_blank" rel="noopener"
+>https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-DATABASES&lt;/a>&lt;/p>
+&lt;p>下面是默认配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;ENGINE&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;django.db.backends.sqlite3&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">#换数据库修改这里&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;NAME&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">BASE_DIR&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="s1">&amp;#39;db.sqlite3&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>django 提供一些自带的 APP，可以在 settings.py 里面看到 ， 迁移时会自动根据已经安装的APP来创建数据表。：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">INSTALLED_APPS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.admin&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.auth&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.sessions&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.messages&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="创建模型">创建模型
+&lt;/h3>&lt;p>上面 &lt;code>INSTALLED_APPS&lt;/code> 能生成的数据表，不包括我们新创建的 &lt;code>polls&lt;/code> APP ，这里开始逐步把它加入&lt;/p>
+&lt;p>需要创建两个模型：问题 &lt;code>Question&lt;/code> 和选项 &lt;code>Choice&lt;/code>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Question&lt;/code> 问题&lt;/li>
+&lt;li>&lt;code>Choice&lt;/code> 选项和当前得票数，连接到&lt;code>Question&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>修改 &lt;code>polls/models.py&lt;/code>，内容如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.db&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">models&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Question&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">question_text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CharField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">max_length&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">200&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#问题内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">pub_date&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DateTimeField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;date published&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#问题发布时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Choice&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">question&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ForeignKey&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Question&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">on_delete&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CASCADE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#外链到问题&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">choice_text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CharField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">max_length&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">200&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#选项内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">votes&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">IntegerField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#选项票数&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>主键(IDs)会被自动创建&lt;/li>
+&lt;li>表名首字母大写&lt;/li>
+&lt;li>字段小写英文，下划线相连&lt;/li>
+&lt;/ul>
+&lt;p>通过这个&lt;code>polls/models.py&lt;/code>，django 可以得到创建数据库的信息。&lt;/p>
+&lt;p>我们需要把自己的app也加入&lt;code>mysite/settings.py&lt;/code> 的&lt;code>INSTALLED_APPS&lt;/code>列表中：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">INSTALLED_APPS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.admin&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.auth&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.sessions&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.messages&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;polls.apps.PollsConfig&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">#这一行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="激活模型">激活模型
+&lt;/h3>&lt;p>这个步骤是下面的创建表的前置步骤&lt;/p>
+&lt;p>运行 &lt;code>makemigrations&lt;/code> 命令，Django 会检测你对模型文件的修改，在 &lt;code>polls/migrations&lt;/code> 生成数据库表的 &lt;code>schema&lt;/code> ，Django 通过&lt;code>schema&lt;/code> 来创建数据表。我们刚才创建了 &lt;code>polls/models.py&lt;/code> ， 用这个语句“激活”它。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python manage.py makemigrations polls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>（迁移用）生成建表语句，会根据你在 &lt;code>mysite/settings.py&lt;/code>中选择的数据库种类，输出对应的建表语句：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py sqlmigrate polls 0001
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>再次生成数据表&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py migrate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="模型-的--__str__-函数">模型 的 &lt;code>__str__&lt;/code> 函数
+&lt;/h3>&lt;blockquote>
+&lt;p>给模型增加&lt;code>__str__&lt;/code>函数，在后面使用 python shell 添加数据时，可以更轻松的看懂、更易读。&lt;/p>
+&lt;/blockquote>
+&lt;p>给&lt;code>polls/models.py&lt;/code>新增两个&lt;code>def __str__(self):&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.db&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">models&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Question&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">question_text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CharField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">max_length&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">200&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">pub_date&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DateTimeField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;date published&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__str__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">question_text&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Choice&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">question&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ForeignKey&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Question&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">on_delete&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CASCADE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">choice_text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CharField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">max_length&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">200&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">votes&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">IntegerField&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__str__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_text&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>再添加一个&lt;code>was_published_recently(self)&lt;/code>函数，可以给Question增加一个“最近发布”的功能：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.utils&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">timezone&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Question&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">was_published_recently&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pub_date&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="n">timezone&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">datetime&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">timedelta&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">days&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>去 py shell里面看一下，刚刚写的函数有没有效果&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">python manage.py shell
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">polls.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Choice&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Question&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;lt;QuerySet [&amp;lt;Question: What&amp;#39;s up?&amp;gt;]&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">was_published_recently&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## True&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="尝试数据库api">尝试数据库API
+&lt;/h2>&lt;p>下面的语句都是在py shell中执行的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py shell
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p> &lt;code>manage.py&lt;/code> 会设置 &lt;a class="link" href="https://docs.djangoproject.com/zh-hans/4.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE" target="_blank" rel="noopener"
+>&lt;code>DJANGO_SETTINGS_MODULE&lt;/code>&lt;/a> 环境变量，这个变量会让 Django 根据 &lt;code>mysite/settings.py&lt;/code> 文件来设置 Python 包的导入路径,(我发现这个python shell 有补全功能)&lt;/p>
+&lt;h3 id="增加条目">增加条目
+&lt;/h3>&lt;p>通过python 语句 增加条目，首先要引入我们刚才写的models&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">polls.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Choice&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Question&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>新建一个 question，并保存到数据库中&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.utils&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">timezone&lt;/span> &lt;span class="c1">#需要用到时区获取时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">question_text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;What&amp;#39;s new?&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">pub_date&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">timezone&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">save&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1">#把新建的q实例存储到数据库中&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看当前 Question 表所有的内容，看看是否添加成功&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="增加条目关联条目">增加条目关联条目
+&lt;/h3>&lt;p>给 question 增加 choice ，一般来说可以先给 choice 表增加一行，再绑定 question ，但是 django 推荐你使用下面这种方式。&lt;/p>
+&lt;blockquote>
+&lt;p>通过 &lt;code>q.choice_set.create&lt;/code> 创建 &lt;code>choice&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;p>通过问题 id=1 获取 question&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看目前关联的所有 choice&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>增加一些choice&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choice_text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;choice 1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">votes&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choice_text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;choice 2&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">votes&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以给新增加的 choice 赋值给对象 c&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choice_text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;Just hacking again&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">votes&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过 c 可以反向找到 question&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">c&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">question&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;lt;Question: What&amp;#39;s up?&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看所有的 choice 、 查看 choice 个数 的内置函数&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&amp;lt;QuerySet [&amp;lt;Choice: Not much&amp;gt;, &amp;lt;Choice: The sky&amp;gt;, &amp;lt;Choice: Just hacking again&amp;gt;]&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">count&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#3&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="删除条目">删除条目
+&lt;/h3>&lt;p>删除内容为 “Just hacking” 开头的 choice 。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">choice_set&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">choice_text__startswith&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;Just hacking&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">c&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">delete&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="查看字段内容">查看字段内容
+&lt;/h3>&lt;p>先选取一个问题（id = 1）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使用 python 访问他的字段内容&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">question_text&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pub_date&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改字段内容">修改字段内容
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">question_text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;What&amp;#39;s up?&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">q&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">save&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="更多的查询api">更多的查询API
+&lt;/h3>&lt;p>&lt;code>all&lt;/code>、&lt;code>filter&lt;/code> 返回列表、 &lt;code>get&lt;/code> 返回一条&lt;/p>
+&lt;p>all 查看表中所有项目&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>get 查询，使用 get 返回的是单个元素，&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">#pk会默认匹配表的主键，这里是id&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>filter 获取指定 id&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>filter 通过前缀过滤 ，使用 filter 会返回 列表&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">question_text__startswith&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;What&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>filter 查询高级用法（查询最近一年的）&lt;/p>
+&lt;blockquote>
+&lt;p>filter 支持使用双下划线查询子内容：
+比如这里使用 &lt;code>choice.question.pub_date.year&lt;/code> 与 &lt;code>current_year&lt;/code> 做比较&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.utils&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">timezone&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">current_year&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">timezone&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">now&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">year&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Choice&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">question__pub_date__year&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">current_year&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="admin-管理页面">Admin 管理页面
+&lt;/h2>&lt;p>django 可以给数据库自动生成管理页面（太棒啦！）&lt;/p>
+&lt;p>创建一个用户 ， 用于登陆管理页面&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">python manage.py createsuperuser
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>启动&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python manage.py runserver
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>但是里面没有我们创建的polls 应用！需要修改 &lt;code>polls/admin.py&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.contrib&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">admin&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">Choice&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">admin&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">site&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">register&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Question&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">admin&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">site&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">register&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Choice&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230101231702.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230101233249.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="view-视图">view 视图
+&lt;/h2>&lt;p>在上面“新建APP”章节已经讲过了 创建视图，但是仅能返回简单的字符串。&lt;/p>
+&lt;h3 id="viewspy">&lt;code>views.py&lt;/code>
+&lt;/h3>&lt;p>在&lt;code>polls/views.py&lt;/code>增加三个function，代表三个页面，投票详情、投票结果、投票动作。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">detail&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">question_id&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;You&amp;#39;re looking at question &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">question_id&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">.&amp;#34;&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">results&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">question_id&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;You&amp;#39;re looking at the results of question &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">question_id&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">vote&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">question_id&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;You&amp;#39;re voting on question &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">question_id&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">.&amp;#34;&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>函数写法：&lt;/p>
+&lt;ul>
+&lt;li>在 &lt;code>urls.py&lt;/code> 中会引用其函数名。&lt;/li>
+&lt;li>至少包括 &lt;code>request&lt;/code> 参数，&lt;/li>
+&lt;li>必须返回 &lt;code>HttpResponse&lt;/code>对象&lt;/li>
+&lt;li>可以加上自定义参数,比如这里的&lt;code>question_id&lt;/code>作为输入。&lt;/li>
+&lt;/ul>
+&lt;h3 id="urlspy">&lt;code>urls.py&lt;/code>
+&lt;/h3>&lt;p>修改文件： &lt;code>polls/urls.py&lt;/code>&lt;/p>
+&lt;p>增加三个路由，&lt;code>/id&lt;/code>投票详情、&lt;code>/id/results&lt;/code>投票结果、&lt;code>/id/vote&lt;/code>投票动作。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">django.urls&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">.&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">views&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">urlpatterns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#ex: /polls/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">views&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;index&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#ex: /polls/5/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;lt;int:question_id&amp;gt;/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">views&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">detail&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;detail&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#ex: /polls/5/results/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;lt;int:question_id&amp;gt;/results/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">views&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">results&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;results&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#ex: /polls/5/vote/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&amp;lt;int:question_id&amp;gt;/vote/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">views&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vote&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;vote&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>参数:&lt;/p>
+&lt;ul>
+&lt;li>url 路径&lt;/li>
+&lt;li>绑定的函数名称&lt;/li>
+&lt;li>用于联动模板的 name （可以省略）
+如果是有参数的 url 路径，末尾的斜杠不能删&lt;/li>
+&lt;/ul>
+&lt;h3 id="html-模板">HTML 模板
+&lt;/h3>&lt;p>我们要把 index 修改一下，让他显示最新的五个问题，并且能跳转到问题细节。&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230117170352.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>在&lt;code>polls&lt;/code> 下创建一个 &lt;code>templates/polls&lt;/code> 文件夹，在里面新建一个 &lt;code>index.html&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{% if latest_question_list %}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">ul&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {% for question in latest_question_list %}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;&lt;/span>&lt;span class="nt">a&lt;/span> &lt;span class="na">href&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/polls/{{ question.id }}/&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>{{ question.question_text }}&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">a&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {% endfor %}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">ul&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{% else %}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>No polls are available.&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{% endif %}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>这里为了代码简短，展示核心代码功能，未为添加完整的 html 结构和 css ，这些都是很好修改和添加的。&lt;/p>
+&lt;/blockquote>
+&lt;p>然后更新一下 &lt;code>views.py&lt;/code> ， 让他使用这个模板&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Question&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">index&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">latest_question_list&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Question&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">order_by&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;-pub_date&amp;#39;&lt;/span>&lt;span class="p">)[:&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">template&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">loader&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;polls/index.html&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">context&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;latest_question_list&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">latest_question_list&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">template&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">render&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">context&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>用 &lt;code>数据库api&lt;/code> 来获取 &lt;code>list&lt;/code> ，选取最新的&lt;/li>
+&lt;li>用 &lt;code>context&lt;/code> 将 &lt;code>latest_question_list&lt;/code> 传递给 HTML 模板&lt;/li>
+&lt;li>用 &lt;code>render&lt;/code> 方法生成 &lt;code>HttpResponse&lt;/code>&lt;/li>
+&lt;/ul></description></item></channel></rss>
