@@ -1,5 +1,5 @@
 +++
-title = "如何使用FRP 2.0"
+title = "如何使用 Frp"
 description = ""
 date = 2025-01-10T08:56:19+08:00
 featured = false
@@ -14,7 +14,6 @@ tags = [
 ]
 series = []
 images = []
-
 +++
 
 FRP是一个开源的内网穿透软件，本文将会介绍如何使用frp。
@@ -54,21 +53,22 @@ server_addr = "<your_server_ip>"
 server_port = 7000
 token = "your_token" # 可选，如果用了密码则需要
 
-# TCP 端口转发示例
-[tcp_8080_to6000]
-type = "tcp"
-local_ip = "127.0.0.1"
-local_port = 8080
-remote_port = 6000
+[mrdp]
+#开启一些其他的转发，比如ssh，按照下面配置相当于把 127.0.0.1:3389 转发到 x.x.x.x:33389
+type = tcp
+localIP   = "127.0.0.1"
+localPort   = 3389
+remotePort = 33389
 
-# 转发内网其他设备
-[localserver80to80]
-type = "tcp"
-local_ip = "192.168.1.4"
-local_port = 80
-remote_port = 80
+[ubuntuserver]
+type = tcp
+localIP = "192.168.31.11"
+localPort = 3389
+remotePort = 13389
+
 ```
 
+run
 ```
 ./frpc -c frpc.toml
 ```
