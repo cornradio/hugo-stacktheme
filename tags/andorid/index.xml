@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Andorid on CornRadio-Blog</title><link>https://b.cornradio.org/tags/andorid/</link><description>Recent content in Andorid on CornRadio-Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 16 Dec 2023 15:17:51 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/andorid/index.xml" rel="self" type="application/rss+xml"/><item><title>开源阅读</title><link>https://b.cornradio.org/p/%E5%BC%80%E6%BA%90%E9%98%85%E8%AF%BB/</link><pubDate>Sat, 16 Dec 2023 15:17:51 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%BC%80%E6%BA%90%E9%98%85%E8%AF%BB/</guid><description>&lt;img src="https://b.cornradio.org/%E5%BC%80%E6%BA%90%E9%98%85%E8%AF%BB.jpg" alt="Featured image of post 开源阅读" />&lt;p>开源阅读 是一款开源小说阅读器&lt;/p>
+&lt;p>&lt;img src="https://pic.fxxz.com/up/2021-7/202172941518932.jpg"
+loading="lazy"
+alt="pic"
+>&lt;/p>
+&lt;p>开源阅读&lt;/p>
+&lt;h2 id="github项目">github项目
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/gedoor/legado" target="_blank" rel="noopener"
+>https://github.com/gedoor/legado&lt;/a>&lt;/p>
+&lt;h2 id="下载">下载
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/gedoor/legado/releases" target="_blank" rel="noopener"
+>Releases · gedoor/legado (github.com)&lt;/a>&lt;/p>
+&lt;h2 id="书源">书源
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.fxxz.com/gonglue/95397.html" target="_blank" rel="noopener"
+>https://www.fxxz.com/gonglue/95397.html&lt;/a>&lt;/p>
+&lt;p>这里提供一个 2023-12 的书源&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">https://jihulab.com/aoaostar/legado/-/raw/release/cache/1b8256c78b385543b5e8aa6a0d7693c76f8e60d4.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>中国移动宽带-解限速脚本</title><link>https://b.cornradio.org/p/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E5%AE%BD%E5%B8%A6-%E8%A7%A3%E9%99%90%E9%80%9F%E8%84%9A%E6%9C%AC/</link><pubDate>Sat, 16 Dec 2023 15:17:51 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E5%AE%BD%E5%B8%A6-%E8%A7%A3%E9%99%90%E9%80%9F%E8%84%9A%E6%9C%AC/</guid><description>&lt;img src="https://b.cornradio.org/internet-speed-featured-image.jpg" alt="Featured image of post 中国移动宽带-解限速脚本" />&lt;p>这个脚本可以模拟测速过程，挂在服务器上每小时执行，就可以解除移动定期降速了。&lt;/p>
+&lt;p>模拟使用speedtest测速来让移动解除限速&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 定义文件下载链接&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">download_link&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;https://speedtest2.niutk.com.prod.hosts.ooklaserver.net:8080/download?size=25000000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 定义保存文件的路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">save_path&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/dev/null&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用curl命令下载文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -o &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$save_path&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$download_link&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">crontab -e
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 每小时执行一次&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">0&lt;/span> * * * * &lt;span class="nb">cd&lt;/span> /media/kasusa/hd4 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ./cleanDS.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
