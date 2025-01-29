@@ -77,7 +77,10 @@ darwin:/ $ exit
 ```
 
 顺便推荐一些好用软件  
-https://app.emotn.com/ui/  
-https://app.emotn.com/browser/  
-https://github.com/xiaye13579/BBLL  
-https://github.com/lizongying/my-tv  
+https://github.com/xiaye13579/BBLL   哔哩哔哩客户端
+https://github.com/lizongying/my-tv  最近没更新了 tv直播软件 ，不推荐。
+
+春节到了，推荐一些免费的安卓电视直播软件 
+## 软件推荐
+https://github.com/andandroidor/ourtv  电视直播软件
+https://github.com/sakana164/mytv-android ipv6 电视直播软件
