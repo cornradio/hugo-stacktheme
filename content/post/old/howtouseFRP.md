@@ -48,23 +48,30 @@ frps_full.ini	frps的配置文件（有完整的注释和例子）
 ## frpc 部署到家中pc等设备
 frpc.toml
 ```toml
-[common]
-server_addr = "<your_server_ip>"
-server_port = 7000
-token = "your_token" # 可选，如果用了密码则需要
+serverAddr = "your_server_ip"
+serverPort = 7001
+auth.token = "token1"
 
-[mrdp]
-#开启一些其他的转发，比如ssh，按照下面配置相当于把 127.0.0.1:3389 转发到 x.x.x.x:33389
-type = tcp
-localIP   = "127.0.0.1"
-localPort   = 3389
+[[proxies]]
+name = "mrdp"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 3389
 remotePort = 33389
 
-[ubuntuserver]
-type = tcp
-localIP = "192.168.31.11"
-localPort = 3389
-remotePort = 13389
+[[proxies]]
+name = "clash"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 7890
+remotePort = 7890
+
+[[proxies]]
+name = "webalist"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 5244
+remotePort = 15244
 
 ```
 
