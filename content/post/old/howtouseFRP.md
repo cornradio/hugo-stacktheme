@@ -1,5 +1,5 @@
 +++
-title = "如何使用 Frp"
+title = "Frp配置指南"
 description = ""
 date = 2025-01-10T08:56:19+08:00
 featured = false
@@ -42,42 +42,70 @@ frps_full.ini	frps的配置文件（有完整的注释和例子）
 <img width="542" alt="image" src="https://github.com/user-attachments/assets/b3448c76-054b-4b8e-ad84-6575071989fa" />
 
 ## frps 部署到服务器
-参考使用这个脚本：
-<script src="https://gist.github.com/cornradio/984f6c17b4f8b3ee47a732c3756dc986.js"></script>
+参考使用这个脚本： 
+https://gist.github.com/cornradio/984f6c17b4f8b3ee47a732c3756dc986 
+
+
+run
+```
+screen -S frp
+./frps -c frps.toml
+```
+
+frps.toml   
+
+```toml
+bindAddr = "0.0.0.0"
+bindPort = 7000
+
+auth.method = "token"
+auth.token = "******"
+
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+webServer.user = "***"
+webServer.password = "***"
+```
+
+
 
 ## frpc 部署到家中pc等设备
-frpc.toml
-```toml
-serverAddr = "your_server_ip"
-serverPort = 7001
-auth.token = "token1"
-
-[[proxies]]
-name = "mrdp"
-type = "tcp"
-localIP = "127.0.0.1"
-localPort = 3389
-remotePort = 33389
-
-[[proxies]]
-name = "clash"
-type = "tcp"
-localIP = "127.0.0.1"
-localPort = 7890
-remotePort = 7890
-
-[[proxies]]
-name = "webalist"
-type = "tcp"
-localIP = "127.0.0.1"
-localPort = 5244
-remotePort = 15244
-
-```
 
 run
 ```
 ./frpc -c frpc.toml
+```
+
+frpc.toml   
+```toml
+user = "homepc"
+serverAddr  = "139.196.***.***"
+serverPort  = 7000
+
+auth.method = "token"
+auth.token = "******"
+
+[[proxies]]
+name = "mrdp"
+type = "tcp"
+localIP  = "127.0.0.1"
+localPort  = 3389
+remotePort  = 33389
+
+[[proxies]]
+name = "clash"
+type = "tcp"
+localIP  = "127.0.0.1"
+localPort  = 7890
+remotePort  = 7890
+
+[[proxies]]
+name = "webalist"
+type = "tcp"
+localIP  = "192.168.31.11"
+localPort  = 5244
+remotePort  = 15244
+
 ```
 
 ## 检查
