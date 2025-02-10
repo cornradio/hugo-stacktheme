@@ -18,11 +18,8 @@ images = []
 
 FRP是一个开源的内网穿透软件，本文将会介绍如何使用frp。
 
-[frp - github](https://github.com/fatedier/frp)
-
-# 原理解释
-
-
+[frp - github](https://github.com/fatedier/frp)  
+https://gofrp.org/zh-cn/docs/features/common/ui/  
 ## 下载和安装
 
 从github下载之后我们会得到这些文件：
