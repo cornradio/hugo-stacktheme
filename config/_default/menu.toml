@@ -23,7 +23,7 @@ name = "AppStore"
 url = "https://appstore.cornradio.org/"
 
 [social.params]
-icon = "sbag-shopping-solid"
+icon = "bag-shopping-solid"
 
 # [[social]]
 # identifier = "googleconsole"
