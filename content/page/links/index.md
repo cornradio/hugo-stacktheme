@@ -1,14 +1,31 @@
 ---
 title: Links
 links:
-  - title: GitHub
-    description: GitHub is the world's largest software development platform.
-    website: https://github.com
-    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-  - title: watch TV
-    description: watchTV ok ~
-    website: http://124.223.57.166/watchTV2/watchTV/a-plan/
-    image: http://img2.imgtp.com/2024/03/24/cWtSyJJk.png
+links:
+  - title: La Bibliothèque de Lumière（卢米埃尔图书馆）
+    description: 无
+    website: https://ble-m.ltgc.cc/
+    
+  - title: Xeterium
+    description: 无
+    website: https://blog.izfsk.top/ 
+    
+  - title: Terrarum::异世界丨居正博客
+    description: 无
+    website: https://blog.skyju.cc/
+    
+  - title: 颜树人（从不更新的死博客）
+    description: 无
+    website: https://yantree.github.io/
+    
+  - title: AsyncX
+    description: Per Aspera Ad Astra
+    website: https://blog.asyncx.top/
+    
+  - title: AsyncX友情链接
+    description: 无
+    website: https://blog.asyncx.top/zh/friends/
+    
 menu:
     main: 
         weight: 4
@@ -18,5 +35,4 @@ menu:
 comments: false
 ---
 Hint： `content\page\links\index.md`
-
-在线图床： https://imgtp.com/
+我觉得这里是放友情连接的地方。。。
