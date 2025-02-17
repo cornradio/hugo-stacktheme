@@ -16,6 +16,14 @@ url = "/index.xml"
 [social.params]
 icon = "rss"
 
+[[social]]
+identifier = "AppStore"
+name = "AppStore"
+url = "https://appstore.cornradio.org/"
+
+[social.params]
+icon = "shopping-bag"
+
 # [[social]]
 # identifier = "googleconsole"
 # name = "google console"
@@ -39,6 +47,14 @@ url = "/clock"
 
 [social.params]
 icon = "clock-hour-4"
+
+[[social]]
+identifier = "watchtv"
+name = "watchtv 139"
+url = "http://139.196.171.60/watchTV/a-plan/"
+
+[social.params]
+icon = "television"
 
 [[social]]
 identifier = "users"
