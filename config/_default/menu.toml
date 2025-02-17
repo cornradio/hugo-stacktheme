@@ -17,7 +17,7 @@ url = "/index.xml"
 icon = "rss"
 
 [[social]]
-identifier = "AppStore"
+identifier = "shopping-bag"
 name = "AppStore"
 url = "https://appstore.cornradio.org/"
 
@@ -49,18 +49,12 @@ url = "/clock"
 icon = "clock-hour-4"
 
 [[social]]
-identifier = "watchtv"
+identifier = "television"
 name = "watchtv 139"
 url = "http://139.196.171.60/watchTV/a-plan/"
 
 [social.params]
 icon = "television"
 
-[[social]]
-identifier = "users"
-name = "friends"
-url = "/p/friends/"
 
-[social.params]
-icon = "users"
 
