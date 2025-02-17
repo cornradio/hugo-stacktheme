@@ -1,30 +1,28 @@
 ---
-title: Links
+title: Friends Links
 links:
-links:
-  - title: La Bibliothèque de Lumière（卢米埃尔图书馆）
-    description: 无
+  - title: La Bibliothèque de Lumière
+    description: 卢米埃尔图书馆（英文）
     website: https://ble-m.ltgc.cc/
     
   - title: Xeterium
-    description: 无
+    description: izfsk 的博客
     website: https://blog.izfsk.top/ 
     
   - title: Terrarum::异世界丨居正博客
     description: 无
     website: https://blog.skyju.cc/
-    
-  - title: 颜树人（从不更新的死博客）
-    description: 无
-    website: https://yantree.github.io/
-    
+
   - title: AsyncX
-    description: Per Aspera Ad Astra
+    description: UI很酷的博客
     website: https://blog.asyncx.top/
     
-  - title: AsyncX友情链接
-    description: 无
-    website: https://blog.asyncx.top/zh/friends/
+  - title: 颜树人
+    description: 从不更新的死博客（已经无法访问）
+    website: https://yantree.github.io/
+    
+
+
     
 menu:
     main: 
