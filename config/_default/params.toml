@@ -5,8 +5,8 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2023
-customText = "互联网原始力量"
+since = 1998
+customText = "爱分享"
 
 [dateFormat]
 published = "Jan 02, 2006"
