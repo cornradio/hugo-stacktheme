@@ -17,13 +17,11 @@ links:
     description: UI很酷的博客
     website: https://blog.asyncx.top/
     
-  - title: 颜树人
-    description: 从不更新的死博客（已经无法访问）
-    website: https://yantree.github.io/
-    
+  - title: LOTU$ 
+    description: （莲花）
+    website: https://blog.lotusssb.com
 
 
-    
 menu:
     main: 
         weight: 4
