@@ -11,7 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Black+Ops+One&family=Creepster&family=Monoton&family=Orbitron:wght@400;700&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <!-- 添加苹果快捷方式图标 -->
+    <!-- <link rel="apple-touch-icon" href="icon.png" /> -->
+    <link rel="apple-touch-icon" href="iosclock.png" />
+    <!-- 开启全屏显示（以 App 模式运行） -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="bg.jpg">
+    <!-- APP 模式下，顶部空白处的颜色,可选为 default black black-translucent , default 使用 body 的背景色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!--  App 名称，在用户选择添加到主页的时候这个名字会自动蹦出来 -->
+    <meta name="apple-mobile-web-app-title" content="kasusa Clock">
     <style>
         .hide {
             display: none;
@@ -681,6 +690,14 @@
         var elem = document.documentElement;
 
         function openFullscreen() {
+            // 检测是否为苹果设备
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            if (isIOS) {
+                alert('为了获得最佳全屏体验，请点击分享按钮，然后选择"添加到主屏幕"。这样可以让时钟以应用模式运行，获得真正的全屏效果。');
+                return;
+            }
+
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
             } else if (elem.mozRequestFullScreen) { /* Firefox */
