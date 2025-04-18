@@ -10,6 +10,20 @@
     <!-- <meta name="referrer" content="no-referrer" /> -->
     <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Black+Ops+One&family=Creepster&family=Monoton&family=Orbitron:wght@400;700&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- 添加苹果快捷方式图标 -->
     <!-- <link rel="apple-touch-icon" href="icon.png" /> -->
@@ -211,7 +225,6 @@
         }
 
         body.dark-theme select.color-picker {
-            color: #ffffff;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -229,9 +242,7 @@
         }
 
 
-    </style>
 
-    <style>
         body {
             background: rgb(218, 218, 218);
             /* background: black; */
@@ -324,7 +335,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* 赛博朋克主题 */
+        /* 吸血鬼主题 */
         .clock-8 {
             position: absolute;
             top: 50%;
@@ -335,7 +346,21 @@
             letter-spacing: 7px;
             color: #000; /* 浅粉色 */
             
-            text-shadow: 0 0.05em 15px #fa3b9a,-0.05em -0.05em 15px #311edd; 
+            text-shadow:-1px 0em 9px #ff0000; 
+            /* text-shadow:18px 0em 34px #fa3b9a, -7px -4px 54px #311edd;  */
+        }
+
+        /* 黑板主题 */
+        .clock-9 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: 'Fredericka the Great', cursive;
+            letter-spacing: 7px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         /* 日期显示样式 */
@@ -387,7 +412,8 @@
             <button onclick="theme5()"><i class="fas fa-code"></i>黑客帝国</button>
             <button onclick="theme6()"><i class="fas fa-rainbow"></i>彩虹RGB</button>
             <button onclick="theme7()"><i class="fas fa-hat-cowboy"></i>大镖客</button>
-            <button onclick="theme8()"><i class="fas fa-robot"></i>赛博朋克</button>
+            <button onclick="theme8()"><i class="fas fa-robot"></i>吸血鬼</button>
+            <button onclick="theme9()"><i class="fas fa-chalkboard"></i>黑板</button>
 
             <div class="divider"></div>
             <button onclick="openFullscreen()"><i class="fas fa-expand"></i>全屏</button>
@@ -400,12 +426,21 @@
                     <i class="fas fa-font"></i>
                 <select id="fontSelect" class="color-picker">
                     <option value="'Odibee Sans', sans-serif">默认字体</option>
-                    <option value="'Press Start 2P', cursive">像素游戏</option>
-                    <option value="'Black Ops One', cursive">军事风格</option>
+                    <option value="'Noto Sans Symbols'">普通字体</option>
+                    <option value="'Audiowide', system-ui">床头广播</option>
                     <option value="'Monoton', cursive">霓虹灯</option>
-                    <option value="'Orbitron', sans-serif">科技感</option>
+                    <option value="'Black Ops One', cursive">军事</option>
                     <option value="'Special Elite', cursive">打字机</option>
-                    <option value="'VT323', monospace">复古终端</option>
+                    <option value="'Silkscreen', cursive">像素点</option>
+                    <option value="'Doto'">LED矩阵</option>
+                    <option value="'Rye'">哥特</option>
+                    <option value="'Rampart One'">3D</option>
+                    <option value="'Patrick Hand SC'">加拿大手写</option>
+                    <option value="'Bigshot One', serif">飞机头</option>
+                    <option value="'Fredericka the Great'">黑板报</option>
+                    <option value="'Rubik Scribble', serif">空心粉</option>
+                    <option value="'Bungee Spice', sans-serif">动漫橘</option>
+                    <option value="'Honk'">街机</option>
                 </select>
             </label>
             </div>
@@ -424,24 +459,12 @@
             </label>
             </div>
             <div class="divider"></div>
-            <div>
-                <a href="https://pomofocus.io/" target="_blank">
-                    <button><i class="fas fa-clock"></i>番茄钟</button>
-                </a>
-            </div>
-
-            <div class="color-picker-container">
-                <label class="color-picker-button" for="clockColorPicker">
-                    <i class="fas fa-paint-brush"></i>选择颜色
-                </label>
-                <input type="color" class="color-picker" id="clockColorPicker" value="#000000" title="选择时钟颜色">
-            </div>
-
+            <button onclick="openPomodoro()"><i class="fas fa-clock"></i>番茄钟</button>
+            <button onclick="openColorPicker()"><i class="fas fa-paint-brush"></i>选择颜色</button>
+            <input type="color" class="color-picker" id="clockColorPicker" value="#000000" title="选择时钟颜色" style="display: none;">
             <button onclick="toggleDate()"><i class="fas fa-calendar"></i>时间日期</button>
 
-            <div >
-                <button style="color: #ff9696;" onclick="toggleMenu()"><i class="fas fa-xmark"></i> 关闭菜单</button>
-            </div>
+            <button style="color: #ff9696;" onclick="toggleMenu()"><i class="fas fa-xmark"></i> 关闭菜单</button>
         </div>
     </div>
 
@@ -577,6 +600,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-1";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Audiowide', system-ui"; // 设置默认字体为床头广播
             let body = document.body;
             body.style.backgroundColor = "#000";
             body.classList.add('dark-theme');
@@ -585,8 +609,9 @@
                 button.classList.add('dark-theme');
             });
             localStorage.setItem('clockTheme', 'theme1');
+            localStorage.setItem('clockFont', "'Audiowide', system-ui"); // 保存字体设置
             localStorage.removeItem('clockColor'); // 清除自定义颜色设置
-        }
+        }2g
 
         function theme2() {
             let d = document.getElementById("MyClockDisplay");
@@ -607,7 +632,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-2";
             d.style.color = ""; // 重置自定义颜色
-            document.body.style.backgroundColor = "#dadada";
+            document.body.style.backgroundColor = "rgb(241 239 239)";
             document.body.classList.remove('dark-theme');
             // 移除所有按钮的暗色主题
             document.querySelectorAll('.color-picker-button').forEach(button => {
@@ -621,6 +646,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-3";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Bigshot One', serif"; // 设置默认字体为飞机头
             document.body.style.backgroundColor = "#000";
             document.body.classList.add('dark-theme');
             // 更新所有按钮的暗色主题
@@ -628,6 +654,7 @@
                 button.classList.add('dark-theme');
             });
             localStorage.setItem('clockTheme', 'theme4');
+            localStorage.setItem('clockFont', "'Bigshot One', serif"); // 保存字体设置
             localStorage.removeItem('clockColor'); // 清除自定义颜色设置
         }
 
@@ -635,6 +662,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-5";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Silkscreen', cursive"; // 设置默认字体为像素点
             document.body.style.backgroundColor = "#000";
             document.body.classList.add('dark-theme');
             // 更新所有按钮的暗色主题
@@ -642,6 +670,7 @@
                 button.classList.add('dark-theme');
             });
             localStorage.setItem('clockTheme', 'theme5');
+            localStorage.setItem('clockFont', "'Silkscreen', cursive"); // 保存字体设置
             localStorage.removeItem('clockColor'); // 清除自定义颜色设置
         }
 
@@ -649,6 +678,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-6";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Rampart One'"; // 设置默认字体为3D
             document.body.style.backgroundColor = "#000";
             document.body.classList.add('dark-theme');
             // 更新所有按钮的暗色主题
@@ -656,6 +686,7 @@
                 button.classList.add('dark-theme');
             });
             localStorage.setItem('clockTheme', 'theme6');
+            localStorage.setItem('clockFont', "'Rampart One'"); // 保存字体设置
             localStorage.removeItem('clockColor'); // 清除自定义颜色设置
         }
 
@@ -663,6 +694,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-7";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Special Elite'";
             document.body.style.backgroundColor = "#F5E6D3"; // 旧报纸黄色
             document.body.classList.remove('dark-theme');
             // 移除所有按钮的暗色主题
@@ -677,6 +709,7 @@
             let d = document.getElementById("MyClockDisplay");
             d.className = "clock-8";
             d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Rye'"; // 设置默认字体为哥特
             document.body.style.backgroundColor = "#000"; // 黑色背景
             document.body.classList.add('dark-theme');
             // 更新所有按钮的暗色主题
@@ -684,6 +717,23 @@
                 button.classList.add('dark-theme');
             });
             localStorage.setItem('clockTheme', 'theme8');
+            localStorage.setItem('clockFont', "'Rye'"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme9() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-9";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Fredericka the Great'"; // 设置默认字体为黑板报
+            document.body.style.backgroundColor = "rgb(62 84 64)"; // 墨绿色背景
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme9');
+            localStorage.setItem('clockFont', "'Fredericka the Great'"); // 保存字体设置
             localStorage.removeItem('clockColor'); // 清除自定义颜色设置
         }
 
@@ -774,28 +824,19 @@
             }
         }
 
+        // 打开番茄钟
+        function openPomodoro() {
+            window.open('https://pomofocus.io/', '_blank');
+        }
+
+        // 打开颜色选择器
+        function openColorPicker() {
+            const colorPicker = document.getElementById('clockColorPicker');
+            colorPicker.click();
+        }
+
         showTime();
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-    <!-- <script>
-        const axios = require('axios').default
-        const options = {
-            method: 'GET',
-            url: 'https://wis.qq.com/weather/common',
-            params: {
-                source: 'pc',
-                weather_type: 'observe|forecast_24h|air|alarm|rise',
-                province: '上海',
-                city: '上海',
-                county: '浦东新区'
-            }
-        }
-        axios.request(options).then(function (response) {
-            console.log(response.data)
-        }).catch(function (error) {
-            console.error(error)
-        })
-    </script> -->
 
 </body>
 
