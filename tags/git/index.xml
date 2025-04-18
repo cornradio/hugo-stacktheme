@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on</title><link>https://b.cornradio.org/tags/git/</link><description>Recent content in Git on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 04 Aug 2023 20:23:18 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>git 命令行登录</title><link>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</link><pubDate>Fri, 04 Aug 2023 20:23:18 +0800</pubDate><guid>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</guid><description>&lt;p>有时候登录命令行版本的git会出现这个错误&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">remote: Support for password authentication was removed on August 13, 2021.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>原因是github不再支持密码验证，需要使用token验证，具体操作如下：&lt;/p>
+&lt;ol>
+&lt;li>在github上生成token 网站：&lt;a class="link" href="https://github.com/settings/tokens" target="_blank" rel="noopener"
+>github.com/settings/tokens&lt;/a>&lt;/li>
+&lt;li>下次命令行要求输入密码时，输入token即可&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>注意：token只会显示一次，所以要保存好，不然就要重新生成了，也可以用密码记录软件保存这个token，在多处使用，因为要一个一个勾选权限也挺麻烦的其实。&lt;/p>&lt;/blockquote></description></item><item><title>如何删除git中的所有历史文件</title><link>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4git%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%8E%86%E5%8F%B2%E6%96%87%E4%BB%B6/</link><pubDate>Sat, 03 Dec 2022 12:18:50 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4git%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%8E%86%E5%8F%B2%E6%96%87%E4%BB%B6/</guid><description>&lt;h1 id="需要工具">需要工具
+&lt;/h1>&lt;ul>
+&lt;li>gitbash 用于快速操作&lt;/li>
+&lt;li>githubDesktop 用于查看文件历史等&lt;/li>
+&lt;/ul>
+&lt;h1 id="注意">注意
+&lt;/h1>&lt;p>此操作不可撤销，如果你的历史记录中有着不想要被删除的重要数据，请务必提前备份。&lt;/p>
+&lt;p>适用情况：清理git文件夹，让git每次clone下来更轻松。有可能项目中留存着一些没有用的垃圾，比如很大的图片、视频等。虽然目前已经删除。但这些内容实际上仍然保留在隐藏的&lt;code>.git&lt;/code>文件夹中。&lt;/p>
+&lt;h1 id="操作">操作
+&lt;/h1>&lt;ol>
+&lt;li>
+&lt;p>从git平台下拉目前的全部代码，删除原repo。&lt;/p>
+&lt;blockquote>
+&lt;p>删除在repo - settings - dangerzone最下面&lt;/p>&lt;/blockquote>
+&lt;p>&lt;img src="https://i.imgur.com/a5zdkEs.png"
+loading="lazy"
+alt="Imgur"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>进入本地repo，打开gitbash，执行下列指令&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">rm -rf .git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &amp;#34;init&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git status
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>使用github desktop检查是否有残留
+&lt;img src="https://i.imgur.com/X3R65UB.png"
+loading="lazy"
+alt="Imgur"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>重新push repo到git平台&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>网上有一些很乱七八糟的方法，又要head，又要forcepush，又要orphan branch之类的，说实话我有些看不懂，我这个方式绝对简单又高效（粗暴rm -rf） 嘿嘿。&lt;/p>&lt;/blockquote>
+&lt;h2 id="其他提示">其他提示
+&lt;/h2>&lt;p>&lt;code>insights - traffic&lt;/code> 可以查看到public项目的所有访问记录。数据为0的话不会展示；对于github博客来说，这里还是很有用的。
+&lt;img src="https://i.imgur.com/cVjIKyn.png"
+loading="lazy"
+alt="Imgur"
+>&lt;/p></description></item></channel></rss>
