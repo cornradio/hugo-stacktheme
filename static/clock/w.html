@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>天气查看</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #3f3f3f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .weather-box {
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .weather-icon {
+      font-size: 48px;
+      margin-right: 20px;
+      color: #ffffff;
+    }
+    .temperature {
+      font-size: 32px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="weather-box" id="weather-box" title="点击修改城市">
+  <i class="fa-solid fa-cloud-sun weather-icon" id="weather-icon"></i>
+  <div class="temperature" id="temperature">加载中...</div>
+</div>
+
+<script>
+  let currentCity = "shanghai";
+
+  async function getWeatherByCity(city) {
+    try {
+      // 第一步：用城市名查经纬度
+      const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
+      const geoRes = await fetch(geoUrl);
+      const geoData = await geoRes.json();
+
+      if (!geoData.results || geoData.results.length === 0) {
+        document.getElementById('temperature').textContent = "城市未找到";
+        return;
+      }
+
+      const { latitude, longitude, name, country } = geoData.results[0];
+      currentCity = name;
+
+      // 第二步：获取天气数据
+      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+      const weatherRes = await fetch(weatherUrl);
+      const weatherData = await weatherRes.json();
+      const weather = weatherData.current_weather;
+
+      const temp = weather.temperature;
+      const code = weather.weathercode;
+
+      document.getElementById('temperature').textContent = `${name}, ${country}：${temp}°C`;
+
+      let icon = 'fa-cloud';
+      if ([0, 1].includes(code)) icon = 'fa-sun';
+      else if ([2].includes(code)) icon = 'fa-cloud-sun';
+      else if ([3].includes(code)) icon = 'fa-cloud';
+      else if ([45, 48].includes(code)) icon = 'fa-smog';
+      else if ([51, 53, 55, 61, 63, 80, 81].includes(code)) icon = 'fa-cloud-rain';
+      else if ([66, 67, 77, 85, 86].includes(code)) icon = 'fa-snowflake';
+      else if ([95, 96, 99].includes(code)) icon = 'fa-cloud-bolt';
+
+      document.getElementById('weather-icon').className = `fa-solid ${icon} weather-icon`;
+
+    } catch (err) {
+      console.error(err);
+      document.getElementById('temperature').textContent = "获取失败";
+    }
+  }
+
+  // 初始加载
+  getWeatherByCity(currentCity);
+
+  // 每分钟更新
+  setInterval(() => getWeatherByCity(currentCity), 60 * 1000);
+
+  // 点击修改城市
+  document.getElementById('weather-box').addEventListener('click', () => {
+    const city = prompt("请输入城市名，例如：shanghai、beijing、tokyo、new york");
+    if (city) {
+      getWeatherByCity(city);
+    }
+  });
+</script>
+
+</body>
+</html>
