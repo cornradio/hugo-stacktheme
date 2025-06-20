@@ -4,7 +4,6 @@ date: 2024-12-07 00:00:00+0000
 slug: yum_offline_install
 image: https://i.imgur.com/m0nzEwx.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/yum_offline_install/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 情况背景：
 你有一个 serverA 无法访问网络，需要通过离线的方式手工上传和安装 ngxin 等程序。

@@ -14,7 +14,6 @@ tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - syntax
 ---
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/nginxhttpswithcertbot/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 
 ## 安装nginx

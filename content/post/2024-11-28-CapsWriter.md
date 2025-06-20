@@ -4,7 +4,6 @@ date: 2024-11-28 00:00:00+0000
 slug: CapsWriter
 image: https://i.imgur.com/OXr6OPC.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/CapsWriter/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 CapsWriter 是一个用 Python 编写的 ， 使用了大模型的 ， 本地快速语音输入工具。  
 主要操作就是，按住大写锁定键，按住的时候说话，松手的时候就已经变成字了！ 

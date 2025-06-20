@@ -14,7 +14,6 @@ date: 2024-08-04 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/txt_reader/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 我精选了几款适合 Windows 的 txt 阅读器，使用截图如下，大部分都是纯web端的。
 

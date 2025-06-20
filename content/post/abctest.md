@@ -14,4 +14,5 @@ date: 2024-02-26 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/abctest/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
+
+![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fb.kill9pid.top%2Fp%2Fabctest&label=&icon=check-all&color=%23198754)

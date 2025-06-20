@@ -4,7 +4,6 @@ date: 2024-12-24 00:00:00+0000
 slug: raycast_quick_command
 image: https://www.raycast.com/uploads/redesign/new-appicon.png##
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/raycast_quick_command/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 创建第一个命令
 1. opt+space 打开raycast

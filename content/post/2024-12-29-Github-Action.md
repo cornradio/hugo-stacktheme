@@ -4,7 +4,6 @@ date: 2024-12-29 00:00:00+0000
 slug: Github_Action
 image: https://i.imgur.com/kWCcd38.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/Github_Action/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 简单来说,如果你经常需要手动build. 或者给多个平台一起build. 或者任何自动化的操作,都可以用 github action功能 !   
 他能快速给你一个临时虚拟机, 可以是linux、windows、macos .  然后你还能执行任何命令 .  

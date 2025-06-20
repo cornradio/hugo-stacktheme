@@ -4,7 +4,7 @@ date: 2025-02-15 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 slug: deepseed-local-deploy # url(注释掉 和标题相同)
 # description: xxxx # 描述小字(注释掉 不显示描述)
 # weight: 1 # 权重越小，放到越前面   (注释掉 日期排序)
-image: https://i.imgur.com/7JcYMcq.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
+image: 7JcYMcq.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
 
 # tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - TAG A
@@ -13,7 +13,6 @@ image: https://i.imgur.com/7JcYMcq.png # 头图，注释掉，否则会有一个
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/deepseed-local-deploy/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 检查配置 
 这网站很强的，好多命令都能在里面直接找，不需要看别的东西

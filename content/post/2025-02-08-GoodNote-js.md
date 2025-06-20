@@ -2,9 +2,8 @@
 title: GoodNote - 网页笔记助手 
 date: 2025-02-08 00:00:00+0000
 slug: goodnote-js
-image: https://i.imgur.com/WBL8ZVa.png
+image: WBL8ZVa.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/goodnote-js/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## GoodNote - 网页笔记助手
 下载地址：

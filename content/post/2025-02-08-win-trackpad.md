@@ -4,7 +4,6 @@ date: 2025-02-08 00:00:00+0000
 slug: win-trackpad
 image: https://i.imgur.com/5S5NxF2.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/win-trackpad/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 使用触摸板的好处
 1. 避免出现鼠标使用太久手腕比较痛的问题

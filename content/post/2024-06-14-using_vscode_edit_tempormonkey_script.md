@@ -14,7 +14,6 @@ date: 2024-06-14 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/using_vscode_edit_tempormonkey_script/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 文中方法来自：stackoverflow的[回答](https://stackoverflow.com/questions/41212558/develop-tampermonkey-scripts-in-a-real-ide-with-automatic-deployment-to-openuser)
 

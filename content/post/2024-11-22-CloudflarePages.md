@@ -4,7 +4,6 @@ date: 2024-11-22 00:00:00+0000
 slug: CloudflarePages
 image: https://i.imgur.com/ODmqjpJ.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/CloudflarePages/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 为什么要换
 因为一些费用的原因，我打算把我的服务器从vultr 上面给取下来，这样我就可以每个月省下来五刀左右的费用，相当于35块钱

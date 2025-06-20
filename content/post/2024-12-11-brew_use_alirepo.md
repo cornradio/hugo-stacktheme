@@ -4,7 +4,6 @@ date: 2024-12-11 00:00:00+0000
 slug: brew_use_alirepo
 image: https://i.imgur.com/Vw7QeXx.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/brew_use_alirepo/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 ## 安装brew 
 

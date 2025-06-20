@@ -5,7 +5,6 @@ slug: andorid_tiktok_how_to_install
 image: https://i.imgur.com/XWMzCLs.png
 ---
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/andorid_tiktok_how_to_install/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 
 

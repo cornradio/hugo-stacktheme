@@ -13,7 +13,6 @@ tags: # 只能在侧面看到的标签,会显示在文章的底部
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/pausegamewhithsuspend/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 
 我开发了一个gui工具来方便的暂停游戏

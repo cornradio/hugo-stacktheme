@@ -14,7 +14,6 @@ date: 2024-06-05 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-<!-- [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/WinaeroTweaker/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com) -->
 
 [Winaero Tweaker](https://winaero.com/download.php?view.1796) 是我非常喜欢的 Windows 工具  
 这个工具能对很多 Windows 的功能进行微调,一开始认识他是因为当时想要找一个能禁用 Windows 自动更新的工具。

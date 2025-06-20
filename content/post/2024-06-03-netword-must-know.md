@@ -14,7 +14,6 @@ date: 2024-06-03 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/netword-must-know/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 上个周末,我买了一个 open wrt 路由器,由于配网总是把家里的网配瘫痪, 我去恶补了一下相关网络的常识。  
 包括IP地址、子网掩码、网关、DNS和DHCP，他们都是家庭网络的重要组成部分。  

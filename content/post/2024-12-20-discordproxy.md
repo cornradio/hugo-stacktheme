@@ -4,7 +4,6 @@ date: 2024-12-20 00:00:00+0000
 slug: discordproxy
 image: https://i.imgur.com/2jYJ6lu.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/discordproxy/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 # 如何使用 DiscordProxyStart.exe
 

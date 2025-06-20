@@ -14,7 +14,6 @@ date: 2024-04-11 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/yt-dlp-webui/&count_bg=%230C0E0A&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 [yt-dlp-webui](https://hub.docker.com/r/marcobaobao/yt-dlp-webui) 是 [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases)（命令行工具）的一款网页UI，
 使用起来门槛比较低（但是安装门槛挺高的），还蛮好看的!

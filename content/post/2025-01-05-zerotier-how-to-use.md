@@ -4,7 +4,6 @@ date: 2025-01-05 00:00:00+0000
 slug: zerotier-how-to-use
 image: https://i.imgur.com/cZ876U1.png
 ---
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://b.kill9pid.top/p/zerotier-how-to-use/&count_bg=%23F26E00&title_bg=%23000000)](https://hits.seeyoufarm.com)
 
 
 ## 提前准备下载客户端:
