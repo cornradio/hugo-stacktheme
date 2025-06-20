@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>X-Ui on</title><link>https://b.cornradio.org/tags/x-ui/</link><description>Recent content in X-Ui on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Aug 2023 00:08:50 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/x-ui/index.xml" rel="self" type="application/rss+xml"/><item><title>X-Ui--一款V2ray管理面板</title><link>https://b.cornradio.org/p/x-ui--%E4%B8%80%E6%AC%BEv2ray%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</link><pubDate>Sat, 05 Aug 2023 00:08:50 +0800</pubDate><guid>https://b.cornradio.org/p/x-ui--%E4%B8%80%E6%AC%BEv2ray%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</guid><description>&lt;blockquote>
+&lt;p>credit: &lt;a class="link" href="https://bulianglin.com/archives/nicename.html" target="_blank" rel="noopener"
+>https://bulianglin.com/archives/nicename.html&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="准备服务器">准备服务器
+&lt;/h2>&lt;p>服务器：尽量在初始化的时候就选择关闭 &lt;code>ipv6&lt;/code> ，并且选择&lt;code>debian&lt;/code>系统，xui面版有自动绑定到ipv6的坏习惯，并且对&lt;code>centos&lt;/code>支持差。&lt;/p>
+&lt;p>服务器准备好（安装好系统）之后：&lt;code>ping &amp;lt;ip&amp;gt;&lt;/code>，如果不能ping通，删除重新申请。&lt;/p>
+&lt;p>服务器准备好之后可以使用 &lt;a class="link" href="https://termius.com/" target="_blank" rel="noopener"
+>termius&lt;/a> 之类的工具进行ssh连接。&lt;/p>
+&lt;h2 id="安装-x-ui">安装 x-ui
+&lt;/h2>&lt;p>使用root账户权限执行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">bash &amp;lt;&lt;span class="o">(&lt;/span>curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/956bf85bbac978d56c0e319c5fac2d6db7df9564/install.sh&lt;span class="o">)&lt;/span> 0.3.4.4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建用户，选择端口，我选&lt;code>10000&lt;/code>&lt;/p>
+&lt;h2 id="访问管理后台">访问管理后台
+&lt;/h2>&lt;p>浏览器访问: &lt;code>http://&amp;lt;ip&amp;gt;:10000&lt;/code>&lt;/p>
+&lt;p>如果不能访问，试试关闭服务器的防火墙：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">apt install ufw
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ufw disable
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还是不行的话建议查看下 端口开放情况 应该有一条类似下面的行，代表服务器的10000端口已经开放&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ss -nltp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">LISTEN 0 4096 *:10000 *:* users:((&amp;#34;x-ui&amp;#34;,pid=11270,fd=7))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="新建节点">新建节点
+&lt;/h2>&lt;p>图形化的，非常简单易用~&lt;/p>
+&lt;p>入站列表-添加入站&lt;/p>
+&lt;h3 id="vmess--ws">vmess + ws
+&lt;/h3>&lt;pre>&lt;code>备注：随意
+协议：vmess
+用户：添加一个（加号）
+网络：ws
+路径：复制用户的id头，比如/0349f58b
+&lt;/code>&lt;/pre>
+&lt;h3 id="vemss-wechat">vemss wechat
+&lt;/h3>&lt;pre>&lt;code>备注：随意
+协议：vmess
+用户：添加一个（加号）
+网络：kcp
+伪装：wechat-video
+&lt;/code>&lt;/pre>
+&lt;p>特点：比ws更快，但是兼容性没ws好&lt;/p>
+&lt;h3 id="vless--vision">vless + vision
+&lt;/h3>&lt;p>这种方式需要证书，非常麻烦，也不知道有啥好处&lt;/p>
+&lt;pre>&lt;code>备注：随意
+协议：vless
+用户：添加一个（加号）
+tls：打开开关
+用户-flow：xtls-rprx-vision
+域名：把ip的点换成 - ，最后面写 .nip.io
+填写：私钥、公钥（需要先申请好证书）
+&lt;/code>&lt;/pre>
+&lt;p>用下面方法申请证书&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#安装证书工具：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl https://get.acme.sh &lt;span class="p">|&lt;/span> sh&lt;span class="p">;&lt;/span> apt install socat -y &lt;span class="o">||&lt;/span> yum install socat -y&lt;span class="p">;&lt;/span> ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#三种方式任选其中一种，申请失败则更换方式（我测试第三种好用）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#申请证书方式1： &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#申请证书方式2： &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">~/.acme.sh/acme.sh --register-account -m &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">RANDOM&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">@chacuo.net&amp;#34;&lt;/span> --server buypass --force --insecure &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server buypass
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#申请证书方式3： &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">~/.acme.sh/acme.sh --register-account -m &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">RANDOM&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">@chacuo.net&amp;#34;&lt;/span> --server zerossl --force --insecure &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server zerossl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#安装证书：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">~/.acme.sh/acme.sh --install-cert -d 你的域名 --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>证书安装好之后，命令行会提示&lt;strong>证书所在位置&lt;/strong>，cert是私钥，CA是公钥，把他们的路径写进x-ui的节点里面即可。&lt;/p>
+&lt;pre>&lt;code>[Fri Aug 4 03:34:09 PM UTC 2023] Your cert is in: /root/.acme.sh/你的域名_ecc/你的域名.cer
+[Fri Aug 4 03:34:09 PM UTC 2023] Your cert key is in: /root/.acme.sh/你的域名_ecc/你的域名.key
+[Fri Aug 4 03:34:09 PM UTC 2023] The intermediate CA cert is in: /root/.acme.sh/你的域名_ecc/ca.cer
+[Fri Aug 4 03:34:09 PM UTC 2023] And the full chain certs is there: /root/.acme.sh/你的域名_ecc/fullchain.cer
+&lt;/code>&lt;/pre>
+&lt;h2 id="一些错误">一些?错误
+&lt;/h2>&lt;blockquote>
+&lt;p>我发现在点击 x-ui 的&lt;code>设置&lt;/code>之后，整个页面将会变得无法访问，一直显示404.&lt;/p>&lt;/blockquote>
+&lt;p>临时解决方法：&lt;/p>
+&lt;pre>&lt;code>命令行输入：x-ui 进入管理脚本
+选择功能 5. 重置面板设置
+选择功能 6. 设置面板端口
+&lt;/code>&lt;/pre>
+&lt;p>两个都执行完毕后就能恢复正常了。&lt;/p>
+&lt;hr>
+&lt;p>仔细研究之后发现，他是在你访问设置界面时候，会自动给你生成新的url如：&lt;code>http://&amp;lt;ip&amp;gt;:10000/1XiH/xui/&lt;/code> ， 这个&lt;code>1XiH&lt;/code> 是随机生成的，以后这个url才能访问面板，直接访问&lt;code>ip:端口&lt;/code>会显示404，算是一种保护。&lt;/p>
+&lt;h2 id="配置https证书">配置https证书
+&lt;/h2>&lt;blockquote>
+&lt;p>为啥要配置https证书：&lt;/p>
+&lt;p>因为x-ui默认http直连，在网络中明文传输，如果有有心之人抓包玩，完全可以看到了你的账号、密码、面板url和端口号，那你的面板就临被盗的危险。&lt;/p>&lt;/blockquote>
+&lt;p>如果你完成了上面的 &lt;code>vless + vision&lt;/code> 的配置，那么你就有https证书了。&lt;/p>
+&lt;p>位置在这个文件夹里面：&lt;/p>
+&lt;pre>&lt;code>/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc
+&lt;/code>&lt;/pre>
+&lt;p>在x-ui面板-设置中填写下面两个东西：&lt;/p>
+&lt;pre>&lt;code>证书公钥文件路径：/root/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc/&amp;lt;ip&amp;gt;.nip.io.cer
+证书私钥文件路径：/root/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc/&amp;lt;ip&amp;gt;.nip.io.key
+&lt;/code>&lt;/pre>
+&lt;blockquote>
+&lt;p>配置之后浏览器会提示“不安全”，因为这个证书是自己生成的，不是权威机构颁发的，所以浏览器会提示不安全，但是不影响使用，也不影响加密效果。&lt;/p>&lt;/blockquote></description></item></channel></rss>

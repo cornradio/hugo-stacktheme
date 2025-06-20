@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frp on</title><link>https://b.cornradio.org/tags/frp/</link><description>Recent content in Frp on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 10 Jan 2025 08:56:19 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/frp/index.xml" rel="self" type="application/rss+xml"/><item><title>Frp配置指南</title><link>https://b.cornradio.org/p/frp%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 10 Jan 2025 08:56:19 +0800</pubDate><guid>https://b.cornradio.org/p/frp%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;p>FRP是一个开源的内网穿透软件，本文将会介绍如何使用frp。&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/fatedier/frp" target="_blank" rel="noopener"
+>frp - github&lt;/a>&lt;br>
+&lt;a class="link" href="https://gofrp.org/zh-cn/docs/features/common/ui/" target="_blank" rel="noopener"
+>https://gofrp.org/zh-cn/docs/features/common/ui/&lt;/a>&lt;/p>
+&lt;h2 id="下载和安装">下载和安装
+&lt;/h2>&lt;p>从github下载之后我们会得到这些文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">frpc 放在本地server上
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frpc.ini frpc的配置文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frpc_full.ini frpc的配置文件（有完整的注释和例子）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">frps 放在云服务器上
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frps.ini frps的配置文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">frps_full.ini frps的配置文件（有完整的注释和例子）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img width="542" alt="image" src="https://github.com/user-attachments/assets/b3448c76-054b-4b8e-ad84-6575071989fa" />
+&lt;h2 id="frps-部署到服务器">frps 部署到服务器
+&lt;/h2>&lt;p>参考使用这个脚本：
+&lt;a class="link" href="https://gist.github.com/cornradio/984f6c17b4f8b3ee47a732c3756dc986" target="_blank" rel="noopener"
+>https://gist.github.com/cornradio/984f6c17b4f8b3ee47a732c3756dc986&lt;/a>&lt;/p>
+&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">screen -S frp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./frps -c frps.toml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>frps.toml&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">bindAddr&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;0.0.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">bindPort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">7000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">auth&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">method&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;token&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">auth&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">token&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;******&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">webServer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">addr&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;0.0.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">webServer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">port&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">7500&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">webServer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">user&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;***&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">webServer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">password&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;***&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="frpc-部署到家中pc等设备">frpc 部署到家中pc等设备
+&lt;/h2>&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">./frpc -c frpc.toml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>frpc.toml&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">user&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;homepc&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">serverAddr&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;139.196.***.***&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">serverPort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">7000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">auth&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">method&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;token&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">auth&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">token&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;******&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[[&lt;/span>&lt;span class="nx">proxies&lt;/span>&lt;span class="p">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">name&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;mrdp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">type&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;tcp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localIP&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;127.0.0.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localPort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">3389&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">remotePort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">33389&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[[&lt;/span>&lt;span class="nx">proxies&lt;/span>&lt;span class="p">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">name&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;clash&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">type&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;tcp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localIP&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;127.0.0.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localPort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">7890&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">remotePort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">7890&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[[&lt;/span>&lt;span class="nx">proxies&lt;/span>&lt;span class="p">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">name&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;webalist&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">type&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;tcp&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localIP&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;192.168.31.11&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">localPort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">5244&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">remotePort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">15244&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="检查">检查
+&lt;/h2>&lt;p>链接成功后可以在服务器上检查 http://ip:7500 查看frp面板，是否配置成功。&lt;/p></description></item></channel></rss>
