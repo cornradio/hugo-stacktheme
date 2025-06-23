@@ -58,6 +58,8 @@ done
 
 ## 增加【用code 打开】菜单
 
+https://code.visualstudio.com/ vscode， 程序员必备！
+
 ```
 for f in "$@"
 do
@@ -68,6 +70,7 @@ done
 
 
 ## 增加用 iterm 打开 菜单
+https://iterm2.com/ 是一个很棒的终端软件。
 
 ```
 for f in "$@"
@@ -77,5 +80,21 @@ done
 ``` 
 ![picture 5](https://i.imgur.com/NNykhMO.png)  
 
+
+## 增加用keka压缩菜单
+
+这个需要使用 apple script 而不是命令行指令
+keka 可以在 https://www.keka.io/en/ 下载，是一个开源好用的macos压缩软件。
+
+```
+on run {input, parameters}
+    repeat with f in input
+        set thePath to POSIX path of f
+        do shell script "open -a Keka \"" & thePath & "\""
+    end repeat
+    return input
+end run
+```
+![image](https://github.com/user-attachments/assets/e68f1cad-8a59-42bd-b8bd-03c693359d52)
 
 
