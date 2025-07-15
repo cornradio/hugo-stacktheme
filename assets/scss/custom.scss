@@ -3,7 +3,8 @@
 */
 
 code {
-    margin: 0 5px;
+    margin: 0;
+    font-size: 0.8em;
 }
 
 h1[data-scheme=dark],
@@ -40,4 +41,13 @@ h4 {
     --card-background: #333232a6;
     --body-background: linear-gradient(43deg, #1e2853 0%, #144d57 46%, #156838 100%);
     scrollbar-color: #3a554b #172b23;
+    --link-background-opacity: #00ffa2;
 }
+
+a {
+    color: #3ad8ff;
+}
+a.link:hover{
+    color: #00ffa2;
+    text-decoration: underline;
+}    

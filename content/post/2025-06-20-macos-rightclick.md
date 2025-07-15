@@ -32,7 +32,7 @@ date: 2025-06-23 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 
 
 
-## 1.增加一个转换gbk - utf8的功能
+## 增加【gbk - utf8】功能
 
 ```
 for f in "$@"
@@ -44,7 +44,7 @@ done
 ![picture 4](https://i.imgur.com/S6YXESt.png)  
 
 
-#### 🔸 `iconv -f GBK -t UTF-8 "$f" > "${f%.txt}.utf8.txt"`
+命令解释🔸 `iconv -f GBK -t UTF-8 "$f" > "${f%.txt}.utf8.txt"`
 
 - `iconv` 是命令本体，执行编码转换：
     - `-f GBK`：原编码是 GBK
@@ -69,7 +69,7 @@ done
 ![picture 3](https://i.imgur.com/KxO3Wsp.png)  
 
 
-## 增加用 iterm 打开 菜单
+## 增加用 【iterm 打开】 菜单
 https://iterm2.com/ 是一个很棒的终端软件。
 
 ```
@@ -81,7 +81,7 @@ done
 ![picture 5](https://i.imgur.com/NNykhMO.png)  
 
 
-## 增加用keka压缩菜单
+## 增加【用keka压缩】菜单
 
 这个需要使用 apple script 而不是命令行指令
 keka 可以在 https://www.keka.io/en/ 下载，是一个开源好用的macos压缩软件。
