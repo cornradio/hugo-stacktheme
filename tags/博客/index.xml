@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客 on</title><link>https://b.cornradio.org/tags/%E5%8D%9A%E5%AE%A2/</link><description>Recent content in 博客 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>hugo博客</title><link>https://b.cornradio.org/p/hugo%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/hugo%E5%8D%9A%E5%AE%A2/</guid><description>&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/0083vuQJgy1gqzlm00z45j30hs06z0sq.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h3 id="剧情介绍"&gt;剧情介绍
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;今天yr在我旁边弄新的hugo主题，我感觉他的新主题真的很清新，很不错，然后markdown记录之类的确实要比转化成html再放出来更加简单。不过可定制性没有那么好也是实话。&lt;/p&gt;
+&lt;p&gt;这个博客对于语法高亮支持很不错。交互和动画就只能限制于模板（这个语法蛮怪的，可能以后会研究一个自己的模板）所以暂时决定把这个弄成技术类博客。&lt;/p&gt;
+&lt;p&gt;我终于能把我的linux小知识都搬过来了！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;//简单说一下hugo的安装和使用：&lt;/p&gt;
+&lt;h3 id="pwershell安装hugo"&gt;pwershell安装hugo
+&lt;/h3&gt;&lt;p&gt;choco install hugo&lt;/p&gt;
+&lt;h3 id="创建hugo工作目录"&gt;创建hugo工作目录
+&lt;/h3&gt;&lt;p&gt;hugo new site mysite&lt;/p&gt;
+&lt;h3 id="进入themes文件夹并且git-pull自己用的主题"&gt;进入themes文件夹并且git pull自己用的主题
+&lt;/h3&gt;&lt;p&gt;git clone &lt;a class="link" href="https://github.com/panr/hugo-theme-terminal.git" target="_blank" rel="noopener"
+&gt;https://github.com/panr/hugo-theme-terminal.git&lt;/a&gt; themes/terminal&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+&gt;主题市场&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://github.com/panr/hugo-theme-terminal/" target="_blank" rel="noopener"
+&gt;terminal主题(我现在用的)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="配置主题"&gt;配置主题
+&lt;/h3&gt;&lt;p&gt;配置主题需要根据不同的主题情况,各有不同，对于我这个主题来说我要把博客官方的 &lt;code&gt;config.toml&lt;/code&gt; 粘贴到hugo项目中，并且进行了一点修改。遇到了一点坑，我在后面注释，你可以看一下。&lt;/p&gt;
+&lt;p&gt;toml文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;baseurl&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class="c"&gt;#这个要设为空，否则生成的东西css会找不到。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;languageCode&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;en-us&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;theme&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;terminal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# theme 原本github上提供的版本是 &amp;#34;hugo-theme-terminal&amp;#34;，&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 但是会造成编译错误，故修改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;paginate&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;contentTypeName&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;post&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;themeColor&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;red&amp;#34;&lt;/span&gt; &lt;span class="c"&gt;#选择主题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;showMenuItems&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;#选择显示在顶部的导航链接数目，超出的会折叠。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;#链接具体目录可以在下面修改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;fullWidthTheme&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;centerTheme&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;en&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;title&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;KASUSA&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;subtitle&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;kasusa的技术博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;keywords&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;copyright&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;menuMore&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;展开&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;readMore&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;品读&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;readOtherPosts&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;看看别的文章
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; [languages.en.params.logo]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; logoText = &amp;#34;&lt;/span&gt;&lt;span class="nx"&gt;KASUSA&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; logoHomeLink = &amp;#34;&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; [languages.en.menu] #顶部栏条目们（不知道顺序是按照什么计算的）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; [[languages.en.menu.main]] #一个顶部栏条目
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; identifier = &amp;#34;&lt;/span&gt;&lt;span class="nx"&gt;about&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34; #id
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; name = &amp;#34;&lt;/span&gt;&lt;span class="nx"&gt;About_theme&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34; #顶部条目显示为什么文字
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; url = &amp;#34;&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;about&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34; #点击后进入什么目录
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; [[languages.en.menu.main]]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; identifier = &amp;#34;&lt;/span&gt;&lt;span class="nx"&gt;showcase&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; name = &amp;#34;&lt;/span&gt;&lt;span class="nx"&gt;Showcase&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; url = &amp;#34;&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;showcase&lt;/span&gt;&lt;span class="err"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="写博客"&gt;写博客
+&lt;/h3&gt;&lt;p&gt;在 content - posts 内新建md文件，系统会用mdmd文件内容生成博客。&lt;/p&gt;
+&lt;p&gt;对于md文件顶部的格式有着特殊的要求，这个也是因主体而异的，具体的话就要参考你的&lt;code&gt;theme&lt;/code&gt;中&lt;code&gt;archetypes&lt;/code&gt;文件夹内提供的模板了。我这个主题提供的模板如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-md" data-lang="md"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;title = &amp;#34;hugo博客&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;date = &amp;#34;2021-05-29&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;author = &amp;#34;kasusa&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cover = &amp;#34;https://tvax1.sinaimg.cn/...&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tags = [&amp;#34;博客&amp;#34;, &amp;#34;hugo&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;keywords = [&amp;#34;hugo2&amp;#34;, &amp;#34;&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;description = &amp;#34;今天我建立了我的hugo博客&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;showFullContent = false
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我感觉他已经很明白了，但是我遇到了一个坑就是日期，我打成了2021-5-29在预览的时候就会显示成00-01-00，要注意日期格式必须相同哦！&lt;/p&gt;
+&lt;h3 id="实时预览"&gt;实时预览
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;hugo server -t terminal -p 51000&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-t&lt;/code&gt;是自定义主题，&lt;code&gt;-p&lt;/code&gt;是自定义端口，开启成功之后他会根据你后台文件的变化不停的刷新，你可以在&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;localhost:51000&lt;/code&gt; 实时的预览。&lt;/p&gt;
+&lt;h3 id="编译生成html"&gt;编译生成HTML
+&lt;/h3&gt;&lt;p&gt;在你的项目的目录输入命令（生成到指定目录）：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hugo -d C:\Users\kasusa\Documents\GitHub\kasusa.github.io\hugo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;默认的话文件会生成在&lt;code&gt;public&lt;/code&gt;文件夹。&lt;/p&gt;
+&lt;p&gt;然后就把public文件夹的内容上传到github即可。以后也许会考虑 &lt;a class="link" href="https://yantree.github.io/posts/develop/2020-06-20-action-delopy-github-page/" target="_blank" rel="noopener"
+&gt;使用action自动编译&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
