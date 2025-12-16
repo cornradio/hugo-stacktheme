@@ -1,7 +1,7 @@
 ﻿---
 title: ssh tunnel 搭建简易 vpn # 标题
 slug: ssh-tunnel-simple-vpn # url(注释掉 和标题相同)
-image: https://i.imgur.com/O1LKAtH.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
+image: https://i.imgur.com/51uKFw9.png # 头图，注释掉，否则会有一个难看的呃加载不出来的图片
 # description: xxxx # 描述小字(注释掉 不显示描述)
 
 date: 2025-10-17 00:00:00+0000 # 日期时间，如果时间未到，post 不会显示(注释掉 不显示日期)
@@ -14,6 +14,7 @@ date: 2025-10-17 00:00:00+0000 # 日期时间，如果时间未到，post 不会
 #     - themes
 #     - syntax
 ---
+
 ![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fb.kill9pid.top%2Fp%2Fssh-tunnel-simple-vpn&label=&icon=check-all&color=%23198754)
 
 因为我发现我阿里云搭建的 wireguard 总是被封，所以尝试使用 sshtunnel，简单来说就是ssh -D 命令。搭建socks通道。
