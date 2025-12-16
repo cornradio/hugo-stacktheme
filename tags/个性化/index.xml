@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>个性化 on</title><link>https://b.cornradio.org/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/</link><description>Recent content in 个性化 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 15 Sep 2022 23:03:01 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>自定义终端标识符</title><link>https://b.cornradio.org/p/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%88%E7%AB%AF%E6%A0%87%E8%AF%86%E7%AC%A6/</link><pubDate>Thu, 15 Sep 2022 23:03:01 +0800</pubDate><guid>https://b.cornradio.org/p/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%88%E7%AB%AF%E6%A0%87%E8%AF%86%E7%AC%A6/</guid><description>&lt;h1 id="zshrc"&gt;zshrc
+&lt;/h1&gt;&lt;p&gt;zsh是macos目前默认的交互终端，如果要修改默认标识符有2中办法：&lt;/p&gt;
+&lt;p&gt;在～/.zshrc文件中加入行来设置：&lt;/p&gt;
+&lt;p&gt;你可以通过设置PS1这个变量，或者设置PROMPT（提示符）、RPROMPT（右侧提示符）来进行自定义。&lt;/p&gt;
+&lt;h1 id="可视化例子"&gt;可视化例子
+&lt;/h1&gt;&lt;p&gt;苹果推荐：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%10F%m%f:%11F%1~%f \$ &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/0083vuQJgy1h67plzn0rqj30bi02saa4.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;所以&lt;code&gt;%10Fxxx%f&lt;/code&gt; 就是绿色的&lt;code&gt;xxx&lt;/code&gt;，&lt;code&gt;%11Fxxx%f&lt;/code&gt;就是黄色，其他的颜色我也没有实验所以不清楚，&lt;code&gt; \$&lt;/code&gt; 就是输入$的意思（这个符号是转义符所以增加了 &lt;code&gt;\&lt;/code&gt;)，&lt;code&gt;%m&lt;/code&gt;代表主机名称，&lt;code&gt;%～&lt;/code&gt;则是你相对于你的home的位置。&lt;/p&gt;
+&lt;p&gt;我喜欢用%B - %b、%T、%~这几个，非常干净简洁的组合。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;转义变量&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;%T&lt;/td&gt;
+&lt;td&gt;系统时间（时：分）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%*&lt;/td&gt;
+&lt;td&gt;系统时间（时：分：秒）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%D&lt;/td&gt;
+&lt;td&gt;系统日期（年-月-日）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%n&lt;/td&gt;
+&lt;td&gt;你的用户名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%B - %b&lt;/td&gt;
+&lt;td&gt;开始到结束使用粗体打印&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%~&lt;/td&gt;
+&lt;td&gt;你目前的工作目录相对于～的相对路径（可能在某些zsh版本可能造成乱码）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%M&lt;/td&gt;
+&lt;td&gt;计算机的主机名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;更完整详细的表格可以看这里，是zsh官方的：https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html&lt;/p&gt;
+&lt;p&gt;简洁样式1:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%T %B%~%b \$ &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/0083vuQJly1h67qc96kcoj30a403et8j.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;自定义样式1:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#开启颜色&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;autoload -U colors &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; colors
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#配置提示符模式&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;PROMPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%T %{&lt;/span&gt;&lt;span class="nv"&gt;$fg_bold&lt;/span&gt;&lt;span class="s2"&gt;[green]%}%1|%~ %{&lt;/span&gt;&lt;span class="nv"&gt;$reset_color&lt;/span&gt;&lt;span class="s2"&gt;%}\$ &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#在行末显示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;RPROMPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;[%{&lt;/span&gt;&lt;span class="nv"&gt;$fg&lt;/span&gt;&lt;span class="s2"&gt;[green]%}%?%{&lt;/span&gt;&lt;span class="nv"&gt;$reset_color&lt;/span&gt;&lt;span class="s2"&gt;%}]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/0083vuQJly1h67qd8ra1kj30lc03mwee.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;自定义样式中用到了不一样的颜色语法，更容易看懂（虽然超级乱），而且需要用到autoload，不顾你可以变得简单点，直接用上面学到的一行都配置在ps1里面。&lt;/p&gt;
+&lt;p&gt;不过总的来说效果很棒！&lt;/p&gt;
+&lt;p&gt;如果有意向高一些更自定义的可以看看这个文档，也许你会想开始用ohmyzsh，我是觉得那个有点花了…… &amp;raquo; &lt;a class="link" href="https://wiki.archlinux.org/title/Zsh_%28%e7%ae%80%e4%bd%93%e4%b8%ad%e6%96%87%29#.E5.BD.A9.E8.89.B2" target="_blank" rel="noopener"
+&gt;Zsh (简体中文) - ArchWiki (archlinux.org)&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

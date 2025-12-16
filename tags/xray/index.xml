@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xray on</title><link>https://b.cornradio.org/tags/xray/</link><description>Recent content in Xray on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 20 Sep 2023 16:45:43 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/xray/index.xml" rel="self" type="application/rss+xml"/><item><title>Xray扫描器-如何登录扫描</title><link>https://b.cornradio.org/p/xray%E6%89%AB%E6%8F%8F%E5%99%A8-%E5%A6%82%E4%BD%95%E7%99%BB%E5%BD%95%E6%89%AB%E6%8F%8F/</link><pubDate>Wed, 20 Sep 2023 16:45:43 +0800</pubDate><guid>https://b.cornradio.org/p/xray%E6%89%AB%E6%8F%8F%E5%99%A8-%E5%A6%82%E4%BD%95%E7%99%BB%E5%BD%95%E6%89%AB%E6%8F%8F/</guid><description>&lt;img src="https://b.cornradio.org/xray.jpg" alt="Featured image of post Xray扫描器-如何登录扫描" /&gt;&lt;p&gt;xray 就像是一台安检扫描器，让你透视整个网站的漏洞和安全问题。&lt;/p&gt;
+&lt;h2 id="xray-安装"&gt;xray 安装
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/chaitin/xray/releases" target="_blank" rel="noopener"
+&gt;https://github.com/chaitin/xray/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载对应的版本，解压后，将 xray_windows_amd64.exe 文件放到系统环境变量文件夹中。&lt;/p&gt;
+&lt;h3 id="证书安装"&gt;证书安装
+&lt;/h3&gt;&lt;p&gt;ca证书生成命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;xray_windows_amd64.exe genca
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装ca证书到&amp;ndash;受信任的证书颁发机构 (windows)&lt;/p&gt;
+&lt;p&gt;安装ca证书, 在钥匙串访问.app 中搜：“x-ray” ，然后双击安装证书，选择“始终信任”（mac）&lt;/p&gt;
+&lt;h3 id="配置文件"&gt;配置文件
+&lt;/h3&gt;&lt;p&gt;第一次运行 xray_windows_amd64.exe ，他会生成 yaml 等配置文件 , &lt;code&gt;config.yaml&lt;/code&gt; 需要关注。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hostname_allowed 参数用于控制白名单，设置好要扫描的目标网站，控制扫描范围。&lt;/li&gt;
+&lt;li&gt;hostname_disallowed 参数用于控制黑名单，防止越界扫描，默认存在 gov.cn 等，按需删除。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="静态页面扫描"&gt;静态页面扫描
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;xray ws --url http://xxx.com --html-output a.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="监听模式扫描"&gt;监听模式扫描
+&lt;/h3&gt;&lt;p&gt;静态扫描无法正确登陆、不能爬取到登陆后的界面。
+可以使用监听模式扫描。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;xray ws --listen 127.0.0.1:7777 --html-output a.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行结束之后 &lt;code&gt;ctr-C&lt;/code&gt; 停止程序即可。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果没有扫描到任何漏洞的话就不会生成扫描报告。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="代理使用监听模式"&gt;代理使用(监听模式)
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;可以使用 proxyomega 等代理工具，设置成 https - 127.0.0.1:7777&lt;/li&gt;
+&lt;li&gt;（可选）在burp设置中搜索 &lt;code&gt;upstream&lt;/code&gt; ，把它的上游代理设置成 127.0.0.1:7777 ， &lt;code&gt;destination host&lt;/code&gt; 设置成要渗透的目标网站(如： &lt;code&gt;*target.com*&lt;/code&gt; )，浏览器继续使用burp代理（8080）。&lt;/li&gt;
+&lt;li&gt;在网页中乱点，查询，xray会在后台扫描，扫描结果会生成到指定的文件中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="便利使用"&gt;便利使用
+&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;~/.zshrc&lt;/code&gt; 中添加别名，方便使用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;alias xray=&amp;#34;cd /Users/kasusa/PentestEnvMac/xray&amp;amp;&amp;amp;./xray_darwin_arm64 ws --listen 127.0.0.1:7777 --html-output /Users/kasusa/Desktop/xrayout.html&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;关于windows下的alias，可以参考&lt;a class="link" href="https://cornradio.github.io/hugo/posts/2023-09-19-zshrc_for_powershell/" target="_blank" rel="noopener"
+&gt;本站另一篇文章&lt;/a&gt;。&lt;/p&gt;</description></item></channel></rss>

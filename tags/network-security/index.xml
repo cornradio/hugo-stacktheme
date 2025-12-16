@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network Security on</title><link>https://b.cornradio.org/tags/network-security/</link><description>Recent content in Network Security on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 24 Feb 2024 16:34:43 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/network-security/index.xml" rel="self" type="application/rss+xml"/><item><title>Burp下载（破解版）</title><link>https://b.cornradio.org/p/burp%E4%B8%8B%E8%BD%BD%E7%A0%B4%E8%A7%A3%E7%89%88/</link><pubDate>Sat, 24 Feb 2024 16:34:43 +0800</pubDate><guid>https://b.cornradio.org/p/burp%E4%B8%8B%E8%BD%BD%E7%A0%B4%E8%A7%A3%E7%89%88/</guid><description>&lt;img src="https://b.cornradio.org/burp.png" alt="Featured image of post Burp下载（破解版）" /&gt;&lt;p&gt;再也不用去奇怪的网站和博客找破解版burp了。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/h3110w0r1d-y/BurpLoaderKeygen" target="_blank" rel="noopener"
+&gt;https://github.com/h3110w0r1d-y/BurpLoaderKeygen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://t.me/BurpLoaderKeygen" target="_blank" rel="noopener"
+&gt;https://t.me/BurpLoaderKeygen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里下载最新的破解机（官方github指向）&lt;/p&gt;
+&lt;p&gt;破解机提供官方链接（最上面一行字），从官方下载到最新的 burp.jar。&lt;/p&gt;
+&lt;p&gt;然后你就可以永远获取最新的破解版了。&lt;/p&gt;</description></item><item><title>vscode配合wsl编程</title><link>https://b.cornradio.org/p/vscode%E9%85%8D%E5%90%88wsl%E7%BC%96%E7%A8%8B/</link><pubDate>Sat, 24 Feb 2024 16:34:43 +0800</pubDate><guid>https://b.cornradio.org/p/vscode%E9%85%8D%E5%90%88wsl%E7%BC%96%E7%A8%8B/</guid><description>&lt;img src="https://b.cornradio.org/vscode.jpg" alt="Featured image of post vscode配合wsl编程" /&gt;&lt;p&gt;使用wsl，用windows环境GUI + linux 高效地编程。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://code.visualstudio.com/docs/remote/wsl" target="_blank" rel="noopener"
+&gt;https://code.visualstudio.com/docs/remote/wsl&lt;/a&gt;
+用wsl和windows vscode 进行开发 上面是官方教程&lt;/p&gt;
+&lt;p&gt;准备：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装wsl&lt;/li&gt;
+&lt;li&gt;安装vscode 插件 ： Remote Development&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用(多种方式）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在wsl ubuntu 中输入 &lt;code&gt;code .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 code中打开 &lt;code&gt;F1&lt;/code&gt; - WSL: xxx distro &amp;hellip;&lt;/li&gt;
+&lt;li&gt;在windows用命令行启动code ， 附带下列参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --remote wsl+Ubuntu /root/codes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
