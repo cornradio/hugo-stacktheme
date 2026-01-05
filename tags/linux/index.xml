@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on</title><link>https://b.cornradio.org/tags/linux/</link><description>Recent content in Linux on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 17 Jan 2024 16:08:37 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Tmux</title><link>https://b.cornradio.org/p/tmux/</link><pubDate>Wed, 17 Jan 2024 16:08:37 +0800</pubDate><guid>https://b.cornradio.org/p/tmux/</guid><description>&lt;img src="https://b.cornradio.org/tmux.jpg" alt="Featured image of post Tmux" /&gt;&lt;blockquote&gt;
+&lt;p&gt;tmux 特点是可以有多个窗口（分割视图），非常方便&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/BthfDxp.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://tmuxcheatsheet.com/" target="_blank" rel="noopener"
+&gt;https://tmuxcheatsheet.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="这里是基础用法"&gt;这里是基础用法
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + D 离开（不退出）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl - D 离开（退出）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux a 连接上次用的tmux
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux ls 查看所有 tmux session
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux a -t0 连接session0 (t = target)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux kill-session -t0 关闭session0
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux new -s bob 创建一个名字叫bob的session
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="分割方法"&gt;分割方法
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + % 水平分割（%看着就代表一上一下）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + &amp;#34; 垂直分割（双引号就像是两块屏幕）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + 方向键 移动光标
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + o 移动光标到下一个窗口
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + q 显示窗口编号
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + q + 数字 跳转到指定窗口
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-D 关闭当前窗口
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="创建新window--下面绿色的部分是window指示"&gt;创建新window （ 下面绿色的部分是window指示）
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + C 创建
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + , 重命名当前window （会自动用你的上一个命令命名，可以改）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + N 跳到下一个
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + L 跳到最近用过的
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + W 窗口管理器！
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="管理配置文件"&gt;管理配置文件
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vim ~/.tmux.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;setw -g mode-keys vi
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;set mouse on
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="终极命令"&gt;终极命令：
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + ?
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl-B + /
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Wireguard-管线卫士</title><link>https://b.cornradio.org/p/wireguard-%E7%AE%A1%E7%BA%BF%E5%8D%AB%E5%A3%AB/</link><pubDate>Wed, 17 Jan 2024 15:46:23 +0800</pubDate><guid>https://b.cornradio.org/p/wireguard-%E7%AE%A1%E7%BA%BF%E5%8D%AB%E5%A3%AB/</guid><description>&lt;img src="https://b.cornradio.org/wireguard.png" alt="Featured image of post Wireguard-管线卫士" /&gt;&lt;h2 id="简易安装"&gt;简易安装：
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/xubiaolin/wireguard-onekey" target="_blank" rel="noopener"
+&gt;https://github.com/xubiaolin/wireguard-onekey&lt;/a&gt;
+使用run.sh之前可以按照需要 设置一下脚本里面的 WG_ALLOWED_IPS=10.0.8.0/24 ，改成 0.0.0.0/0 可以全流量走vpn&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/xubiaolin/wireguard-onekey.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bash run.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/raBKUVP.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;h2 id="wg-easy"&gt;wg-easy
+&lt;/h2&gt;&lt;p&gt;上面的onekey脚本实际上是用了另一个项目：&lt;a class="link" href="https://github.com/wg-easy/wg-easy" target="_blank" rel="noopener"
+&gt;wg-easy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;wg-easy 有一些奇怪的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用vps时，联入wg vpn之后就不能上网了，详见这个 &lt;a class="link" href="https://github.com/wg-easy/wg-easy/issues/562" target="_blank" rel="noopener"
+&gt;issue&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;默认镜像的位置是： ghcr.io/wg-easy/wg-easy ， ghcr.io访问极慢（即使挂了代理），所以我用在线docker机器人重新拉取了一个放到了这里： togettoyou/my-wg-easy:nightly&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -d &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --name&lt;span class="o"&gt;=&lt;/span&gt;wg-easy &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -e &lt;span class="nv"&gt;WG_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;your-ip&amp;gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -e &lt;span class="nv"&gt;PASSWORD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;your-password&amp;gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -v ~/.wg-easy:/etc/wireguard &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -e &lt;span class="nv"&gt;WG_DEVICE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;eth0 &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -p &amp;lt;your-port&amp;gt;:51820/udp &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -p &amp;lt;your-port&amp;gt;:51821/tcp &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --cap-add&lt;span class="o"&gt;=&lt;/span&gt;NET_ADMIN &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --cap-add&lt;span class="o"&gt;=&lt;/span&gt;SYS_MODULE &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --sysctl&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;net.ipv4.conf.all.src_valid_mark=1&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --sysctl&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;net.ipv4.ip_forward=1&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --restart unless-stopped &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; togettoyou/my-wg-easy:nightly
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;访问这个链接来使用你的vpn管理台。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://&amp;lt;your-ip&amp;gt;:&amp;lt;your-port&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="客户端下载"&gt;客户端下载
+&lt;/h2&gt;&lt;p&gt;安装好了之后我们就要使用它，首先我们需要下载客户端，这里提供了一些下载链接：&lt;/p&gt;
+&lt;p&gt;win&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://download.wireguard.com/windows-client/" target="_blank" rel="noopener"
+&gt;https://download.wireguard.com/windows-client/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;mac(外区商店)&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://apps.apple.com/us/app/wireguard/" target="_blank" rel="noopener"
+&gt;https://apps.apple.com/us/app/wireguard/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;linux&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install wireguard-tools
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install resolvconf
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wg-quick up ./wg.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="配置文件"&gt;配置文件
+&lt;/h2&gt;&lt;p&gt;wg 的客户端配置中有一个非常方便的东西，AllowedIPs&lt;/p&gt;
+&lt;p&gt;AllowedIPs 可以用作一个路由表。可以限定访问的范围&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 全局vpn&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;0.0.0.0/0
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 网段 192.168.1.x 和 10.0.1.x 走vpn&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;192.168.1.0/24,10.0.1.0/24
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;[Peer]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;AllowedIPs = 192.168.124.0/24
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>burpsuite（入门教学课程）</title><link>https://b.cornradio.org/p/burpsuite%E5%85%A5%E9%97%A8%E6%95%99%E5%AD%A6%E8%AF%BE%E7%A8%8B/</link><pubDate>Tue, 20 Dec 2022 16:14:59 +0800</pubDate><guid>https://b.cornradio.org/p/burpsuite%E5%85%A5%E9%97%A8%E6%95%99%E5%AD%A6%E8%AF%BE%E7%A8%8B/</guid><description>&lt;h1 id="burpsuite入门教学课程"&gt;burpsuite（入门教学课程）
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Intercept and modify HTTP traffic with &lt;strong&gt;Burp Proxy&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Set the target scope to focus your work on interesting content.&lt;/li&gt;
+&lt;li&gt;Probe for vulnerabilities by reissuing requests with &lt;strong&gt;Burp Repeater&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Run automated vulnerability scans and generate reports with &lt;strong&gt;Burp Scanner&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="intercept-拦截流量"&gt;intercept （拦截）流量
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="https://portswigger.net/burp/documentation/desktop/getting-started/intercepting-http-traffic" target="_blank" rel="noopener"
+&gt;https://portswigger.net/burp/documentation/desktop/getting-started/intercepting-http-traffic&lt;/a&gt;
+&lt;img src="https://i.imgur.com/CJyXrzi.png"
+loading="lazy"
+&gt;
+拦截请求（intercept）之后，可以慢慢查看、修改请求，弄好了之后再点forward。
+如果你需要好多步骤之后才开始用burp，那应该先把intercept关闭，即便是这时http请求也会被记录。&lt;/p&gt;
+&lt;h1 id="hack-例子商店"&gt;hack 例子商店
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="https://portswigger.net/burp/documentation/desktop/getting-started/modifying-http-requests" target="_blank" rel="noopener"
+&gt;https://portswigger.net/burp/documentation/desktop/getting-started/modifying-http-requests&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;商店地址：&lt;code&gt;https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-excessive-trust-in-client-side-controls&lt;/code&gt;
+你需要先注册一个portswigger账号，因为这个东西是人家要给你生成一个实例给你黑，所以你得注册账号让他知道你是真人&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;登录用户名和密码：&lt;strong&gt;Username:&lt;/strong&gt; &lt;code&gt;wiener&lt;/code&gt; &lt;strong&gt;Password:&lt;/strong&gt; &lt;code&gt;peter&lt;/code&gt;
+然后你会发现你的账号里面有100$可以用来买东西。&lt;/p&gt;
+&lt;p&gt;开启intercept，购买一个这个1000$ + 的jacket，然后你会收到一个POST /cart 请求。&lt;/p&gt;
+&lt;p&gt;在请求的最下面有一个&lt;code&gt;productId=1&amp;amp;redir=PRODUCT&amp;amp;quantity=1&amp;amp;price=133700&lt;/code&gt;，最后面是以美分为单位的价格，修改这个数字，改成1，然后我们就能有极低的价格（1美分）把这个商品加入购物车。
+在购物车结算（&lt;strong&gt;Place order&lt;/strong&gt;）之后，这个lab就完成了。同时你也学会了intercept, review, manipulate HTTP traffic using Burp Proxy。真棒。&lt;/p&gt;
+&lt;h1 id="target-scope"&gt;target scope
+&lt;/h1&gt;&lt;p&gt;修改目标范围，有时候网页会加载很多外链或者你不想要了解的目标，这时候需要自定义目标范围。
+&lt;a class="link" href="https://portswigger.net/burp/documentation/desktop/getting-started/setting-target-scope" target="_blank" rel="noopener"
+&gt;https://portswigger.net/burp/documentation/desktop/getting-started/setting-target-scope&lt;/a&gt;
+打开这个实验室：
+&lt;a class="link" href="https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages" target="_blank" rel="noopener"
+&gt;https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;打开http请求，倒序，然后选择你想要的url，右键加入scope
+&lt;img src="https://i.imgur.com/SlZKo9T.png"
+loading="lazy"
+&gt;
+加入了scope的东西可以在这里修改：
+&lt;img src="https://i.imgur.com/ipVDjO8.png"
+loading="lazy"
+&gt;
+scope里面有东西了之后，可以在http请求里面使用filter，只查看scope内的相关url记录
+&lt;img src="https://i.imgur.com/DNLxl8o.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h1 id="burp-repeater"&gt;Burp Repeater
+&lt;/h1&gt;&lt;p&gt;首先打开上一课的假的商店，设置好scope，然后我们会看到
+每次打开商品详情，会有这样的请求（Get /product?productId=xx）：
+我们右键 - 发送到repeater
+&lt;img src="https://i.imgur.com/BeFkPse.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;然后在repeater里面发送和查看respond，就是repeater的主要功能
+&lt;img src="https://i.imgur.com/21dBy9v.png"
+loading="lazy"
+&gt;
+我们修改一下productid为100试试：结果返回了notfound
+然后我们发送了好几次之后，可以通过这个按钮查看历史记录。
+&lt;img src="https://i.imgur.com/6IAhcLJ.png"
+loading="lazy"
+&gt;
+然后我们把这个productid改成一个非数字，看看会有什么反应：
+&lt;img src="https://i.imgur.com/ctXIM6g.png"
+loading="lazy"
+&gt;
+结果返回了一堆错误信息，而且是没有做删减的，我们可以看出来Apache的版本号，这对于渗透来说是有意义的，尤其是这个版本的apache有漏洞可以用。
+这里最后我们点击页面上的submit，把这个版本号填进去，这个lab就完成了 耶～&lt;/p&gt;
+&lt;h1 id="burp-scan"&gt;burp scan
+&lt;/h1&gt;&lt;p&gt;burp同样耶提供扫描的功能，他的扫描远离如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;爬网页crawl（通过模拟用户操作的方式，比如点击链接等）&lt;/li&gt;
+&lt;li&gt;审计危险项audit（漏洞扫描）
+注：burpscan只有专业版能用；非授权扫描别人的网站应用是违法的各位注意。
+我们这里扫描他提供的例子站点：https://ginandjuice.shop/
+&lt;img src="https://i.imgur.com/0xuOa32.png"
+loading="lazy"
+&gt;
+scan的时候可以在target里面看看网站目录啥的
+&lt;img src="https://i.imgur.com/v3STT83.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>sed Linux命令</title><link>https://b.cornradio.org/p/sed-linux%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 06 Dec 2022 20:14:59 +0800</pubDate><guid>https://b.cornradio.org/p/sed-linux%E5%91%BD%E4%BB%A4/</guid><description>&lt;p&gt;参考链接：
+&lt;a class="link" href="https://www.youtube.com/watch?v=nXLnx8ncZyE" target="_blank" rel="noopener"
+&gt;https://www.youtube.com/watch?v=nXLnx8ncZyE&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="sed命令"&gt;sed命令
+&lt;/h1&gt;&lt;p&gt;sed据我了解是linux中用于替换的一个命令。&lt;/p&gt;
+&lt;h1 id="使用方法"&gt;使用方法
+&lt;/h1&gt;&lt;p&gt;仅替换第一次出现的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 把a.txt中的 abc 换成 def 并打印出来。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed &amp;#39;s/abc/def/&amp;#39; a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 把a.txt中的 abc 换成 def ，替换到源文件内
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &amp;#39;s/abc/def/&amp;#39; a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 使用/之外的分隔符也可以搜索,只要你把分隔符放在s后面，比如这里用英文点号
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &amp;#39;s.abc.def.&amp;#39; a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;替换所有出现的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 把a.txt中的 abc 换成 def 并打印出来。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed &amp;#39;s/abc/def/g&amp;#39; a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Tar的用法、常见的linux压缩解包方法</title><link>https://b.cornradio.org/p/tar%E7%9A%84%E7%94%A8%E6%B3%95%E5%B8%B8%E8%A7%81%E7%9A%84linux%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8C%85%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 22 May 2022 16:45:55 +0800</pubDate><guid>https://b.cornradio.org/p/tar%E7%9A%84%E7%94%A8%E6%B3%95%E5%B8%B8%E8%A7%81%E7%9A%84linux%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8C%85%E6%96%B9%E6%B3%95/</guid><description>&lt;h1 id="常见的linux-压缩解包方法"&gt;常见的linux 压缩解包方法
+&lt;/h1&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gzip xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gunzip xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zcvf 压缩文件名 压缩文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxvf 解压包名 解压文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar jcvf renwolesshel.tar.bz2 打包
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar jxvf renwolesshel.tar.bz2 解压
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;zip -q a.zip a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;unzip a.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -q “安静模式”
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="tar的用法"&gt;tar的用法
+&lt;/h1&gt;&lt;h2 id="打包"&gt;打包
+&lt;/h2&gt;&lt;p&gt;打包（多个文件）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -cf my.tar 1.txt 2.txt 3.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打包（文件夹）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -cf dir1.tar dir1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="看包"&gt;看包
+&lt;/h2&gt;&lt;p&gt;看包/预览包内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -tvf dir1.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="解包"&gt;解包
+&lt;/h2&gt;&lt;p&gt;解包：会自动解压到当前目录的同名文件夹下面&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xf dir1.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;解包（到指定的位置）：解压后会在&lt;code&gt;dir2&lt;/code&gt;里面看到一个&lt;code&gt;dir1&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xf dir1.tar -C dir2/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="tar与文件类型"&gt;tar与文件类型
+&lt;/h1&gt;&lt;p&gt;一般来说 &lt;code&gt;.tar&lt;/code&gt; 就是我们说的打包的包了，用上述命令就可以操作。&lt;/p&gt;
+&lt;p&gt;常见 &lt;code&gt;.tar.gz&lt;/code&gt; 格式，它是打包后又进行了压缩。可以使用 &lt;code&gt;-zxf&lt;/code&gt; 来解压。&lt;/p&gt;
+&lt;p&gt;需要根据自己需要来决定要不要开&lt;code&gt;-v&lt;/code&gt; ，不开的话，解压或者打包的时候系统看起来就像卡住了一样。&lt;/p&gt;
+&lt;h1 id="常用参数解释"&gt;常用参数解释
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;c create 创建&lt;/li&gt;
+&lt;li&gt;x extract 解包&lt;/li&gt;
+&lt;li&gt;v verbose 显示更多废话&lt;/li&gt;
+&lt;li&gt;f file=ARCHIVE 要操作的对象放在f后面&lt;/li&gt;
+&lt;li&gt;z zip 压缩功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="官方的话"&gt;官方的话
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;GNU &amp;rsquo;tar&amp;rsquo; saves many files together into a single tape or disk archive, and can
+restore individual files from the archive.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Examples:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -cf archive.tar foo bar # Create archive.tar from files foo and bar.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -tvf archive.tar # List all files in archive.tar verbosely.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -xf archive.tar # Extract all files from archive.tar.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>自定义ls后各种文件夹的颜色</title><link>https://b.cornradio.org/p/%E8%87%AA%E5%AE%9A%E4%B9%89ls%E5%90%8E%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E9%A2%9C%E8%89%B2/</link><pubDate>Sun, 22 May 2022 16:14:26 +0800</pubDate><guid>https://b.cornradio.org/p/%E8%87%AA%E5%AE%9A%E4%B9%89ls%E5%90%8E%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E9%A2%9C%E8%89%B2/</guid><description>&lt;p&gt;今天用WLS打开windows目录，一片亮瞎眼的绿色，再加上这个复古特效，真的字都看不清了：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h2h94lpkckj30it047q5g.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;在网上搜了一圈修改办法，终于找到一个有用的文章：&lt;a class="link" href="https://sspai.com/post/39499" target="_blank" rel="noopener"
+&gt;在WSL环境下修改文件夹的颜色&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="操作步骤"&gt;操作步骤
+&lt;/h1&gt;&lt;p&gt;回到主目录然后导出（新建）一个.dircolors文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd ~/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dircolors -p &amp;gt; .dircolors
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用vim打开这个新文件（vim可以看见设置的颜色效果，搜索&lt;code&gt;OTHER_WRITABLE&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vim ~/.dircolors
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把颜色修改成你想要的，有前景色、背景色、字体三种东西可以修改，具体的样式数字
+修改好了之后 :wq 保存退出&lt;/p&gt;
+&lt;p&gt;最后用 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 重加载一下bash配置文件即可完成修改了&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2h9h5nahuj30qt0ewgwe.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h1 id="颜色列表"&gt;颜色列表
+&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;这个颜色列表应该在很多程序中都用得到，比如各种输出，他们的颜色应该都是用的同一种映射&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;你可以修改成任何你要字体、前景色、背景色搭配，用&lt;code&gt;;&lt;/code&gt;分开即可&lt;/p&gt;
+&lt;p&gt;例如 &lt;strong&gt;加粗 黑色字 Cyan背景&lt;/strong&gt; = &lt;code&gt;01;30;46&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 字体&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;00&lt;/span&gt; 　　　 //默认
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;01&lt;/span&gt; 　　 　//加粗
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;04&lt;/span&gt; 　 　　//下划线
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;05&lt;/span&gt; 　 　　//闪烁
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;07&lt;/span&gt; 　 　　//反显
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;08&lt;/span&gt; 　 　　//隐藏
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 文字颜色 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;30&lt;/span&gt; — Black //黑色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;31&lt;/span&gt; — Red //红色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;32&lt;/span&gt; — Green //绿色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;33&lt;/span&gt; — Yellow //黄色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;34&lt;/span&gt; — Blue //蓝色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;35&lt;/span&gt; — Magenta //洋红色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;36&lt;/span&gt; — Cyan //蓝绿色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;37&lt;/span&gt; — White //白色
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 背景颜色 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;40&lt;/span&gt; — Black
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;41&lt;/span&gt; — Red
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;42&lt;/span&gt; — Green
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;43&lt;/span&gt; — Yellow
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;44&lt;/span&gt; — Blue
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;45&lt;/span&gt; — Magenta
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;46&lt;/span&gt; — Cyan
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;47&lt;/span&gt; – White
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>chmod的用法</title><link>https://b.cornradio.org/p/chmod%E7%9A%84%E7%94%A8%E6%B3%95/</link><pubDate>Fri, 22 Apr 2022 15:30:54 +0800</pubDate><guid>https://b.cornradio.org/p/chmod%E7%9A%84%E7%94%A8%E6%B3%95/</guid><description>&lt;h1 id="chmod的用法"&gt;chmod的用法
+&lt;/h1&gt;&lt;p&gt;今天我们有一节技术分享，讲的是linux的文件和权限，学到了点有用的。&lt;/p&gt;
+&lt;p&gt;然后由于我自己的一些思考，我就觉得比如我把自己写文件的权限去掉了，这个时候我为什么还能够通过chmod来修改这个文件的权限呢？搞了一会儿chmod搞懂了，分享一下：&lt;/p&gt;
+&lt;h2 id="ls--l看权限"&gt;ls -l：看权限
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h1ijxlim8tj30r30c8gp2.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;这个权限一般是这样的 &lt;code&gt;rwx rwx rwx&lt;/code&gt; 写了三遍是因为它对应着三个家伙的权限，分别是用户（文件拥有者）、组（文件拥有者的朋友们）、还有其他人。&lt;/p&gt;
+&lt;p&gt;linux系统是由文件组成的，文件就像一个物品，他是有归属的，图中&lt;code&gt;me.txt&lt;/code&gt;这个文件就是属于&lt;code&gt;k&lt;/code&gt;的用户的。&lt;/p&gt;
+&lt;p&gt;属于k的意思就是，&lt;code&gt;k&lt;/code&gt;可以对这个文件使用&lt;code&gt;chmod&lt;/code&gt;指令来改变文件的权限，就像你可以决定你的东西是否让别人使用一样。&lt;/p&gt;
+&lt;p&gt;对于文件 r（read）、w（write）、x（Excute）都很好理解，但是目录呢？什么叫执行目录？下面这个表可以参考一下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;-&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;r&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;w&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;x&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;文件&lt;/td&gt;
+&lt;td&gt;读到文件内容&lt;/td&gt;
+&lt;td&gt;修改文件内容&lt;/td&gt;
+&lt;td&gt;执行文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;目录&lt;/td&gt;
+&lt;td&gt;读目录下的文件名&lt;/td&gt;
+&lt;td&gt;修改目录下的文件名&lt;/td&gt;
+&lt;td&gt;进入该目录的权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：要开放目录给任何人浏览时，应该至少也要给予 r-x的权限，w 权限不可随便给&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看了这个表你就能感觉到，目录的权限指的是你能不能看到、修改目录里面的文件名，文件的权限是管文件里的东西（文件的具体内容啥的），懂了这个道理你上面的表也就没有必要记了。&lt;/p&gt;
+&lt;h2 id="修改文件所属"&gt;修改文件所属
+&lt;/h2&gt;&lt;p&gt;修改文件所属就像物品的转让，但是只能由&lt;code&gt;root&lt;/code&gt;强制执行……hhh&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chgrp：修改文件所属用户组
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chown：修改文件拥有者()
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chgrp [-R] &amp;lt;用户组名称&amp;gt; &amp;lt;文件或目录&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; chown [-R] &amp;lt;账号名称:用户组名称&amp;gt; &amp;lt;文件或目录&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; chown [-R] &amp;lt;账号名称&amp;gt; &amp;lt;文件或目录&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="chmod"&gt;chmod
+&lt;/h2&gt;&lt;p&gt;chmod：修改文件的权限&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod [-R] xyz 文件或目录
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;(r:4 w:2 x:1)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod 777 file1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是这种操作多不直观！整几个数字看起来虽然非常极客，但是真的很不人性化。我还是更喜欢这种方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod a=rwx hi.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;a=rwx 意为：all（所有人）=（权限变成）rwx（读写执行）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;a/u/g/o (all/user/group/others)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;=/+/- (设置权限、增加某些权限、减少某些权限)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;k@VM-12-6-ubuntu:~$ ls -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;----rwx--- 1 k k 0 Apr 22 15:24 hi.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;k@VM-12-6-ubuntu:~$ chmod a=rwx hi.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;k@VM-12-6-ubuntu:~$ ls -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-rwxrwxrwx 1 k k 0 Apr 22 15:24 hi.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果用这个方式，看起来直观又容易记忆。&lt;/p&gt;
+&lt;p&gt;附加： SUID：4 SGID：2 SBIT：1&lt;/p&gt;
+&lt;p&gt;比如你要给一个目录的权限本来是774，但是你要给他加上SGID的特殊模式，你就直接赋权限 &lt;code&gt;chmod 2774 dir1&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="高级suidsgidsbit"&gt;高级：SUID、SGID、SBIT
+&lt;/h2&gt;&lt;p&gt;有时候在&lt;code&gt;ls -l&lt;/code&gt;的时候，你还会看到&lt;code&gt;s&lt;/code&gt;、&lt;code&gt;t&lt;/code&gt;这种奇葩的字母，不知为何意，下面就为你解惑。&lt;/p&gt;
+&lt;p&gt;不废话版：&lt;/p&gt;
+&lt;p&gt;符号：s（set xxx ID）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SUID - 执行二进制文件的时候短暂获取文件&lt;strong&gt;所有者&lt;/strong&gt;的权限&lt;/li&gt;
+&lt;li&gt;SGID - 执行二进制文件的时候短暂获取文件&lt;strong&gt;所属组&lt;/strong&gt;的权限&lt;/li&gt;
+&lt;li&gt;SGID - 在某目录下时候短暂获取目录&lt;strong&gt;所属组&lt;/strong&gt;的权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;符号：t （sticky）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELgy1h1ilajxmd0j30n403e3zt.jpg"
+loading="lazy"
+alt="SBIT"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h1illlnlslj30rb03775m.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELgy1h1ilhuem4sj30t902ot9k.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h3 id="suid"&gt;SUID
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;当 &lt;strong&gt;s&lt;/strong&gt; &lt;strong&gt;这个标志出现在文件拥有者的&lt;/strong&gt; &lt;strong&gt;x&lt;/strong&gt; &lt;strong&gt;权限上&lt;/strong&gt;时，例如刚刚提到的 /usr/bin/passwd 这个文件的权限状态:【-rwsr-xr-x】，此时就被称为 Set UID，简称为 SUID 的特殊权限。&lt;/p&gt;
+&lt;p&gt;基本上 SUID 有这样的限制与功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SUID 权限仅对二进制程序 ( binary program ) 有效，不能用在 shell 脚本上；&lt;/li&gt;
+&lt;li&gt;执行者对于该程序需要具有 x 的可执行权限；&lt;/li&gt;
+&lt;li&gt;本权限仅在执行该程序的过程中有效；&lt;/li&gt;
+&lt;li&gt;执行者将具有该程序拥有者 ( owner ) 的权限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;举个例子：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​ Linux 系统中，所有账号的密码都记录在 /etc/shadow 这个文件里面，这个文件的权限为:【&amp;mdash;&amp;mdash;&amp;mdash;- 1 root root】，意思是这个文件仅有 root 可读且仅有 root 可以强制写入而已。既然这个文件仅有 root 可以修改，那么我们一般账号用户能否自行修改自己的密码？一般用户当然可以修改自己的密码。&lt;/p&gt;
+&lt;p&gt;​ 可是明明 /etc/shadow 就不能让一般用户去读写的，为什么一般用户还能够修改这个文件内的密码？这就是 SUID 的功能。&lt;/p&gt;
+&lt;p&gt;借由前面提到的功能说明，我们可以知道：&lt;/p&gt;
+&lt;p&gt;1.一般用户对于 /usr/bin/passwd 这个程序来说是具有 x 的权限，表示一般用户能执行 passwd；&lt;/p&gt;
+&lt;p&gt;2.passwd 的拥有者是 root 这个账号；&lt;/p&gt;
+&lt;p&gt;3.一般用户执行 passwd 的过程中，会【暂时】获得 root 的权限；&lt;/p&gt;
+&lt;p&gt;4./etc/shadow 就可以被一般用户所执行的 passwd 所修改。&lt;/p&gt;
+&lt;p&gt;​ 但如果一般用户使用 cat 去读取 /etc/shadow 时，它能够读取吗？因为 cat 不具有 SUID 的权限，所以一般用户执行【cat /etc/shadow】时，是不能读取 /etc/shadow 的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="sgid"&gt;&lt;strong&gt;SGID&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;与 SUID 不同的是，&lt;strong&gt;SGID&lt;/strong&gt; &lt;strong&gt;可以针对文件或目录来设置&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;除了二进制程序之外，事实上 SGID 也能够用在目录中，这也是非常常见的一种用途。当一个目录设置了 SGID 的权限后，它将具有如下的功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户若对于此目录具有 r 与 x 的权限时，该用户能够进入此目录；&lt;/li&gt;
+&lt;li&gt;用户在此目录下的有效用户组 (effective group) 将会变成该目录的用户组；&lt;/li&gt;
+&lt;li&gt;用途：若用户在此目录下具有 w 的权限(可以新建文件)，则用户所建立的新文件，该新文件的用户组与此目录的用户组相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="sbit"&gt;&lt;strong&gt;SBIT&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Sticky Bit ( SBIT ) 只针对目录有效&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SBIT 对于目录的作用是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当用户对于此目录具有 w、x 权限，即具有写入的权限；&lt;/li&gt;
+&lt;li&gt;当用户在该目录下建立文件或目录时，仅有自己与 root 才有权力删除该文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;举例:&lt;/p&gt;
+&lt;p&gt;我们的 /tmp 本身的权限是【drwxrwxrwt】，在这样的权限内容下，任何人都可以在 /tmp 内新增、修改文件，但仅有该文件或目录建立者与 root 能够删除自己的目录或文件。&lt;/p&gt;
+&lt;/blockquote&gt;</description></item></channel></rss>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>V2ray on</title><link>https://b.cornradio.org/tags/v2ray/</link><description>Recent content in V2ray on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Aug 2023 00:08:50 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/v2ray/index.xml" rel="self" type="application/rss+xml"/><item><title>X-Ui--一款V2ray管理面板</title><link>https://b.cornradio.org/p/x-ui--%E4%B8%80%E6%AC%BEv2ray%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</link><pubDate>Sat, 05 Aug 2023 00:08:50 +0800</pubDate><guid>https://b.cornradio.org/p/x-ui--%E4%B8%80%E6%AC%BEv2ray%E7%AE%A1%E7%90%86%E9%9D%A2%E6%9D%BF/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;credit: &lt;a class="link" href="https://bulianglin.com/archives/nicename.html" target="_blank" rel="noopener"
+&gt;https://bulianglin.com/archives/nicename.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="准备服务器"&gt;准备服务器
+&lt;/h2&gt;&lt;p&gt;服务器：尽量在初始化的时候就选择关闭 &lt;code&gt;ipv6&lt;/code&gt; ，并且选择&lt;code&gt;debian&lt;/code&gt;系统，xui面版有自动绑定到ipv6的坏习惯，并且对&lt;code&gt;centos&lt;/code&gt;支持差。&lt;/p&gt;
+&lt;p&gt;服务器准备好（安装好系统）之后：&lt;code&gt;ping &amp;lt;ip&amp;gt;&lt;/code&gt;，如果不能ping通，删除重新申请。&lt;/p&gt;
+&lt;p&gt;服务器准备好之后可以使用 &lt;a class="link" href="https://termius.com/" target="_blank" rel="noopener"
+&gt;termius&lt;/a&gt; 之类的工具进行ssh连接。&lt;/p&gt;
+&lt;h2 id="安装-x-ui"&gt;安装 x-ui
+&lt;/h2&gt;&lt;p&gt;使用root账户权限执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bash &amp;lt;&lt;span class="o"&gt;(&lt;/span&gt;curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/956bf85bbac978d56c0e319c5fac2d6db7df9564/install.sh&lt;span class="o"&gt;)&lt;/span&gt; 0.3.4.4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建用户，选择端口，我选&lt;code&gt;10000&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="访问管理后台"&gt;访问管理后台
+&lt;/h2&gt;&lt;p&gt;浏览器访问: &lt;code&gt;http://&amp;lt;ip&amp;gt;:10000&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果不能访问，试试关闭服务器的防火墙：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt install ufw
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ufw disable
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;还是不行的话建议查看下 端口开放情况 应该有一条类似下面的行，代表服务器的10000端口已经开放&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ss -nltp
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;LISTEN 0 4096 *:10000 *:* users:((&amp;#34;x-ui&amp;#34;,pid=11270,fd=7))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="新建节点"&gt;新建节点
+&lt;/h2&gt;&lt;p&gt;图形化的，非常简单易用~&lt;/p&gt;
+&lt;p&gt;入站列表-添加入站&lt;/p&gt;
+&lt;h3 id="vmess--ws"&gt;vmess + ws
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;备注：随意
+协议：vmess
+用户：添加一个（加号）
+网络：ws
+路径：复制用户的id头，比如/0349f58b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="vemss-wechat"&gt;vemss wechat
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;备注：随意
+协议：vmess
+用户：添加一个（加号）
+网络：kcp
+伪装：wechat-video
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特点：比ws更快，但是兼容性没ws好&lt;/p&gt;
+&lt;h3 id="vless--vision"&gt;vless + vision
+&lt;/h3&gt;&lt;p&gt;这种方式需要证书，非常麻烦，也不知道有啥好处&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;备注：随意
+协议：vless
+用户：添加一个（加号）
+tls：打开开关
+用户-flow：xtls-rprx-vision
+域名：把ip的点换成 - ，最后面写 .nip.io
+填写：私钥、公钥（需要先申请好证书）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用下面方法申请证书&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#安装证书工具：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl https://get.acme.sh &lt;span class="p"&gt;|&lt;/span&gt; sh&lt;span class="p"&gt;;&lt;/span&gt; apt install socat -y &lt;span class="o"&gt;||&lt;/span&gt; yum install socat -y&lt;span class="p"&gt;;&lt;/span&gt; ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#三种方式任选其中一种，申请失败则更换方式（我测试第三种好用）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#申请证书方式1： &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#申请证书方式2： &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;~/.acme.sh/acme.sh --register-account -m &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RANDOM&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;@chacuo.net&amp;#34;&lt;/span&gt; --server buypass --force --insecure &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server buypass
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#申请证书方式3： &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;~/.acme.sh/acme.sh --register-account -m &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RANDOM&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;@chacuo.net&amp;#34;&lt;/span&gt; --server zerossl --force --insecure &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ~/.acme.sh/acme.sh --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server zerossl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#安装证书：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;~/.acme.sh/acme.sh --install-cert -d 你的域名 --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;证书安装好之后，命令行会提示&lt;strong&gt;证书所在位置&lt;/strong&gt;，cert是私钥，CA是公钥，把他们的路径写进x-ui的节点里面即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Fri Aug 4 03:34:09 PM UTC 2023] Your cert is in: /root/.acme.sh/你的域名_ecc/你的域名.cer
+[Fri Aug 4 03:34:09 PM UTC 2023] Your cert key is in: /root/.acme.sh/你的域名_ecc/你的域名.key
+[Fri Aug 4 03:34:09 PM UTC 2023] The intermediate CA cert is in: /root/.acme.sh/你的域名_ecc/ca.cer
+[Fri Aug 4 03:34:09 PM UTC 2023] And the full chain certs is there: /root/.acme.sh/你的域名_ecc/fullchain.cer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="一些错误"&gt;一些?错误
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;我发现在点击 x-ui 的&lt;code&gt;设置&lt;/code&gt;之后，整个页面将会变得无法访问，一直显示404.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;临时解决方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;命令行输入：x-ui 进入管理脚本
+选择功能 5. 重置面板设置
+选择功能 6. 设置面板端口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;两个都执行完毕后就能恢复正常了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;仔细研究之后发现，他是在你访问设置界面时候，会自动给你生成新的url如：&lt;code&gt;http://&amp;lt;ip&amp;gt;:10000/1XiH/xui/&lt;/code&gt; ， 这个&lt;code&gt;1XiH&lt;/code&gt; 是随机生成的，以后这个url才能访问面板，直接访问&lt;code&gt;ip:端口&lt;/code&gt;会显示404，算是一种保护。&lt;/p&gt;
+&lt;h2 id="配置https证书"&gt;配置https证书
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;为啥要配置https证书：&lt;/p&gt;
+&lt;p&gt;因为x-ui默认http直连，在网络中明文传输，如果有有心之人抓包玩，完全可以看到了你的账号、密码、面板url和端口号，那你的面板就临被盗的危险。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果你完成了上面的 &lt;code&gt;vless + vision&lt;/code&gt; 的配置，那么你就有https证书了。&lt;/p&gt;
+&lt;p&gt;位置在这个文件夹里面：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在x-ui面板-设置中填写下面两个东西：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;证书公钥文件路径：/root/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc/&amp;lt;ip&amp;gt;.nip.io.cer
+证书私钥文件路径：/root/.acme.sh/&amp;lt;ip&amp;gt;.nip.io_ecc/&amp;lt;ip&amp;gt;.nip.io.key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;配置之后浏览器会提示“不安全”，因为这个证书是自己生成的，不是权威机构颁发的，所以浏览器会提示不安全，但是不影响使用，也不影响加密效果。&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>V2ray自建--客户端工具的选择</title><link>https://b.cornradio.org/p/v2ray%E8%87%AA%E5%BB%BA--%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%9A%84%E9%80%89%E6%8B%A9/</link><pubDate>Fri, 04 Aug 2023 20:23:18 +0800</pubDate><guid>https://b.cornradio.org/p/v2ray%E8%87%AA%E5%BB%BA--%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%9A%84%E9%80%89%E6%8B%A9/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;之前写过一篇文章，使用azure的服务器搭建v2ray节点，但是白嫖结束之后我就没再用了，最近又开始用了起来（因为机场的节点真的非常“脏”很多网站都没法正常看了）。
+但是我发现clash的客户端对于我这个自建脚本的支持真的非常捉鸡，我又开始找其他的客户端了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="前情提要"&gt;前情提要
+&lt;/h2&gt;&lt;p&gt;这个一键脚本功能蛮少的，也不能配置域名啥的，但是他是一键的……&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -i
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bash &amp;lt;(curl -s -L https://git.io/v2ray-setup.sh)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确认状态&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;v2ray status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动一下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;v2ray start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生成 vmess 二维码、链接&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;v2ray qr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="客户端"&gt;客户端
+&lt;/h2&gt;&lt;p&gt;下载客户端要连接github，先挂个代理确保网速。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ios : shadowrocket 直接扫码&lt;/li&gt;
+&lt;li&gt;android : &lt;a class="link" href="https://github.com/2dust/v2rayNg/releases" target="_blank" rel="noopener"
+&gt;v2rayNG&lt;/a&gt; ,下载那个最大的，兼容性好。&lt;/li&gt;
+&lt;li&gt;windows : &lt;a class="link" href="https://github.com/2dust/v2rayN/releases/" target="_blank" rel="noopener"
+&gt;v2rayN&lt;/a&gt; ，下载 v2rayN-With-Core.zip&lt;/li&gt;
+&lt;li&gt;macos : &lt;a class="link" href="https://github.com/yanue/V2rayU/releases" target="_blank" rel="noopener"
+&gt;v2rayU&lt;/a&gt; , 自己选x64、arm， cmd + P 从剪切板导入。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>使用Azure自建节点</title><link>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</link><pubDate>Sat, 15 Apr 2023 12:31:55 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</guid><description>&lt;p&gt;Azure注册新账户，会赠送一个月的 200USD 免费额度，如果升级成“即用即付”，则这 200USD 可以延长使用期限到一年。（需要填写自己的信用卡信息）&lt;/p&gt;
+&lt;p&gt;除此之外，还有至少有免费 1个月 的免费 vm 用。 可以在这里查看：&lt;a class="link" href="https://portal.azure.com/#view/Microsoft_Azure_Billing/FreeServicesBlade" target="_blank" rel="noopener"
+&gt;Azure免费服务&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://portal.azure.com/" target="_blank" rel="noopener"
+&gt;注册&lt;/a&gt;，可以用假名字，地址的话选择中国就可以（这个是账单地址，你还是可以用全世界的服务器可用区），但是信用卡是必须的，他会从信用卡里取两次 1$ 来验证你是不是真人。&lt;/p&gt;
+&lt;p&gt;注意别搞错了 &lt;code&gt;Azure&lt;/code&gt; 和 &lt;code&gt;Azure 世纪互联运营 &lt;/code&gt; 第二个是国内专版的……&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133957.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133859.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="创建虚拟机"&gt;创建虚拟机
+&lt;/h2&gt;&lt;p&gt;随便创建一个先：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124249.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;这里决定你的 vm ip 位置
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124356.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;这里要选B1s，它有一个月免费额度。并且是最便宜的，而且足够了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124505.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;起一个用户名，还有密钥文件名，这个密钥是用来登录 vm 的（用户名 + pem文件登陆，不用密码），一会儿创建的时候Azure会让你下载。&lt;/p&gt;
+&lt;p&gt;保存好，这个文件只能下载一次。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124622.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;磁盘选64G，因为30G收费，64有两块的免费额度。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124813.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;网络方面保持默认设置，但是这里要打勾，方便到时候删除vm的时候把相关的资源一同删除。Azure的ip、磁盘、网络等都是分开收费的，删除时候记得检查。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124906.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后就是创建了，看看价格大概是 1 CNY / h，但是不用担心，我们还有 200 USD 免费额度呢。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415125123.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="开启安全组"&gt;开启安全组
+&lt;/h2&gt;&lt;p&gt;服务器安全组是一种在服务器外部的防火墙，可以控制服务器的入站和出站流量。&lt;/p&gt;
+&lt;p&gt;默认情况下，azure仅开启22端口，只有在安全组中打开端口后，才能访问其他端口。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在这里添加一个入站规则，允许所有端口的流量进入（源端口和目标端口都设置&lt;code&gt;*&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;（这不安全，但是这很简单）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415132408.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="远程登录vm"&gt;远程登录vm
+&lt;/h2&gt;&lt;p&gt;在Azure虚拟机管理找到vm的ip&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415130912.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;如过是mac系统下载的key，权限会不对，需要修改一下，让group 和 other 没有读取的权限，否则无法远程到服务器。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ ll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-rw-r--r--@ &lt;span class="m"&gt;1&lt;/span&gt; kasusa staff 2.4K Apr &lt;span class="m"&gt;15&lt;/span&gt; 12:52 myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ chmod &lt;span class="m"&gt;600&lt;/span&gt; myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ ll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-rw-------@ &lt;span class="m"&gt;1&lt;/span&gt; kasusa staff 2.4K Apr &lt;span class="m"&gt;15&lt;/span&gt; 12:52 myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="ssh"&gt;ssh
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -i myub2_key.pem azureuser@&amp;lt;your_ip&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;用root权限 跑一键脚本（会自动安装v2ray、关闭防火墙、配置好然后给你一个 vmess link）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -i
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bash &amp;lt;(curl -s -L https://git.io/v2ray-setup.sh)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;跑好了一件脚本，会自动开始运行，可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray status&lt;/code&gt; 确认状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray start&lt;/code&gt; 启动一下&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;按照下面的例子找一个自己能导入的链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray link&lt;/code&gt; 生成一个json格式的东东&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray qr&lt;/code&gt; 生成 vmess 二维码、链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray ssqr&lt;/code&gt; 生成 ss 二维码、链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于ios用户：小火箭能导入单个vmess节点，Qx不支持vmess，需要生成一个ss节点再导入。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;v2ray ssqr 命令执行结果如下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二维码可以直接扫一扫（我这个缺失定位点你扫不了的），然后下面的 link 前半部份是他们的网址，后半部份 &lt;code&gt;ss://&lt;/code&gt; 开头的就是你的节点了(他们是指 &lt;a class="link" href="https://git.io/v2ray-setup.sh" target="_blank" rel="noopener"
+&gt;一键脚本&lt;/a&gt; 的作者)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133228.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;可以通过下面的网址，把ss节点连接转换成 clash 的 yaml 文件。&lt;/p&gt;
+&lt;p&gt;转换订阅链接 &lt;a class="link" href="https://v2rayse.com/node-convert/" target="_blank" rel="noopener"
+&gt;https://v2rayse.com/node-convert/&lt;/a&gt; （他声称自己采用纯前段转换）&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Iterm on</title><link>https://b.cornradio.org/tags/iterm/</link><description>Recent content in Iterm on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 25 Mar 2023 11:28:25 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/iterm/index.xml" rel="self" type="application/rss+xml"/><item><title>Iterm 调教（快捷键和主题）</title><link>https://b.cornradio.org/p/iterm-%E8%B0%83%E6%95%99%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%B8%BB%E9%A2%98/</link><pubDate>Sat, 25 Mar 2023 11:28:25 +0800</pubDate><guid>https://b.cornradio.org/p/iterm-%E8%B0%83%E6%95%99%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%B8%BB%E9%A2%98/</guid><description>&lt;p&gt;Iterm 是广为流传的mac超强终端模拟器，
+下载 &lt;a class="link" href="https://iterm2.com/" target="_blank" rel="noopener"
+&gt;iterm2&lt;/a&gt;｜
+&lt;a class="link" href="https://iterm2colorschemes.com/" target="_blank" rel="noopener"
+&gt;iterm2colorschemes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本篇主要包括 常用操作、分屏模式、快捷键配置、主题下载和安装&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;快捷键提示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;终端常见的导航快捷键
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + e 到行末尾
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + a 到行首
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + u 删除到行首
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + k 删除到行末
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ctrl + w 删除到单词首
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="why-iterm2"&gt;why iterm2
+&lt;/h2&gt;&lt;p&gt;看看官方推荐自己的理由： &lt;a class="link" href="https://iterm2.com/features.html" target="_blank" rel="noopener"
+&gt;https://iterm2.com/features.html&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;opt + 点击 移动到指定光标位置&lt;/li&gt;
+&lt;li&gt;esc + 退格键 = 删除整个单词&lt;/li&gt;
+&lt;li&gt;有 雷电模式(自定义shortcut)&lt;/li&gt;
+&lt;li&gt;有 分屏模式（cmd + d 纵向 / cmd + shift + d 横向 / cmd + w 关闭分屏）&lt;/li&gt;
+&lt;li&gt;补全功能（cmd + ;）&lt;/li&gt;
+&lt;li&gt;搜索功能（cmd + f 大多数终端模拟器都不能搜索………）&lt;/li&gt;
+&lt;li&gt;replay 功能 (可以回去找之前错过的输出 opt + cmd + b)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="设置"&gt;设置
+&lt;/h2&gt;&lt;h3 id="opt--方向键"&gt;opt + 方向键
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;打错命令和修改命令非常常见，如果不能以单词为单位来移动那可太慢了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;目标是： opt + 左右 = 移动光标一个单词的距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个功能在mac的terminal可以这样打开：&lt;/p&gt;
+&lt;h4 id="terminal中打开"&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325115105.png"
+loading="lazy"
+alt="terminal中打开"
+&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;为了使用这个功能，我已经看了很多的教程，但是他们大部分都有问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在&lt;code&gt;iterm&lt;/code&gt;中按下 cmd + i ，打开“迷你版”偏好设置，然后选择 Keys -&amp;gt; Presets ， 选择 &lt;code&gt;Terminal.app Compatiblility&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325114647.png"
+loading="lazy"
+alt="选择preset"
+&gt;&lt;/p&gt;
+&lt;h3 id="雷电命令行"&gt;雷电命令行
+&lt;/h3&gt;&lt;p&gt;效果图
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325113854.png"
+loading="lazy"
+alt="效果图"
+&gt;&lt;/p&gt;
+&lt;p&gt;点击 Create a dedicated Hotkey Window…&lt;/p&gt;
+&lt;p&gt;我设置成了 ctrl + cmd + shift + T&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325113800.png"
+loading="lazy"
+alt="kuaijiejian"
+&gt;&lt;/p&gt;
+&lt;h2 id="主题"&gt;主题
+&lt;/h2&gt;&lt;p&gt;首先，解决他的不协调的标题栏。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;默认的标题栏是和系统颜色一致的，iterm还提供了一个自动匹配主题背景的minimal标题栏&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325120537.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325120007.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;主题 下载地址在这里,
+&lt;a class="link" href="https://iterm2colorschemes.com/" target="_blank" rel="noopener"
+&gt;iterm2colorschemes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载之后解压，里面只有一个文件夹（schemes）是相关的：其他文件夹里面都是很奇怪的东西。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325115451.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;打开iterm2，点击 Preferences -&amp;gt; Profiles -&amp;gt; Colors -&amp;gt; Color Presets -&amp;gt; Import （可以全选导入）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325121228.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="分屏模式"&gt;分屏模式
+&lt;/h2&gt;&lt;p&gt;（cmd + d 纵向 / cmd + shift + d 横向 / cmd + w 关闭分屏）
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325123036.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分屏模式可以设置“不活跃”pane的变暗程度
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325123446.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

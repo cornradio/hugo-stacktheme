@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mp3 on</title><link>https://b.cornradio.org/tags/mp3/</link><description>Recent content in Mp3 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 15 Apr 2023 12:17:42 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/mp3/index.xml" rel="self" type="application/rss+xml"/><item><title>Mp3tag--给下载的无图音乐增加专辑图</title><link>https://b.cornradio.org/p/mp3tag--%E7%BB%99%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%97%A0%E5%9B%BE%E9%9F%B3%E4%B9%90%E5%A2%9E%E5%8A%A0%E4%B8%93%E8%BE%91%E5%9B%BE/</link><pubDate>Sat, 15 Apr 2023 12:17:42 +0800</pubDate><guid>https://b.cornradio.org/p/mp3tag--%E7%BB%99%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%97%A0%E5%9B%BE%E9%9F%B3%E4%B9%90%E5%A2%9E%E5%8A%A0%E4%B8%93%E8%BE%91%E5%9B%BE/</guid><description>&lt;h2 id="yt-dlp"&gt;yt-dlp
+&lt;/h2&gt;&lt;p&gt;下载 youtube 的命令行工具有：you-get， youtube-dl, yt-dlp&lt;/p&gt;
+&lt;p&gt;yt-dlp 是目前最好用的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;yt-dlp --extract-audio --audio-format mp3 &amp;lt;video-url&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是下载的源文件咩有专辑封面图（都是无图mp3）&lt;/p&gt;
+&lt;h2 id="mp3tag"&gt;mp3tag
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://www.mp3tag.de/en/download.html" target="_blank" rel="noopener"
+&gt;https://www.mp3tag.de/en/download.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;mp3tag 是一个用于编辑MP3文件标签的图形化工具，windows版本免费，mac版本&lt;code&gt;20$&lt;/code&gt; ,所以我选择命令行平替工具。&lt;/p&gt;
+&lt;h2 id="eyed3"&gt;eyeD3
+&lt;/h2&gt;&lt;p&gt;eyeD3 是一个用于编辑MP3文件标签的命令行工具，它可以显示、编辑MP3文件的标签信息。&lt;/p&gt;
+&lt;p&gt;eyeD3&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;显示MP3文件的标签信息：eyeD3 filename.mp3&lt;/li&gt;
+&lt;li&gt;设置MP3文件的标题：eyeD3 &amp;ndash;title=&amp;ldquo;New Title&amp;rdquo; filename.mp3&lt;/li&gt;
+&lt;li&gt;设置MP3文件的艺术家名称：eyeD3 &amp;ndash;artist=&amp;ldquo;New Artist&amp;rdquo; filename.mp3&lt;/li&gt;
+&lt;li&gt;设置MP3文件的专辑名称：eyeD3 &amp;ndash;album=&amp;ldquo;New Album&amp;rdquo; filename.mp3&lt;/li&gt;
+&lt;li&gt;设置MP3文件的专辑封面: eyeD3 &amp;ndash;add-image=cover.jpg:FRONT_COVER filename.mp3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;添加专辑图的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;eyeD3 --add-image&lt;span class="o"&gt;=&lt;/span&gt;cover.jpg:FRONT_COVER filename.mp3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

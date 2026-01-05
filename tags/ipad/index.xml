@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ipad on</title><link>https://b.cornradio.org/tags/ipad/</link><description>Recent content in Ipad on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 21 Apr 2023 16:56:54 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/ipad/index.xml" rel="self" type="application/rss+xml"/><item><title>Ipad看哔咔哔咔</title><link>https://b.cornradio.org/p/ipad%E7%9C%8B%E5%93%94%E5%92%94%E5%93%94%E5%92%94/</link><pubDate>Fri, 21 Apr 2023 16:56:54 +0800</pubDate><guid>https://b.cornradio.org/p/ipad%E7%9C%8B%E5%93%94%E5%92%94%E5%93%94%E5%92%94/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;23-4-21 &lt;a class="link" href="https://altstore.io/" target="_blank" rel="noopener"
+&gt;https://altstore.io/&lt;/a&gt; 这个是一个更好用的自签名方法，主要是可以不用7天重装，在手机上可以进行自签名更新&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是官方的教程： &lt;a class="link" href="https://image.baidu.com/search/down?url=https://download.picacn.xyz/page/ios-tip-simplified.php" target="_blank" rel="noopener"
+&gt;IOS下载-PicAcg-哔咔漫画下载 (picacn.xyz)&lt;/a&gt;，这里是他们下载的官网：&lt;a class="link" href="https://image.baidu.com/search/down?url=https://download.picacn.xyz/" target="_blank" rel="noopener"
+&gt;PicAcg-哔咔漫画下载 (picacn.xyz)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前看来主要有两种办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自签名，用电脑安装&lt;/li&gt;
+&lt;li&gt;看网页版：https://ios.bikaa.xyz/&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我讲一下怎么用PC安装吧&lt;/p&gt;
+&lt;h1 id="下载itunes"&gt;下载itunes
+&lt;/h1&gt;&lt;p&gt;下载了这个软件你的ipad才能被电脑识别。&lt;/p&gt;
+&lt;p&gt;可以在微软商店直接搜索&lt;code&gt;itunes&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELly1h0s44wqbfrj311q0nhdss.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;然后你可能要多插拔几次ipad，点击信任输入密码，直到它连上了为止。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELly1h0s46k0zo1j30uk0k5dla.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h1 id="签名工具和下载"&gt;签名工具和下载
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="http://picawiki.xyz/164/" target="_blank" rel="noopener"
+&gt;sideloadly安裝ios 嗶咔IPA – PICA Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个网站里面是签名的教程，里面也有个工具下载链接，123MB&lt;/p&gt;
+&lt;h1 id="安装程序"&gt;安装程序
+&lt;/h1&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELly1h0s4gt984hj30gq0710u3.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确保设备已经识别&lt;/li&gt;
+&lt;li&gt;输入自己的apple账号&lt;/li&gt;
+&lt;li&gt;点击start&lt;/li&gt;
+&lt;li&gt;输入自己的appleid 密码（推荐用没开启两部验证的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="信任自签证书"&gt;信任自签证书
+&lt;/h1&gt;&lt;p&gt;来到ipad上面，进入 通用 - VPN与设备管理&lt;/p&gt;
+&lt;p&gt;里面应该有一个没有信任的开发者证书，信任他。&lt;/p&gt;
+&lt;p&gt;然后你的哔咔就能打开啦！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：签时效只有 7 天，但只有第一次比较麻烦，之后刷新需要重複一遍這個步驟……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不过哔咔都不支持横屏，还不如去看e-h , e-h 可以用一个叫做Yealico的软件看……&lt;/p&gt;</description></item></channel></rss>
