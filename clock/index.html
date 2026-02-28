@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="iosclock.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAI clock</title>
+    <!-- <meta name="referrer" content="no-referrer" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Black+Ops+One&family=Creepster&family=Monoton&family=Orbitron:wght@400;700&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 添加苹果快捷方式图标 -->
+    <!-- <link rel="apple-touch-icon" href="icon.png" /> -->
+    <link rel="apple-touch-icon" href="iosclock.png" />
+    <!-- 开启全屏显示（以 App 模式运行） -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="bg.jpg">
+    <!-- APP 模式下，顶部空白处的颜色,可选为 default black black-translucent , default 使用 body 的背景色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!--  App 名称，在用户选择添加到主页的时候这个名字会自动蹦出来 -->
+    <meta name="apple-mobile-web-app-title" content="kasusa Clock">
+    <style>
+        .hide {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            min-width: 200px;
+            max-width: 90vw;
+        }
+
+        .menu-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 5px;
+        }
+
+        .menu-list button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 6px 8px;
+            font-family: 'Odibee Sans', sans-serif;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 150px;
+        }
+
+        .menu-list button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .menu-list button:active {
+            transform: scale(0.98);
+        }
+
+        .menu-list .divider {
+            grid-column: 1 / -1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+
+        .menu-list a {
+            text-decoration: none;
+        }
+
+        .menu-list button i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* 暗色主题适配 */
+        body.dark-theme .hide {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-theme .menu-list button{
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .menu-button {
+            color: #797979;
+            background: rgba(255, 255, 255, 0.05);
+            border: 0px ;
+            font-size: 16px;
+        }
+
+        body.dark-theme .menu-list button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 600px) {
+            .menu-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 601px) {
+            .menu-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .color-picker-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-picker-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 6px 8px;
+            font-family: 'Odibee Sans', sans-serif;
+            font-size: 16px;
+            color: #252525;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 150px;
+        }
+        .color-picker-button.dark-theme {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 6px 8px;
+            font-family: 'Odibee Sans', sans-serif;
+            font-size: 16px;
+            color: #f8f8f8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 150px;
+        }
+
+        .color-picker-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .color-picker-button:active {
+            transform: scale(0.98);
+        }
+
+        .color-picker {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+        }
+
+        /* 自定义 select 样式 */
+        select.color-picker {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 150px;
+            height: 30px;
+            opacity: 1;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 0 10px;
+            font-family: 'Odibee Sans', sans-serif;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select.color-picker:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        select.color-picker:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        body.dark-theme select.color-picker {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-theme select.color-picker:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 自定义 select 箭头样式 */
+        select.color-picker {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+        }
+
+
+
+        body {
+            background: rgb(218, 218, 218);
+            /* background: black; */
+        }
+
+        /* 黑色主题 */
+
+        .clock-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: #17D4FE;
+            font-size: 60px;
+            font-family: Odibee Sans;
+            letter-spacing: 7px;
+        }
+
+        .clock-2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: #000000;
+            font-size: 60px;
+            font-family: Odibee Sans;
+            letter-spacing: 7px;
+            text-shadow: 0 0 10px #0000008a;
+        }
+
+        .clock-3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: #272727;
+            font-size: 60px;
+            font-family: 'Odibee Sans';
+            letter-spacing: 7px;
+        }
+
+        /* 黑客帝国主题 */
+        .clock-5 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: #30ff30;
+            font-size: 60px;
+            font-family: 'Odibee Sans';
+            letter-spacing: 7px;
+            /* animation: matrixGlow 2s ease-in-out infinite alternate; */
+        }
+
+        @keyframes matrixGlow {
+            from {
+                text-shadow: 0 0 2px #00ff00, 0 0 2px #2556c0, 0 0 3px #4a4e4a;
+            }
+            to {
+                text-shadow: 0 0 4px #00ff00, 0 0 5px #00ff00, 0 0 4px #00ff00;
+            }
+        }
+
+        /* 彩虹主题 */
+        .clock-6 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: 'Odibee Sans';
+            letter-spacing: 7px;
+            background: linear-gradient(45deg, #00ff00, #00ffff,  #8000ff, #ff00ff,#ff8000,#ff0000);
+            background-size: 100% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* 狂野大镖客主题 */
+        .clock-7 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 7px;
+            color: #8B0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 吸血鬼主题 */
+        .clock-8 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 7px;
+            color: #000; /* 浅粉色 */
+            
+            text-shadow:-1px 0em 9px #ff0000; 
+            /* text-shadow:18px 0em 34px #fa3b9a, -7px -4px 54px #311edd;  */
+        }
+
+        /* 黑板主题 */
+        .clock-9 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: 'Fredericka the Great', cursive;
+            letter-spacing: 7px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 日期显示样式 */
+        .date-display {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Odibee Sans', sans-serif;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .date-display.show {
+            opacity: 1;
+        }
+
+        .weather-display {
+            position: fixed;
+            top: 10px;
+            font-family: 'Odibee Sans', sans-serif;
+            /* font-family:  'Audiowide', system-ui; */
+            right: 10px;
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weather-display.show {
+            opacity: 1;
+        }
+
+        .weather-icon {
+            font-size: 24px;
+            color: inherit;
+        }
+
+        body.dark-theme .date-display {
+            color: #ffffff93;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-theme .weather-display {
+            color: #ffffff93;
+            background: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script src="NoSleep.js"></script>
+
+</head>
+
+<body>
+    <div id="MyClockDisplay" class="clock-2" onload="showTime()">
+    </div>
+    <div id="dateDisplay" class="date-display"></div>
+    <div id="weatherDisplay" class="weather-display">
+        <i class="fa-solid fa-cloud-sun weather-icon" id="weatherIcon"></i>
+        <span id="weatherText">加载中...</span>
+    </div>
+
+    <button class="menu-button" onclick="toggleMenu()" title="设置">
+        <i class="fas fa-cog"></i>
+    </button>
+    <div class="hide" id="menuPanel">
+        <div class="menu-list">
+            <button onclick="theme3()"><i class="fas fa-palette"></i>雅灰</button>
+            <!-- <button onclick="theme2()"><i class="fas fa-sun"></i>纸白</button> -->
+            <button onclick="theme1()"><i class="fas fa-moon"></i>夜光</button>
+            <button onclick="theme4()"><i class="fas fa-eye-slash"></i>隐匿</button>
+            <button onclick="theme5()"><i class="fas fa-code"></i>黑客帝国</button>
+            <button onclick="theme6()"><i class="fas fa-rainbow"></i>彩虹RGB</button>
+            <button onclick="theme7()"><i class="fas fa-hat-cowboy"></i>大镖客</button>
+            <button onclick="theme8()"><i class="fas fa-robot"></i>吸血鬼</button>
+            <button onclick="theme9()"><i class="fas fa-chalkboard"></i>黑板</button>
+
+            <div class="divider"></div>
+            <button onclick="openFullscreen()"><i class="fas fa-expand"></i>全屏</button>
+            <button id="coffeebtn" onclick="coffee()"><i class="fas fa-coffee"></i>常亮</button>
+
+            <!-- <button onclick="fontsizeIncrease()"><i class="fas fa-text-height"></i>大字</button>
+            <button onclick="fontsizeDecrease()"><i class="fas fa-text-width"></i>小字</button> -->
+            <div class="color-picker-container">
+                <label class="color-picker-button" for="fontSelect">
+                    <i class="fas fa-font"></i>
+                <select id="fontSelect" class="color-picker">
+                    <option value="'Odibee Sans', sans-serif">默认字体</option>
+                    <option value="'Noto Sans Symbols'">普通字体</option>
+                    <option value="'Audiowide', system-ui">床头广播</option>
+                    <option value="'Monoton', cursive">霓虹灯</option>
+                    <option value="'Black Ops One', cursive">军事</option>
+                    <option value="'Special Elite', cursive">打字机</option>
+                    <option value="'Silkscreen', cursive">像素点</option>
+                    <option value="'Doto'">LED矩阵</option>
+                    <option value="'Rye'">哥特</option>
+                    <option value="'Rampart One'">3D</option>
+                    <option value="'Patrick Hand SC'">加拿大手写</option>
+                    <option value="'Bigshot One', serif">飞机头</option>
+                    <option value="'Fredericka the Great'">黑板报</option>
+                    <option value="'Rubik Scribble', serif">空心粉</option>
+                    <option value="'Bungee Spice', sans-serif">动漫橘</option>
+                    <option value="'Honk'">街机</option>
+                </select>
+            </label>
+            </div>
+            <div class="color-picker-container">
+                <label class="color-picker-button" for="fontSizeSelect">
+                    <i class="fas fa-text-height"></i>
+                <select id="fontSizeSelect" class="color-picker">
+                    <option value="60px">默认大小</option>
+                    <option value="10vw">小号</option>
+                    <option value="15vw">中号</option>
+                    <option value="17vw">有点大号</option>
+                    <option value="19vw">大号</option>
+                    <option value="25vw">超大号</option>
+                    <option value="30vw">巨无霸</option>
+                </select>
+            </label>
+            </div>
+            <div class="divider"></div>
+            <button onclick="openColorPicker()"><i class="fas fa-paint-brush"></i>时钟颜色</button>
+            <input type="color" class="color-picker" id="clockColorPicker" value="#000000" title="选择时钟颜色" style="display: none;">
+            <button onclick="toggleDate()"><i class="fas fa-calendar"></i>时间日期</button>
+            <button onclick="toggleWeather()"><i class="fas fa-cloud-sun"></i>天气显示</button>
+            <button onclick="changeWeatherLocation()"><i class="fas fa-map-marker-alt"></i>天气位置</button>
+            <button onclick="openPomodoro()"><i class="fas fa-clock"></i>番茄钟</button>
+
+            <button style="color: #ff9696;" onclick="toggleMenu()"><i class="fas fa-xmark"></i> 关闭菜单</button>
+        </div>
+    </div>
+
+    <script>
+        var noSleep = new NoSleep();
+        let coffeeOn = false;
+        let menuOpen = false;
+
+        function toggleMenu() {
+            const menuPanel = document.getElementById("menuPanel");
+            menuOpen = !menuOpen;
+            menuPanel.style.display = menuOpen ? "block" : "none";
+            localStorage.setItem('menuState', menuOpen ? 'open' : 'closed');
+        }
+
+        // 页面加载时恢复设置
+        window.onload = function() {
+            // 恢复菜单状态
+            const savedMenuState = localStorage.getItem('menuState');
+            if (savedMenuState === 'open') {
+                toggleMenu();
+            }
+
+            // 恢复主题
+            const savedTheme = localStorage.getItem('clockTheme');
+            if (savedTheme) {
+                const themeFunc = window[savedTheme];
+                if (themeFunc) themeFunc();
+            }
+
+            // 恢复字体大小
+            const savedFontSize = localStorage.getItem('clockFontSize');
+            if (savedFontSize && savedFontSize !== 'large' && savedFontSize !== 'small') {
+                document.getElementById('MyClockDisplay').style.fontSize = savedFontSize;
+                document.getElementById('fontSizeSelect').value = savedFontSize;
+            }
+
+            // 恢复常亮模式
+            const savedCoffee = localStorage.getItem('coffeeMode');
+            if (savedCoffee === 'true') {
+                coffee();
+            }
+
+            // 恢复时钟颜色
+            const savedColor = localStorage.getItem('clockColor');
+            if (savedColor) {
+                document.getElementById('MyClockDisplay').style.color = savedColor;
+                document.getElementById('clockColorPicker').value = savedColor;
+            }
+
+            // 恢复字体设置
+            const savedFont = localStorage.getItem('clockFont');
+            if (savedFont) {
+                document.getElementById('MyClockDisplay').style.fontFamily = savedFont;
+                document.getElementById('fontSelect').value = savedFont;
+            }
+
+            // 恢复日期显示状态
+            const savedDateDisplay = localStorage.getItem('dateDisplay');
+            if (savedDateDisplay === 'show') {
+                document.getElementById('dateDisplay').classList.add('show');
+                updateDate();
+            }
+
+            // 恢复天气显示状态
+            const savedWeatherDisplay = localStorage.getItem('weatherDisplay');
+            if (savedWeatherDisplay === 'show') {
+                document.getElementById('weatherDisplay').classList.add('show');
+                getWeatherByCity(currentCity);
+            }
+
+            // 每秒更新日期显示
+            setInterval(updateDate, 1000);
+
+            // 每分钟更新天气
+            setInterval(() => {
+                if (document.getElementById('weatherDisplay').classList.contains('show')) {
+                    getWeatherByCity(currentCity);
+                }
+            }, 60 * 1000);
+
+            // 点击修改城市
+            document.getElementById('weatherDisplay').addEventListener('click', () => {
+                const city = prompt("请输入城市名，例如：shanghai、beijing、tokyo、new york");
+                if (city) {
+                    getWeatherByCity(city);
+                }
+            });
+        };
+
+        function coffee() {
+            let btn = document.getElementById("coffeebtn");
+
+            if (coffeeOn == false) {
+                coffeeOn = true;
+                btn.style.color = "#A4C739";
+                noSleep.enable();
+                localStorage.setItem('coffeeMode', 'true');
+            } else {
+                coffeeOn = false;
+                btn.style.color = "#fff";
+                noSleep.disable();
+                localStorage.setItem('coffeeMode', 'false');
+            }
+        };
+
+        function showTimeampm() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+        }
+
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+
+
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+        }
+
+        function theme1() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-1";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Audiowide', system-ui"; // 设置默认字体为床头广播
+            let body = document.body;
+            body.style.backgroundColor = "#000";
+            body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme1');
+            localStorage.setItem('clockFont', "'Audiowide', system-ui"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme2() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-2";
+            d.style.color = ""; // 重置自定义颜色
+            let body = document.body;
+            body.style.backgroundColor = "#fff";
+            body.classList.remove('dark-theme');
+            // 移除所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.remove('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme2');
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme3() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-2";
+            d.style.color = ""; // 重置自定义颜色
+            document.body.style.backgroundColor = "rgb(241 239 239)";
+            document.body.classList.remove('dark-theme');
+            // 移除所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.remove('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme3');
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme4() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-3";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Bigshot One', serif"; // 设置默认字体为飞机头
+            document.body.style.backgroundColor = "#000";
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme4');
+            localStorage.setItem('clockFont', "'Bigshot One', serif"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme5() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-5";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Silkscreen', cursive"; // 设置默认字体为像素点
+            document.body.style.backgroundColor = "#000";
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme5');
+            localStorage.setItem('clockFont', "'Silkscreen', cursive"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme6() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-6";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Rampart One'"; // 设置默认字体为3D
+            document.body.style.backgroundColor = "#000";
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme6');
+            localStorage.setItem('clockFont', "'Rampart One'"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme7() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-7";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Special Elite'";
+            document.body.style.backgroundColor = "#F5E6D3"; // 旧报纸黄色
+            document.body.classList.remove('dark-theme');
+            // 移除所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.remove('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme7');
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme8() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-8";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Rye'"; // 设置默认字体为哥特
+            document.body.style.backgroundColor = "#000"; // 黑色背景
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme8');
+            localStorage.setItem('clockFont', "'Rye'"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        function theme9() {
+            let d = document.getElementById("MyClockDisplay");
+            d.className = "clock-9";
+            d.style.color = ""; // 重置自定义颜色
+            d.style.fontFamily = "'Fredericka the Great'"; // 设置默认字体为黑板报
+            document.body.style.backgroundColor = "rgb(62 84 64)"; // 墨绿色背景
+            document.body.classList.add('dark-theme');
+            // 更新所有按钮的暗色主题
+            document.querySelectorAll('.color-picker-button').forEach(button => {
+                button.classList.add('dark-theme');
+            });
+            localStorage.setItem('clockTheme', 'theme9');
+            localStorage.setItem('clockFont', "'Fredericka the Great'"); // 保存字体设置
+            localStorage.removeItem('clockColor'); // 清除自定义颜色设置
+        }
+
+        var elem = document.documentElement;
+
+        function openFullscreen() {
+            // 检测是否为苹果设备
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            if (isIOS) {
+                alert('为了获得最佳全屏体验，请点击分享按钮，然后选择"添加到主屏幕"。这样可以让时钟以应用模式运行，获得真正的全屏效果。');
+                return;
+            }
+
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function fontsizeIncrease() {
+            let clock = document.getElementById("MyClockDisplay");
+            clock.style.setProperty("width", "90%");
+            clock.style.setProperty("font-size", "26vw");
+            clock.style.setProperty("margin", "auto");
+            localStorage.setItem('clockFontSize', 'large');
+        }
+
+        function fontsizeDecrease() {
+            let clock = document.getElementById("MyClockDisplay");
+            clock.style.setProperty("width", "fit-content");
+            clock.style.setProperty("font-size", "60px");
+            clock.style.setProperty("margin", "0");
+            localStorage.setItem('clockFontSize', 'small');
+        }
+
+        // 颜色选择器功能
+        document.getElementById('clockColorPicker').addEventListener('input', function(e) {
+            const color = e.target.value;
+            document.getElementById('MyClockDisplay').style.color = color;
+            localStorage.setItem('clockColor', color);
+        });
+
+        // 字体选择器功能
+        document.getElementById('fontSelect').addEventListener('change', function(e) {
+            const font = e.target.value;
+            document.getElementById('MyClockDisplay').style.fontFamily = font;
+            localStorage.setItem('clockFont', font);
+        });
+
+        // 字体大小选择器功能
+        document.getElementById('fontSizeSelect').addEventListener('change', function(e) {
+            const fontSize = e.target.value;
+            if (fontSize !== '60px') {  // 只在非默认值时应用
+                document.getElementById('MyClockDisplay').style.fontSize = fontSize;
+                localStorage.setItem('clockFontSize', fontSize);
+            } else {
+                document.getElementById('MyClockDisplay').style.fontSize = '';  // 恢复默认
+                localStorage.removeItem('clockFontSize');  // 清除设置
+            }
+        });
+
+        // 日期显示功能
+        function updateDate() {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const weekday = weekdays[date.getDay()];
+            
+            document.getElementById('dateDisplay').textContent = `${year}-${month}-${day} ${weekday}`;
+        }
+
+        function toggleDate() {
+            const dateDisplay = document.getElementById('dateDisplay');
+            dateDisplay.classList.toggle('show');
+            if (dateDisplay.classList.contains('show')) {
+                updateDate();
+                localStorage.setItem('dateDisplay', 'show');
+            } else {
+                localStorage.setItem('dateDisplay', 'hide');
+            }
+        }
+
+        // 打开番茄钟
+        function openPomodoro() {
+            window.open('https://pomofocus.io/', '_blank');
+        }
+
+        // 打开颜色选择器
+        function openColorPicker() {
+            const colorPicker = document.getElementById('clockColorPicker');
+            colorPicker.click();
+        }
+
+        // 天气显示功能
+        let currentCity = localStorage.getItem('weatherCity') || "shanghai";
+
+        async function getWeatherByCity(city) {
+            try {
+                // 第一步：用城市名查经纬度
+                const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
+                const geoRes = await fetch(geoUrl);
+                const geoData = await geoRes.json();
+
+                if (!geoData.results || geoData.results.length === 0) {
+                    document.getElementById('weatherText').textContent = "城市未找到";
+                    return;
+                }
+
+                const { latitude, longitude, name, country } = geoData.results[0];
+                currentCity = name;
+                localStorage.setItem('weatherCity', name); // 保存城市名到本地存储
+
+                // 第二步：获取天气数据
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+                // const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=30&longitude=120&current_weather=true`;
+                const weatherRes = await fetch(weatherUrl);
+                const weatherData = await weatherRes.json();
+                const weather = weatherData.current_weather;
+
+                const temp = weather.temperature;
+                const code = weather.weathercode;
+
+                let weatherText = `${temp}°C `;
+                if (code === 0) weatherText += "晴天";
+                else if (code === 1) weatherText += "大致晴朗";
+                else if (code === 2) weatherText += "局部多云";
+                else if (code === 3) weatherText += "阴天";
+                else if ([45, 48].includes(code)) weatherText += "有雾";
+                else if ([51, 53, 55].includes(code)) weatherText += "毛毛雨";
+                else if ([61, 63, 65].includes(code)) weatherText += "小雨";
+                else if ([71, 73, 75].includes(code)) weatherText += "小雪";
+                else if ([95, 96, 99].includes(code)) weatherText += "雷暴";
+                else weatherText += "未知天气";
+
+                document.getElementById('weatherText').textContent = weatherText;
+                document.getElementById('weatherIcon').style.display = 'none'; // 隐藏图标
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('weatherText').textContent = "获取失败";
+            }
+        }
+
+        function changeWeatherLocation() {
+            const city = prompt("请输入城市名，例如：shanghai、beijing、tokyo、new york");
+            if (city) {
+                getWeatherByCity(city);
+            }
+        }
+
+        function toggleWeather() {
+            const weatherDisplay = document.getElementById('weatherDisplay');
+            weatherDisplay.classList.toggle('show');
+            if (weatherDisplay.classList.contains('show')) {
+                getWeatherByCity(currentCity);
+                localStorage.setItem('weatherDisplay', 'show');
+            } else {
+                localStorage.setItem('weatherDisplay', 'hide');
+            }
+        }
+
+        // 点击天气显示跳转到MSN天气
+        document.getElementById('weatherDisplay').addEventListener('click', () => {
+            window.open('https://www.msn.cn/zh-cn/weather', '_blank');
+        });
+
+        showTime();
+    </script>
+
+</body>
+
+</html>

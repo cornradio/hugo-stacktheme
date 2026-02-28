@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kali on</title><link>https://b.cornradio.org/tags/kali/</link><description>Recent content in Kali on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 06 Aug 2022 10:00:00 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/kali/index.xml" rel="self" type="application/rss+xml"/><item><title>ssh to parallels （kali）</title><link>https://b.cornradio.org/p/ssh-to-parallels-kali/</link><pubDate>Sat, 06 Aug 2022 10:00:00 +0800</pubDate><guid>https://b.cornradio.org/p/ssh-to-parallels-kali/</guid><description>&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://wpguru.co.uk/2014/02/how-to-ssh-into-a-virtual-machine-in-parallels-desktop/" target="_blank" rel="noopener"
+&gt;https://wpguru.co.uk/2014/02/how-to-ssh-into-a-virtual-machine-in-parallels-desktop/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="使用ssh链接-parallels-虚拟机的-kali-linux系统"&gt;使用ssh链接 parallels 虚拟机的 kali linux系统
+&lt;/h2&gt;&lt;p&gt;本教程基于PD17，m1 MacBook。&lt;/p&gt;
+&lt;p&gt;首先你也直接在pd虚拟机中直接下载和安装kali，而不用自己下载镜像来安装。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/122vaYp.png"
+loading="lazy"
+alt="安装助手"
+&gt;&lt;/p&gt;
+&lt;h2 id="修改sshd配置"&gt;修改sshd配置
+&lt;/h2&gt;&lt;p&gt;默认情况下kali的sshd配置是无法被ssh的，我们需要首先修改sshd配置然后重新加载。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo vim /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 搜索以下关键词然后取消备注/改成yes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PermitRootLogin yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PasswordAuthentication yes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改后需要重启服务，加载刚更新配置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/etc/init.d/ssh restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;增加开机自启动ssh的一个服务：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo update-rc.d ssh enable
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="查看虚拟机的ip"&gt;查看虚拟机的ip
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/aHsiG9S.png"
+loading="lazy"
+alt="查看虚拟机的ip"
+&gt;&lt;/p&gt;
+&lt;h2 id="使用ssh工具链接虚拟机"&gt;使用ssh工具链接虚拟机
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh parallels@10.221.55.4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;parallels 是通过pd安装虚拟机自己创建的用户名，有root权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来你就可以正常远程进入虚拟机了，这样可以使用macOS的cmd+v粘贴之类的快捷键。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/bT52A7j.png"
+loading="lazy"
+alt="ssh工具链接虚拟机"
+&gt;&lt;/p&gt;</description></item></channel></rss>

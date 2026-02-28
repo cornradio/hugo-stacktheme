@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Qv2ray on</title><link>https://b.cornradio.org/tags/qv2ray/</link><description>Recent content in Qv2ray on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://b.cornradio.org/tags/qv2ray/index.xml" rel="self" type="application/rss+xml"/><item><title>ubuntu安装Qv2ray</title><link>https://b.cornradio.org/p/ubuntu%E5%AE%89%E8%A3%85qv2ray/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/ubuntu%E5%AE%89%E8%A3%85qv2ray/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;replace your source with tuna speed up apt-update : &lt;a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener"
+&gt;https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this is for ubuntu , but igeuss it will working well on other linux machines too.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;download Qv2ray here: &lt;a class="link" href="https://github.com/Qv2ray/Qv2ray/releases" target="_blank" rel="noopener"
+&gt;https://github.com/Qv2ray/Qv2ray/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;download v2ray-core here (linux-64 ver):https://github.com/v2ray/v2ray-core/releases&lt;/li&gt;
+&lt;li&gt;before open Appimage file you should give it permission! : &lt;code&gt;chmod 777 *&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set up subscribe follow this instruction :https://qv2ray.net/getting-started/step3.html#通过订阅地址导入&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

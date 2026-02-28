@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Steam on</title><link>https://b.cornradio.org/tags/steam/</link><description>Recent content in Steam on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Mar 2022 11:32:35 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/steam/index.xml" rel="self" type="application/rss+xml"/><item><title>Steam好友已断开连接修复办法</title><link>https://b.cornradio.org/p/steam%E5%A5%BD%E5%8F%8B%E5%B7%B2%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E4%BF%AE%E5%A4%8D%E5%8A%9E%E6%B3%95/</link><pubDate>Sat, 05 Mar 2022 11:32:35 +0800</pubDate><guid>https://b.cornradio.org/p/steam%E5%A5%BD%E5%8F%8B%E5%B7%B2%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E4%BF%AE%E5%A4%8D%E5%8A%9E%E6%B3%95/</guid><description>&lt;h2 id="问题描述"&gt;问题描述
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1gzyumsvh64j3083074t9w.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;有时候会出现这种情况：像上图一样，steam的好友网络无法访问，更关键的是这个东西会不定期的跳出来，比如，在你和其他敌人激烈对线的时候。&lt;/p&gt;
+&lt;h2 id="解决办法"&gt;解决办法
+&lt;/h2&gt;&lt;p&gt;删除steam文件夹下的一些缓存文件来达到恢复使用的目的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开steam目录&lt;/li&gt;
+&lt;li&gt;找到package文件夹&lt;/li&gt;
+&lt;li&gt;删除内部所有文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="傻瓜图示"&gt;傻瓜图示
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1gzyutadghoj30la0jnwlx.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELly1gzyuvcgrlaj30hq0jbjwd.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1gzyuw4b6jzj30oh0he7ab.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELly1gzyuwvsegyj30o10e9772.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;</description></item><item><title>steam如何绕过clash的全局代理</title><link>https://b.cornradio.org/p/steam%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87clash%E7%9A%84%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86/</link><pubDate>Tue, 30 Nov 2021 13:11:11 +0800</pubDate><guid>https://b.cornradio.org/p/steam%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87clash%E7%9A%84%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86/</guid><description>&lt;p&gt;我想要默认开启电脑的clash全局代理。但是要求steam这个东东登录和下载（尤其是游戏下载）不要走代理。下载太耗费流量了，还不能跑满网速。&lt;/p&gt;
+&lt;p&gt;下载游戏的同时我还会上网。如果特意为了steam把clash关了我就不能上外网了。&lt;/p&gt;
+&lt;p&gt;最后在github的一个issue里面看到了这个：
+&lt;a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/issues/2035" target="_blank" rel="noopener"
+&gt;0.16.2 版，Steam 商店、社区无法加载 · Issue #2035 · Fndroid/clash_for_windows_pkg (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;bypass:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Steam中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;steampipe.steamcontent.tnkjmec.com&amp;#34; #华为云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.eccdnx.com&amp;#34; #白山云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.bscstorage.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.pinyuncloud.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;dl.steam.clngaa.com&amp;#34; #金山云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn.mileweb.cs.steampowered.com.8686c.com&amp;#34; #网宿云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-ws.content.steamchina.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-qc.content.steamchina.com&amp;#34; #腾讯云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-ali.content.steamchina.com&amp;#34; #阿里云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Steam非中国大陆地区游戏下载/社区实况直播&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;*.steamcontent.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Steam国际创意工坊下载CDN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;steamusercontent-a.akamaihd.net&amp;#34; #CDN-Akamai&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Origin游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;ssl-lvlt.cdn.ea.com&amp;#34; #CDN-Level3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;origin-a.akamaihd.net&amp;#34; #CDN-Akamai&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Battle.net战网中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;client05.pdl.wow.battlenet.com.cn&amp;#34; #华为云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;client02.pdl.wow.battlenet.com.cn&amp;#34; #网宿云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Battle.net战网非中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;level3.blizzard.com&amp;#34; #CDN-Level3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;blzddist1-a.akamaihd.net&amp;#34; #CDN-Akamai&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;blzddistkr1-a.akamaihd.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;kr.cdn.blizzard.com&amp;#34; #CDN-Blizzard&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;us.cdn.blizzard.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;eu.cdn.blizzard.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Epic Games中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;epicgames-download1-1251447533.file.myqcloud.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Epic Games非中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;epicgames-download1.akamaized.net&amp;#34; #CDN-Akamai&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;download.epicgames.com&amp;#34; #CDN-Amazon&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;download2.epicgames.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;download3.epicgames.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;download4.epicgames.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Rockstar Launcher客户端更新/游戏更新/游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;gamedownloads-rockstargames-com.akamaized.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# GOG中国大陆游戏下载/客户端更新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;gog.qtlglb.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# GOG非中国大陆游戏下载/客户端更新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn.gog.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;galaxy-client-update.gog.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- localhost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 127.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 10.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.16.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.17.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.18.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.19.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.20.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.21.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.22.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.23.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.24.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.25.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.26.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.27.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.28.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.29.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.30.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 172.31.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- 192.168.*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;lt;local&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="使用方法"&gt;使用方法
+&lt;/h1&gt;&lt;p&gt;原理：在bypass列表中的域名、ip会直接跳过&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;域名需要用英文双引号包起来&lt;/li&gt;
+&lt;li&gt;ip可以直接写&lt;/li&gt;
+&lt;li&gt;可以使用【星号】作为通配符
+打开clash的设置，找到bypass，按照需要粘贴并保存：
+![[Pasted image 20211130132003.png]]
+![[Pasted image 20211130132122.png]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="我的例子"&gt;我的例子
+&lt;/h1&gt;&lt;p&gt;这个例子方便我后面自己取用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;bypass:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;*.bing.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;*.microsoft.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Steam中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;steampipe.steamcontent.tnkjmec.com&amp;#34; #华为云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.eccdnx.com&amp;#34; #白山云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.bscstorage.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;st.dl.pinyuncloud.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;dl.steam.clngaa.com&amp;#34; #金山云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn.mileweb.cs.steampowered.com.8686c.com&amp;#34; #网宿云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-ws.content.steamchina.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-qc.content.steamchina.com&amp;#34; #腾讯云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;cdn-ali.content.steamchina.com&amp;#34; #阿里云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Steam非中国大陆地区游戏下载/社区实况直播&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;*.steamcontent.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Battle.net战网中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;client05.pdl.wow.battlenet.com.cn&amp;#34; #华为云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;client02.pdl.wow.battlenet.com.cn&amp;#34; #网宿云&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Epic Games中国大陆地区游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;epicgames-download1-1251447533.file.myqcloud.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Rockstar Launcher客户端更新/游戏更新/游戏下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;- &amp;#34;gamedownloads-rockstargames-com.akamaized.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

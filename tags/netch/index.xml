@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Netch on</title><link>https://b.cornradio.org/tags/netch/</link><description>Recent content in Netch on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 28 May 2022 14:36:11 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/netch/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Netch加速apex</title><link>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8netch%E5%8A%A0%E9%80%9Fapex/</link><pubDate>Sat, 28 May 2022 14:36:11 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8netch%E5%8A%A0%E9%80%9Fapex/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;前段时间我没有续费我的uu加速器了，因为这个老鬼东西实在是价格太贵，并且也不是多好用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上次我为了和同学一些玩游戏又在网上买了个uu加速器（登录器），反正就类似卡uu加速器的bug加速游戏，但是uu很明显不想让他一直薅羊毛，所以我这边也加速不了了，找了店家，店家好像一个脑瘫问题不解决就阿巴阿巴的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一直都听说能用什么软件让节点给游戏加速，我今天就仔细研究了下，hey你别说人家这个开源的Netch真的做的不错，我加速了Apex并且玩起来和用uu加速没啥区别！&lt;/p&gt;
+&lt;p&gt;垃圾uu要的太黑！黑心商人！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="参考链接"&gt;参考链接
+&lt;/h1&gt;&lt;p&gt;下载Netch：&lt;a class="link" href="https://github.com/NetchX/Netch" target="_blank" rel="noopener"
+&gt;https://github.com/NetchX/Netch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.youtube.com/watch?v=csUjrHjmIqA" target="_blank" rel="noopener"
+&gt;比SStap更优秀的Netch怎么用 - YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://binglinggroup.github.io/archives/Netch_guide.html" target="_blank" rel="noopener"
+&gt;Netch使用指南(190627) | 冰灵的博客 | BingLing&amp;rsquo;s Blog (binglinggroup.github.io)&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="它与v2raynclash的不同"&gt;它与v2rayN、Clash的不同
+&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;我希望你可以先看一下这里，你如果了解了它的原理，后边就很明白它到底是为什么这样操作了，对于折腾来说，可以减少你浪费的时间&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一般我们用v2rayN、Clash来对浏览器、系统全局进行代理，达到访问Google的目的&lt;/p&gt;
+&lt;p&gt;但是即使开了全局，他们也不能连接上 PUBG 或者 APEX 这些游戏&lt;/p&gt;
+&lt;p&gt;至于原因？&lt;/p&gt;
+&lt;p&gt;因为他们的“全局”只是修改了windows这里的设置而已，很多游戏之类的程序并不会检查和使用系统的代理来建立网络链接。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELgy1h2o4ag3dmwj30ts0gmwgg.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;那么从原理上来说的话这个Netch又有什么不同呢？&lt;/p&gt;
+&lt;p&gt;Netch是对&lt;strong&gt;进程&lt;/strong&gt;进行代理&lt;/p&gt;
+&lt;p&gt;它是发现你的电脑开启了某个名称的进程后，就会从外部给它加上一个代理，并不需要程序本身兼容&lt;/p&gt;
+&lt;p&gt;就能达到给一些不支持代理的程序进行加速的效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h1 id="netch的使用"&gt;Netch的使用
+&lt;/h1&gt;&lt;h2 id="添加订阅"&gt;添加订阅
+&lt;/h2&gt;&lt;p&gt;因为我一般都是使用的订阅，所以我就不讲单条节点如何导入了。&lt;/p&gt;
+&lt;p&gt;这里的界面样式非常像V2rayN，第一个按钮可以添加删除订阅（支持同时有好几个），第二个是更新订阅列表。加入成功之后你就可以在服务器下拉列表中选择自己的服务器节点了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELly1h2o4i6fb6mj30al03sdgo.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="主界面功能简要介绍"&gt;主界面功能简要介绍
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;服务器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择你的节点用的，右边四个按钮分别是 编辑（查看）、删除、测速、复制（复制之后可以贴到别的软件里）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模式可以理解成，预设的加速进程列表，预设提供的还是挺多的有steam、steam游戏、git、GTAv、Unity hub等，包括了很多工作、学习软件&lt;/li&gt;
+&lt;li&gt;模式是按照A-Z a-z 的顺序排序的，到时候你自己建立了模式需要起名字，然后就能在这里找到了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置名&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;老版本没有这个，这个配置名就是给你当前选择好的服务器、模式的组合起名字，然后可以保存到下面的快速按钮里，下次开软件，点击按钮直接启动（加速）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELly1h2o4gt3d7hj30qp08u78x.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="新建一个apex模式"&gt;新建一个APEX模式
+&lt;/h2&gt;&lt;p&gt;模式可以理解成，预设的加速进程列表，进程是靠进程名称来识别的，所以即使他不知道程序本体的具体路径，只要知道名字就ok了。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;去&lt;code&gt;steam&lt;/code&gt;里面找到游戏的目录，然后复制一下路径&lt;/li&gt;
+&lt;li&gt;来到&lt;code&gt;Netch&lt;/code&gt;，模式-创建进程模式，然后再打开的窗体中按“扫描“&lt;/li&gt;
+&lt;li&gt;扫描会让你选择一个文件夹，我们选择游戏的整个目录，可以参考我的截图&lt;/li&gt;
+&lt;li&gt;然后你会发现出现了一堆&lt;code&gt;xxx.exe&lt;/code&gt;,他们就是程序再你制定好的目录下面找的程序列表，在程序启动之后，Netch可以根据这些东西找到相应的”进程“然后加速他们。&lt;/li&gt;
+&lt;li&gt;起名字保存（我起名为Apex-test）&lt;/li&gt;
+&lt;li&gt;保存之后，在模式的下拉框里面，你就可以找到自己新建的模式了！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax2.sinaimg.cn/large/006rgJELgy1h2o4ubg52kj30dj07t41a.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/006rgJELgy1h2o4skj941j30bo042ab1.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/006rgJELgy1h2o4tqih87j30cp0bogmf.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELgy1h2o4wk8d3dj30nq0bjtdd.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/006rgJELgy1h2o4xdulj6j30cp0bo40m.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELgy1h2o50cnxyrj30kc08wdjb.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="加速保存快速配置"&gt;加速、保存快速配置
+&lt;/h2&gt;&lt;p&gt;这里我选择了建立了两个快速配置，你可以自己随便建立自己的快速配置（本质上就是模式和服务器的组合）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva4.sinaimg.cn/large/006rgJELgy1h2o51nhl4lj30kc08wq5a.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="同时加速steam和apex高级"&gt;同时加速steam和Apex（高级）
+&lt;/h2&gt;&lt;p&gt;我这边steam好友总是不好使，还有steam社区也打不开，在等待过程中看看社区好玩的图和吐槽也是乐趣呀。&lt;/p&gt;
+&lt;p&gt;那么，如何建立这种模式呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找到它预设的steam模式，点击右边的编辑按钮，然后把他的规则都复制出来（其实就是一个大textbox，可以打字的还能选择退格之类的）&lt;/li&gt;
+&lt;li&gt;打开你的模式（Apex-test），然后把steam的模式规则都贴后面&lt;/li&gt;
+&lt;li&gt;保存你的修改后的模式（可以重命名再保存）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/006rgJELly1h2o57l9qyhj30cp0boac5.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax1.sinaimg.cn/large/006rgJELly1h2o5a091g8j30cp0boq60.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h1 id="结语"&gt;结语
+&lt;/h1&gt;&lt;p&gt;希望这个文章能帮到其他折腾的人，毕竟uu蛮贵的，而每个月都买的节点如果能用在游戏加速上面那当然很开心呀！谁不想省点钱呢？&lt;/p&gt;
+&lt;p&gt;不过我仍然不知道怎么让Netch给主机加速，后面用得上再想吧…&lt;/p&gt;
+&lt;p&gt;有啥问题请再评论区告诉我，错别字就算了…&lt;/p&gt;</description></item></channel></rss>

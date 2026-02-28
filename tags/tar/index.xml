@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tar on</title><link>https://b.cornradio.org/tags/tar/</link><description>Recent content in Tar on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 22 May 2022 16:45:55 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/tar/index.xml" rel="self" type="application/rss+xml"/><item><title>Tar的用法、常见的linux压缩解包方法</title><link>https://b.cornradio.org/p/tar%E7%9A%84%E7%94%A8%E6%B3%95%E5%B8%B8%E8%A7%81%E7%9A%84linux%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8C%85%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 22 May 2022 16:45:55 +0800</pubDate><guid>https://b.cornradio.org/p/tar%E7%9A%84%E7%94%A8%E6%B3%95%E5%B8%B8%E8%A7%81%E7%9A%84linux%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8C%85%E6%96%B9%E6%B3%95/</guid><description>&lt;h1 id="常见的linux-压缩解包方法"&gt;常见的linux 压缩解包方法
+&lt;/h1&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gzip xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gunzip xxx
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zcvf 压缩文件名 压缩文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxvf 解压包名 解压文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar jcvf renwolesshel.tar.bz2 打包
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar jxvf renwolesshel.tar.bz2 解压
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;zip -q a.zip a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;unzip a.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -q “安静模式”
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="tar的用法"&gt;tar的用法
+&lt;/h1&gt;&lt;h2 id="打包"&gt;打包
+&lt;/h2&gt;&lt;p&gt;打包（多个文件）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -cf my.tar 1.txt 2.txt 3.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打包（文件夹）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -cf dir1.tar dir1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="看包"&gt;看包
+&lt;/h2&gt;&lt;p&gt;看包/预览包内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -tvf dir1.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="解包"&gt;解包
+&lt;/h2&gt;&lt;p&gt;解包：会自动解压到当前目录的同名文件夹下面&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xf dir1.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;解包（到指定的位置）：解压后会在&lt;code&gt;dir2&lt;/code&gt;里面看到一个&lt;code&gt;dir1&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xf dir1.tar -C dir2/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="tar与文件类型"&gt;tar与文件类型
+&lt;/h1&gt;&lt;p&gt;一般来说 &lt;code&gt;.tar&lt;/code&gt; 就是我们说的打包的包了，用上述命令就可以操作。&lt;/p&gt;
+&lt;p&gt;常见 &lt;code&gt;.tar.gz&lt;/code&gt; 格式，它是打包后又进行了压缩。可以使用 &lt;code&gt;-zxf&lt;/code&gt; 来解压。&lt;/p&gt;
+&lt;p&gt;需要根据自己需要来决定要不要开&lt;code&gt;-v&lt;/code&gt; ，不开的话，解压或者打包的时候系统看起来就像卡住了一样。&lt;/p&gt;
+&lt;h1 id="常用参数解释"&gt;常用参数解释
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;c create 创建&lt;/li&gt;
+&lt;li&gt;x extract 解包&lt;/li&gt;
+&lt;li&gt;v verbose 显示更多废话&lt;/li&gt;
+&lt;li&gt;f file=ARCHIVE 要操作的对象放在f后面&lt;/li&gt;
+&lt;li&gt;z zip 压缩功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="官方的话"&gt;官方的话
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;GNU &amp;rsquo;tar&amp;rsquo; saves many files together into a single tape or disk archive, and can
+restore individual files from the archive.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Examples:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -cf archive.tar foo bar # Create archive.tar from files foo and bar.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -tvf archive.tar # List all files in archive.tar verbosely.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; tar -xf archive.tar # Extract all files from archive.tar.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

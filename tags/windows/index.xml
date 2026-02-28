@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on</title><link>https://b.cornradio.org/tags/windows/</link><description>Recent content in Windows on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 06 Aug 2023 13:37:48 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>win11 备份开始菜单布局</title><link>https://b.cornradio.org/p/win11-%E5%A4%87%E4%BB%BD%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E5%B8%83%E5%B1%80/</link><pubDate>Sun, 06 Aug 2023 13:37:48 +0800</pubDate><guid>https://b.cornradio.org/p/win11-%E5%A4%87%E4%BB%BD%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E5%B8%83%E5%B1%80/</guid><description>&lt;img src="https://b.cornradio.org/win11start.webp" alt="Featured image of post win11 备份开始菜单布局" /&gt;&lt;blockquote&gt;
+&lt;p&gt;win11开始菜单有bug 我在删除图标的时候卡了bug，具体来说就是第一次删除没删掉，第二次删除这个图标，整个开始菜单都没了…… 图标布局都恢复默认了….&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;tip: 用everything搜索 start2.bin，可以找到这个文件的位置。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;C:\Users\kasus\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里可以找到 start2.bin 文件，这个文件存储了开始菜单的布局信息，经过我的尝试，这个二进制文件根本看不懂。&lt;/p&gt;
+&lt;p&gt;可以通过备份这个文件来备份开始菜单布局。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果想要恢复备份，就需要替换文件，然后重启explorer进程。&lt;/p&gt;
+&lt;p&gt;在powershell中执行以下命令重启explorer：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ps1" data-lang="ps1"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;Stop-Process&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;explorer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="powershell脚本备份"&gt;powershell脚本备份
+&lt;/h2&gt;&lt;p&gt;拜托gpt帮我写的备份脚本。&lt;/p&gt;
+&lt;p&gt;backupStart2.ps1&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ps1" data-lang="ps1"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 源文件路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$sourceFile&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;C:\Users\kasus\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 目标文件夹路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$destinationFolder&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;D:\AAA\scripts&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 获取当前日期和时间作为后缀&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$dateSuffix&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Get-Date&lt;/span&gt; &lt;span class="n"&gt;-Format&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;yyyyMMdd_HHmmss&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 构建新的文件名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$newFileName&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;start2.bin.&lt;/span&gt;&lt;span class="nv"&gt;$dateSuffix&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 构建目标文件路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$destinationFile&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Join-Path&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="nv"&gt;$destinationFolder&lt;/span&gt; &lt;span class="n"&gt;-ChildPath&lt;/span&gt; &lt;span class="nv"&gt;$newFileName&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 复制文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;Copy-Item&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="nv"&gt;$sourceFile&lt;/span&gt; &lt;span class="n"&gt;-Destination&lt;/span&gt; &lt;span class="nv"&gt;$destinationFile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="定时任务"&gt;定时任务
+&lt;/h3&gt;&lt;p&gt;开启定时任务，自动执行备份操作，谁想手动备份呢？&lt;/p&gt;
+&lt;p&gt;要在任务计划程序中运行一个 PowerShell 脚本（例如 &amp;ldquo;D:\AAA\scripts\backupStart2.ps1&amp;rdquo;），请按照以下步骤操作：&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 &amp;ldquo;任务计划程序&amp;rdquo;（在开始菜单中搜索）。&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;创建基本任务&amp;rdquo;。&lt;/li&gt;
+&lt;li&gt;点击 &amp;ldquo;浏览&amp;rdquo; 按钮，然后选择 &amp;ldquo;powershell.exe&amp;rdquo; 可执行文件的路径。通常情况下，它位于&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;C:\Windows\System32\WindowsPowerShell\v1.0\
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;在 &amp;ldquo;添加参数（可选）&amp;rdquo; 字段中，输入以下内容：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-ExecutionPolicy Bypass -File &amp;#34;D:\AAA\scripts\backupStart2.ps1&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，&amp;quot;-ExecutionPolicy Bypass&amp;quot; 参数用于绕过执行策略，允许运行未签名的脚本。&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;选择触发时机、触发频率等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/LNel5NV.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;</description></item><item><title>windows开启WebDAV</title><link>https://b.cornradio.org/p/windows%E5%BC%80%E5%90%AFwebdav/</link><pubDate>Fri, 24 Feb 2023 19:56:44 +0800</pubDate><guid>https://b.cornradio.org/p/windows%E5%BC%80%E5%90%AFwebdav/</guid><description>&lt;p&gt;开启 WebDAV 可以让你的 windows 设备变成家庭媒体服务器。&lt;/p&gt;
+&lt;p&gt;这是一个替代选项，毕竟ftp已经过时（无安全性）、文件夹共享简直是太烂了&lt;/p&gt;
+&lt;h2 id="开启系统功能"&gt;开启系统功能
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;搜索：启用或关闭 Windows 功能&lt;/li&gt;
+&lt;li&gt;勾选并开启下列功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;- Internet Information Services 功能（全选）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; （Internet Information Services 中下列功能需要手动打勾，默认不选）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - 万维网服务功能
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - 安全性
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - 基本身份验证
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - 常见HTTP功能
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - Webdav发布
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="创建-webdav-站点"&gt;创建 webDAV 站点
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加网站&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230224201122.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启下列功能&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230224201149.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;webdav - 右侧 - 启用&lt;code&gt;webdav&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;webdav - 添加创作功能 - 允许所有用户，分配读写权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;目录浏览 - 打开功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;身份验证 - 基本身份验证 - 启用（其他选项禁用）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;✨右键重启网站&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="准备要分享的文件夹"&gt;准备要分享的文件夹
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;针对错误：无权访问&lt;code&gt;web.config&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在任何目录下新建一个文件夹，比如：&lt;code&gt;e:本地影视&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;确保添加&lt;code&gt;everyone&lt;/code&gt;用户组的完全控制权限
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230224201314.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="打通网络"&gt;打通网络
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;针对问题：在其他电脑上无法连接到 8090 端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;搜索并打开：防火墙&lt;/p&gt;
+&lt;p&gt;新增一条入站规则、一条出站规则，允许端口8090的所有通信。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230224202305.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="设置mime类型"&gt;设置mime类型
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;解决特殊格式视频403错误&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以手动添加一条mime类型&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230224204437.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;或者可以在 &lt;code&gt;web.config&lt;/code&gt; （会自动的在根文件夹生成）添加如下配置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;system.webServer&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!-- 添加了支持浏览器查看目录的功能 --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;directoryBrowse&lt;/span&gt; &lt;span class="na"&gt;enabled=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;true&amp;#34;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;staticContent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!-- 解决 rmvb格式 404.3 mime格式不支持的问题 --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;mimeMap&lt;/span&gt; &lt;span class="na"&gt;fileExtension=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;.*&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;mimeType=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;video/mpeg&amp;#34;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/staticContent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/system.webServer&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="登录用的账号"&gt;登录用的账号
+&lt;/h2&gt;&lt;p&gt;微软账号：邮箱 + 密码&lt;/p&gt;</description></item></channel></rss>

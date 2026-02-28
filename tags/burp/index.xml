@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Burp on</title><link>https://b.cornradio.org/tags/burp/</link><description>Recent content in Burp on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 21 Dec 2022 16:00:59 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/burp/index.xml" rel="self" type="application/rss+xml"/><item><title>burpsuite - 3 - inturder</title><link>https://b.cornradio.org/p/burpsuite-3-inturder/</link><pubDate>Wed, 21 Dec 2022 16:00:59 +0800</pubDate><guid>https://b.cornradio.org/p/burpsuite-3-inturder/</guid><description>&lt;h1 id="inturder"&gt;inturder
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="https://portswigger.net/burp/documentation/desktop/tools/intruder" target="_blank" rel="noopener"
+&gt;https://portswigger.net/burp/documentation/desktop/tools/intruder&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;burpsuite的inturder用于自动化攻击web应用，可以更换http请求中指定位置的payload，不停的发送请求。并收集返回的结果。
+inturder 的天生特性可用于以下攻击范围：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fuzz 类型的input漏洞&lt;/li&gt;
+&lt;li&gt;进行暴力破解攻击&lt;/li&gt;
+&lt;li&gt;枚举攻击&lt;/li&gt;
+&lt;li&gt;快速收集有用的信息列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Fuzz 本意是 “羽毛、细小的毛发、使模糊、变得模糊”，在渗透测试中指的是一种基于黑盒或灰盒的测试技术，通过自动化生成并执行大量的随机测试用例来发现产品或协议的未知漏洞&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="tutorial"&gt;tutorial
+&lt;/h1&gt;&lt;p&gt;基础教程会教会你怎么用intruder进行简单的，单个位置的payload攻击。
+首先打开实验环境：
+&lt;a class="link" href="https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses" target="_blank" rel="noopener"
+&gt;https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="http请求导入intruder"&gt;http请求导入intruder
+&lt;/h2&gt;&lt;p&gt;然后我们进入lab，点击登陆账户，模拟不知道账户和密码的情况：
+&lt;img src="https://i.imgur.com/7IKv51M.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;然后我们找到刚才这条登陆的http请求，发送到intruder：
+&lt;img src="https://i.imgur.com/g80pcXZ.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;来到intruder，他会自动标记几个可能是注入点的地方，我们先clear掉。
+&lt;img src="https://i.imgur.com/ACPEE8o.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;然后手动选择用户名，添加一个新点位
+&lt;img src="https://i.imgur.com/XZf8hyA.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;然后选择模式，我们选择sniper（狙击手）模式。其他模式啥意思我也看不太懂，我感觉就是不同种类的排列组合方法吧。
+&lt;img src="https://i.imgur.com/DVUAsF5.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="破解用户名字段"&gt;破解用户名字段
+&lt;/h2&gt;&lt;p&gt;然后我们到第二个页面，需要手动添加payload list，也就是字典，burp不提供字典。
+教程可以用这个字典： &lt;a class="link" href="https://portswigger.net/web-security/authentication/auth-lab-usernames" target="_blank" rel="noopener"
+&gt;https://portswigger.net/web-security/authentication/auth-lab-usernames&lt;/a&gt;
+复制之后点击paste把我们的字典粘贴进来，然后点击右上角按钮，开始攻击
+&lt;img src="https://i.imgur.com/Aet6Ggx.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;攻击过程中可以点击每一行查看发送的http请求，就是把你的标记位置&lt;em&gt;username&lt;/em&gt;，变成了payload中的字符串。 通过Length排序，我们可以发现有一个返回值的长度和其他的不同，大家都是2984，他是2986。
+&lt;img src="https://i.imgur.com/xzRmd06.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;点开respond发现，这里写着：“密码错误”，其他的请求都写着“用户名错误”，所以我们就找到一个可以用的用户名。用户名：alabama
+&lt;img src="https://i.imgur.com/UBPAiHn.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="破解密码字段"&gt;破解密码字段
+&lt;/h2&gt;&lt;p&gt;我们通过上面的方法获取到了一个用户名，接下来就需要破解密码字段，首先回到intruder，修改http请求，把用户名换成刚才得到的值，然后开始破解密码位置：
+&lt;img src="https://i.imgur.com/vVXeyCb.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;破解密码位置可以用这个字典，字典由burp教学网站提供： &lt;a class="link" href="https://portswigger.net/web-security/authentication/auth-lab-passwords" target="_blank" rel="noopener"
+&gt;https://portswigger.net/web-security/authentication/auth-lab-passwords&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;破解过程很奇怪，有三种长度的返回值，2986 3073 170 ，2986和3073都是错误的，然后我就找到了密码：biteme
+&lt;img src="https://i.imgur.com/7rj0j1C.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后就登陆成功，解决了这个lab。
+&lt;img src="https://i.imgur.com/bJHjLGR.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h1 id="结尾"&gt;结尾
+&lt;/h1&gt;&lt;p&gt;虽然破解成功了，不过很明显重要的是字典。首先用户名的字典，然后就是密码字典，我觉得现实中的网站密码绝对不会设置的这么简单。跑字典估计还没跑100个，我的ip就要被封禁了。&lt;/p&gt;
+&lt;p&gt;但是这个课程的重点是教你如何使用inturder工具，通过课程我觉得还是看的很清楚的。后续使用的话主要需要关注这几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自己搞一份好用的字典&lt;/li&gt;
+&lt;li&gt;后续可以研究一下不同的模式都是啥样的有什么特点，现在只用了sniper模式。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>在macos上面安装burpsuite（crackverison）</title><link>https://b.cornradio.org/p/%E5%9C%A8macos%E4%B8%8A%E9%9D%A2%E5%AE%89%E8%A3%85burpsuitecrackverison/</link><pubDate>Mon, 19 Dec 2022 12:18:50 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%9C%A8macos%E4%B8%8A%E9%9D%A2%E5%AE%89%E8%A3%85burpsuitecrackverison/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;下载：&lt;a class="link" href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener"
+&gt;java-jdk&lt;/a&gt; ｜ &lt;a class="link" href="https://www.baidu.com/s?ie=utf-8&amp;amp;f=8&amp;amp;rsv_bp=1&amp;amp;tn=baidu&amp;amp;wd=burpsuite%20%E7%A0%B4%E8%A7%A3%E7%89%88%202023&amp;amp;oq=burpsuite%25E7%25A0%25B4%25E8%25A7%25A3%25E7%2589%2588%2520202%2526lt%253B&amp;amp;rsv_pq=95921bbe00081999&amp;amp;rsv_t=ef27GuFUOmyrbfwFDhdlPCtYjqy2aAuuaAKNGIB9hiok3BfZaI3I2lHSKPQ&amp;amp;rqlang=cn&amp;amp;rsv_enter=1&amp;amp;rsv_dl=tb&amp;amp;rsv_btype=t&amp;amp;inputT=8287&amp;amp;rsv_sug3=18&amp;amp;rsv_sug1=16&amp;amp;rsv_sug7=100&amp;amp;rsv_sug2=0&amp;amp;prefixsug=burpsuite%2520%25E7%25A0%25B4%25E8%25A7%25A3%25E7%2589%2588%2520202%2526lt%253B&amp;amp;rsp=6&amp;amp;rsv_sug4=8309" target="_blank" rel="noopener"
+&gt;破解版 burpsuite&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="正常顺序"&gt;正常顺序
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开：burploader.jar&lt;/li&gt;
+&lt;li&gt;通过: burploader 打开burp pro&lt;/li&gt;
+&lt;li&gt;输入 license 然后手动粘贴到 burploader，burploader 解密后给你返回一个 respond 字符串，粘贴进入，破解成功。&lt;/li&gt;
+&lt;li&gt;后续每次从 loader 中打开文件即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="实际情况"&gt;实际情况
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开：burploader.jar&lt;/li&gt;
+&lt;li&gt;通过burploader 打开burp pro&lt;/li&gt;
+&lt;li&gt;打开失败，报错&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="解决办法"&gt;解决办法
+&lt;/h2&gt;&lt;p&gt;主要原因是burp不是很兼容java 17+，所以破解的步骤就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开：burploader.jar&lt;/li&gt;
+&lt;li&gt;通过手工输入命令，打开 burp pro，并指定 burploader 作为-noverify参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;opens&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;UNNAMED&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;opens&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;desktop&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;javax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;swing&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;UNNAMED&lt;/span&gt; &lt;span class="n"&gt;loader&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;正常流程激活(因为我激活过了不能再来一遍所以没有截图了)&lt;/li&gt;
+&lt;li&gt;制作一个脚本（.bat / .sh）用于方便后面启动burp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="mac快速启动脚本"&gt;mac快速启动脚本
+&lt;/h1&gt;&lt;p&gt;在zshrc中增加一条快速启动burp的命令/alias，（此时，你的burp应该已经完成了激活操作。
+其中分为两步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;cd 到 burpsuite 目录。&lt;/li&gt;
+&lt;li&gt;执行命令，用loader 挡住 agent ， 启动 burp.jar ， 加入了一些java17的 flag。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;bp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;cd /Users/kasusa/BurpSuite_pro_v2023.3&amp;amp;&amp;amp;java -noverify -javaagent:burp-loader-keygen-2_1_06.jar -jar --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED burpsuite_pro_v2023.3.jar&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>软件 on</title><link>https://b.cornradio.org/tags/%E8%BD%AF%E4%BB%B6/</link><description>Recent content in 软件 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>win10 DPI FIX</title><link>https://b.cornradio.org/p/win10-dpi-fix/</link><pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/win10-dpi-fix/</guid><description>&lt;h2 id="windows10-dpi-fix"&gt;Windows10 DPI Fix
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="http://windows10-dpi-fix.xpexplorer.com/" target="_blank" rel="noopener"
+&gt;http://windows10-dpi-fix.xpexplorer.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个软件的功能是修复win10在缩放125%的情况下产生的字体模糊。&lt;/p&gt;
+&lt;p&gt;他的原理是调用win7/8.1的缩放DPI，这个老的DPI是专门为电脑设计的。而win10当时有向移动端发展的想法，便用了一个新的缩放dpi，为了照顾手机的性能，缩放之后还会变模糊，我想这才是我真正讨厌缩放的原因吧。但是不缩放15寸小屏幕很瞎眼。&lt;/p&gt;
+&lt;p&gt;这个应用真的很好地解决了我的缩放问题，在此推荐给所有人。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/006rgJELgy1grqsxs460dj30d1060q4e.jpg"
+loading="lazy"
+alt="程序截图"
+&gt;&lt;/p&gt;</description></item></channel></rss>
