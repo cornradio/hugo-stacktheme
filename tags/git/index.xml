@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on</title><link>https://b.cornradio.org/tags/git/</link><description>Recent content in Git on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 04 Aug 2023 20:23:18 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>git 命令行登录</title><link>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</link><pubDate>Fri, 04 Aug 2023 20:23:18 +0800</pubDate><guid>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</guid><description>&lt;p&gt;有时候登录命令行版本的git会出现这个错误&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;remote: Support for password authentication was removed on August 13, 2021.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;原因是github不再支持密码验证，需要使用token验证，具体操作如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在github上生成token 网站：&lt;a class="link" href="https://github.com/settings/tokens" target="_blank" rel="noopener"
+&gt;github.com/settings/tokens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下次命令行要求输入密码时，输入token即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：token只会显示一次，所以要保存好，不然就要重新生成了，也可以用密码记录软件保存这个token，在多处使用，因为要一个一个勾选权限也挺麻烦的其实。&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>如何删除git中的所有历史文件</title><link>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4git%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%8E%86%E5%8F%B2%E6%96%87%E4%BB%B6/</link><pubDate>Sat, 03 Dec 2022 12:18:50 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4git%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%8E%86%E5%8F%B2%E6%96%87%E4%BB%B6/</guid><description>&lt;h1 id="需要工具"&gt;需要工具
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;gitbash 用于快速操作&lt;/li&gt;
+&lt;li&gt;githubDesktop 用于查看文件历史等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="注意"&gt;注意
+&lt;/h1&gt;&lt;p&gt;此操作不可撤销，如果你的历史记录中有着不想要被删除的重要数据，请务必提前备份。&lt;/p&gt;
+&lt;p&gt;适用情况：清理git文件夹，让git每次clone下来更轻松。有可能项目中留存着一些没有用的垃圾，比如很大的图片、视频等。虽然目前已经删除。但这些内容实际上仍然保留在隐藏的&lt;code&gt;.git&lt;/code&gt;文件夹中。&lt;/p&gt;
+&lt;h1 id="操作"&gt;操作
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;从git平台下拉目前的全部代码，删除原repo。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;删除在repo - settings - dangerzone最下面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/a5zdkEs.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入本地repo，打开gitbash，执行下列指令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -rf .git
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &amp;#34;init&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用github desktop检查是否有残留
+&lt;img src="https://i.imgur.com/X3R65UB.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重新push repo到git平台&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网上有一些很乱七八糟的方法，又要head，又要forcepush，又要orphan branch之类的，说实话我有些看不懂，我这个方式绝对简单又高效（粗暴rm -rf） 嘿嘿。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="其他提示"&gt;其他提示
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;insights - traffic&lt;/code&gt; 可以查看到public项目的所有访问记录。数据为0的话不会展示；对于github博客来说，这里还是很有用的。
+&lt;img src="https://i.imgur.com/cVjIKyn.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;</description></item></channel></rss>

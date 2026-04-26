@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on</title><link>https://b.cornradio.org/tags/docker/</link><description>Recent content in Docker on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 16 Jan 2023 14:25:02 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker</title><link>https://b.cornradio.org/p/docker/</link><pubDate>Mon, 16 Jan 2023 14:25:02 +0800</pubDate><guid>https://b.cornradio.org/p/docker/</guid><description>&lt;p&gt;要想使用docker，需要正确的了解一些基础信息，比如 image 是啥、容器是啥、 docker hub 是啥 、 为什么pull等等，我这里先给出一些简单的解释，但是详细可能还是得亲身体验才能理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;image 镜像，可以pull镜像然后运行它&lt;/li&gt;
+&lt;li&gt;容器 ，运行中的 image 我们叫它 容器，类似虚拟机，但是更轻量级。&lt;/li&gt;
+&lt;li&gt;docker hub ， docker的官方 image 仓库，在这里我们可以下载到很多别人做的 image 来使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="总结常用命令"&gt;总结/常用命令
+&lt;/h2&gt;&lt;p&gt;完成了以上的tutorial，我感觉自己对docker已经有了初步的了解，可以正常使用它了。&lt;/p&gt;
+&lt;p&gt;查看一下本地现有的 image&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker image ls
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动 getting-started 镜像，后台模式，映射 3000 端口，&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -dp 3000:3000 getting-started
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;🌟 查看运行中的容器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker ps -a &lt;span class="c1"&gt;#包括未运行的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker ps -s &lt;span class="c1"&gt;#显示大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker ps -q &lt;span class="c1"&gt;#仅显示容器id&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;🌟 进入容器（选择bash 、 sh 、 zsh、cmd ，看容器内部基于什么操作系统）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker exec -it &amp;lt;container-ID&amp;gt; sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; 交互模式&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt; 终端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;启动容器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker start &amp;lt;container-ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;停止容器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker stop &amp;lt;container-ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker &lt;span class="nb"&gt;kill&lt;/span&gt; &amp;lt;container-ID&amp;gt; &lt;span class="c1"&gt;#强行退出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;删除容器(删除前需要先停止容器)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker rm &amp;lt;container-ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker rm -f &amp;lt;container-ID&amp;gt; &lt;span class="c1"&gt;#强制删除&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看端口映射（正在运行的容器）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker port &amp;lt;container-ID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看运行状态（cpu、内存实时使用情况等）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker container stats
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="install"&gt;install
+&lt;/h2&gt;&lt;h3 id="windows"&gt;windows
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;安装好wsl（在win商店搜ubuntu）&lt;/li&gt;
+&lt;li&gt;下载docker ： &lt;a class="link" href="https://www.docker.com" target="_blank" rel="noopener"
+&gt;docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;卡在starting的解决办法：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用管理员权限的 powershell：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;net stop com.docker.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;net start com.docker.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wsl --unregister docker-desktop
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wsl --unregister docker-desktop-data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="1-把应用程序容器化"&gt;1-把应用程序容器化
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://docs.docker.com/get-started/02_our_app/" target="_blank" rel="noopener"
+&gt;https://docs.docker.com/get-started/02_our_app/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker Hub 是一个官方网站，上面可以下载很多 images。&lt;/p&gt;
+&lt;p&gt;运行中 image 的叫做 container （容器），他们运行的时候都是和你的电脑隔离的，就好像开了一堆小号的虚拟机。&lt;/p&gt;
+&lt;p&gt;而实际上，在docker hub 下载的 images 是别人打包好的应用程序，比如 dvwa （渗透靶场）、oracle 11g 等，在第一个教程里，我们要自己把本地的示例 Node.js 程序变成一个容器。&lt;/p&gt;
+&lt;h2 id="下载程序"&gt;下载程序
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/docker/getting-started.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="dockerfile"&gt;Dockerfile
+&lt;/h2&gt;&lt;p&gt;本教程是 Node js 的构建，其他的也可以参考官方教程写 &lt;code&gt;Dockerfile&lt;/code&gt; , 比如 &lt;code&gt;python&lt;/code&gt;
+&lt;a class="link" href="https://docs.docker.com/language/python/build-images/" target="_blank" rel="noopener"
+&gt;https://docs.docker.com/language/python/build-images/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们关注 &lt;code&gt;getting-started/app&lt;/code&gt; 这个目录，在这个目录下创建一个 &lt;code&gt;Dockerfile&lt;/code&gt; 文件，并编辑内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-dockerfile" data-lang="dockerfile"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;## syntax=docker/dockerfile:1&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;node:18-alpine&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;WORKDIR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;/app&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;COPY&lt;/span&gt; . .&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;RUN&lt;/span&gt; yarn install --production&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;CMD&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;node&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;src/index.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;EXPOSE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;3000&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;指示构建器从&lt;code&gt;node:18-alpine&lt;/code&gt; &lt;code&gt;image&lt;/code&gt; 开始。但是，由于机器上没有它，Docker 需要下载 image。
+&lt;code&gt;Docker&lt;/code&gt; 下载 &lt;code&gt;image&lt;/code&gt; 后，根据 &lt;code&gt;Dockerfile&lt;/code&gt; 中的说明把整个目录的文件复制到您的应用程序中，并使用&lt;code&gt;yarn&lt;/code&gt;安装应用程序的依赖项。&lt;code&gt;CMD&lt;/code&gt; 指令指定从此映像启动容器时要运行的默认命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FROM&lt;/code&gt; 定义基础 image ，&lt;code&gt;Dockerfile&lt;/code&gt; 必须以 &lt;code&gt;FROM&lt;/code&gt; 开头。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;WORKDIR&lt;/code&gt; 是为后续命令提供执行目录，如 &lt;code&gt;COPY&lt;/code&gt;、 &lt;code&gt;RUN&lt;/code&gt;、 &lt;code&gt;CMD&lt;/code&gt; ，如果没有指定，默认工作目录是 &lt;code&gt;/&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;COPY&lt;/code&gt; 指令从 &lt;code&gt;&amp;lt;src&amp;gt;&lt;/code&gt; 复制新文件或目录，并将其添加到路径 &lt;code&gt;&amp;lt;dest&amp;gt;&lt;/code&gt; 的容器文件系统中，这里 &lt;code&gt;src&lt;/code&gt; 和 &lt;code&gt;dest&lt;/code&gt; 都是 &lt;code&gt;.&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RUN&lt;/code&gt; 执行 shell 命令，&lt;code&gt;FROM&lt;/code&gt; 是 &lt;code&gt;windows&lt;/code&gt; 的话就是执行 &lt;code&gt;cmd&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD [&amp;quot;executable&amp;quot;,&amp;quot;param1&amp;quot;,&amp;quot;param2&amp;quot;]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXPOSE&lt;/code&gt; 把容器内部的端口开放到外部，也可以指定 tcp 、 udp ， 但无论 &lt;code&gt;EXPOSE&lt;/code&gt; 设置如何，您都可以在运行时使用&lt;code&gt;-p&lt;/code&gt; 标志覆盖它们，如 &lt;code&gt;docker run -p 80:80&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;EXPOSE 80/tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;EXPOSE 80/udp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="构建容器-image"&gt;构建容器 image
+&lt;/h2&gt;&lt;p&gt;还是回到 &lt;code&gt;getting-started/app&lt;/code&gt; 目录，执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker build -t getting-started .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-t getting-started&lt;/code&gt; 给镜像设置一个昵称。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker build . &lt;/code&gt; 在当前目录下寻找 &lt;code&gt;Dockerfile&lt;/code&gt; 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="启动容器"&gt;启动容器
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -dp 3000:3000 getting-started
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; 标志在“分离”模式下（在后台）运行新容器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; 标志在主机的端口&lt;code&gt;3000&lt;/code&gt;和容器的端口&lt;code&gt;3000&lt;/code&gt;之间创建映射&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;打开您的网页浏览器到&lt;a class="link" href="http://localhost:3000/" target="_blank" rel="noopener"
+&gt;http://localhost:3000&lt;/a&gt;。您应该会看到您的应用。&lt;/p&gt;
+&lt;h2 id="修改和更新image"&gt;修改和更新image
+&lt;/h2&gt;&lt;p&gt;修改和更新这里还是不包含原数据的&lt;/p&gt;
+&lt;p&gt;修改文件： &lt;code&gt;app/src/static/js/app.js&lt;/code&gt;
+修改第 56 行 ，把 &lt;code&gt;No items yet! Add one above!&lt;/code&gt; 修改成你的字符串。&lt;/p&gt;
+&lt;p&gt;然后重新 build&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker build -t getting-started .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;ps 我在这里失败了好多次，我把原来的 image 删除之后才build 成功&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;重新启动一个容器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -dp 3000:3000 getting-started
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="停止和删除容器"&gt;停止和删除容器
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker ps&lt;/code&gt;命令获取容器的ID&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker stop &amp;lt;the-container-id&amp;gt; &lt;/code&gt;命令停止容器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm &amp;lt;the-container-id&amp;gt;&lt;/code&gt; 删除容器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="分享-image"&gt;分享 image
+&lt;/h2&gt;&lt;p&gt;经过刚才的操作，我们已经成功的制作了一个自己的 image ， 现在我们看看怎么把它分享到 docker hub。&lt;/p&gt;
+&lt;p&gt;首先得登陆一下 &lt;a class="link" href="https://hub.docker.com" target="_blank" rel="noopener"
+&gt;https://hub.docker.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker login -u &amp;lt;your-user-name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看一下本地现有的 image&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker image ls
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;给 getting-started 增加 &lt;code&gt;tag&lt;/code&gt; 方便推送&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker tag getting-started &amp;lt;your-user-name&amp;gt;/getting-started
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;推送 image&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker push &amp;lt;your-user-name&amp;gt;/getting-started
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="最佳实践"&gt;最佳实践
+&lt;/h2&gt;&lt;p&gt;关于如何让 docker 文件尽量更小、怎么让数据永久保存等内容，参考： &lt;a class="link" href="https://docs.docker.com/develop/dev-best-practices/" target="_blank" rel="noopener"
+&gt;https://docs.docker.com/develop/dev-best-practices/&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
