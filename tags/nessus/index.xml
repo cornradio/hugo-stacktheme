@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nessus on</title><link>https://b.cornradio.org/tags/nessus/</link><description>Recent content in Nessus on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 05 Jun 2023 13:00:07 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/nessus/index.xml" rel="self" type="application/rss+xml"/><item><title>nessus 无法访问的解决办法 for mac and win</title><link>https://b.cornradio.org/p/nessus-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-for-mac-and-win/</link><pubDate>Mon, 05 Jun 2023 13:00:07 +0800</pubDate><guid>https://b.cornradio.org/p/nessus-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-for-mac-and-win/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;本篇内容全程推荐使用chrome而不是safari，safari还是没有办法进入的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;nessus 是一款漏洞扫描软件，在我开始使用mac之后，我尝试安装并使用它，但是出现了一些问题，下面来记录下：&lt;/p&gt;
+&lt;h2 id="正常开启关闭的方法"&gt;正常开启关闭的方法
+&lt;/h2&gt;&lt;p&gt;在mac设置里面，最下面有一个nessus按钮，进去，解锁，然后就可以开启/停止nessus了。
+nessus在不扫描的时候几乎没有负载，所以开机启动我也留着了。&lt;/p&gt;
+&lt;p&gt;开启后，nessus会在此处运行：&lt;a class="link" href="https://localhost:8834/##/" target="_blank" rel="noopener"
+&gt;https://localhost:8834/##/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/0083vuQJly1h3wgdnrit6j311211mtia.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/0083vuQJly1h3wge5qo83j310m0iajtm.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="问题描述"&gt;问题描述
+&lt;/h2&gt;&lt;p&gt;安装nessus后，chrome提示如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva2.sinaimg.cn/large/0083vuQJly1h3wgcgzsytj31wg192b2a.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="解决办法"&gt;解决办法
+&lt;/h2&gt;&lt;p&gt;在chrome这个错误界面直接输入： &lt;code&gt;thisisunsafe&lt;/code&gt; ，然后chrome就明确你知道自己在做什么，然后放行你。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/0083vuQJly1h3wgiwv4y9j31tq17g4qp.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;你要打开这个链接(可能需要先登陆):&lt;a class="link" href="https://localhost:8834/getcert" target="_blank" rel="noopener"
+&gt;https://localhost:8834/getcert&lt;/a&gt; ， 会下载一个证书文件，接下来我们要手动信任这个证书&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax4.sinaimg.cn/large/0083vuQJly1h3wgksfoc6j30dm050q4c.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;先打开“钥匙串访问”程序，然后双击这个证书文件，证书会自动安装，但是此时是不信任的状态（有个叉叉）&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/0083vuQJly1h3wgmol29dj31bk0ruzt1.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来我们需要双击这个证书，然后点开信任菜单栏，并且勾选始终信任，修改后系统会要求sudo权限&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tvax3.sinaimg.cn/large/0083vuQJly1h3wgoceajxj30rs0o24dk.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;h2 id="对于-windows"&gt;对于 windows
+&lt;/h2&gt;&lt;p&gt;windows信任证书的操作和mac有些差别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开这个链接 :&lt;a class="link" href="https://localhost:8834/getcert" target="_blank" rel="noopener"
+&gt;https://localhost:8834/getcert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;安装证书的时候，选择指定存储路径，浏览-受信任的根证书颁发机构
+&lt;img src="https://i.imgur.com/XTwuUTL.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="结束"&gt;结束
+&lt;/h2&gt;&lt;p&gt;这样应该就能正常访问了，以后也不会有问题了。&lt;/p&gt;
+&lt;p&gt;主要学到了一招就是 &lt;code&gt;thisisunsafe&lt;/code&gt; 大概能用在任何chrome信任失效界面上，可以去强制访问。&lt;/p&gt;
+&lt;p&gt;不过我还是不理解，为啥电脑要不信任localhost……&lt;/p&gt;
+&lt;h2 id="hsts-错误"&gt;HSTS 错误
+&lt;/h2&gt;&lt;p&gt;需要解决这个保存，除了打字： &lt;code&gt;thisisunsafe&lt;/code&gt; ，还可以通过chrome设置来临时放行：&lt;/p&gt;
+&lt;p&gt;首先打开chrome这个设置界面 &lt;a class="link" href="chrome://net-internals/##hsts" &gt;chrome://net-internals/##hsts&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;滚动到最下方，输入&lt;code&gt;localhost&lt;/code&gt;，点击&lt;code&gt;delete&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=https://tva3.sinaimg.cn/large/0083vuQJly1h3wgy8tcjhj31su0qu11p.jpg"
+loading="lazy"
+alt="image"
+&gt;&lt;/p&gt;
+&lt;p&gt;就可以访问 HSTS 不允许的网站了。&lt;/p&gt;</description></item></channel></rss>

