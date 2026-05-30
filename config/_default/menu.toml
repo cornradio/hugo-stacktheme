@@ -9,13 +9,6 @@
 #newtab = true
 # https://fontawesome.com/icons/television?s=solid icons download here
 
-[[social]]
-identifier = "rss"
-name = "rss"
-url = "/index.xml"
-
-[social.params]
-icon = "rss"
 
 [[social]]
 identifier = "shopping-bag"
@@ -23,7 +16,22 @@ name = "AppStore"
 url = "https://appstore.cornradio.org/"
 
 [social.params]
-icon = "bag-shopping-solid"
+icon = "brand-appstore"
+[[social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/cornradio"
+
+[social.params]
+icon = "brand-github"
+
+[[social]]
+identifier = "TV2"
+name = "TV"
+url = "https://tva.cornradio.org/"
+
+[social.params]
+icon = "device-tv-old"
 
 # [[social]]
 # identifier = "googleconsole"
@@ -50,12 +58,9 @@ url = "/clock"
 icon = "clock-hour-4"
 
 [[social]]
-identifier = "television"
-name = "watchtv 139"
-url = "http://139.196.171.60/watchTV/a-plan/"
+identifier = "rss"
+name = "rss"
+url = "/index.xml"
 
 [social.params]
-icon = "tv-solid"
-
-
-
+icon = "rss"
