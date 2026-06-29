@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Github on</title><link>https://b.cornradio.org/tags/github/</link><description>Recent content in Github on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 04 Aug 2023 20:23:18 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>git 命令行登录</title><link>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</link><pubDate>Fri, 04 Aug 2023 20:23:18 +0800</pubDate><guid>https://b.cornradio.org/p/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95/</guid><description>&lt;p&gt;有时候登录命令行版本的git会出现这个错误&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;remote: Support for password authentication was removed on August 13, 2021.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;原因是github不再支持密码验证，需要使用token验证，具体操作如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在github上生成token 网站：&lt;a class="link" href="https://github.com/settings/tokens" target="_blank" rel="noopener"
+&gt;github.com/settings/tokens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下次命令行要求输入密码时，输入token即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：token只会显示一次，所以要保存好，不然就要重新生成了，也可以用密码记录软件保存这个token，在多处使用，因为要一个一个勾选权限也挺麻烦的其实。&lt;/p&gt;
+&lt;/blockquote&gt;</description></item></channel></rss>

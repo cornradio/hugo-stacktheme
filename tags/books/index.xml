@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Books on</title><link>https://b.cornradio.org/tags/books/</link><description>Recent content in Books on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 29 Jan 2023 13:24:03 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/books/index.xml" rel="self" type="application/rss+xml"/><item><title>zlibrary</title><link>https://b.cornradio.org/p/zlibrary/</link><pubDate>Sun, 29 Jan 2023 13:24:03 +0800</pubDate><guid>https://b.cornradio.org/p/zlibrary/</guid><description>&lt;p&gt;关于如何在2023年使用zlibrary，可以下载很多小说、电子书、期刊等等。（我以前以为只能下载学术论文啥的所以从来没有关注过！）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;去 telegram 上搜索 zlib，会找到：@zlibrary2bot&lt;/li&gt;
+&lt;li&gt;给 bot 发送 /weblink ，他会给你一个最新链接，是 zlib 现在的链接，需要通过tor浏览器访问。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;⚠️&lt;/span&gt; &lt;span class="n"&gt;Z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;library&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;currently&lt;/span&gt; &lt;span class="n"&gt;available&lt;/span&gt; &lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Tor&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;download&lt;/span&gt; &lt;span class="n"&gt;Tor&lt;/span&gt; &lt;span class="n"&gt;browser&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;torproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Books&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;Articles&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;articles24t2d47kb6rbabobokvrnymh2smkleosntcu6qxou6sxewyd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;onion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;下载 tor ： &lt;a class="link" href="https://www.torproject.org" target="_blank" rel="noopener"
+&gt;https://www.torproject.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;使用 tor 网络需要全局代理，或者手动设置代理。&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230129132938.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;li&gt;使用 onion 浏览器访问链接 &lt;a class="link" href="bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion" &gt;Bookslink&lt;/a&gt; &lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230129133234.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;li&gt;注册之后 zlib 会推荐你创建一个自己的 tgbot，和 bot 对话获取图书，不用每次都进入 onion 浏览器下载图书了，对我来说超级方便！如果你跳过了，可以直接进入 &lt;a class="link" href="https://singlelogin.me/" target="_blank" rel="noopener"
+&gt;这个链接&lt;/a&gt; 创建/打开自己的bot&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230129133524.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;li&gt;创建一个你私有的机器人，然后把机器人的 token 发给 zlib，zlib 会把你的 token 和你的账号绑定，这样你就可以通过你的机器人来获取图书了。&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230129134514.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;li&gt;和你的机器人说你要的书名，然后就可以下载了！&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230129134828.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;that is all.&lt;/p&gt;</description></item></channel></rss>

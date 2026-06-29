@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Free on</title><link>https://b.cornradio.org/tags/free/</link><description>Recent content in Free on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 09 Feb 2023 16:01:23 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/free/index.xml" rel="self" type="application/rss+xml"/><item><title>Dbdiagram.io,数据库设计的好选择</title><link>https://b.cornradio.org/p/dbdiagram.io%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A5%BD%E9%80%89%E6%8B%A9/</link><pubDate>Thu, 09 Feb 2023 16:01:23 +0800</pubDate><guid>https://b.cornradio.org/p/dbdiagram.io%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A5%BD%E9%80%89%E6%8B%A9/</guid><description>&lt;p&gt;说到数据库设计软件，之前上学的时候用过 powerdesigener 、 navicat设计数据库。&lt;/p&gt;
+&lt;p&gt;但是都是付费软件，今天找到了一个免费的数据库设计工具 &lt;a class="link" href="https://dbdiagram.io" target="_blank" rel="noopener"
+&gt;dbdiagram.io&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;首先，以防你看完了文章才发现自己不喜欢这个，先来看一下截图：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230209160353.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;一般操作就是左边写语句，右边可以拖拽生成外键，设计好了之后可以生成各种数据库的 sql 语句，也可以PDF导出。&lt;/p&gt;
+&lt;p&gt;这里使用的语句叫做 &lt;code&gt;dbml&lt;/code&gt; 语句,语法类似sql建表语句，具体语法参考&lt;a class="link" href="https://www.dbml.org/home/?utm_source=dbdiagram" target="_blank" rel="noopener"
+&gt;这个链接&lt;/a&gt;，这个语言是 &lt;code&gt;dbdiagram.io&lt;/code&gt; 自己的，可能需要小小的学习一下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我这里在 &lt;code&gt;vscode&lt;/code&gt; 中安装了一个 &lt;code&gt;dbml&lt;/code&gt; 插件，可以在 vscode 中写设计语句，通过 &lt;code&gt;copilot&lt;/code&gt; （AI插件），我只要写好备注，就可以自动生成大段的语句。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;关于外键的用法其实也非常的符合直觉：你只需要使用 &lt;code&gt;-&lt;/code&gt; &lt;code&gt;&amp;gt;&lt;/code&gt; 之类的富豪榜，就能轻松的表示一对一、一对多的关系。&lt;/p&gt;
+&lt;p&gt;最后用 datagrip 导入生成的 sql 语句到 mysql，简直不要太爽！导出操作比我之前用过的那些软件方便得多！&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230209161253.png"
+loading="lazy"
+&gt;&lt;/p&gt;</description></item></channel></rss>
