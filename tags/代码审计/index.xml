@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>代码审计 on</title><link>https://b.cornradio.org/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</link><description>Recent content in 代码审计 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 30 Mar 2023 22:23:15 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>代码审计-Java</title><link>https://b.cornradio.org/p/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-java/</link><pubDate>Thu, 30 Mar 2023 22:23:15 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-java/</guid><description>&lt;h2 id="java源代码审计"&gt;java源代码审计
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;需要注意的方法和关键字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;常见危险方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getParameter()&lt;/li&gt;
+&lt;li&gt;getcookies()&lt;/li&gt;
+&lt;li&gt;getQueryString()&lt;/li&gt;
+&lt;li&gt;getheaders()&lt;/li&gt;
+&lt;li&gt;Runtime.exec()&lt;/li&gt;
+&lt;li&gt;logger.info&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常见危险关键字：
+• password
+• upload
+• download&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;getParameter()&lt;/code&gt;：该方法用于获取HTTP请求中的参数值。如果没有验证或过滤用户输入，则恶意用户可以通过构造特殊的请求来执行跨站脚本攻击（XSS）或SQL注入攻击。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;getCookies()&lt;/code&gt;：该方法可以返回客户端发送到服务器的所有cookie。如果应用程序没有正确设置安全cookie属性（例如HttpOnly和Secure），则恶意用户可以使用JavaScript访问这些cookie并窃取用户的身份验证令牌，从而发起会话劫持攻击。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;getQueryString()&lt;/code&gt;：类似于getParameter()，是一个用于获取HTTP请求参数的方法。具体来说，当客户端向服务器发送GET请求时，可以将请求参数附加到URL的查询字符串中（例如，在URL末尾添加“&lt;code&gt;?key1=value1&amp;amp;key2=value2&lt;/code&gt;”），而服务器就可以使用&lt;code&gt;getQueryString()&lt;/code&gt;方法从查询字符串中获取这些参数。如果没有正确过滤或编码用户输入，恶意用户可以在查询字符串中注入恶意代码，并对应用程序进行攻击。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;getHeaders()&lt;/code&gt;：如果没有正确验证或过滤头信息，攻击者可以通过修改请求头部内容，实施跨站脚本攻击或其他类型的攻击。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Runtime.exec()&lt;/code&gt;：该方法允许应用程序执行系统命令。如果没有正确限制外部输入，则可能会导致恶意用户执行任意命令，包括删除文件、启动后门等。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;logger.info()&lt;/code&gt;：如果在日志记录器中记录了敏感信息，例如密码或其他机密数据，则攻击者可以利用此漏洞来获取敏感信息。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;password&lt;/code&gt;：如果明文存储密码，攻击者可以轻松地获取用户密码并进一步入侵应用程序或其他相关服务。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;upload&lt;/code&gt;：上传文件时，如果没有正确限制文件类型、大小和内容，则可能会导致恶意用户上传包含恶意代码的文件，例如web shell，实现远程命令执行攻击。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;download&lt;/code&gt;：如果下载文件时没有正确限制文件类型、大小和内容，则可能会导致恶意用户在下载过程中注入恶意代码，例如利用浏览器漏洞进行攻击&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="sql注入的防范"&gt;sql注入的防范
+&lt;/h2&gt;&lt;p&gt;sql注入通常是因为使用了 &lt;code&gt;String sql = &amp;quot;select * from user where username = '&amp;quot; + username + &amp;quot;' and password = '&amp;quot; + password + &amp;quot;'&amp;quot;;&lt;/code&gt;这种拼接sql语句的方式，我们可以使用预编译的方式来防范sql注入，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;select * from user where username = ? and password = ?&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;PreparedStatement&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;prepareStatement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;ResultSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;executeQuery&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样预编译会把 &lt;code&gt;?&lt;/code&gt; 位置的参数当成字符串来处理，而不是当成sql语句的一部分，所以就不会出现sql注入的问题了。&lt;/p&gt;
+&lt;h2 id="xss的防范"&gt;xss的防范
+&lt;/h2&gt;&lt;p&gt;xss的防范主要是对用户输入的内容进行过滤，防止用户输入的内容中包含恶意的脚本代码，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;username&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;replaceAll&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;lt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;amp;lt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="na"&gt;replaceAll&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样就可以把用户输入的内容中的 &amp;lt; 和 &amp;gt; 替换成 &amp;lt; 和 &amp;gt;，这样就可以防止用户输入的内容中包含恶意的脚本代码了。&lt;/p&gt;
+&lt;h2 id="路径遍历的防范"&gt;路径遍历的防范
+&lt;/h2&gt;&lt;p&gt;目录遍历漏洞，是一种常见的Web安全漏洞。攻击者通过利用该漏洞，可以访问应用程序中未经授权的文件和目录。&lt;/p&gt;
+&lt;p&gt;当开发人员使用&lt;strong&gt;用户提供的输入&lt;/strong&gt;构建文件路径时，没有对用户输入进行合法性验证和过滤，从而导致攻击者可以在访问文件时绕过应用程序的安全检查。例如，攻击者可以通过修改URL参数中的目录跳转符来访问系统文件或其他目录中的文件，甚至可以执行任意代码。&lt;/p&gt;
+&lt;p&gt;错误的（使用字符串拼接得到路径）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fileName&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;fileName&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;filePath&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;/opt/files/&amp;#34;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fileName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filePath&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修复的，使用 new File(baseDir, fileName) 的方式&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fileName&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;fileName&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;baseDir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;/opt/files/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;baseDir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fileName&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="文件上传的防范"&gt;文件上传的防范
+&lt;/h2&gt;&lt;p&gt;文件上传漏洞是： 上传文件时，如果没有正确限制文件类型、大小和内容，则可能会导致恶意用户上传包含恶意代码的文件，例如web shell，实现远程命令执行攻击。
+通常是因为没有限制文件的大小和类型，我们可以通过 &lt;code&gt;file.getSize()&lt;/code&gt; 和 &lt;code&gt;file.getContentType()&lt;/code&gt; 来限制文件的大小和类型，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getSize&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;1024&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;文件大小不能超过1M&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getContentType&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="na"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;image/jpeg&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;文件类型只能是jpg&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kt"&gt;byte&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bytes&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getBytes&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bytes&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;0xFF&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;||&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bytes&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;0xD8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;文件内容不是jpg&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样就可以限制文件的内容了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文件的魔数是一种用于识别文件格式的机制，通常是指文件开头固定位置的几个字节。不同类型的文件具有不同的魔数，操作系统会根据文件的魔数来确定文件的类型和打开方式。
+可以用16进制编辑器打开文件（比如命令行中：&lt;code&gt; certutil xxx.zip | more&lt;/code&gt;），查看文件的前几个字节，就可以看到文件的魔数了。
+不同的文件类型有不同的魔数，比如说：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;JPEG 图像文件的魔数为 FF D8 FF
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PNG 图像文件的魔数为 89 50 4E 47 0D 0A 1A 0A
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;GIF 图像文件的魔数为 47 49 46 38 39 61 或者 47 49 46 38 37 61
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PDF 文件的魔数为 25 50 44 46
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ZIP 压缩文件的魔数为 50 4B 03 04
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>代码审计 基础概念</title><link>https://b.cornradio.org/p/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link><pubDate>Thu, 30 Mar 2023 22:23:02 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid><description>&lt;h2 id="源代码审计学习"&gt;源代码审计学习
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;源代码审计主要分成人工和工具扫描两种&lt;/li&gt;
+&lt;li&gt;代码审计的目的是为了发现代码中的安全漏洞&lt;/li&gt;
+&lt;li&gt;代码审计人员需要具备一定的编程能力，并对安全漏洞有一定的了解，是比较难的一种安全工作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="工具"&gt;工具
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;fortify 工具 业内常用 很贵几十万 ，附上盗版链接： &lt;a class="link" href="https://www.ddosi.org/fortify/" target="_blank" rel="noopener"
+&gt;https://www.ddosi.org/fortify/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;seayphp 免费源代码审计工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;fortify 我觉得不太好用，倒不是从技术的角度，而是中文注释在里面都变成乱码了。让审计变得麻烦。&lt;/p&gt;
+&lt;p&gt;我推荐使用gpt作为源代码审计辅助工具！&lt;/p&gt;
+&lt;h2 id="黑盒与白盒"&gt;黑盒与白盒
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;黑盒：不知道源代码的情况下，通过测试来发现漏洞（渗透测试）
+&lt;ul&gt;
+&lt;li&gt;速度快&lt;/li&gt;
+&lt;li&gt;渗透测试发现问题，代码审计确认原因&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;白盒：知道源代码的情况下，通过阅读源代码来发现漏洞（源代码审计）
+&lt;ul&gt;
+&lt;li&gt;全面深入的发现漏洞&lt;/li&gt;
+&lt;li&gt;代码审计的问题，通过渗透测试来验证可利用性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="代码审计的基本流程"&gt;代码审计的基本流程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;配置分析环境-&amp;gt; 熟悉业务逻辑 -&amp;gt; 分析程序架构-&amp;gt; 工具自动扫描-&amp;gt; 人工代码审计 -&amp;gt; 代码审计报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;在审计过程中，可以主要观察以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SQL注入&lt;/strong&gt;：检查是否存在使用不安全的SQL查询语句的地方，例如拼接字符串而不使用参数化查询。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;跨站点脚本攻击（XSS&lt;/strong&gt;）：确保不会将未经转义的用户输入插入HTML或JavaScript中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;不安全的文件上传&lt;/strong&gt;：验证上传的文件类型和内容，避免任意代码执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;认证和授权问题&lt;/strong&gt;：确保正确地实现了身份验证和授权策略，并限制敏感数据或操作的访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;敏感信息泄露&lt;/strong&gt;：确保不会以明文形式存储密码、令牌或其他敏感信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;内存泄漏和不安全对象引用&lt;/strong&gt;：确保没有未释放的资源或不安全的对象引用，以防止恶意方利用它们。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;密码破解和暴力攻击&lt;/strong&gt;：确保密码哈希和加密算法足够安全，以防止破解和暴力攻击。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

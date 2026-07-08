@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云服务 on</title><link>https://b.cornradio.org/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1/</link><description>Recent content in 云服务 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 15 Apr 2023 12:31:55 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Azure自建节点</title><link>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</link><pubDate>Sat, 15 Apr 2023 12:31:55 +0800</pubDate><guid>https://b.cornradio.org/p/%E4%BD%BF%E7%94%A8azure%E8%87%AA%E5%BB%BA%E8%8A%82%E7%82%B9/</guid><description>&lt;p&gt;Azure注册新账户，会赠送一个月的 200USD 免费额度，如果升级成“即用即付”，则这 200USD 可以延长使用期限到一年。（需要填写自己的信用卡信息）&lt;/p&gt;
+&lt;p&gt;除此之外，还有至少有免费 1个月 的免费 vm 用。 可以在这里查看：&lt;a class="link" href="https://portal.azure.com/#view/Microsoft_Azure_Billing/FreeServicesBlade" target="_blank" rel="noopener"
+&gt;Azure免费服务&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://portal.azure.com/" target="_blank" rel="noopener"
+&gt;注册&lt;/a&gt;，可以用假名字，地址的话选择中国就可以（这个是账单地址，你还是可以用全世界的服务器可用区），但是信用卡是必须的，他会从信用卡里取两次 1$ 来验证你是不是真人。&lt;/p&gt;
+&lt;p&gt;注意别搞错了 &lt;code&gt;Azure&lt;/code&gt; 和 &lt;code&gt;Azure 世纪互联运营 &lt;/code&gt; 第二个是国内专版的……&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133957.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133859.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="创建虚拟机"&gt;创建虚拟机
+&lt;/h2&gt;&lt;p&gt;随便创建一个先：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124249.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;这里决定你的 vm ip 位置
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124356.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;这里要选B1s，它有一个月免费额度。并且是最便宜的，而且足够了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124505.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;起一个用户名，还有密钥文件名，这个密钥是用来登录 vm 的（用户名 + pem文件登陆，不用密码），一会儿创建的时候Azure会让你下载。&lt;/p&gt;
+&lt;p&gt;保存好，这个文件只能下载一次。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124622.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;磁盘选64G，因为30G收费，64有两块的免费额度。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124813.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;网络方面保持默认设置，但是这里要打勾，方便到时候删除vm的时候把相关的资源一同删除。Azure的ip、磁盘、网络等都是分开收费的，删除时候记得检查。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415124906.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后就是创建了，看看价格大概是 1 CNY / h，但是不用担心，我们还有 200 USD 免费额度呢。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415125123.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="开启安全组"&gt;开启安全组
+&lt;/h2&gt;&lt;p&gt;服务器安全组是一种在服务器外部的防火墙，可以控制服务器的入站和出站流量。&lt;/p&gt;
+&lt;p&gt;默认情况下，azure仅开启22端口，只有在安全组中打开端口后，才能访问其他端口。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在这里添加一个入站规则，允许所有端口的流量进入（源端口和目标端口都设置&lt;code&gt;*&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;（这不安全，但是这很简单）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415132408.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="远程登录vm"&gt;远程登录vm
+&lt;/h2&gt;&lt;p&gt;在Azure虚拟机管理找到vm的ip&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415130912.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;如过是mac系统下载的key，权限会不对，需要修改一下，让group 和 other 没有读取的权限，否则无法远程到服务器。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ ll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-rw-r--r--@ &lt;span class="m"&gt;1&lt;/span&gt; kasusa staff 2.4K Apr &lt;span class="m"&gt;15&lt;/span&gt; 12:52 myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ chmod &lt;span class="m"&gt;600&lt;/span&gt; myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;13:01 ~/remote-ssh $ ll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;-rw-------@ &lt;span class="m"&gt;1&lt;/span&gt; kasusa staff 2.4K Apr &lt;span class="m"&gt;15&lt;/span&gt; 12:52 myub2_key.pem
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="ssh"&gt;ssh
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -i myub2_key.pem azureuser@&amp;lt;your_ip&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;用root权限 跑一键脚本（会自动安装v2ray、关闭防火墙、配置好然后给你一个 vmess link）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -i
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;bash &amp;lt;(curl -s -L https://git.io/v2ray-setup.sh)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;跑好了一件脚本，会自动开始运行，可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray status&lt;/code&gt; 确认状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray start&lt;/code&gt; 启动一下&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;按照下面的例子找一个自己能导入的链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray link&lt;/code&gt; 生成一个json格式的东东&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray qr&lt;/code&gt; 生成 vmess 二维码、链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;v2ray ssqr&lt;/code&gt; 生成 ss 二维码、链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于ios用户：小火箭能导入单个vmess节点，Qx不支持vmess，需要生成一个ss节点再导入。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;v2ray ssqr 命令执行结果如下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二维码可以直接扫一扫（我这个缺失定位点你扫不了的），然后下面的 link 前半部份是他们的网址，后半部份 &lt;code&gt;ss://&lt;/code&gt; 开头的就是你的节点了(他们是指 &lt;a class="link" href="https://git.io/v2ray-setup.sh" target="_blank" rel="noopener"
+&gt;一键脚本&lt;/a&gt; 的作者)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230415133228.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;可以通过下面的网址，把ss节点连接转换成 clash 的 yaml 文件。&lt;/p&gt;
+&lt;p&gt;转换订阅链接 &lt;a class="link" href="https://v2rayse.com/node-convert/" target="_blank" rel="noopener"
+&gt;https://v2rayse.com/node-convert/&lt;/a&gt; （他声称自己采用纯前段转换）&lt;/p&gt;</description></item></channel></rss>

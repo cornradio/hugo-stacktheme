@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>命令行 on</title><link>https://b.cornradio.org/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link><description>Recent content in 命令行 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://b.cornradio.org/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/index.xml" rel="self" type="application/rss+xml"/><item><title>自学 linux 命令</title><link>https://b.cornradio.org/p/%E8%87%AA%E5%AD%A6-linux-%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/%E8%87%AA%E5%AD%A6-linux-%E5%91%BD%E4%BB%A4/</guid><description>&lt;p&gt;&lt;a class="link" href="https://www.linuxprobe.com/training" target="_blank" rel="noopener"
+&gt;官方培训课程&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="控制台常用快捷键"&gt;控制台常用快捷键
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;按键&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+d&lt;/td&gt;
+&lt;td&gt;键盘输入结束或退出终端&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+s&lt;/td&gt;
+&lt;td&gt;暂停当前程序，暂停后按下任意键恢复运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+z&lt;/td&gt;
+&lt;td&gt;将当前程序放到后台运行，恢复到前台为命令fg&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+a&lt;/td&gt;
+&lt;td&gt;将光标移至输入行头，相当于Home键&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+e&lt;/td&gt;
+&lt;td&gt;将光标移至输入行末，相当于End键&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl+k&lt;/td&gt;
+&lt;td&gt;删除从光标所在位置到行末&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt+Backspace&lt;/td&gt;
+&lt;td&gt;向前删除一个单词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift+PgUp&lt;/td&gt;
+&lt;td&gt;将终端显示向上滚动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift+PgDn&lt;/td&gt;
+&lt;td&gt;将终端显示向下滚动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="一次性创建多个文件"&gt;一次性创建多个文件
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;#实际上是一个简单的shell loop
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ touch love_{1..10}_shiyanlou.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="常用通配符"&gt;常用通配符
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;字符&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;|匹配 0 或多个字符
+? | 匹配任意一个字符
+[list] | 匹配 list 中的任意单一字符
+[^list] | 匹配 除 list 中的任意单一字符以外的字符
+[c1-c2] | 匹配 c1-c2 中的任意单一字符 如：[0-9][a-z]
+{string1,string2,&amp;hellip;} | 匹配 string1 或 string2 (或更多)其一字符串
+{c1..c2} | 匹配 c1-c2 中全部字符 如{1..10}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="用户管理"&gt;用户管理
+&lt;/h1&gt;&lt;p&gt;创建用户(默认会让输入密码)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo adduser &amp;lt;USERNAME&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改密码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo passwd &amp;lt;USERNAME&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;切换用户&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su &amp;lt;USERNAME&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看当前用户是谁&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;whoami
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看用户组&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat /etc/group | grep -E &amp;#34;&amp;lt;USERNAME&amp;gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;给新建的用户sudo权限(第二条是centos里面的情况。)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -G sudo &amp;lt;USERNAME&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -aG wheel &amp;lt;USERNAME&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;删除用户(把它创建时自动创建的用户目录一并删除)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo deluser lilei --remove-home
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;adduser 和 useradd 的区别是什么&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;答：useradd 只创建用户，不会创建用户密码和工作目录，创建完了需要使用 passwd &lt;username&gt; 去设置新用户的密码。adduser 在创建用户的同时，会创建工作目录和密码（提示你设置），做这一系列的操作。其实 useradd、userdel 这类操作更像是一种命令，执行完了就返回。而 adduser 更像是一种程序，需要你输入、确定等一系列操作
+查看所有登录的用户（都有谁，都在哪里登录）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;who
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="常用东西"&gt;常用东西
+&lt;/h1&gt;&lt;h2 id="配置主机名称"&gt;配置主机名称
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;4.1.2 配置主机名称&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 Vim 编辑器修改“/etc/hostname”主机名称文件。&lt;/li&gt;
+&lt;li&gt;把原始主机名称删除后追加你想要起的名字。注意，使用 Vim 编辑器修改主机名称文件后，要在末行模式下执行:wq!命令才能保存并退出文档。&lt;/li&gt;
+&lt;li&gt;保存并退出文档，然后使用 hostname 命令检查是否修改成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不好用的时候试着重新启动&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="文件管理"&gt;文件管理
+&lt;/h1&gt;&lt;p&gt;&lt;img src="https://doc.shiyanlou.com/linux_base/3-10.png/wm"
+loading="lazy"
+alt="图像权限"
+&gt;
+这个图是在使用&lt;code&gt;ls -l&lt;/code&gt;时候前部的意义。&lt;/p&gt;
+&lt;p&gt;chmod 修改权限。每一个数字代表对应权限&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rwx|r-x|r-x
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;111|101|101 = 755
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;chown 修改所有者&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chown &amp;lt;usrname&amp;gt; &amp;lt;filename&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="在目录间移动"&gt;在目录间移动
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#去tmp目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#去上一层目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#去当前用户的home（无参数cd）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="创建文件和目录"&gt;创建文件和目录
+&lt;/h2&gt;&lt;p&gt;touch 可以创建文件/更新文件时间戳。
+mkdir 可以创建目录
+mkdir -p 可以创建多级目录&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; mkdir -p father/son/grandson
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="复制文件目录"&gt;复制文件/目录
+&lt;/h2&gt;&lt;p&gt;复制文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cp &amp;lt;文件&amp;gt; &amp;lt;目的地&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复制目录&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cp &amp;lt;要复制的目录&amp;gt; &amp;lt;目的地&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="删除文件"&gt;删除文件
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm &amp;lt;文件&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -r &amp;lt;目录&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -f &amp;lt;文件&amp;gt; (包括有写保护的文件)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -rf &amp;lt;任何东西&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="移动和重命名"&gt;移动和重命名
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mv &amp;lt;原文件&amp;gt; &amp;lt;新位置&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mv &amp;lt;原文件名&amp;gt; &amp;lt;新文件名字&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;批量重命名&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rename &amp;lt;&amp;#39;正则&amp;#39;&amp;gt; &amp;lt;通配符&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="linux文件目录结构"&gt;linux文件目录结构
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://doc.shiyanlou.com/linux_base/4-1.png/wm"
+loading="lazy"
+alt="目录结构"
+&gt;&lt;/p&gt;
+&lt;h1 id="shell-script"&gt;shell script
+&lt;/h1&gt;&lt;h2 id="变量"&gt;变量
+&lt;/h2&gt;&lt;p&gt;声明变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;declare tmp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接用=赋值同时也可以新建变量,注意不要在等号左右使用空格&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmp=helloyou
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;拿出变量tmp&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;echo $tmp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;删除变量tmp&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;unset tmp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="环境变量"&gt;环境变量
+&lt;/h2&gt;&lt;p&gt;暂时设置一个环境变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;helloyuoman&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;永久设置一个环境变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/etc/bashrc shell变量（有的 Linux 没有这个文件）
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/etc/profile 环境变量
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/home/usr/.profile 用户变量
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;shiyanlou的环境用的是zsh命令行，在根目录有一个&lt;code&gt;.zshrc&lt;/code&gt;文件是初始化配置文件。
+可以使用这句来把 /home/shiyanlou/mybin 添加到path中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意,这里是用的 &amp;raquo; 它意味&amp;quot;追加&amp;quot; , &amp;gt; 是覆盖的意思&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ echo &amp;#34;PATH=$PATH:/home/shiyanlou/mybin&amp;#34; &amp;gt;&amp;gt; .zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接刷新环境变量(无需开新的zsh)&lt;strong&gt;两种等效&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;source .zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;. .zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="修改已有变量"&gt;修改已有变量
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;变量设置方式&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名#匹配字串}&lt;/td&gt;
+&lt;td&gt;从头向后开始匹配，删除符合匹配字串的最短数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名##匹配字串}&lt;/td&gt;
+&lt;td&gt;从头向后开始匹配，删除符合匹配字串的最长数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名%匹配字串}&lt;/td&gt;
+&lt;td&gt;从尾向前开始匹配，删除符合匹配字串的最短数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名%%匹配字串}&lt;/td&gt;
+&lt;td&gt;从尾向前开始匹配，删除符合匹配字串的最长数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名/旧的字串/新的字串}&lt;/td&gt;
+&lt;td&gt;将符合旧字串的第一个字串替换为新的字串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${变量名//旧的字串/新的字串}&lt;/td&gt;
+&lt;td&gt;将符合旧字串的全部字串替换为新的字串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="搜索文件"&gt;搜索文件
+&lt;/h2&gt;&lt;p&gt;whereis 简单快速&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;whereis 只能搜索二进制文件(-b)，man 帮助文件(-m)和源代码文件(-s)。如果想要获得更全面的搜索结果可以使用 locate 命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;locate快而全 使用要先安装,并且更新索引数据库&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install locate
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo updatedb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;find 超强大&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;寻找/etc中(包括子目录)名为的 sources.list文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;find /etc -name sources.list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="man-命令中常用按键以及用途"&gt;man 命令中常用按键以及用途
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;空格键&lt;/td&gt;
+&lt;td&gt;向下翻一页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/&lt;/td&gt;
+&lt;td&gt;从上至下搜索某个关键词，如“/linux”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;从下至上搜索某个关键词，如“?linux”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;n&lt;/td&gt;
+&lt;td&gt;定位到下一个搜索到的关键词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;定位到上一个搜索到的关键词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="系统状态"&gt;系统状态
+&lt;/h1&gt;&lt;h2 id="ps-aux命令"&gt;ps aux命令
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态值&lt;/th&gt;
+&lt;th&gt;意义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;R（运行）&lt;/td&gt;
+&lt;td&gt;进程正在运行或在运行队列中等待。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;S（中断）&lt;/td&gt;
+&lt;td&gt;进程处于休眠中，当某个条件形成后或者接收到信号时，则脱离该状态。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D（不可中断）&lt;/td&gt;
+&lt;td&gt;进程不响应系统异步信号，即便用 kill 命令也不能将其中断。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Z（僵死）&lt;/td&gt;
+&lt;td&gt;进程已经终止，但进程描述符依然存在, 直到父进程调用 wait4()系统函数后将进程释放。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T（停止）&lt;/td&gt;
+&lt;td&gt;进程收到停止信号后停止运行。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果我们在系统终端中执行一个命令后想立即停止它，可以同时按下 &lt;code&gt; Ctrl + C&lt;/code&gt; 组合
+键（生产环境中比较常用的一个快捷键），这样将立即终止该命令的进程。或者，如果
+有些命令在执行时不断地在屏幕上输出信息，影响到后续命令的输入，则可以在执
+行命令时在末尾添加上一个 &lt;code&gt;&amp;amp;&lt;/code&gt; 符号，这样命令将进入系统后台来执行。&lt;/p&gt;
+&lt;h2 id="ifconfig-命令"&gt;ifconfig 命令
+&lt;/h2&gt;&lt;p&gt;ifconfig 命令用于获取网卡配置与网络状态等信息，格式为“ifconfig [网络设备] [参数]”。使用 ifconfig 命令来查看本机当前的网卡配置与网络状态等信息时，其实主要查看的就是网卡名称、inet 参数后面的 IP 地址、ether 参数后面的网卡物理地址（又称为 MAC 地址）&lt;/p&gt;
+&lt;h2 id="uptime-命令"&gt;uptime 命令
+&lt;/h2&gt;&lt;p&gt;uptime 用于查看系统的负载信息，格式为 uptime。&lt;/p&gt;
+&lt;p&gt;uptime 命令真的很棒，它可以显示当前系统时间、系统已运行时间、启用终端数量以及平均负载值等信息。平均负载值指的是系统在最近 1 分钟、5 分钟、15 分钟内的压力情况（下面加粗的信息部分）；负载值越低越好，尽量不要长期超过 1，在生产环境中不要
+超过 5。&lt;/p&gt;
+&lt;h2 id="uname--a"&gt;uname -a
+&lt;/h2&gt;&lt;p&gt;查看计算机的系统类型&lt;/p&gt;
+&lt;h2 id="free--h"&gt;free -h
+&lt;/h2&gt;&lt;p&gt;查看内存&lt;/p&gt;
+&lt;h2 id="last-命令"&gt;last 命令
+&lt;/h2&gt;&lt;p&gt;last 命令用于查看所有系统的登录记录，格式为“last [参数]”。&lt;/p&gt;
+&lt;h2 id="history"&gt;history
+&lt;/h2&gt;&lt;p&gt;查看历史命令记录。
+&lt;code&gt;history -c&lt;/code&gt; 清空记录&lt;/p&gt;
+&lt;h1 id="切换目录"&gt;切换目录
+&lt;/h1&gt;&lt;h2 id="pwd-命令"&gt;pwd 命令
+&lt;/h2&gt;&lt;p&gt;pwd 命令用于显示用户当前所处的工作目录，格式为“pwd [选项]”。&lt;/p&gt;
+&lt;h2 id="cd-命令"&gt;cd 命令
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;cd&lt;/th&gt;
+&lt;th&gt;命令用于切换工作路径，格式为“cd [目录名称]”。&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd -&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;命令返回到上一次所处的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd ..&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;命令进入上级目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd &lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;命令切换到当前用户的家目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd ~username&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换到其他用户的家目录。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="ls"&gt;ls
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;~&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ls -a&lt;/td&gt;
+&lt;td&gt;查看隐藏文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ls -l&lt;/td&gt;
+&lt;td&gt;查看文件详细信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ls -la&lt;/td&gt;
+&lt;td&gt;查看隐藏文件以及显示详细&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="查看文件"&gt;查看文件
+&lt;/h1&gt;&lt;h2 id="cat-命令"&gt;cat 命令
+&lt;/h2&gt;&lt;p&gt;用来查看比较小的文本文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cat -n&lt;/code&gt; 查看文本内容时还想顺便显示行号
+&lt;code&gt;tac&lt;/code&gt; 可以倒序输出文件.&lt;/p&gt;
+&lt;h2 id="more-命令"&gt;more 命令
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;more &amp;lt;文件名&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;more更加适合阅读长文件&lt;/p&gt;
+&lt;p&gt;可以使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;kbd&gt;enter&lt;/kbd&gt; 向下一行&lt;/li&gt;
+&lt;li&gt;&lt;kbd&gt;space&lt;/kbd&gt; 向下一屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Less 比more强多了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="head-和-tail"&gt;head 和 tail
+&lt;/h2&gt;&lt;p&gt;默认查看文件头部/尾部的10行。参数 -n 可以控制行数。&lt;/p&gt;
+&lt;p&gt;tail可以使用 -f 查看最新一行.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;head -n 1 &amp;lt;文件名&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tail -f &amp;lt;文件名&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="wc-命令"&gt;wc 命令
+&lt;/h2&gt;&lt;p&gt;wc 命令用于统计指定文本的行数、字数、字节数，格式为“wc [参数] 文本”。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt; file&lt;/code&gt; 命令来查看文件类型&lt;/p&gt;
+&lt;h2 id="压缩"&gt;压缩
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;tar -czvf 压缩包名称.tar.gz 要打包的目录&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打包-压缩-显示废话-选择目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;x：解包&lt;/p&gt;
+&lt;p&gt;c：打包&lt;/p&gt;
+&lt;h2 id="搜索"&gt;搜索
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;grep&lt;/code&gt; 命令用于在文本中执行关键词搜索，并显示匹配的结果，通常和别的命令结合使用，如cat、ps等&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;~&lt;/th&gt;
+&lt;th&gt;~&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-b&lt;/td&gt;
+&lt;td&gt;将可执行文件（binary）当作文本文件（text）来搜索&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-c&lt;/td&gt;
+&lt;td&gt;仅显示找到的行数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-i&lt;/td&gt;
+&lt;td&gt;忽略大小写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-n&lt;/td&gt;
+&lt;td&gt;显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;反向选择 — 仅列出没有“关键词”的行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;root@iZ2ze1hf17j9hv44rdpmaaZ:~# grep -n Jan you
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;2:-rw-r--r-- 1 root root 17 Jan 12 2000 kasusa
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;3:drwxr-xr-x 2 root root 4096 Jan 30 10:15 mydir
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;4:drwxr-xr-x 2 root root 4096 Jan 30 10:16 mydir2
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;5:drwxr-xr-x 2 root root 4096 Jan 30 11:47 ooo
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;6:-rw-r--r-- 1 root root 0 Jan 30 11:51 you
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# you是一个文件。用显示行号的模式在you里面寻找 Jan 关键字 。在控制台里面会有高亮显示
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="别名"&gt;别名
+&lt;/h2&gt;&lt;p&gt;可以用 &lt;code&gt;alias&lt;/code&gt; 命令来创建一个属于自己的命令别名，格式为“&lt;code&gt;alias 别名=命令&lt;/code&gt;”。&lt;/p&gt;
+&lt;p&gt;若要取消一个命令别名，则是用 unalias 命令，格式为“unalias 别名”。&lt;/p&gt;
+&lt;p&gt;可以写入.bashrc文件，或者是.zshrc文件，取决于你用的是啥shell，然后就可以永久用这些别名了。&lt;/p&gt;
+&lt;p&gt;下面是一个我在macos上面使用的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#显示有颜色的用户（不适合白色背景）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="si"&gt;%10F&lt;/span&gt;&lt;span class="s2"&gt;%m&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;%11F&lt;/span&gt;&lt;span class="s2"&gt;%1~&lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s2"&gt; \$ &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#online&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;top -l 1 | head -n 10 | grep PhysMem&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# 查看可用内存&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;sudo purge&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# 整理释放内存&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# 终端设置翻墙&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;nv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;unset http_proxy; unset https_proxy;&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# 终端设置不翻墙&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;curl cip.cc&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# 查看ip和是否翻墙&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="变量和全局"&gt;变量和全局
+&lt;/h2&gt;&lt;p&gt;一般来说，变量都是用大写的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;有一些&lt;/th&gt;
+&lt;th&gt;常用的全局变量：&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;HOME&lt;/td&gt;
+&lt;td&gt;用户的主目录（即家目录）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SHELL&lt;/td&gt;
+&lt;td&gt;用户在使用的 Shell 解释器名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HISTSIZE&lt;/td&gt;
+&lt;td&gt;输出的历史命令记录条数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HISTFILESIZE&lt;/td&gt;
+&lt;td&gt;保存的历史命令记录条数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MAIL&lt;/td&gt;
+&lt;td&gt;邮件保存路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LANG&lt;/td&gt;
+&lt;td&gt;系统语言、语系名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RANDOM&lt;/td&gt;
+&lt;td&gt;生成一个随机数字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PS1 Bash&lt;/td&gt;
+&lt;td&gt;解释器的提示符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PATH&lt;/td&gt;
+&lt;td&gt;定义解释器搜索用户执行命令的路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDITOR&lt;/td&gt;
+&lt;td&gt;用户默认的文本编辑器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;自己创建一个变量/读取它：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;root@iZ2ze1hf17j9hv44rdpmaaZ:~# MYVAR=&amp;#34;hello&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;root@iZ2ze1hf17j9hv44rdpmaaZ:~# echo &amp;#34;$MYVAR&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hello
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;提升位全局变量：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;iZ2ze1hf17j9hv44rdpmaaZ&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="c1"&gt;# export MYVAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="vim"&gt;VIM
+&lt;/h1&gt;&lt;h2 id="vim-中常用的命令"&gt;Vim 中常用的命令
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;dd&lt;/td&gt;
+&lt;td&gt;删除（剪切）光标所在整行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5dd&lt;/td&gt;
+&lt;td&gt;删除（剪切）从光标处开始的 5 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yy&lt;/td&gt;
+&lt;td&gt;复制光标所在整行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5yy&lt;/td&gt;
+&lt;td&gt;复制从光标处开始的 5 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;n&lt;/td&gt;
+&lt;td&gt;显示搜索命令定位到的下一个字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;显示搜索命令定位到的上一个字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;u&lt;/td&gt;
+&lt;td&gt;撤销上一步的操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;p&lt;/td&gt;
+&lt;td&gt;将之前删除（dd）或复制（yy）过的数据粘贴到光标后面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="末行模式中可用的命令"&gt;末行模式中可用的命令
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;要想切换到末行模式，在命令模式中输入一个冒号就可以了。&lt;/strong&gt;
+末行模式主要用于保存或退出文件，以及设置 Vim 编辑器的工作环境，还可以让用户执
+行外部的 Linux 命令或跳转到所编写文档的特定行数。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;:w&lt;/td&gt;
+&lt;td&gt;保存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:q&lt;/td&gt;
+&lt;td&gt;退出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:q!&lt;/td&gt;
+&lt;td&gt;强制退出（放弃对文档的修改内容）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:wq!&lt;/td&gt;
+&lt;td&gt;强制保存退出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:set&lt;/td&gt;
+&lt;td&gt;nu 显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:set&lt;/td&gt;
+&lt;td&gt;nonu 不显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:命令&lt;/td&gt;
+&lt;td&gt;执行该命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:整数&lt;/td&gt;
+&lt;td&gt;跳转到该行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:s/one/two&lt;/td&gt;
+&lt;td&gt;将当前光标所在行的第一个 one 替换成 two&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:s/one/two/g&lt;/td&gt;
+&lt;td&gt;将当前光标所在行的所有 one 替换成 two&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;:%s/one/two/g&lt;/td&gt;
+&lt;td&gt;将全文中的所有 one 替换成 two&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;?字符串&lt;/td&gt;
+&lt;td&gt;在文本中从下至上搜索该字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/字符串&lt;/td&gt;
+&lt;td&gt;在文本中从上至下搜索该字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="append"&gt;append
+&lt;/h1&gt;&lt;p&gt;查看命令的来源：type&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;kasusadeMacBook-Pro:~ $ type who
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;who is /usr/bin/who
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;kasusadeMacBook-Pro:~ $ type cd
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd is a shell builtin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入输出导向：&lt;/p&gt;
+&lt;p&gt;其中输出分成 普通输出、错误输出&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &amp;lt; infile
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt; outfile &lt;span class="c1"&gt;#Create/overwrite outfile &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt;&amp;gt; outfile &lt;span class="c1"&gt;#Append to outfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; 2&amp;gt; errorfile
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#普通输出、错误输出 同时输出到两个文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt; outfile 2&amp;gt; errorfile
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#普通输出、错误输出合并输出到1个文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt; outfile
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;any &lt;span class="nb"&gt;command&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&amp;gt; outfile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一行执行多个命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 直接按顺序执行
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;command1 ; command2 ; command3
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 按顺序执行但是如果遇到错误会停止
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;command1 &amp;amp;&amp;amp; command2 &amp;amp;&amp;amp; command3
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# 按顺序执行但是如果遇到成功的直接退出
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;command1 || command2 || command3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;引号&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一般来说空格作为分隔符，如果输入中要带空格需要用单or双引号把它扩起来&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;单引号：原样输出&lt;/li&gt;
+&lt;li&gt;双引号：可以在其中加入变量等&lt;/li&gt;
+&lt;li&gt;反引号（tilda）：反引号之中的字符串会作为变量来执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;→&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;The variable HOME has value $HOME&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;HOME&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="n"&gt;HOME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;→&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;The variable HOME has value $HOME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;variable&lt;/span&gt; &lt;span class="n"&gt;HOME&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;smith&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;→&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="o"&gt;+%&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;2021&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;→&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;expr&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="o"&gt;+%&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="c1"&gt;# expr可以用来做运算，但是要在运算符号之间加空格&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;2023&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>linux fun stuff</title><link>https://b.cornradio.org/p/linux-fun-stuff/</link><pubDate>Mon, 15 Nov 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/linux-fun-stuff/</guid><description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;cmatrix 黑客帝国命令行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gow 让win可以用大部分linux常用命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>corntab计划任务</title><link>https://b.cornradio.org/p/corntab%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/corntab%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</guid><description>&lt;h1 id="corntab"&gt;corntab
+&lt;/h1&gt;&lt;p&gt;设置corntab任务，使用默认编辑器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;corntab -e
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置默认编辑器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;select-editor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置任务，每天2：00执行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;0 2 * * * /home/saber/DDREPORT/ddrp.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>proxychains 使用教程</title><link>https://b.cornradio.org/p/proxychains-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/proxychains-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装proxychains sudo apt install proxychains4&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置他的配置文件：sudo vim /etc/proxychains4.conf&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;取消掉的注释 dynamic_chain&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将底部的网络协议和代理端口和ip改成你翻墙软件提供的:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;socks5 127.0.0.1 1089
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http 127.0.0.1 8889
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过proxychains4 来在bash启动其他程序：proxychains4 &amp;lt;程序名&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ps：可以去 &lt;code&gt;/.bashrc&lt;/code&gt; 给&lt;code&gt;proxychains&lt;/code&gt;起一个别名，比较方便&lt;/p&gt;</description></item><item><title>shell</title><link>https://b.cornradio.org/p/shell/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/shell/</guid><description>&lt;p&gt;&lt;a class="link" href="https://www.runoob.com/linux/linux-shell-variable.html" target="_blank" rel="noopener"
+&gt;菜鸟shell教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="shell-命令脚本"&gt;Shell 命令脚本
+&lt;/h1&gt;&lt;p&gt;Shell 脚本文件的名称可以任意，建议将.sh 后缀加上，以表示是一个脚本文件。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建脚本：&lt;code&gt;vim example.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;写好脚本的内容（就是连串的shell语句）&lt;/li&gt;
+&lt;li&gt;执行脚本：（后面的是参数）
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt; bash example.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sh example.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./example.sh &lt;/code&gt; （一般会有权限不足的报错，升权限就好了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="简单的脚本"&gt;简单的脚本
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#For Example BY linuxprobe.com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;pwd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ls -al
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在上面的这个 example.sh 脚本中实际上出现了三种不同的元素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一行的脚本声明（#!）用来告诉系统使用哪种 Shell 解释器来执行该脚本；&lt;/li&gt;
+&lt;li&gt;第二行的注释信息（#）是对脚本功能和某些命令的介绍信息，使得自己或他人在日后看到这个脚本内容时，可以快速知道该脚本的作用或一些警告信息；&lt;/li&gt;
+&lt;li&gt;第三、四行的可执行语句也就是我们平时执行的 Linux 命令了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="带参数的脚本-接收参数"&gt;带参数的脚本-接收参数
+&lt;/h2&gt;&lt;p&gt;如何运行带参数的脚本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sh example.sh one two three four five six
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;脚本内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;当前脚本名称为&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;总共有&lt;/span&gt;&lt;span class="nv"&gt;$#&lt;/span&gt;&lt;span class="s2"&gt;个参数，分别是&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;&lt;span class="s2"&gt;。&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;第 1 个参数为&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;，第 5 个为&lt;/span&gt;&lt;span class="nv"&gt;$5&lt;/span&gt;&lt;span class="s2"&gt;。&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;~&lt;/th&gt;
+&lt;th&gt;~&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$0&lt;/td&gt;
+&lt;td&gt;对应的是当前 Shell 脚本程序的名称，&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$#&lt;/td&gt;
+&lt;td&gt;对应的是总共有几个参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$*&lt;/td&gt;
+&lt;td&gt;对应的是所有位置的参数值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$?&lt;/td&gt;
+&lt;td&gt;对应的是显示上一次命令的执行返回值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$1、$2、$3&lt;/td&gt;
+&lt;td&gt;则分别对应着第 N 个位置的参数值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="带参数的脚本-判断用户的参数"&gt;带参数的脚本-判断用户的参数
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;测试文件是否为目录类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-e&lt;/td&gt;
+&lt;td&gt;测试文件是否存在&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-f&lt;/td&gt;
+&lt;td&gt;判断是否为一般文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-r&lt;/td&gt;
+&lt;td&gt;测试当前用户是否有权限读取&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-w&lt;/td&gt;
+&lt;td&gt;测试当前用户是否有权限写入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-x&lt;/td&gt;
+&lt;td&gt;测试当前用户是否有权限执行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;mdash;&lt;/td&gt;
+&lt;td&gt;0代表存在，否则不存在&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;例子： 下面使用文件测试语句来判断/etc/fstab 是否为一个目录类型的文件，然后通过 Shell 解释器的内设$?变量显示上一条命令执行后的返回值。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;root@KASUSA-cloud:~# [ -f mydir ]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;root@KASUSA-cloud:~# echo $?
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="符号符号"&gt;&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;符号,&lt;code&gt;||&lt;/code&gt;符号
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&amp;amp;&amp;amp;，它表示当前面的命令执行成功后才会执行它后面的命令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;判断目录是否存在：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;[&lt;/span&gt; -e mydir &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Exist&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;表示当前面的命令执行失败后才会执行它后面的命令，&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此可以用来结合系统环境变量 USER 来判断当前登录的用户是否为非管理员身份：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$USER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; root &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一个复杂一点的判断用户的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! &lt;span class="nv"&gt;$USER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; root &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;user&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;root&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="运算比较符"&gt;运算比较符
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-eq&lt;/td&gt;
+&lt;td&gt;是否等于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-ne&lt;/td&gt;
+&lt;td&gt;是否不等于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-gt&lt;/td&gt;
+&lt;td&gt;是否大于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-lt&lt;/td&gt;
+&lt;td&gt;是否小于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-le&lt;/td&gt;
+&lt;td&gt;是否等于或小于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-ge&lt;/td&gt;
+&lt;td&gt;是否大于或等于&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="流程控制语句"&gt;流程控制语句
+&lt;/h2&gt;&lt;h3 id="if-条件测试语句"&gt;if 条件测试语句
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzfmixtrj30eh05t3z5.jpg"
+loading="lazy"
+alt="if"
+&gt;
+&lt;img src="https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzhnsu8uj30g9074jsb.jpg"
+loading="lazy"
+alt="if else if"
+&gt;&lt;/p&gt;
+&lt;h3 id="for-条件循环语句"&gt;for 条件循环语句
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/0083vuQJly1gbmzpen0wwj30ev05fmxp.jpg"
+loading="lazy"
+alt="for1"
+&gt;&lt;/p&gt;
+&lt;p&gt;批量创建用户脚本：
+创建 user.txt&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vim users.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;andy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;barry
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;carl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;duke
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;eric
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;george
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建脚本 Example.sh&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; vim Example.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;read&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;#34;Enter The Users Password : &amp;#34;&lt;/span&gt; PASSWD
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; UNAME in &lt;span class="sb"&gt;`&lt;/span&gt;cat users.txt&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; id &lt;span class="nv"&gt;$UNAME&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; -eq &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Already exists&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; useradd &lt;span class="nv"&gt;$UNAME&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$PASSWD&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; passwd --stdin &lt;span class="nv"&gt;$UNAME&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; -eq &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$UNAME&lt;/span&gt;&lt;span class="s2"&gt; , Create success&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$UNAME&lt;/span&gt;&lt;span class="s2"&gt; , Create failure&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;需要多说一句，/dev/null 是一个被称作 Linux 黑洞的文件，把输出信息重定向到这个文件等同于删除数据（类似于没有回收功能的垃圾箱），可以让用户的屏幕窗口保持简洁。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="while-条件循环语句"&gt;while 条件循环语句
+&lt;/h3&gt;&lt;p&gt;执行前并不确定最终执行的次数&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://image.baidu.com/search/down?url=http://ww1.sinaimg.cn/large/006rgJELly1gbwy6ok0x4j306q04874d.jpg"
+loading="lazy"
+alt="sshot-2020-02-15-[1].png"
+&gt;&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#在CASE变量小于等于20的时候一直运行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;CASE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;#初始化变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;case = &lt;/span&gt;&lt;span class="nv"&gt;$CASE&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;#显示变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$CASE&lt;/span&gt; -le &lt;span class="m"&gt;20&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;#while条件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="c1"&gt;#while开始&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;CASE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;expr &lt;span class="nv"&gt;$CASE&lt;/span&gt; + 1&lt;span class="sb"&gt;`&lt;/span&gt; &lt;span class="c1"&gt;#相当于CASE++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;case = &lt;/span&gt;&lt;span class="nv"&gt;$CASE&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;#显示下CASE的值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;done&lt;/span&gt; &lt;span class="c1"&gt;#结束&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>ubuntu上安装java</title><link>https://b.cornradio.org/p/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85java/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85java/</guid><description>&lt;p&gt;ubuntu 安装 java 最好的教程：https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOracleJdkDeb.html&lt;/p&gt;
+&lt;h2 id="steps"&gt;steps
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;去oracle下载你要的java&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;oracle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;technologies&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;javase&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;downloads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;1.1 一般来说你需要解压之后把文件放在 &lt;code&gt;/usr/lib/jvm&lt;/code&gt; 这里是标准的java存放位置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;让系统知道你新装了 java 还有他的位置 (更改后半句的目录为你的java解压路径 最后面的是java config编号)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo update-alternatives --install &amp;#34;/usr/bin/java&amp;#34; &amp;#34;java&amp;#34; &amp;#34;/usr/lib/jvm/jdk-15.0.1/bin/java&amp;#34; 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择你的新java版本&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo update-alternatives --config java
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试是否成功&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;java -version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>ubuntu安装pip3</title><link>https://b.cornradio.org/p/ubuntu%E5%AE%89%E8%A3%85pip3/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/ubuntu%E5%AE%89%E8%A3%85pip3/</guid><description>&lt;p&gt;ubuntu安装python 的包管理器 pip3 :https://packaging.python.org/guides/installing-using-linux-tools/&lt;/p&gt;
+&lt;p&gt;Python 3:
+sudo apt install python3-venv python3-pip&lt;/p&gt;
+&lt;p&gt;安装之后要重新启动，否则在这次开机里面不能使用安装的包&lt;/p&gt;</description></item><item><title>ubuntu换源</title><link>https://b.cornradio.org/p/ubuntu%E6%8D%A2%E6%BA%90/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/ubuntu%E6%8D%A2%E6%BA%90/</guid><description>&lt;p&gt;ps：也可以通过内置的software &amp;amp; update来测试和更换中国源&lt;/p&gt;
+&lt;p&gt;清华： &lt;a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener"
+&gt;https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/&lt;/a&gt;
+阿里： &lt;a class="link" href="https://developer.aliyun.com/mirror/ubuntu" target="_blank" rel="noopener"
+&gt;https://developer.aliyun.com/mirror/ubuntu&lt;/a&gt;&lt;/p&gt;</description></item><item><title>vim</title><link>https://b.cornradio.org/p/vim/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/vim/</guid><description>&lt;p&gt;&lt;a class="link" href="https://blog.ihipop.info/2011/01/2026.html" target="_blank" rel="noopener"
+&gt;vimtutor-ch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;快速使用vim:&lt;/p&gt;
+&lt;h2 id="跳转"&gt;跳转
+&lt;/h2&gt;&lt;p&gt;行之间的跳转&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;[&lt;/span&gt;n&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;shift&lt;/span&gt; g &lt;span class="c1"&gt;#跳转到第n行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gg &lt;span class="c1"&gt;#跳转到第一行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; g &lt;span class="c1"&gt;#跳转到最后一行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;行内的跳转&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;~ &lt;span class="c1"&gt;#切换大小写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;w &lt;span class="c1"&gt;#到下一个单词头部&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;#到行头&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ &lt;span class="c1"&gt;#到行尾&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;f &amp;lt;字母&amp;gt; &lt;span class="c1"&gt;#搜索并跳转到下一个匹配字母&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;F &amp;lt;字母&amp;gt; &lt;span class="c1"&gt;#搜索并跳转到上一个匹配字母&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="复制和粘贴"&gt;复制和粘贴
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;普通模式中使用y复制&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通模式中，yy复制游标所在的整行（3yy表示复制3行）&lt;/li&gt;
+&lt;li&gt;普通模式中，y0 复制至行首。不含光标所在处字符。&lt;/li&gt;
+&lt;li&gt;普通模式中，y$ 复制至行尾。含光标所在处字符。&lt;/li&gt;
+&lt;li&gt;普通模式中，yw 复制一个单词。&lt;/li&gt;
+&lt;li&gt;普通模式中，y2w 复制两个单词。&lt;/li&gt;
+&lt;li&gt;普通模式中，yG 复制至文本末。&lt;/li&gt;
+&lt;li&gt;普通模式中，y1G 复制至文本开头。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;普通模式中使用 p 粘贴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通模式中，p(小写)代表粘贴至光标后（下）&lt;/li&gt;
+&lt;li&gt;普通模式中，P(大写)代表粘贴至光标前（上）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;剪切 使用 d&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dd 剪切一行&lt;/li&gt;
+&lt;li&gt;[n]dd 剪切n行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="替换和撤销undo命令"&gt;替换和撤销(Undo)命令
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;替换
+&lt;ul&gt;
+&lt;li&gt;c 删除并重写一个字母&lt;/li&gt;
+&lt;li&gt;C 删除并重写从[光标处到末尾]一个字母&lt;/li&gt;
+&lt;li&gt;cc 删除并重写一行&lt;/li&gt;
+&lt;li&gt;r 替换一个字母&lt;/li&gt;
+&lt;li&gt;R 连续的替换字母
+撤销
+u 一次撤销
+U 撤销所有
+重做
+ctrl + r 重做&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="缩进"&gt;缩进
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;&amp;lt; &lt;span class="c1"&gt;#向左侧缩进&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;gt;&amp;gt; &lt;span class="c1"&gt;#向右侧缩进&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;:set &lt;span class="nv"&gt;shiftwidth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;#设置缩进大小为10个空格&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;:ce &lt;span class="c1"&gt;#中心对齐&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;:le &lt;span class="c1"&gt;#左侧对齐&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;:ri &lt;span class="c1"&gt;#右侧对齐&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id="教程"&gt;教程
+&lt;/h1&gt;&lt;p&gt;我是在实验楼看到的这个系统自带的教程的.
+感觉还不错的样子。&lt;/p&gt;
+&lt;h2 id="第二讲小结"&gt;第二讲小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;欲从当前光标删除至单字/单词末尾，请输入∶dw&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;欲从当前光标删除至当前行末尾，请输入∶d$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;欲删除整行，请输入∶dd&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在正常模式下一个命令的格式是∶&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; [number] command object 或者 command [number] object
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;其意是∶
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; number - 代表的是命令执行的次数
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; command - 代表要做的事情，比如 d 代表删除
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; object - 代表要操作的对象，比如 w 代表单字/单词，$ 代表到行末等等。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="5"&gt;
+&lt;li&gt;欲撤消以前的操作，请输入∶u (小写的u)
+欲撤消在一行中所做的改动，请输入∶U (大写的U)
+欲撤消以前的撤消命令，恢复以前的操作结果，请输入∶CTRL-R&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="第三讲小结"&gt;第三讲小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;要重新置入已经删除的文本内容，请输入小写字母 p。该操作可以将已删除
+的文本内容置于光标之后。如果最后一次删除的是一个整行，那么该行将置
+于当前光标所在行的下一行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要替换光标所在位置的字符，请输入小写的 r 和要替换掉原位置字符的新字
+符即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更改类命令允许您改变指定的对象，从当前光标所在位置直到对象的末尾。
+比如输入 cw 可以替换当前光标到单词的末尾的内容；输入 c$ 可以替换当
+前光标到行末的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更改类命令的格式是∶&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;[number] c object 或者 c [number] object
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面我们继续学习下一讲。&lt;/p&gt;
+&lt;h2 id="第四讲小结"&gt;第四讲小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ctrl-g 用于显示当前光标所在位置和文件状态信息。Shift-G 用于将光标跳
+转至文件最后一行。先敲入一个行号然后按 Shift-G 则是将光标移动至该行
+号代表的行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入 / 然后紧随一个字符串是则是在当前所编辑的文档中向后查找该字符串。
+输入问号 ? 然后紧随一个字符串是则是在当前所编辑的文档中向前查找该字
+符串。完成一次查找之后按 n 键则是重复上一次的命令，可在同一方向上查
+找下一个字符串所在；或者按 Shift-N 向相反方向查找下该字符串所在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果光标当前位置是括号(、)、[、]、{、}，按 % 可以将光标移动到配对的
+括号上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;在一行内替换头一个字符串 old 为新的字符串 new，请输入 :s/old/new&lt;/li&gt;
+&lt;li&gt;在一行内替换所有的字符串 old 为新的字符串 new，请输入 :s/old/new/g&lt;/li&gt;
+&lt;li&gt;在两行内替换所有的字符串 old 为新的字符串 new，请输入 :#,#s/old/new/g&lt;/li&gt;
+&lt;li&gt;在文件内替换所有的字符串 old 为新的字符串 new，请输入 :%s/old/new/g&lt;/li&gt;
+&lt;li&gt;进行全文替换时询问用户确认每个替换需添加 c 选项，请输入 :%s/old/new/gc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="第五讲小结"&gt;第五讲小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;:!command 用于执行一个外部命令 command。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;请看一些实际例子∶
+:!dir - 用于显示当前目录的内容。
+:!rm FILENAME - 用于删除名为 FILENAME 的文件。&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;
+&lt;p&gt;:w FILENAME 可将当前 VIM 中正在编辑的文件保存到名为 FILENAME 的文
+件中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;:#,#w FILENAME 可将当前编辑文件第 # 行至第 # 行的内容保存到文件
+FILENAME 中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;:r FILENAME 可提取磁盘文件 FILENAME 并将其插入到当前文件的光标位置
+后面。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="第六讲小结"&gt;第六讲小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;输入小写的 o 可以在光标下方打开新的一行并将光标置于新开的行首，进入
+插入模式。
+输入大写的 O 可以在光标上方打开新的一行并将光标置于新开的行首，进入
+插入模式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入小写的 a 可以在光标所在位置之后插入文本。
+输入大写的 A 可以在光标所在行的行末之后插入文本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入大写的 R 将进入替换模式，直至按 &lt;ESC&gt; 键退出替换模式而进入正常
+模式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入 :set xxx 可以设置 xxx 选项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>安装zsh和配置主题</title><link>https://b.cornradio.org/p/%E5%AE%89%E8%A3%85zsh%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/%E5%AE%89%E8%A3%85zsh%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;zsh 有很多实用功能，下面安装和配置ohmyzsh的教程：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="安装zsh"&gt;安装zsh
+&lt;/h1&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="提前安装所需的字体"&gt;提前安装所需的字体
+&lt;/h1&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install fonts-powerline
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/powerline/fonts" target="_blank" rel="noopener"
+&gt;powerline-GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="抄国光的作业"&gt;抄国光的作业
+&lt;/h1&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sh -c &amp;#34;$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="zshrc配置"&gt;.zshrc配置
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;打开配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code .zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;在.zshrc中加入下面这行( 去掉每行的 username@host )&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="n"&gt;DEFAULT_USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;$(whoami)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="ubuntu-terminal-配置"&gt;ubuntu terminal 配置
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;profiles-colors 配置主题颜色，要让主题够好看，对比色都强烈&lt;/li&gt;
+&lt;li&gt;profiles-command 吧zsh代替默认shell，这样每次打开terminal默认就是zsh了！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="常用快捷键"&gt;常用快捷键：
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;按键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl&lt;/code&gt; + &lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;缩小terminal&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl&lt;/code&gt;+ &lt;code&gt;shift + &lt;/code&gt;+`&lt;/td&gt;
+&lt;td&gt;放大terminal&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>盒盖不关机</title><link>https://b.cornradio.org/p/%E7%9B%92%E7%9B%96%E4%B8%8D%E5%85%B3%E6%9C%BA/</link><pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/%E7%9B%92%E7%9B%96%E4%B8%8D%E5%85%B3%E6%9C%BA/</guid><description>&lt;p&gt;1、编辑 logind.conf 文件，命令如下&lt;/p&gt;
+&lt;p&gt;  sudo vim /etc/systemd/logind.conf&lt;/p&gt;
+&lt;p&gt;2、把所有相关 HandleLidSwitch 的值都改成 ignore&lt;/p&gt;
+&lt;p&gt;3、执行让修改的内容即时生效，输入命令：&lt;/p&gt;
+&lt;p&gt;systemctl restart systemd-logind&lt;/p&gt;
+&lt;p&gt;(实时生效命令可能不能用，我这边ubuntu20.04使用了之后不停卡登录界面)&lt;/p&gt;</description></item></channel></rss>
