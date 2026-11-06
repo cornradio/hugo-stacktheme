@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shadowrocket on</title><link>https://b.cornradio.org/tags/shadowrocket/</link><description>Recent content in Shadowrocket on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 31 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://b.cornradio.org/tags/shadowrocket/index.xml" rel="self" type="application/rss+xml"/><item><title>shadowrocket 黑白名单代理规则</title><link>https://b.cornradio.org/p/shadowrocketrules/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://b.cornradio.org/p/shadowrocketrules/</guid><description>&lt;img src="https://b.cornradio.org/shadowrocket.png" alt="Featured image of post shadowrocket 黑白名单代理规则" /&gt;&lt;p&gt;&lt;a class="link" href="https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/#%E9%BB%91%E5%90%8D%E5%8D%95%E8%BF%87%E6%BB%A4--%E5%B9%BF%E5%91%8A" target="_blank" rel="noopener"
+&gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;banlist&lt;/code&gt; - 黑名单 - &lt;strong&gt;默认直连，只有很常见的外国网站代理（google、youtube等）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;whitelist&lt;/code&gt; - 白名单 - &lt;strong&gt;默认代理， 国内常见网站直连&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用方法:打开配置 (下方第2个) 然后扫码就能增加新配置了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://img2.imgtp.com/2024/03/31/s0MQBw8a.png"
+loading="lazy"
+alt="例图"
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我之前还写过 &lt;a class="link" href="https://cornradio.github.io/unimportant_sites/ShadowrocketTheme/RocketThemes.html" target="_blank" rel="noopener"
+&gt;小火箭的主题&lt;/a&gt;,这个也分享一下.&lt;/p&gt;</description></item></channel></rss>

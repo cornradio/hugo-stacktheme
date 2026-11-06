@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vscode on</title><link>https://b.cornradio.org/tags/vscode/</link><description>Recent content in Vscode on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 25 Mar 2023 00:06:47 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用vscode新建一个donet（csharp）项目</title><link>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vscode%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAdonetcsharp%E9%A1%B9%E7%9B%AE/</link><pubDate>Sat, 25 Mar 2023 00:06:47 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vscode%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAdonetcsharp%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p&gt;通常情况下，使用 Visual Studio 来编写 csharp 代码创建项目和管理非常的简单。但是，Visual Studio 是一个非常大的 IDE（而且visual studio mac版与win版并非同根同源，mac版本比较难用），如果您只是想编写一些简单的 csharp 代码，安装一个巨大的vs是不适合的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;visual studio 来写csharp（常规选择）&lt;/li&gt;
+&lt;li&gt;vs code + dotnet sdk （推荐选择）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;主要分成下列步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安装 .NET Core SDK&lt;/li&gt;
+&lt;li&gt;安装 csharp 插件&lt;/li&gt;
+&lt;li&gt;配置插件&lt;/li&gt;
+&lt;li&gt;dotnet new 新建项目&lt;/li&gt;
+&lt;li&gt;dotnet run 跑代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="安装-net-core-sdk"&gt;安装 .NET Core SDK
+&lt;/h2&gt;&lt;p&gt;首先，需要安装 .NET Core SDK。可以在官网下载安装包进行安装：https://dotnet.microsoft.com/download ，我目前使用.NET 6.0。&lt;/p&gt;
+&lt;h2 id="安装-csharp-插件"&gt;安装 csharp 插件
+&lt;/h2&gt;&lt;p&gt;然后，在 Visual Studio Code 中搜索安装 csharp 插件。按下 ctrl + Shift + x 打开扩展商店，搜索 &amp;ldquo;csharp&amp;rdquo; 并点击安装。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325000905.png"
+loading="lazy"
+alt="第一个插件"
+&gt;&lt;/p&gt;
+&lt;h2 id="配置插件"&gt;配置插件
+&lt;/h2&gt;&lt;p&gt;配置插件的作用是可以使用lint功能、对你的代码中的错误进行提示、自动补全等等。&lt;/p&gt;
+&lt;p&gt;右键插件，选择 &amp;ldquo;Configure Extension Settings&amp;rdquo;，在弹出的窗口中增加搜索关键词 sdk ，修改sdk位置（是上面你刚刚装好的路径）&lt;/p&gt;
+&lt;p&gt;如果在mac下你可以这么查找到他的安装路径。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ which dotnet
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/local/share/dotnet/dotnet
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 进入上面的文件夹找到sdk文件夹&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/local/share/dotnet/sdk/6.0.407
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325001140.png"
+loading="lazy"
+alt="搜索并修改设置"
+&gt;&lt;/p&gt;
+&lt;h2 id="新建项目"&gt;新建项目
+&lt;/h2&gt;&lt;p&gt;在终端中输入以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet new console --name HelloWorld
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在当前目录下创建一个名为 &amp;ldquo;HelloWorld&amp;rdquo; 的文件夹，并创建一个新的 .NET Core 控制台应用程序,&lt;/p&gt;
+&lt;p&gt;跑代码：现在其实已经可以运行代码了，直接在终端输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dotnet run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="创建vscode配置文件"&gt;创建vscode配置文件
+&lt;/h2&gt;&lt;p&gt;创建vscode配置文件，这样就可以在vscode中调试运行你的代码了，比如说打断点、查看变量值等等。
+以及程序运行错误的时候，会标记指定的代码行数、错误信息等等。&lt;/p&gt;
+&lt;p&gt;要调试运行他还需要一个vscode配置文件。&lt;/p&gt;
+&lt;p&gt;打开Debug侧边栏，有一个按钮：
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325001854.png"
+loading="lazy"
+alt="按钮"
+&gt;&lt;/p&gt;
+&lt;p&gt;点击这个按钮造成的效果是，会在你的项目根目录下生成一个.vscode文件夹
+内容如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;.vscode
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── launch.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;└── tasks.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="配置launchjson"&gt;配置launch.json
+&lt;/h3&gt;&lt;p&gt;这个设置你可以修改下，内置的terminal有时候 会存在没有办法输入的问题。
+&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230325004622.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h3 id="vscode-调试运行代码"&gt;vscode 调试运行代码
+&lt;/h3&gt;&lt;p&gt;在Debug侧边栏，点击绿色的箭头运行按钮。
+或者 F5&lt;/p&gt;</description></item><item><title>vscode技巧</title><link>https://b.cornradio.org/p/vscode%E6%8A%80%E5%B7%A7/</link><pubDate>Thu, 05 Jan 2023 16:38:27 +0800</pubDate><guid>https://b.cornradio.org/p/vscode%E6%8A%80%E5%B7%A7/</guid><description>&lt;h1 id="csharp-程序不能输入"&gt;csharp 程序不能输入
+&lt;/h1&gt;&lt;p&gt;用vscode运行csharp默认使用的terminal是不支持输入的，输入没反应&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230103144139.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;需要修改 launch.json 增加这两行我估计是关闭了什么东西，并且调用系统的terminal，具体就不懂了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;configurations&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// For more information about the &amp;#39;console&amp;#39; field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;console&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;integratedTerminal&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;internalConsoleOptions&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;neverOpen&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="inlay-hints"&gt;Inlay hints
+&lt;/h1&gt;&lt;p&gt;这个东西会在你的变量前面提示变量的类型、提示形参名称等，打开的话就代码看起来非常长。
+类似图片中这样：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230103155204.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;所以我用这个“快捷键启用”模式，当我按下&lt;code&gt;option + ctrl&lt;/code&gt;的时候才会显示这些提示&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230103151454.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h1 id="snippets"&gt;snippets
+&lt;/h1&gt;&lt;p&gt;cmd + P 搜索 &lt;code&gt;&amp;gt;snippet&lt;/code&gt;
+可以新建一个全局的代码片段文件，默认提供了配置示例&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;console ReadLine&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="c1"&gt;//提示中会显示的全名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;scope&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;csharp&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;//仅在csharp代码中显示
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;prefix&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;cr&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;//输入cr触发
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;body&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="c1"&gt;//要输入的代码本体，支持多行但很麻烦，$1，$2等标注位置可以进行快速修改
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;Console.ReadLine();&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Log output to console&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt;//提示中会显示的详细解释
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以用这个网站： &lt;a class="link" href="https://snippet-generator.app" target="_blank" rel="noopener"
+&gt;https://snippet-generator.app&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;是某个大佬专门给vscode写snippet开发的，代码粘进去，body部分的多行就会自己转换了，还有引号什么的都会自己转换。&lt;/p&gt;
+&lt;h1 id="vibrancy-continued"&gt;Vibrancy Continued
+&lt;/h1&gt;&lt;p&gt;这是一个vscode插件，会让你的vscode拥有毛玻璃效果。&lt;/p&gt;
+&lt;p&gt;默认毛玻璃效果是整个窗体都是半透明，我个人觉得类似mac那种边栏半透明效果比较酷，可以在这里设置：&lt;/p&gt;
+&lt;p&gt;注意毛玻璃插件开启后 vscode会觉得自己损坏，不要管他。&lt;/p&gt;
+&lt;p&gt;而且这个插件虽然声称自己仅支持 默认的 Dark + 主题，但是实际上商店里面的xcode主题也可以用。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/cornradio/imgs/main/20230105164623.png"
+loading="lazy"
+&gt;&lt;/p&gt;</description></item></channel></rss>

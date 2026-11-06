@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>CVE 多平台查询工具</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f2f2f2; }
+    h1 { font-size: 1.8rem; }
+    input, button {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    input { width: 300px; }
+    .links, .history { margin-top: 1.5rem; }
+    .links a, .history button {
+      display: block;
+      margin: 0.3rem 0;
+      color: #0645AD;
+      text-decoration: none;
+    }
+    .history button {
+      background: #fff;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    .history button:hover {
+      background-color: #eaeaea;
+    }
+  </style>
+</head>
+<body>
+  <h1>CVE 多平台查询工具</h1>
+  <input type="text" id="cveInput" placeholder="例如：CVE-2024-46756">
+  <button onclick="generateLinks()">查询</button>
+
+  <div class="links" id="linkOutput"></div>
+
+  <div class="history">
+    <h3>查询记录</h3>
+    <div id="historyList"></div>
+  </div>
+
+  <script>
+    function generateLinks() {
+      const cve = document.getElementById('cveInput').value.trim().toUpperCase();
+      const output = document.getElementById('linkOutput');
+      output.innerHTML = '';
+
+      if (!/^CVE-\d{4}-\d{4,}$/.test(cve)) {
+        output.innerHTML = '<p style="color:red;">请输入正确的 CVE 编号格式，例如 CVE-2024-46756</p>';
+        return;
+      }
+
+      saveToHistory(cve);
+      renderHistory();
+
+      const links = [
+          { name: 'CVE Details', url: `https://www.cvedetails.com/cve/${cve}/` },
+          { name: 'NVD', url: `https://nvd.nist.gov/vuln/detail/${cve}` },
+          { name: '阿里云漏洞库', url: `https://avd.aliyun.com/detail?id=${cve}` },
+          { name: 'Tenable Nessus', url: `https://www.tenable.com/plugins/search?q=${cve}` },
+          { name: 'Red Hat CVE', url: `https://access.redhat.com/security/cve/${cve}` },
+          { name: 'Debian CVE Tracker', url: `https://security-tracker.debian.org/tracker/${cve}` },
+          { name: 'Ubuntu CVE Tracker', url: `https://people.canonical.com/~ubuntu-security/cve/${cve}.html` },
+          //增加giuthub
+          { name: 'Google 搜索', url: `https://www.google.com/search?q=${cve}` },
+          { name: 'Github Advisory', url: `https://github.com/advisories?query=${cve}` },
+          { name: 'Exploit-DB', url: `https://www.exploit-db.com/search?cve=${cve}` }
+      ];
+
+      links.forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.textContent = `${link.name} - ${link.url}`;
+        a.target = '_blank';
+        output.appendChild(a);
+      });
+    }
+
+    function saveToHistory(cve) {
+      let history = JSON.parse(localStorage.getItem('cve_history') || '[]');
+      history = history.filter(item => item !== cve);
+      history.unshift(cve);
+      if (history.length > 10) history = history.slice(0, 10);
+      localStorage.setItem('cve_history', JSON.stringify(history));
+    }
+
+    function renderHistory() {
+      const historyDiv = document.getElementById('historyList');
+      const history = JSON.parse(localStorage.getItem('cve_history') || '[]');
+      historyDiv.innerHTML = '';
+      history.forEach(cve => {
+        const btn = document.createElement('button');
+        btn.textContent = cve;
+        btn.onclick = () => {
+          document.getElementById('cveInput').value = cve;
+          generateLinks();
+        };
+        historyDiv.appendChild(btn);
+      });
+    }
+
+    window.onload = renderHistory;
+  </script>
+</body>
+</html>

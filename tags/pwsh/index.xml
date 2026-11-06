@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pwsh on</title><link>https://b.cornradio.org/tags/pwsh/</link><description>Recent content in Pwsh on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 19 Sep 2023 09:32:55 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/pwsh/index.xml" rel="self" type="application/rss+xml"/><item><title>powershell 设置别名 alias</title><link>https://b.cornradio.org/p/powershell-%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D-alias/</link><pubDate>Tue, 19 Sep 2023 09:32:55 +0800</pubDate><guid>https://b.cornradio.org/p/powershell-%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D-alias/</guid><description>&lt;img src="https://b.cornradio.org/pwsh.jpg" alt="Featured image of post powershell 设置别名 alias" /&gt;&lt;p&gt;使用 zsh 之后，回到windows，我很怀念alias功能。 以及 zshrc 配置文件。&lt;/p&gt;
+&lt;p&gt;但是 powershell 可以实现类似的功能：&lt;a class="link" href="https://blog.csdn.net/lei_qi/article/details/106592404" target="_blank" rel="noopener"
+&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;打开管理员 powershell ， 执行允许ps1脚本的命令：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Set-ExecutionPolicy RemoteSigned
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;编辑配置文件（可以用任何自己喜欢的编辑器）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="nv"&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-powershell" data-lang="powershell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 例如：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 快速移动到 hugo 工作目录：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;hg&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;Set-Location&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;C:\Users\kasus\hugo-win&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;# 执行多行命令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;xxx&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;Set-Location&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;C:\github\xxx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

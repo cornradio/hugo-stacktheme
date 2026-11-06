@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2077 on</title><link>https://b.cornradio.org/tags/2077/</link><description>Recent content in 2077 on</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Aug 2023 23:19:43 +0800</lastBuildDate><atom:link href="https://b.cornradio.org/tags/2077/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用vortex安装2077mod</title><link>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vortex%E5%AE%89%E8%A3%852077mod/</link><pubDate>Sat, 05 Aug 2023 23:19:43 +0800</pubDate><guid>https://b.cornradio.org/p/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vortex%E5%AE%89%E8%A3%852077mod/</guid><description>&lt;h2 id="如何使用vortex安装2077mod"&gt;如何使用vortex安装2077mod
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.nexusmods.com" target="_blank" rel="noopener"
+&gt;vortex&lt;/a&gt; 是一个 mod 管理器，使用它可以方便你安装、卸载、管理mod。不用手动操作游戏文件夹。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/vb2tNKo.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载 &lt;a class="link" href="https://www.nexusmods.com/site/mods/1" target="_blank" rel="noopener"
+&gt;vortex&lt;/a&gt; ，安装时选择游戏所在盘，如&lt;code&gt;D:\sofeware\vortex&lt;/code&gt;，因为他需要和游戏在同一个盘符下才能建立硬链接。&lt;/li&gt;
+&lt;li&gt;安装 &lt;a class="link" href="https://www.nexusmods.com/site/mods/196" target="_blank" rel="noopener"
+&gt;2077插件 &lt;/a&gt; （因为vortex原生不支持2077，所以需要这个插件）&lt;/li&gt;
+&lt;li&gt;设置2077mod缓存文件位置（setting-Mods-打开automatic开关)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;到此为止，vortex已经可以正常使用了&lt;/p&gt;
+&lt;h2 id="安装一个mod"&gt;安装一个mod
+&lt;/h2&gt;&lt;p&gt;安装mod有两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过vortex的网页版点击下载，直接唤醒客户端，适合较小的包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过vortex网页手动下载，最好挂个代理，适合较大的包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/818" target="_blank" rel="noopener"
+&gt;simplemenu&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;根据提示，先安装依赖包 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/107" target="_blank" rel="noopener"
+&gt;Cyber Engine Tweaks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;然后安装&lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/818" target="_blank" rel="noopener"
+&gt;simplemenu&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="推荐的mod"&gt;推荐的mod
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/CwhXf67.png"
+loading="lazy"
+alt="Imgur"
+&gt;&lt;/p&gt;
+&lt;h3 id="作弊类"&gt;作弊类
+&lt;/h3&gt;&lt;p&gt;必装依赖包 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/107" target="_blank" rel="noopener"
+&gt;Cyber Engine Tweaks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;简单作弊器 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/818" target="_blank" rel="noopener"
+&gt;simplemenu&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;管理人物属性、搜索获取物品&lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/1263" target="_blank" rel="noopener"
+&gt;Respector&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;删除传送的加载动画，变成类似GTA的传送动画 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/2006" target="_blank" rel="noopener"
+&gt;GTATRAVEL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;自由飞行 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/780" target="_blank" rel="noopener"
+&gt;freefly&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;随身衣柜 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/5145" target="_blank" rel="noopener"
+&gt;Wardrobe Anywhere&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="游戏提升类"&gt;游戏提升类
+&lt;/h3&gt;&lt;p&gt;车辆操控提升 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/210" target="_blank" rel="noopener"
+&gt;Better Vehicle Handling&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;路上车辆AI优化 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/3176" target="_blank" rel="noopener"
+&gt;Cyber Drift - Crowds and Traffic&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;更好的天气 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/7007" target="_blank" rel="noopener"
+&gt;Weather Probability Rebalance - Climate Change Edition&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="界面类"&gt;界面类
+&lt;/h3&gt;&lt;p&gt;HUD 颜色更换 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/509" target="_blank" rel="noopener"
+&gt;Spicy HUDs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;更少的glitch动画 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/7875" target="_blank" rel="noopener"
+&gt;Fewer Annoying Glitch Effects&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;删除进入游戏加载动画 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/8144" target="_blank" rel="noopener"
+&gt;Load Begone&lt;/a&gt; （需要配合steam命令行参数使用）&lt;/p&gt;
+&lt;p&gt;删除讨厌的绿色色调 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/8745" target="_blank" rel="noopener"
+&gt;Vanilla Env Lighting - No More Green Tint&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="皮肤类"&gt;皮肤类
+&lt;/h3&gt;&lt;p&gt;超棒4k 女V 模型，要安装多个包 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/1873" target="_blank" rel="noopener"
+&gt;4k Complexion and Body for Female V&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;更好看的皮肤反光 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/8157" target="_blank" rel="noopener"
+&gt;Preem Skin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;更好看的头发材质 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/8223" target="_blank" rel="noopener"
+&gt;Preem Hair&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;拍照打光工具 &lt;a class="link" href="https://www.nexusmods.com/cyberpunk2077/mods/8176" target="_blank" rel="noopener"
+&gt;CharLi&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
